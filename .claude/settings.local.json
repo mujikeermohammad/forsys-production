@@ -6,7 +6,9 @@
       "Bash(echo \"Exit: $?\")",
       "WebFetch(domain:www.forsysinc.com)",
       "Bash(python -c ' *)",
-      "Bash(node -e ' *)"
+      "Bash(node -e ' *)",
+      "Bash(node check-links.js)",
+      "Bash(node fix-logos.js)"
     ]
   }
 }

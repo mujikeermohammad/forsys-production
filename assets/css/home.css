@@ -84,6 +84,24 @@
 }
 .btn-hero-secondary:hover { color: var(--text-primary); border-color: var(--purple); background: var(--white); }
 
+/* ── HERO STATS (2-item variant) ────────────────────────── */
+.hero-stats {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 440px;
+  margin: 0 auto;
+  border-radius: 20px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid rgba(107,72,255,0.15);
+  box-shadow: 0 8px 40px rgba(107,72,255,0.12);
+  animation: heroFadeUp 0.6s 0.45s cubic-bezier(0.22,0.61,0.36,1) both;
+}
+.hero-stats .stat-item { padding: 28px 40px; }
+.hero-stats .stat-number { font-size: 48px; }
+.hero-stats .stat-label { font-size: 13px; font-weight: 600; color: var(--text-secondary); letter-spacing: 0.01em; }
+
 /* ── HERO MOCKUP CARDS ───────────────────────────────────── */
 .hero-mockup {
   position: relative; z-index: 1; width: 100%; max-width: 1000px;

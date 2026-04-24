@@ -138,12 +138,24 @@
   margin-bottom: 28px;
 }
 
+.ind-snapshot-full {
+  max-width: 860px;
+  margin: 0 auto;
+}
+
 .ind-challenges {
   list-style: none;
   padding: 0;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+.ind-challenges--grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px;
+  margin-top: 28px;
 }
 
 .ind-challenge-item {
@@ -207,7 +219,7 @@
   background: var(--white);
   border-radius: 12px;
   padding: 18px 16px;
-  text-align: center;
+  text-align: left;
 }
 
 .ind-stat-num {
@@ -223,10 +235,12 @@
 }
 
 .ind-stat-label {
+  display: block;
   font-family: Inter, sans-serif;
   font-size: 11.5px;
   color: var(--text-muted);
   line-height: 1.4;
+  text-align: left;
 }
 
 /* ── OUR APPROACH ─────────────────────────────────────────── */
@@ -334,29 +348,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 48px;
-  max-width: 860px;
-  margin: 0 auto;
-}
-
-.ind-client-logo {
-  height: 32px;
-  width: auto;
-  opacity: 0.45;
-  filter: grayscale(1);
-  transition: opacity 0.2s ease, filter 0.2s ease;
-}
-
-.ind-client-logo:hover {
-  opacity: 0.85;
-  filter: grayscale(0);
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  gap: 16px;
 }
 
 .ind-client-logo-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  width: 160px; height: 88px;
+  background: var(--white); border: 1.5px solid var(--border);
+  border-radius: 12px; padding: 16px 20px;
+  position: relative;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.ind-client-logo-item:hover {
+  border-color: var(--border-strong);
+  background: var(--white);
+  box-shadow: 0 4px 16px rgba(13, 13, 43, 0.07);
+}
+
+.ind-client-logo {
+  display: block; width: 100%; height: 100%;
+  object-fit: contain;
 }
 
 .ind-client-logo-text {
@@ -364,12 +379,9 @@
   font-size: 14px;
   font-weight: 700;
   color: var(--text-muted);
-  opacity: 0.6;
-  white-space: nowrap;
-  transition: opacity 0.2s ease;
+  white-space: normal;
+  text-align: center;
 }
-
-.ind-client-logo-item:hover .ind-client-logo-text { opacity: 0.9; }
 
 /* ── CASE STUDY ───────────────────────────────────────────── */
 .ind-casestudy {
