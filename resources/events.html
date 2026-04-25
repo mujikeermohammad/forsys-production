@@ -670,6 +670,14 @@
       margin-bottom: 28px;
     }
 
+    .evt-past-video {
+      width: 100%;
+      display: block;
+      border-radius: 12px;
+      margin-bottom: 28px;
+      background: #000;
+    }
+
     .evt-past-detail-title {
       font-family: 'Space Grotesk', sans-serif;
       font-size: 1.3rem;
@@ -818,37 +826,170 @@
         transition: none;
       }
     }
+
+    /* ── Video Modal ──────────────────────────────────────────────────── */
+    .evt-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(13, 13, 43, 0.82);
+      backdrop-filter: blur(6px);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      animation: modalFadeIn 0.2s ease;
+    }
+
+    .evt-modal-overlay[hidden] {
+      display: none;
+    }
+
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .evt-modal-box {
+      position: relative;
+      width: 100%;
+      max-width: 900px;
+      background: #000;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+      animation: modalSlideUp 0.22s ease;
+    }
+
+    @keyframes modalSlideUp {
+      from {
+        transform: translateY(20px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .evt-modal-close {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      z-index: 10;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s;
+    }
+
+    .evt-modal-close:hover {
+      background: rgba(255, 255, 255, 0.3);
+    }
+
+    .evt-modal-close:focus-visible {
+      outline: 2px solid var(--purple);
+      outline-offset: 2px;
+    }
+
+    .evt-modal-close svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .evt-modal-video {
+      width: 100%;
+      display: block;
+      max-height: 80vh;
+      background: #000;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .evt-modal-overlay,
+      .evt-modal-box {
+        animation: none;
+      }
+    }
+
+    /* ── Video Callout ────────────────────────────────────────────────── */
+    .evt-video-callout {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      background: #f2f3f8;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin: 24px 0;
+      flex-wrap: wrap;
+    }
+
+    .evt-video-callout-text {
+      flex: 1;
+      min-width: 200px;
+      font-family: Inter, sans-serif;
+      font-size: 0.93rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* ── Press Links ──────────────────────────────────────────────────── */
+    .evt-press-links {
+      margin-top: 28px;
+    }
+
+    .evt-press-links-title {
+      font-family: Inter, sans-serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin: 0 0 12px;
+      letter-spacing: 0.03em;
+    }
+
+    .evt-press-links-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .evt-press-links-list li a {
+      font-family: Inter, sans-serif;
+      font-size: 0.875rem;
+      color: var(--purple);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      word-break: break-word;
+      transition: color 0.15s;
+    }
+
+    .evt-press-links-list li a:hover {
+      color: #5a38e8;
+    }
+
+    .evt-press-links-list li a:focus-visible {
+      outline: 2px solid var(--purple);
+      outline-offset: 2px;
+    }
   </style>
-
-  <!-- Microsoft Clarity -->
-  <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "rwq4m92ow8");
-  </script>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-141194442-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-141194442-1');
-  </script>
-
-  <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-MLCLLPPL');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- 6sense Web Tag -->
-  <script id="6senseWebTag" src="https://j.6sc.co/j/326f867a-8a9b-440c-b663-a41c5e136ba8.js"></script>
-
 </head>
 
 <body class="page-resources">
@@ -884,7 +1025,7 @@
                     </a></li>
                   <li><a href="../services/build-or-buy-strategy.html" role="menuitem">
                       Build or Buy Strategy
-                      <small>AI-native build-vs-buy—driven by ROI and TCO</small>
+                      <small>Assess Build vs Buy ROI with matured TCO matrix</small>
                     </a></li>
                   <li><a href="../services/enterprise-ai-strategy.html" role="menuitem">
                       Enterprise AI Strategy
@@ -926,7 +1067,7 @@
 
               <!-- Col 3 — Conga+PROS & Oracle (Platforms group) -->
               <div class="mega-col mega-col--platform">
-                <div class="mega-col-title mega-col-title--platform">Conga</div>
+                <div class="mega-col-title mega-col-title--platform">Conga + PROS B2B</div>
                 <ul>
                   <li><a href="../solutions/conga-pros/revenue-and-commerce.html" role="menuitem">
                       Revenue &amp; Commerce
@@ -969,7 +1110,8 @@
 
               <!-- Col 4 — Services -->
               <div class="mega-col">
-                <div class="mega-col-title">AI Led Services</div>
+                <div class="mega-col-title">Services</div>
+                <div class="mega-sub-header">Technology</div>
                 <ul>
                   <li><a href="../services/ai-application-development.html" role="menuitem">
                       AI led Application Development
@@ -989,7 +1131,9 @@
                     </a></li>
                   <li><a href="../services/devops.html" role="menuitem">DevOps<small>Reliable, automated
                         delivery</small></a></li>
-                
+                </ul>
+                <div class="mega-sub-header">AI Managed Services</div>
+                <ul>
                   <li><a href="../services/ai-enabled-managed-services.html" role="menuitem">
                       AI Powered Managed Services
                       <small>Always-on AI managed support</small>
@@ -1003,7 +1147,7 @@
                 <ul>
                   <li><a href="../forsys-solutions/revramp.html" role="menuitem">
                       RevRamp
-                      <small>Fast &amp; Seamless CPQ Migration</small>
+                      <small>Fast &amp; Seamless CPQ Data Migration</small>
                     </a></li>
                   <li><a href="../forsys-solutions/lexishift.html" role="menuitem">
                       LexiShift
@@ -1011,11 +1155,11 @@
                     </a></li>
                   <li><a href="../forsys-solutions/revmove.html" role="menuitem">
                       RevMove
-                      <small>DataOps Accelerator for Salesforce</small>
+                      <small>Platform Migration Intelligence</small>
                     </a></li>
                   <li><a href="../forsys-solutions/mna-for-salesforce.html" role="menuitem">
                       MnA for Salesforce
-                      <small>Accelerate Salesforce Org Merges</small>
+                      <small>Salesforce Org Migration</small>
                     </a></li>
                   <li><a href="../forsys-solutions/aitest.html" role="menuitem">
                       AITest
@@ -1314,7 +1458,8 @@
             <div class="evt-past-item active" role="listitem" tabindex="0" data-panel="evt-0" aria-selected="true">
               <div class="evt-past-item-left">
                 <p class="evt-past-item-title">Webinar: Rev 3.0 &#8211; From Complex Configuration to Autonomous Revenue
-                  with Salesforce Agentforce Revenue Management</p><span class="evt-past-item-date">Mar 25, 2026</span>
+                  with Salesforce Agentforce Revenue Management</p>
+                <span class="evt-past-item-date">Mar 25, 2026</span>
               </div>
               <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
                 aria-hidden="true">
@@ -1322,7 +1467,350 @@
                 <polyline points="12 5 19 12 12 19" />
               </svg>
             </div>
-            </div><!-- /.evt-past-list -->
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-1" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Make the Move from CPQ to Agentforce Revenue Management</p>
+                <span class="evt-past-item-date">Jan 21, 2026</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-2" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Webinar: Salesforce Spiff &#8211; Modern Approach to Sales Compensation
+                  Management</p>
+                <span class="evt-past-item-date">Nov 6, 2025</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-3" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Webinar: Contract Performance Management &#8211; Driving Performance,
+                  Compliance &amp; Value with Conga CLM</p>
+                <span class="evt-past-item-date">Sep 25, 2025</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-4" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Webinar: Bringing Efficiency to Pharma Field Sales Operations</p>
+                <span class="evt-past-item-date">Mar 25, 2025</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-5" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Apprise: AI in Enterprise &#8211; Scaling AI Solutions Across Healthcare
+                  Systems</p>
+                <span class="evt-past-item-date">Feb 27, 2025</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-6" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Webinar: Salesforce&#8217;s Agentforce &#8211; The AI Advantage
+                  Businesses Shouldn&#8217;t Miss</p>
+                <span class="evt-past-item-date">Jan 16, 2025</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-7" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Apprise &#8211; Pricing Strategies &amp; AI</p>
+                <span class="evt-past-item-date">Oct 24, 2024</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-8" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Dreamforce 2024</p>
+                <span class="evt-past-item-date">Sep 17&#8211;19, 2024</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-9" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Webinar: Optimizing Manufacturing Processes Through Salesforce Digital
+                  Solutions</p>
+                <span class="evt-past-item-date">Jul 26, 2024</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-10" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Salesforce World Tour Essentials India 2024</p>
+                <span class="evt-past-item-date">Jun 19, 2024</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-11" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Forsys at Conga Connect &#8217;24</p>
+                <span class="evt-past-item-date">Apr 22&#8211;24, 2024</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-12" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Webinar: Integrations in the Lead-to-Revenue Space &#8211; Revenue Cloud
+                  Integration With NetSuite</p>
+                <span class="evt-past-item-date">Apr 11, 2024</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-13" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Forsys Inc Inaugurates State of the Art Facility in Hyderabad</p>
+                <span class="evt-past-item-date">Feb 29, 2024</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-14" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Salesforce World Tour Essentials India 2023</p>
+                <span class="evt-past-item-date">Jun 27, 2023</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-15" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Conga Connect</p>
+                <span class="evt-past-item-date">Apr 10&#8211;12, 2023</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-16" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Oracle CloudWorld</p>
+                <span class="evt-past-item-date">Oct 17&#8211;20, 2022</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-17" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Diwali Event 2022</p>
+                <span class="evt-past-item-date">Oct 19, 2022</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-18" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Conga Connect 2022</p>
+                <span class="evt-past-item-date">Aug 30&#8211;31, 2022</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-19" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">International Yoga Day</p>
+                <span class="evt-past-item-date">Jun 21, 2022</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-20" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">International Women&#8217;s Day</p>
+                <span class="evt-past-item-date">Mar 8, 2022</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-21" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">NetSuite Webinar: Why Add PSA Solutions to Your ERP?</p>
+                <span class="evt-past-item-date">Mar 3, 2022</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-22" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Udaan</p>
+                <span class="evt-past-item-date">Dec 22, 2021</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-23" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Tech Talk</p>
+                <span class="evt-past-item-date">Nov 12, 2021</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-24" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">COVID-19 Vaccination Drive</p>
+                <span class="evt-past-item-date">Jun 12, 2021</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-25" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">International Women&#8217;s Day</p>
+                <span class="evt-past-item-date">Mar 8, 2021</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-26" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Dreamforce 2018</p>
+                <span class="evt-past-item-date">Sep 25, 2018</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-27" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">Forsys Flash &#8211; Knowledge Xchange 2018</p>
+                <span class="evt-past-item-date">Apr 26, 2018</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+            <div class="evt-past-item" role="listitem" tabindex="0" data-panel="evt-28" aria-selected="false">
+              <div class="evt-past-item-left">
+                <p class="evt-past-item-title">APTTUS Accelerate 2018</p>
+                <span class="evt-past-item-date">May 14, 2018</span>
+              </div>
+              <svg class="evt-past-item-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </div>
+
+          </div><!-- /.evt-past-list -->
 
           <!-- Vertical divider -->
           <div class="evt-past-divider" aria-hidden="true"></div>
@@ -1330,26 +1818,446 @@
           <!-- Right: detail panels -->
           <div class="evt-past-detail" aria-live="polite" aria-atomic="true">
 
+            <!-- evt-0 -->
             <div class="evt-past-panel active" id="evt-0">
               <img src="https://www.forsysinc.com/blog/wp-content/uploads/2026/03/rev3-zoom-banner-3.jpg"
                 alt="Rev 3.0 Webinar" class="evt-past-thumb" loading="lazy">
-              <a href="rev30-webinar-ondemand.html" class="evt-past-detail-title">Webinar: Rev 3.0 &#8211; From Complex Configuration to
-                Autonomous Revenue with Salesforce Agentforce Revenue Management</a>
+              <a href="../past-webinars/rev30-webinar-ondemand.html" class="evt-past-detail-title">Webinar: Rev 3.0
+                &#8211;
+                From Complex Configuration to Autonomous Revenue with Salesforce Agentforce Revenue Management</a>
               <div class="evt-past-detail-meta">Mar 25, 2026 &nbsp;|&nbsp; Virtual Event</div>
               <div class="evt-past-detail-body">
                 <p>Watch the on-demand recording of our webinar, where Salesforce and Forsys experts explore how modern
                   enterprises are moving from complex revenue configurations to <strong>Autonomous Revenue</strong>
                   &#8212; AI-driven, unified, and continuously optimized with <strong>Salesforce Agentforce Revenue
                     Management</strong>.</p>
-                <p><strong>Brion Schweers</strong>, Former SVP of Revenue Cloud Solutions, Salesforce, traced the
-                  evolution from the ERP era (Rev 1.0) to CPQ (Rev 2.0) to today&#8217;s AI-powered Rev 3.0.
-                  <strong>Srinivas Vemuri</strong>, Co-Founder &amp; COO, Forsys, shared how Agentforce Revenue
-                  Management unifies the entire revenue process. <strong>Raj Saladi</strong>, Director of Business
-                  Architecture, Forsys, walked through real-world migration strategies and implementation patterns.</p>
+                <p><strong>Brion Schweers</strong>, Former SVP of Revenue Cloud Solutions, Salesforce
+                  &nbsp;&middot;&nbsp; <strong>Srinivas Vemuri</strong>, Co-Founder &amp; COO, Forsys
+                  &nbsp;&middot;&nbsp; <strong>Raj Saladi</strong>, Director of Business Architecture, Forsys</p>
+                <p><strong>Brion Schweers</strong>, Former SVP of Revenue Cloud Solutions, Salesforce
+                  &nbsp;&middot;&nbsp; <strong>Srinivas Vemuri</strong>, Co-Founder &amp; COO, Forsys
+                  &nbsp;&middot;&nbsp; <strong>Raj Saladi</strong>, Director of Business Architecture, Forsys</p>
+                <p><strong>Brion Schweers</strong>, Former SVP of Revenue Cloud Solutions, Salesforce
+                  &nbsp;&middot;&nbsp; <strong>Srinivas Vemuri</strong>, Co-Founder &amp; COO, Forsys
+                  &nbsp;&middot;&nbsp; <strong>Raj Saladi</strong>, Director of Business Architecture, Forsys</p>
               </div>
             </div>
 
-            </div><!-- /.evt-past-detail -->
+            <!-- evt-1 -->
+            <div class="evt-past-panel" id="evt-1">
+              <img src="https://www.forsysinc.com/blog/wp-content/uploads/2026/02/Webinar-make-the-move-1.png"
+                alt="Make the Move from CPQ to Agentforce Revenue Management" class="evt-past-thumb" loading="lazy">
+              <a href="../past-webinars/revramp-salesforce-webinar-ondemand.html" class="evt-past-detail-title">Make the
+                Move from CPQ to Agentforce Revenue Management</a>
+              <div class="evt-past-detail-meta">Jan 21, 2026 &nbsp;|&nbsp; Virtual Event &nbsp;|&nbsp; 9:00 AM &#8211;
+                10:30 AM PST</div>
+              <div class="evt-past-detail-body">
+                <p>Revenue leaders explore why enterprises are transitioning beyond traditional CPQ to
+                  <strong>Agentforce Revenue Management</strong>. Features the Forsys RevRamp solution for seamless
+                  migration with full visibility.
+                </p>
+                <p><strong>Muthu Murugan</strong>, Senior Director of Product Management, Salesforce
+                  &nbsp;&middot;&nbsp; <strong>Smita Katariya</strong>, GVP &#8211; Business Applications, Colibri Group
+                </p>
+              </div>
+            </div>
+
+            <!-- evt-2 -->
+            <div class="evt-past-panel" id="evt-2">
+              <img
+                src="https://www.forsysinc.com/blog/wp-content/uploads/2025/11/afa160bd-27c5-4f7c-b580-476d7f678729.png"
+                alt="Salesforce Spiff Webinar" class="evt-past-thumb" loading="lazy">
+              <a href="../past-webinars/spiff-webinar-ondemand.html" class="evt-past-detail-title">Webinar: Salesforce
+                Spiff &#8211; Modern Approach to Sales Compensation Management</a>
+              <div class="evt-past-detail-meta">Nov 6, 2025 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>Watch how modern businesses simplify compensation management, increase sales motivation, and drive
+                  faster revenue outcomes through <strong>Salesforce Spiff</strong>.</p>
+              </div>
+            </div>
+
+            <!-- evt-3 -->
+            <div class="evt-past-panel" id="evt-3">
+              <img src="https://www.forsysinc.com/blog/wp-content/uploads/2025/09/webinar.png"
+                alt="Contract Performance Management with Conga CLM Webinar" class="evt-past-thumb" loading="lazy">
+              <a href="../past-webinars/clm-webinar-ondemand.html" class="evt-past-detail-title">Webinar: Contract
+                Performance Management &#8211; Driving Performance, Compliance &amp; Value with Conga CLM</a>
+              <div class="evt-past-detail-meta">Sep 25, 2025 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>Explore how Contract Performance Management powered by <strong>Conga CLM</strong> reduces revenue
+                  leakage, ensures compliance, and maximizes contract value across the full contract lifecycle.</p>
+              </div>
+            </div>
+
+            <!-- evt-4 -->
+            <div class="evt-past-panel" id="evt-4">
+              <img
+                src="https://www.forsysinc.com/blog/wp-content/uploads/2025/03/Salesforce-Forsys-Pharma-Webinar-V1.png"
+                alt="Pharma Field Sales Operations Webinar" class="evt-past-thumb" loading="lazy">
+              <a href="../past-webinars/pharma-webinar-ondemand.html" class="evt-past-detail-title">Webinar: Bringing
+                Efficiency to Pharma Field Sales Operations</a>
+              <div class="evt-past-detail-meta">Mar 25, 2025 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>A deep dive into Forsys&#8217; Pharma Mobile App powered by Salesforce, transforming pharma field
+                  sales with data-driven insights, real-time updates, and seamless automation.</p>
+              </div>
+            </div>
+
+            <!-- evt-5 -->
+            <div class="evt-past-panel" id="evt-5">
+              <img
+                src="https://www.forsysinc.com/blog/wp-content/uploads/2025/03/Apprise-Event-page-Scaling-AI-Solutions-Across-Healthcare-Systems.png"
+                alt="Apprise 2nd Edition: Scaling AI Solutions Across Healthcare Systems" class="evt-past-thumb"
+                loading="lazy">
+              <a href="../past-webinars/apprise-healthcare-ondemand.html" class="evt-past-detail-title">Apprise: AI in
+                Enterprise &#8211; Scaling AI Solutions Across Healthcare Systems</a>
+              <div class="evt-past-detail-meta">Feb 27, 2025 &nbsp;|&nbsp; Stanford University Faculty Club, California
+              </div>
+              <div class="evt-past-detail-body">
+                <p>The second edition of Apprise brought together AI and healthcare leaders to explore artificial
+                  intelligence&#8217;s impact on patient care, operations, and medical innovation.</p>
+                <p><strong>Dr. Anurag Mairal</strong>, Stanford University &nbsp;&middot;&nbsp; <strong>Shilpa Tangi
+                    Green</strong>, Gilead Sciences &nbsp;&middot;&nbsp; <strong>Parag Jain</strong>, Picarro
+                  &nbsp;&middot;&nbsp; <strong>Neda Razavi</strong>, iSono Health</p>
+              </div>
+            </div>
+
+            <!-- evt-6 -->
+            <div class="evt-past-panel" id="evt-6">
+              <img
+                src="https://www.forsysinc.com/blog/wp-content/uploads/2025/01/Event-page-Webinar-Salesforces-Agentforce.png"
+                alt="Salesforce Agentforce AI Advantage Webinar" class="evt-past-thumb" loading="lazy">
+              <a href="../past-webinars/agentforce-webinar-ondemand.html" class="evt-past-detail-title">Webinar:
+                Salesforce&#8217;s Agentforce &#8211; The AI Advantage Businesses Shouldn&#8217;t Miss</a>
+              <div class="evt-past-detail-meta">Jan 16, 2025 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>A live demonstration of Agentforce capabilities showing how AI is setting new standards for business
+                  growth &#8212; from autonomous agents to intelligent revenue workflows.</p>
+              </div>
+            </div>
+
+            <!-- evt-7 -->
+            <div class="evt-past-panel" id="evt-7">
+              <img src="https://www.forsysinc.com/blog/wp-content/uploads/2024/11/Apprise-Event-page-1.png"
+                alt="Apprise: Pricing Strategies and AI" class="evt-past-thumb" loading="lazy">
+              <a href="../past-webinars/apprise-pricing-ondemand.html" class="evt-past-detail-title">Apprise &#8211;
+                Pricing Strategies &amp; AI</a>
+              <div class="evt-past-detail-meta">Oct 24, 2024 &nbsp;|&nbsp; Stanford University Faculty Club, California
+              </div>
+              <div class="evt-past-detail-body">
+                <p>The inaugural Apprise event explored AI&#8217;s impact on pricing strategies and Lead-to-Revenue
+                  processes, featuring industry leaders from Salesforce, Cisco, Hitachi Vantara, and Nokia.</p>
+                <p><strong>Meredith Schmidt</strong>, Salesforce &nbsp;&middot;&nbsp; <strong>Jigna Shah</strong>, Cisco
+                  &nbsp;&middot;&nbsp; <strong>Marika Sykora</strong>, Harmonic Inc. &nbsp;&middot;&nbsp; <strong>Ashish
+                    Bhagat</strong>, Hitachi Vantara &nbsp;&middot;&nbsp; <strong>Irina Starikova</strong>, Nokia</p>
+              </div>
+            </div>
+
+            <!-- evt-8 -->
+            <div class="evt-past-panel" id="evt-8">
+              <img src="https://www.forsysinc.com/blog/wp-content/uploads/2024/09/Dreamforce-Past-Event-1.png"
+                alt="Dreamforce 2024" class="evt-past-thumb" loading="lazy">
+              <span class="evt-past-detail-title">Dreamforce 2024</span>
+              <div class="evt-past-detail-meta">Sep 17&#8211;19, 2024 &nbsp;|&nbsp; San Francisco, CA</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys attended Dreamforce 2024, winning the <strong>Top Performer Award for H1 2024
+                    (India)</strong>, announcing the first New Revenue Cloud implementation going live, and reaffirming
+                  commitment to AI-driven business transformation.</p>
+              </div>
+            </div>
+
+            <!-- evt-9 -->
+            <div class="evt-past-panel" id="evt-9">
+              <img src="https://www.forsysinc.com/blog/wp-content/uploads/2024/08/Event-Webinar.png"
+                alt="Optimizing Manufacturing Processes Webinar" class="evt-past-thumb" loading="lazy">
+              <a href="../past-webinars/manufacturing-webinar-ondemand.html" class="evt-past-detail-title">Webinar:
+                Optimizing Manufacturing Processes Through Salesforce Digital Solutions</a>
+              <div class="evt-past-detail-meta">Jul 26, 2024 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>Showcasing Forsys&#8217; tailored Salesforce solution enhancing manufacturing efficiency through
+                  <strong>Rise for Manufacturing</strong> &#8212; connecting operations, planning, and customer
+                  commitments.
+                </p>
+              </div>
+            </div>
+
+            <!-- evt-10 -->
+            <div class="evt-past-panel" id="evt-10">
+              <img
+                src="https://www.forsysinc.com/blog/wp-content/uploads/2024/07/Forsys-at-Salesforce-World-Tour-Essentials-Mumbai-Post-Event.png"
+                alt="Salesforce World Tour Essentials India 2024" class="evt-past-thumb" loading="lazy">
+              <span class="evt-past-detail-title">Salesforce World Tour Essentials India 2024</span>
+              <div class="evt-past-detail-meta">Jun 19, 2024 &nbsp;|&nbsp; India</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys demonstrated advanced Salesforce solutions at the Salesforce World Tour India event,
+                  highlighting digital advancements to help businesses deepen customer relationships and increase
+                  productivity.</p>
+              </div>
+            </div>
+
+            <!-- evt-11 -->
+            <div class="evt-past-panel" id="evt-11">
+              <img src="https://www.forsysinc.com/blog/wp-content/uploads/2024/04/Forsys-at-Conga-Connect-2024.png"
+                alt="Forsys at Conga Connect 24" class="evt-past-thumb" loading="lazy">
+              <span class="evt-past-detail-title">Forsys at Conga Connect &#8217;24</span>
+              <div class="evt-past-detail-meta">Apr 22&#8211;24, 2024 &nbsp;|&nbsp; In-Person Event</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys engaged with industry leaders at Conga Connect &#8217;24, exploring the Conga Platform&#8217;s
+                  transformative impact on revenue processes.</p>
+                <p><strong>Srinivas Vemuri</strong>, COO, Forsys &nbsp;&middot;&nbsp; <strong>Ashish Bhagat</strong>,
+                  COO, Hitachi Vantara &nbsp;&middot;&nbsp; <strong>Scott Batchelor</strong>, Senior Director of Global
+                  Partner &amp; Alliances Marketing, Conga</p>
+              </div>
+            </div>
+
+            <!-- evt-12 -->
+            <div class="evt-past-panel" id="evt-12">
+              <img src="https://www.forsysinc.com/blog/wp-content/uploads/2024/04/Website-Data-Integration-Webinar.png"
+                alt="Integrations in Lead-to-Revenue Space Webinar" class="evt-past-thumb" loading="lazy">
+              <a href="../past-webinars/integrations-webinar-ondemand.html" class="evt-past-detail-title">Webinar:
+                Integrations in the Lead-to-Revenue Space &#8211; Revenue Cloud Integration With NetSuite</a>
+              <div class="evt-past-detail-meta">Apr 11, 2024 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>A demonstration of seamless integrations showcasing Forsys&#8217; end-to-end integration capabilities
+                  synchronizing Salesforce Revenue Cloud with NetSuite to streamline Lead-to-Revenue business processes.
+                </p>
+              </div>
+            </div>
+
+            <!-- evt-13 -->
+            <div class="evt-past-panel" id="evt-13">
+              <img src="https://www.forsysinc.com/blog/wp-content/uploads/2024/03/Event-New-Office-1.png"
+                alt="Forsys New Office Inauguration Hyderabad" class="evt-past-thumb" loading="lazy">
+              <span class="evt-past-detail-title">Forsys Inc Inaugurates State of the Art Facility in Hyderabad</span>
+              <div class="evt-past-detail-meta">Feb 29, 2024 &nbsp;|&nbsp; Nanakramguda, Hyderabad, India</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys unveiled its brand new, advanced office space in Nanakramguda, Hyderabad, at a grand ceremony
+                  attended by key luminaries such as the <strong>Minister for Industries and IT D. Sridhar
+                    Babu</strong>, <strong>U.S. Consul-General Jennifer Larson</strong>, <strong>Chairman of iLabs Group
+                    Srinivasa Raju</strong>, Prominent Cardiothoracic Surgeon and <strong>Star Hospitals MD Gopichand
+                    Mannam</strong>.</p>
+                <p>This milestone emphasizes Forsys&#8217; commitment to enhancing its presence in India and
+                  contributing to the dynamic tech ecosystem. The office is designed with state-of-the-art architecture
+                  and modern amenities, reflecting Forsys&#8217; ethos of fostering innovation and collaboration,
+                  offering a conducive environment for its workforce to thrive.</p>
+
+                <div class="evt-video-callout">
+                  <p class="evt-video-callout-text">We also had our partners and customers, who joined us virtually,
+                    congratulating us for our milestone</p>
+                  <button type="button" class="evt-vod-btn" id="btn-office-video"
+                    aria-label="Watch congratulatory video"
+                    data-video="https://www.forsysinc.com/Customer_Testimonial_Video%20.mp4">
+                    <span class="evt-vod-btn-text">Watch Video</span>
+                    <span class="evt-vod-btn-divider" aria-hidden="true"></span>
+                    <span class="evt-vod-btn-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
+                        <polygon points="5,3 19,12 5,21" />
+                      </svg>
+                    </span>
+                  </button>
+                </div>
+
+                <div class="evt-press-links">
+                  <p class="evt-press-links-title">Get more details</p>
+                  <ul class="evt-press-links-list">
+                    <li><a
+                        href="https://newsmeter.in/business/hyderabad-forsys-opens-rs-17-crores-worth-new-office-creates-employment-725606"
+                        target="_blank" rel="noopener">newsmeter.in &mdash; Forsys opens Rs 17 crores worth new office,
+                        creates employment</a></li>
+                    <li><a
+                        href="https://bnnbreaking.com/finance-nav/business/forsys-inc-expands-hyderabad-operations-new-21000-sqft-office-plans-for-500-more-hires-by-2026"
+                        target="_blank" rel="noopener">bnnbreaking.com &mdash; Forsys expands Hyderabad operations with
+                        new 21,000 sqft office</a></li>
+                    <li><a href="https://www.inkl.com/news/400-seater-office-of-u-s-it-firm-forsys-in-hyderabad-opened"
+                        target="_blank" rel="noopener">inkl.com &mdash; 400-seater office of U.S. IT firm Forsys in
+                        Hyderabad opened</a></li>
+                    <li><a
+                        href="https://timesofindia.indiatimes.com/city/hyderabad/forsys-sets-up-new-400-seater-facility-in-hyderabad/articleshow/108123283.cms"
+                        target="_blank" rel="noopener">timesofindia.com &mdash; Forsys sets up new 400-seater facility
+                        in Hyderabad</a></li>
+                    <li><a
+                        href="https://www.thehindu.com/news/cities/Hyderabad/400-seater-office-of-us-it-firm-forsys-in-hyderabad-opened/article67903915.ece"
+                        target="_blank" rel="noopener">thehindu.com &mdash; 400-seater office of US IT firm Forsys in
+                        Hyderabad opened</a></li>
+                    <li><a href="https://medicircle.in/forsys-inc-opens-new-office-in-financial-district"
+                        target="_blank" rel="noopener">medicircle.in &mdash; Forsys Inc opens new office in Financial
+                        District</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            <!-- evt-14 -->
+            <div class="evt-past-panel" id="evt-14">
+              <img
+                src="https://forsysinc.com/blog/wp-content/uploads/2023/07/Copy-of-Salesforce-World-Tour-Essentials-India-SM-Post-1-on-June-7.png"
+                alt="Forsys at Salesforce World Tour Essentials India 2023" class="evt-past-thumb" loading="lazy">
+              <span class="evt-past-detail-title">Salesforce World Tour Essentials India 2023</span>
+              <div class="evt-past-detail-meta">Jun 27, 2023 &nbsp;|&nbsp; Jio World Convention Centre, Mumbai</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys marked its impactful presence at the Salesforce World Tour Essentials India 2023, showcasing
+                  its advanced digital transformation solutions as a top-tier Salesforce partner highlighting the
+                  pivotal role of Salesforce technology in accelerating business growth in the digital era.</p>
+              </div>
+            </div>
+
+            <!-- evt-15 -->
+            <div class="evt-past-panel" id="evt-15">
+              <img
+                src="https://forsysinc.com/blog/wp-content/uploads/2023/03/Conga-Connect-Mar-23-%E2%80%93-Warm-Emailer-1-2.png"
+                alt="Forsys at Conga Connect 2023" class="evt-past-thumb" loading="lazy">
+              <span class="evt-past-detail-title">Conga Connect</span>
+              <div class="evt-past-detail-meta">Apr 10&#8211;12, 2023 &nbsp;|&nbsp; In-Person Event</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys engaged with global leadership at Conga Connect 2023, discussing end-to-end digital solutions
+                  powered by Conga for revenue operations transformation.</p>
+              </div>
+            </div>
+
+            <!-- evt-16 -->
+            <div class="evt-past-panel" id="evt-16">
+              <img src="https://forsysinc.com/blog/wp-content/uploads/2022/10/kndn.jpg"
+                alt="Forsys at Oracle CloudWorld 2022" class="evt-past-thumb" loading="lazy">
+              <span class="evt-past-detail-title">Oracle CloudWorld</span>
+              <div class="evt-past-detail-meta">Oct 17&#8211;20, 2022 &nbsp;|&nbsp; In-Person Event</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys showcased end-to-end digital solutions powered by Oracle at Oracle CloudWorld 2022,
+                  demonstrating capabilities across Fusion ERP, Supply Chain, and Integration platforms.</p>
+              </div>
+            </div>
+
+            <!-- evt-17 -->
+            <div class="evt-past-panel" id="evt-17">
+              <video class="evt-past-video" controls playsinline preload="none" poster="">
+                <source src="https://www.forsysinc.com/Diwali-2022.mp4" type="video/mp4">
+                Your browser does not support the video tag.
+              </video>
+              <span class="evt-past-detail-title">Glimpses of Forsys&#8217; 2022 Diwali Bash at Hyderabad Office</span>
+              <div class="evt-past-detail-meta">Oct 19, 2022 &nbsp;|&nbsp; Hyderabad Office</div>
+              <div class="evt-past-detail-body">
+                <p>The space was abuzz with fun, laughter, and excitement as we came dressed in our traditional best.
+                  The atmosphere was electric with music, dance, and mouth-watering delicacies as we celebrated the
+                  festival of lights with great fervor and enthusiasm. Catch sight of the celebrations and festive
+                  cheer!</p>
+              </div>
+            </div>
+
+            <!-- evt-18 -->
+            <div class="evt-past-panel" id="evt-18">
+              <span class="evt-past-detail-title">Conga Connect 2022</span>
+              <div class="evt-past-detail-meta">Aug 30&#8211;31, 2022 &nbsp;|&nbsp; In-Person Event</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys participated in Conga Connect 2022, discussing commercial and revenue operations
+                  transformation solutions powered by the Conga platform.</p>
+              </div>
+            </div>
+
+            <!-- evt-19 -->
+            <div class="evt-past-panel" id="evt-19">
+              <span class="evt-past-detail-title">International Yoga Day</span>
+              <div class="evt-past-detail-meta">Jun 21, 2022 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>An online yoga session conducted by Jaya Chakravarty practicing the Iyengar Yoga tradition &#8212;
+                  celebrating International Yoga Day with the entire Forsys team.</p>
+              </div>
+            </div>
+
+            <!-- evt-20 -->
+            <div class="evt-past-panel" id="evt-20">
+              <span class="evt-past-detail-title">International Women&#8217;s Day</span>
+              <div class="evt-past-detail-meta">Mar 8, 2022 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>Celebration featuring workforce and guest speakers sharing their views and inspiring stories &#8212;
+                  honoring the contributions and achievements of women at Forsys and beyond.</p>
+              </div>
+            </div>
+
+            <!-- evt-21 -->
+            <div class="evt-past-panel" id="evt-21">
+              <span class="evt-past-detail-title">NetSuite Webinar: Why Add PSA Solutions to Your ERP?</span>
+              <div class="evt-past-detail-meta">Mar 3, 2022 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>A deep dive into why professional services organizations should add PSA solutions alongside their
+                  NetSuite ERP to drive efficiency, visibility, and profitability.</p>
+                <p><strong>Ramana Bondugula</strong> &nbsp;&middot;&nbsp; <strong>Carolyn Olshan</strong></p>
+              </div>
+            </div>
+
+            <!-- evt-22 -->
+            <div class="evt-past-panel" id="evt-22">
+              <span class="evt-past-detail-title">Udaan</span>
+              <div class="evt-past-detail-meta">Dec 22, 2021 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys&#8217; annual offsite celebrating team achievements and employee accomplishments &#8212;
+                  recognizing the individuals and teams who made an exceptional impact throughout the year.</p>
+              </div>
+            </div>
+
+            <!-- evt-23 -->
+            <div class="evt-past-panel" id="evt-23">
+              <span class="evt-past-detail-title">Tech Talk</span>
+              <div class="evt-past-detail-meta">Nov 12, 2021 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>Insights on business architecture, data, and analytics shared with the broader Forsys team and
+                  community.</p>
+                <p><strong>Srinivas Vemuri</strong>, COO, Forsys &nbsp;&middot;&nbsp; <strong>Prasad
+                    Challapalli</strong>, Director Analytics, Forsys</p>
+              </div>
+            </div>
+
+            <!-- evt-24 -->
+            <div class="evt-past-panel" id="evt-24">
+              <span class="evt-past-detail-title">COVID-19 Vaccination Drive</span>
+              <div class="evt-past-detail-meta">Jun 12, 2021 &nbsp;|&nbsp; In-Person Event</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys collaborated with Apollo Hospitals to provide free vaccines to employees and their families
+                  &#8212; a CSR initiative to support community health during the COVID-19 pandemic.</p>
+              </div>
+            </div>
+
+            <!-- evt-25 -->
+            <div class="evt-past-panel" id="evt-25">
+              <span class="evt-past-detail-title">International Women&#8217;s Day</span>
+              <div class="evt-past-detail-meta">Mar 8, 2021 &nbsp;|&nbsp; Virtual Event</div>
+              <div class="evt-past-detail-body">
+                <p>An online talk show featuring influential women leaders discussing challenging gender bias and
+                  inequality &#8212; celebrating and amplifying the voices of women at Forsys and across the industry.
+                </p>
+              </div>
+            </div>
+
+            <!-- evt-26 -->
+            <div class="evt-past-panel" id="evt-26">
+              <span class="evt-past-detail-title">Dreamforce 2018</span>
+              <div class="evt-past-detail-meta">Sep 25, 2018 &nbsp;|&nbsp; San Francisco, CA</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys showcased its FloData solution at Dreamforce 2018, helping visitors overcome complex data
+                  integration challenges and accelerate their Salesforce journey.</p>
+              </div>
+            </div>
+
+            <!-- evt-27 -->
+            <div class="evt-past-panel" id="evt-27">
+              <span class="evt-past-detail-title">Forsys Flash &#8211; Knowledge Xchange 2018</span>
+              <div class="evt-past-detail-meta">Apr 26, 2018 &nbsp;|&nbsp; In-Person Event</div>
+              <div class="evt-past-detail-body">
+                <p>A thought leadership event covering CPQ, Quote-to-Cash, Financials, Supply Chain, Digital Commerce,
+                  and CRM &#8212; bringing together Forsys experts and industry practitioners.</p>
+              </div>
+            </div>
+
+            <!-- evt-28 -->
+            <div class="evt-past-panel" id="evt-28">
+              <span class="evt-past-detail-title">APTTUS Accelerate 2018</span>
+              <div class="evt-past-detail-meta">May 14, 2018 &nbsp;|&nbsp; In-Person Event</div>
+              <div class="evt-past-detail-body">
+                <p>Forsys exhibited at APTTUS Accelerate 2018, featuring two new products: <strong>FloData</strong> and
+                  <strong>RISE</strong> solutions for revenue and data transformation.
+                </p>
+              </div>
+            </div>
+
+          </div><!-- /.evt-past-detail -->
 
         </div><!-- /.evt-past-split -->
       </div>
@@ -1421,18 +2329,10 @@
           <li><a href="../company/careers.html">Careers</a></li>
           <li><a href="../company/news-press.html">News &amp; Press</a></li>
         </ul>
-        <div class="footer-social" aria-label="Follow Forsys">
-          <a href="https://www.linkedin.com/company/forsysinc/" target="_blank" rel="noopener" aria-label="Forsys on LinkedIn">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7.5 10v7M11 10v7M11 13.5a2.5 2.5 0 0 1 5 0V17"/><circle cx="7.5" cy="7.5" r="0.6" fill="currentColor"/></svg>
-        </a>
-          <a href="https://www.youtube.com/@forsysinc.marketing7469" target="_blank" rel="noopener" aria-label="Forsys on YouTube">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="18" height="18" aria-hidden="true"><rect x="2.5" y="6" width="19" height="12" rx="3"/><path d="M10.5 9.5l4.5 2.5-4.5 2.5z" fill="currentColor" stroke="none"/></svg>
-        </a>
-        </div>
       </div>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 Forsys Inc. All rights reserved. &nbsp;&middot;&nbsp; info@forsysinc.com</span>
+      <span>&copy; 2025 Forsys Inc. All rights reserved. &nbsp;&middot;&nbsp; info@forsysinc.com</span>
       <span class="footer-tagline">AI Native &middot; AI Fast &middot; Revenue Transformed</span>
       <button class="policy-btn" aria-haspopup="true" aria-expanded="false">
         Policy
@@ -1446,6 +2346,22 @@
       </button>
     </div>
   </footer>
+
+  <!-- Video Modal -->
+  <div id="evt-video-modal" class="evt-modal-overlay" role="dialog" aria-modal="true" aria-label="Video player" hidden>
+    <div class="evt-modal-box">
+      <button class="evt-modal-close" id="evt-modal-close" aria-label="Close video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18" />
+          <line x1="6" y1="6" x2="18" y2="18" />
+        </svg>
+      </button>
+      <video id="evt-modal-video" class="evt-modal-video" controls playsinline>
+        <source src="" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </div>
 
   <script src="../assets/js/script.js"></script>
   <script>
@@ -1471,12 +2387,66 @@
         });
       });
 
-      /* Inject "View On Demand" button into every panel */
+      /* Inject "View On Demand" button only into webinar/recording panels */
+      var vodMap = {
+        'evt-0': '../past-webinars/rev30-webinar-ondemand.html',
+        'evt-1': '../past-webinars/revramp-salesforce-webinar-ondemand.html',
+        'evt-2': '../past-webinars/spiff-webinar-ondemand.html',
+        'evt-3': '../past-webinars/clm-webinar-ondemand.html',
+        'evt-4': '../past-webinars/pharma-webinar-ondemand.html',
+        'evt-5': '../past-webinars/apprise-healthcare-ondemand.html',
+        'evt-6': '../past-webinars/agentforce-webinar-ondemand.html',
+        'evt-7': '../past-webinars/apprise-pricing-ondemand.html',
+        'evt-9': '../past-webinars/manufacturing-webinar-ondemand.html',
+        'evt-12': '../past-webinars/integrations-webinar-ondemand.html'
+      };
+
+      /* ── Video Modal ── */
+      var modal = document.getElementById('evt-video-modal');
+      var modalVid = document.getElementById('evt-modal-video');
+      var modalClose = document.getElementById('evt-modal-close');
+
+      function openModal(src) {
+        modalVid.src = src;
+        modal.hidden = false;
+        document.body.style.overflow = 'hidden';
+        modalClose.focus();
+        modalVid.play().catch(function () { });
+      }
+
+      function closeModal() {
+        modalVid.pause();
+        modalVid.src = '';
+        modal.hidden = true;
+        document.body.style.overflow = '';
+        var trigger = document.getElementById('btn-office-video');
+        if (trigger) trigger.focus();
+      }
+
+      if (modal) {
+        modalClose.addEventListener('click', closeModal);
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) closeModal();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !modal.hidden) closeModal();
+        });
+      }
+
+      var videoBtn = document.getElementById('btn-office-video');
+      if (videoBtn) {
+        videoBtn.addEventListener('click', function () {
+          openModal(this.dataset.video);
+        });
+      }
+
       panels.forEach(function (panel) {
+        var href = vodMap[panel.id];
+        if (!href) return;
         var body = panel.querySelector('.evt-past-detail-body');
         if (!body) return;
         var btn = document.createElement('a');
-        btn.href = panel.id === 'evt-0' ? 'rev30-webinar-ondemand.html' : '#';
+        btn.href = href;
         btn.className = 'evt-vod-btn';
         btn.setAttribute('aria-label', 'View on demand recording');
         btn.innerHTML =

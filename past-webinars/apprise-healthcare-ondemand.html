@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apprise: Scaling AI Solutions Across Healthcare Systems | Forsys On-Demand Webinar</title>
+  <meta name="description"
+    content="Watch the on-demand recording of Forsys's Apprise webinar on scaling AI solutions across enterprise healthcare systems.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://js.hsforms.net" crossorigin>
+  <link rel="dns-prefetch" href="https://js.hsforms.net">
+  <link rel="preconnect" href="https://forms.hubspot.com" crossorigin>
+  <link rel="dns-prefetch" href="https://forms.hubspot.com">
+  <link rel="preconnect" href="https://static.hsappstatic.net" crossorigin>
+  <link rel="dns-prefetch" href="https://static.hsappstatic.net">
+  <script charset="utf-8" type="text/javascript" src="https://js.hsforms.net/forms/embed/v2.js" async></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/resources.css">
+  <style>
+    .vod-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(236, 238, 255, 0.88);
+      z-index: 9000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .vod-form-box {
+      background: #fff;
+      border-radius: 24px;
+      padding: 64px 72px;
+      max-width: 900px;
+      width: calc(100% - 48px);
+      max-height: 92vh;
+      overflow-y: auto;
+      box-shadow: 0 32px 80px rgba(13, 13, 43, 0.18);
+      position: relative;
+    }
+
+    .vod-form-box .hs-form-field label {
+      font-family: Inter, sans-serif;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .vod-form-box .hs-input {
+      width: 100%;
+      border: none;
+      border-bottom: 1.5px solid #d0d3e8;
+      padding: 12px 0;
+      font-family: Inter, sans-serif;
+      font-size: 0.95rem;
+      color: var(--text-primary);
+      background: transparent;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .vod-form-box .hs-input:focus { border-bottom-color: var(--purple); }
+    .vod-form-box .hs-input::placeholder { color: #adb1c9; }
+
+    .vod-form-box .form-columns-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px 48px;
+      margin-bottom: 32px;
+    }
+
+    .vod-form-box .form-columns-1 { margin-bottom: 32px; }
+    .vod-form-box .form-columns-0 { margin-bottom: 8px; }
+
+    .vod-form-box .hs-richtext h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .vod-form-box .hs-submit { text-align: center; margin-top: 40px; }
+
+    .vod-form-box input.hs-button,
+    .vod-form-box input.hs-button.primary,
+    .vod-form-box input.hs-button.primary.large,
+    .vod-form-box .actions input[type="submit"] {
+      background: #6B48FF !important;
+      background-color: #6B48FF !important;
+      color: #fff !important;
+      border: none !important;
+      border-radius: 100px !important;
+      padding: 14px 48px !important;
+      font-family: Inter, sans-serif !important;
+      font-size: 1rem !important;
+      font-weight: 600 !important;
+      cursor: pointer !important;
+      transition: opacity 0.2s, transform 0.2s !important;
+      letter-spacing: 0.01em !important;
+      box-shadow: none !important;
+      outline: none !important;
+      min-width: 180px !important;
+    }
+
+    .vod-form-box input.hs-button:hover,
+    .vod-form-box input.hs-button.primary:hover,
+    .vod-form-box .actions input[type="submit"]:hover {
+      opacity: 0.88 !important;
+      transform: translateY(-2px) !important;
+    }
+
+    .vod-form-box input.hs-button:focus-visible,
+    .vod-form-box .actions input[type="submit"]:focus-visible {
+      outline: 2px solid #6B48FF !important;
+      outline-offset: 2px !important;
+    }
+
+    .vod-form-box .hs-error-msgs { list-style: none; padding: 0; margin: 4px 0 0; }
+    .vod-form-box .hs-error-msgs li label { font-size: 0.78rem; color: #e53e3e; font-weight: 500; }
+    .vod-form-box .hs-form-required { color: #e53e3e; margin-left: 2px; }
+
+    .vod-hero {
+      background: var(--gradient-hero);
+      padding: calc(var(--nav-h) + 32px) 48px 160px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .vod-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(107,72,255,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .vod-hero::after {
+      content: '';
+      position: absolute;
+      bottom: -1px; left: 0; right: 0; height: 80px;
+      background: var(--bg);
+      clip-path: ellipse(55% 100% at 50% 100%);
+      pointer-events: none;
+    }
+
+    .vod-hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: var(--container-max);
+      margin: 0 auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .vod-hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--purple-light);
+      border: 1px solid rgba(107,72,255,0.25);
+      color: var(--purple);
+      font-family: Inter, sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: var(--radius-pill);
+      margin-bottom: 20px;
+    }
+
+    .vod-hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(42px, 5.8vw, 80px);
+      font-weight: 800;
+      line-height: 1.04;
+      letter-spacing: -0.038em;
+      color: var(--text-primary);
+      margin: 0 auto 20px;
+      max-width: 860px;
+    }
+
+    .vod-hero-desc {
+      font-family: Inter, sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.65;
+      color: var(--text-secondary);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .vod-skeleton-wrap { padding: 8px 0; }
+
+    .vod-skeleton-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #0d0d2b;
+      text-align: center;
+      margin-bottom: 28px;
+    }
+
+    .vod-skeleton-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 32px;
+      margin-bottom: 20px;
+    }
+
+    .vod-skeleton-row.single { grid-template-columns: 1fr; }
+    .vod-skeleton-field { display: flex; flex-direction: column; gap: 8px; }
+
+    .vod-sk-label {
+      height: 12px; width: 60px;
+      background: #e8eaef; border-radius: 4px;
+      animation: vod-pulse 1.4s ease-in-out infinite;
+    }
+
+    .vod-sk-input {
+      height: 38px; background: #f0f1f7; border-radius: 6px;
+      animation: vod-pulse 1.4s ease-in-out infinite 0.1s;
+    }
+
+    .vod-sk-btn {
+      display: block; width: 160px; height: 44px;
+      background: #6b48ff; border-radius: 100px;
+      margin: 32px auto 0; opacity: 0.25;
+      animation: vod-pulse 1.4s ease-in-out infinite 0.2s;
+    }
+
+    @keyframes vod-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.45; }
+    }
+
+    .vod-section {
+      background: var(--bg);
+      padding: 64px 0 80px;
+      border-top: 1px solid var(--border);
+    }
+
+    .vod-container { max-width: 960px; margin: 0 auto; padding: 0 32px; }
+
+    .vod-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: Inter, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--purple);
+      text-decoration: none;
+      margin-top: 32px;
+      padding: 10px 24px;
+      border: 1.5px solid rgba(107,72,255,0.35);
+      border-radius: 100px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .vod-back-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .vod-back-btn:hover { background: rgba(107,72,255,0.07); border-color: var(--purple); }
+    .vod-back-btn:focus-visible { outline: 2px solid var(--purple); outline-offset: 2px; }
+
+    .vod-player-wrap {
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 12px 40px rgba(13, 13, 43, 0.12);
+      background: #111;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+
+    .vod-facade { position: relative; cursor: pointer; display: block; aspect-ratio: 16 / 9; }
+    .vod-facade-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    .vod-play-btn {
+      position: absolute; inset: 0;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(13, 13, 43, 0.28);
+      transition: background 0.2s;
+    }
+
+    .vod-facade:hover .vod-play-btn,
+    .vod-facade:focus .vod-play-btn { background: rgba(107, 72, 255, 0.5); }
+
+    .vod-play-btn svg {
+      width: 64px; height: 64px; color: #fff;
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.4));
+    }
+
+    .vod-player { width: 100%; display: block; aspect-ratio: 16 / 9; background: #000; }
+
+    @media (max-width: 768px) {
+      .vod-hero { padding: calc(var(--nav-h) + 16px) 24px 100px; }
+      .vod-hero-title { font-size: clamp(28px, 8vw, 44px); }
+      .vod-hero-desc { font-size: 15px; }
+      .vod-form-box { padding: 32px 24px; }
+      .vod-form-box .form-columns-2 { grid-template-columns: 1fr; gap: 16px; }
+      .vod-container { padding: 0 20px; }
+      .vod-skeleton-row { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .vod-sk-label, .vod-sk-input, .vod-sk-btn { animation: none; }
+      .vod-play-btn, .vod-form-box, .vod-overlay { transition: none; }
+    }
+  </style>
+</head>
+
+<body class="page-resources">
+
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="vod-overlay" id="vod-overlay" aria-modal="true" role="dialog"
+    aria-label="Fill out this form to unlock and watch the on-demand webinar recording">
+    <div class="vod-form-box">
+      <div id="hs-form-container">
+        <div class="vod-skeleton-wrap" id="vod-skeleton">
+          <div class="vod-skeleton-title">Fill the form to access the video</div>
+          <div class="vod-skeleton-row">
+            <div class="vod-skeleton-field"><div class="vod-sk-label"></div><div class="vod-sk-input"></div></div>
+            <div class="vod-skeleton-field"><div class="vod-sk-label"></div><div class="vod-sk-input"></div></div>
+          </div>
+          <div class="vod-skeleton-row">
+            <div class="vod-skeleton-field"><div class="vod-sk-label"></div><div class="vod-sk-input"></div></div>
+            <div class="vod-skeleton-field"><div class="vod-sk-label"></div><div class="vod-sk-input"></div></div>
+          </div>
+          <div class="vod-skeleton-row single">
+            <div class="vod-skeleton-field"><div class="vod-sk-label"></div><div class="vod-sk-input"></div></div>
+          </div>
+          <div class="vod-sk-btn"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <header>
+    <nav id="main-nav" aria-label="Main navigation">
+      <a href="../index.html" class="nav-logo">
+        <img src="../assets/images/Forsys_Logo.svg" alt="Forsys" class="nav-logo-img" height="30" loading="lazy">
+      </a>
+
+      <div class="nav-center" role="menubar">
+
+        <div class="nav-item" role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            What We Do
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4l4 4 4-4" /></svg>
+          </button>
+          <div class="mega-menu mega-menu--wide" role="menu">
+            <div class="mega-grid mega-grid--wwd">
+              <div class="mega-col">
+                <div class="mega-col-title">Business Advisory</div>
+                <ul>
+                  <li><a href="../services/revenue-lifecycle-strategy.html" role="menuitem">Revenue Lifecycle Strategy<small>Lead-to-Revenue end-to-end process &amp; advisory</small></a></li>
+                  <li><a href="../services/build-or-buy-strategy.html" role="menuitem">Build or Buy Strategy<small>Assess Build vs Buy ROI with matured TCO matrix</small></a></li>
+                  <li><a href="../services/enterprise-ai-strategy.html" role="menuitem">Enterprise AI Strategy<small>Chart your AI journey</small></a></li>
+                  <li><a href="../services/autonomous-commerce.html" role="menuitem">Autonomous Commerce<small>Agentic Buyer Journeys</small></a></li>
+                </ul>
+              </div>
+              <div class="mega-col mega-col--platform">
+                <div class="mega-col-title mega-col-title--platform">Salesforce Solutions</div>
+                <ul>
+                  <li><a href="../solutions/salesforce/agentforce-crm.html" role="menuitem">Agentforce CRM<small>Sales, Service, Experience, Marketing</small></a></li>
+                  <li><a href="../solutions/salesforce/agentforce-revenue-management.html" role="menuitem">Agentforce Revenue Management<small>Quote, Contract, Config, Assets, Billing, Orders</small></a></li>
+                  <li><a href="../solutions/salesforce/agentforce-commerce.html" role="menuitem">Agentforce Commerce<small>Autonomous Salesforce commerce experiences</small></a></li>
+                  <li><a href="../solutions/salesforce/agentforce-platform.html" role="menuitem">Agentforce Platform<small>Data 360, Agents &amp; Custom Development</small></a></li>
+                  <li><a href="../solutions/salesforce/manufacturing-cloud.html" role="menuitem">Agentforce Manufacturing<small>Unify manufacturing on Salesforce</small></a></li>
+                </ul>
+              </div>
+              <div class="mega-col mega-col--platform">
+                <div class="mega-col-title mega-col-title--platform">Conga + PROS B2B</div>
+                <ul>
+                  <li><a href="../solutions/conga-pros/revenue-and-commerce.html" role="menuitem">Revenue &amp; Commerce<small>Conga CPQ, Digital Commerce &amp; Billing</small></a></li>
+                  <li><a href="../solutions/conga-pros/contract-lifecycle-management.html" role="menuitem">Contract Lifecycle Management<small>Contracts from creation to renewal</small></a></li>
+                  <li><a href="../solutions/conga-pros/pros-smart-pricing.html" role="menuitem">PROS Smart Pricing Optimization<small>AI-driven dynamic pricing wins</small></a></li>
+                  <li><a href="../solutions/conga-pros/pros-b2b.html" role="menuitem">PROS Smart CPQ<small>Configure, price, quote faster</small></a></li>
+                </ul>
+                <div class="mega-sub-divider"></div>
+                <div class="mega-col-title mega-col-title--platform">Oracle Solutions</div>
+                <ul>
+                  <li><a href="../solutions/oracle/fusion-finance-accounting.html" role="menuitem">Fusion Finance &amp; Accounting<small>Modern Oracle finance operations</small></a></li>
+                  <li><a href="../solutions/oracle/fusion-supply-chain.html" role="menuitem">Fusion Supply Chain &amp; Manufacturing<small>Connected Oracle supply chain</small></a></li>
+                  <li><a href="../solutions/oracle/oic-paas.html" role="menuitem">OIC / PaaS<small>Integrate and extend Oracle</small></a></li>
+                  <li><a href="../solutions/oracle/bpa-aistudio.html" role="menuitem">Business Process Automation &#8212; AIStudio<small>AI-powered process automation</small></a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <div class="mega-col-title">Services</div>
+                <div class="mega-sub-header">Technology</div>
+                <ul>
+                  <li><a href="../services/ai-application-development.html" role="menuitem">AI led Application Development<small>Intelligent connected IoT apps</small></a></li>
+                  <li><a href="../services/ai-agents-development.html" role="menuitem">AI Agents Development<small>Custom AI agents &amp; automation</small></a></li>
+                  <li><a href="../services/integrations.html" role="menuitem">Integrations<small>Connect enterprise systems seamlessly</small></a></li>
+                  <li><a href="../services/data-migration.html" role="menuitem">Data Migration<small>Migrate with speed and confidence</small></a></li>
+                  <li><a href="../services/devops.html" role="menuitem">DevOps<small>CI/CD, automation &amp; release excellence</small></a></li>
+                </ul>
+                <div class="mega-sub-divider"></div>
+                <div class="mega-sub-header">Managed Services</div>
+                <ul>
+                  <li><a href="../services/ai-enabled-managed-services.html" role="menuitem">AI-Enabled Managed Services<small>Proactive, AI-augmented support</small></a></li>
+                </ul>
+              </div>
+              <div class="mega-col">
+                <div class="mega-col-title">AI-Powered Forsys Solutions</div>
+                <ul>
+                  <li><a href="../forsys-solutions/revramp.html" role="menuitem">RevRamp<small>AI-native CPQ acceleration</small></a></li>
+                  <li><a href="../forsys-solutions/lexishift.html" role="menuitem">LexiShift<small>AI-powered CLM &amp; contract intelligence</small></a></li>
+                  <li><a href="../forsys-solutions/revmove.html" role="menuitem">RevMove<small>Automated revenue migration</small></a></li>
+                  <li><a href="../forsys-solutions/mna-for-salesforce.html" role="menuitem">MnA for Salesforce<small>M&amp;A org consolidation accelerator</small></a></li>
+                  <li><a href="../forsys-solutions/aitest.html" role="menuitem">AITest<small>AI-driven test automation</small></a></li>
+                  <li><a href="../forsys-solutions/ai-agents.html" role="menuitem">AI Agents<small>Autonomous RevOps agents</small></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="nav-item" role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            Industries
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4l4 4 4-4" /></svg>
+          </button>
+          <div class="dropdown" role="menu">
+            <a href="../industries/hi-tech.html" role="menuitem">Hi-Tech</a>
+            <a href="../industries/financial-services.html" role="menuitem">Financial Services</a>
+            <a href="../industries/healthcare-life-sciences.html" role="menuitem">Healthcare &amp; Life Sciences</a>
+            <a href="../industries/manufacturing.html" role="menuitem">Manufacturing</a>
+            <a href="../industries/saas-subscription.html" role="menuitem">SaaS &amp; Subscription</a>
+          </div>
+        </div>
+
+        <div class="nav-item" role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            Partnerships
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4l4 4 4-4" /></svg>
+          </button>
+          <div class="dropdown" role="menu">
+            <a href="../partnerships/salesforce.html" role="menuitem">Salesforce</a>
+            <a href="../partnerships/conga.html" role="menuitem">Conga</a>
+            <a href="../partnerships/oracle.html" role="menuitem">Oracle</a>
+            <a href="../partnerships/rocketlane.html" role="menuitem">RocketLane</a>
+            <a href="../partnerships/provus.html" role="menuitem">Provus</a>
+            <a href="../partnerships/m3ter.html" role="menuitem">M3ter</a>
+            <a href="../partnerships/servicenow.html" role="menuitem">ServiceNow</a>
+            <a href="../partnerships/flosum.html" role="menuitem">Flosum</a>
+          </div>
+        </div>
+
+        <div class="nav-item" role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            Resources
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4l4 4 4-4" /></svg>
+          </button>
+          <div class="dropdown" role="menu">
+            <a href="../resources/customer-stories.html" role="menuitem">Customer Stories</a>
+            <a href="../resources/events.html" role="menuitem">Webinars &amp; Events</a>
+            <a href="../resources/blogs.html" role="menuitem">Blogs</a>
+          </div>
+        </div>
+
+        <div class="nav-item" role="none">
+          <button class="nav-link" aria-haspopup="true" aria-expanded="false" role="menuitem">
+            Company
+            <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M2 4l4 4 4-4" /></svg>
+          </button>
+          <div class="dropdown" role="menu">
+            <a href="../company/about.html" role="menuitem">About Forsys</a>
+            <a href="../company/leadership.html" role="menuitem">Leadership</a>
+            <a href="../company/culture.html" role="menuitem">Culture</a>
+            <a href="../company/careers.html" role="menuitem">Careers</a>
+            <a href="../company/news-press.html" role="menuitem">News &amp; Press</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="nav-right">
+        <a href="../company/contact.html" class="btn-nav-primary">Contact Us</a>
+        <button class="nav-burger" aria-label="Open menu"
+          aria-expanded="false"><span></span><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main">
+
+    <section class="vod-hero" aria-labelledby="vod-page-title">
+      <div class="vod-hero-inner">
+        <div class="vod-hero-eyebrow">On-Demand Webinar</div>
+        <h1 class="vod-hero-title" id="vod-page-title">
+          Apprise: Scaling AI Solutions Across <span class="gradient-text">Healthcare Systems</span>
+        </h1>
+        <p class="vod-hero-desc">AI in Enterprise &nbsp;&middot;&nbsp; February 27, 2025</p>
+      </div>
+    </section>
+
+    <section class="vod-section" id="vod-video-section" aria-label="Webinar recording" style="display:none">
+      <div class="vod-container">
+        <div class="vod-player-wrap" id="vod-player-wrap">
+          <div class="vod-facade" id="vod-facade" role="button" tabindex="0"
+            aria-label="Play Apprise: Scaling AI Solutions Across Healthcare Systems webinar recording">
+            <img
+              src="https://www.forsysinc.com/blog/wp-content/uploads/2025/03/Apprise-Event-page-Scaling-AI-Solutions-Across-Healthcare-Systems.png"
+              alt="Apprise: Scaling AI Solutions Across Healthcare Systems webinar thumbnail"
+              class="vod-facade-thumb"
+              loading="lazy">
+            <div class="vod-play-btn" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <polygon points="5 3 19 12 5 21 5 3"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <a href="../resources/events.html" class="vod-back-btn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M19 12H5M5 12l7-7M5 12l7 7"/>
+          </svg>
+          Back to Events
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer aria-label="Site footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="nav-logo">
+          <img src="../assets/images/Forsys_Logo.svg" alt="Forsys" class="nav-logo-img footer-logo-img" height="30" loading="lazy">
+        </a>
+        <p>AI Native. AI Fast. The Lead-to-Revenue transformation partner for modern enterprises &mdash; 500+
+          engagements, 250+ global customers, 1,000+ specialists.</p>
+      </div>
+      <div class="footer-col">
+        <h4>What We Do</h4>
+        <ul>
+          <li><a href="../services/revenue-lifecycle-strategy.html">Revenue Lifecycle Strategy</a></li>
+          <li><a href="../services/enterprise-ai-strategy.html">Enterprise AI Strategy</a></li>
+          <li><a href="../services/ai-application-development.html">AI Application Development</a></li>
+          <li><a href="../services/ai-enabled-managed-services.html">AI Managed Services</a></li>
+          <li><a href="../forsys-solutions/revramp.html">Forsys AI Solutions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Industries</h4>
+        <ul>
+          <li><a href="../industries/hi-tech.html">Hi-Tech</a></li>
+          <li><a href="../industries/financial-services.html">Financial Services</a></li>
+          <li><a href="../industries/healthcare-life-sciences.html">Healthcare &amp; Life Sciences</a></li>
+          <li><a href="../industries/manufacturing.html">Manufacturing</a></li>
+          <li><a href="../industries/saas-subscription.html">SaaS &amp; Subscriptions</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+        <ul>
+          <li><a href="../resources/customer-stories.html">Customer Stories</a></li>
+          <li><a href="../resources/thought-leadership.html">Thought Leadership</a></li>
+          <li><a href="../resources/events.html">Webinars &amp; Media</a></li>
+          <li><a href="http://forsysinc.com/blog">Blogs</a></li>
+          <li><a href="../resources/events.html">Events</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../company/about.html">About Forsys</a></li>
+          <li><a href="../company/leadership.html">Leadership</a></li>
+          <li><a href="../company/culture.html">Culture</a></li>
+          <li><a href="../company/careers.html">Careers</a></li>
+          <li><a href="../company/news-press.html">News &amp; Press</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2025 Forsys Inc. All rights reserved. &nbsp;&middot;&nbsp; info@forsysinc.com</span>
+      <span class="footer-tagline">AI Native &middot; AI Fast &middot; Revenue Transformed</span>
+      <button class="policy-btn" aria-haspopup="true" aria-expanded="false">
+        Policy
+        <svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M2 8l4-4 4 4" />
+        </svg>
+        <div class="policy-dropup" role="menu">
+          <a href="../company/privacy-policy.html" role="menuitem">Privacy Policy</a>
+          <a href="../company/sustainability-policy.html" role="menuitem">Sustainability Policy</a>
+        </div>
+      </button>
+    </div>
+  </footer>
+
+  <script src="../assets/js/script.js" defer></script>
+
+  <script>
+    (function () {
+      function activateFacade() {
+        var wrap = document.getElementById('vod-player-wrap');
+        var facade = document.getElementById('vod-facade');
+        if (!wrap || !facade) return;
+        facade.removeEventListener('click', activateFacade);
+        facade.removeEventListener('keydown', facadeKeydown);
+        var video = document.createElement('video');
+        video.className = 'vod-player';
+        video.controls = true;
+        video.playsinline = true;
+        video.autoplay = true;
+        video.setAttribute('aria-label', 'Apprise: Scaling AI Solutions Across Healthcare Systems webinar recording');
+        var src = document.createElement('source');
+        src.src = 'https://www.forsysinc.com/apprise-scaling-ai-solutions-across-healthcare-systems-video.mp4';
+        src.type = 'video/mp4';
+        video.appendChild(src);
+        wrap.replaceChild(video, facade);
+      }
+
+      function facadeKeydown(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); activateFacade(); }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        var facade = document.getElementById('vod-facade');
+        if (facade) {
+          facade.addEventListener('click', activateFacade);
+          facade.addEventListener('keydown', facadeKeydown);
+        }
+      });
+
+      function unlockVideo() {
+        var overlay = document.getElementById('vod-overlay');
+        var videoSection = document.getElementById('vod-video-section');
+        if (overlay) overlay.style.display = 'none';
+        if (videoSection) {
+          videoSection.style.display = 'block';
+          videoSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
+
+      var hsFormLoaded = false;
+
+      window.hsFormsOnReady = window.hsFormsOnReady || [];
+      window.hsFormsOnReady.push(function () {
+        hsFormLoaded = true;
+        var skeleton = document.getElementById('vod-skeleton');
+        hbspt.forms.create({
+          region: 'na2',
+          portalId: '3988816',
+          formId: '2e8240f4-f59e-46f8-a322-d78f01bd8253',
+          target: '#hs-form-container',
+          onFormReady: function ($form) {
+            if (skeleton) skeleton.style.display = 'none';
+            var container = document.getElementById('hs-form-container');
+            if (!container) return;
+            var btn = container.querySelector('input.hs-button, input[type="submit"]');
+            if (btn) {
+              btn.style.setProperty('background', '#6B48FF', 'important');
+              btn.style.setProperty('background-color', '#6B48FF', 'important');
+              btn.style.setProperty('color', '#ffffff', 'important');
+              btn.style.setProperty('border', 'none', 'important');
+              btn.style.setProperty('border-radius', '100px', 'important');
+              btn.style.setProperty('padding', '14px 48px', 'important');
+              btn.style.setProperty('font-family', 'Inter, sans-serif', 'important');
+              btn.style.setProperty('font-size', '1rem', 'important');
+              btn.style.setProperty('font-weight', '600', 'important');
+              btn.style.setProperty('cursor', 'pointer', 'important');
+              btn.style.setProperty('min-width', '180px', 'important');
+              btn.style.setProperty('box-shadow', 'none', 'important');
+              btn.addEventListener('mouseover', function () { this.style.setProperty('opacity', '0.88', 'important'); });
+              btn.addEventListener('mouseout', function () { this.style.setProperty('opacity', '1', 'important'); });
+            }
+          },
+          onFormSubmit: function () {
+            setTimeout(unlockVideo, 1500);
+          },
+          onFormSubmitted: function () {
+            unlockVideo();
+          }
+        });
+      });
+
+      setTimeout(function () {
+        if (hsFormLoaded) return;
+        var skeleton = document.getElementById('vod-skeleton');
+        var container = document.getElementById('hs-form-container');
+        if (!skeleton || !container) return;
+        skeleton.style.display = 'none';
+        var msg = document.createElement('div');
+        msg.style.cssText = 'text-align:center;padding:24px 0;font-family:Inter,sans-serif;';
+        msg.innerHTML =
+          '<p style="color:#0d0d2b;font-size:1rem;margin:0 0 16px">Having trouble loading the form?</p>' +
+          '<a href="mailto:marketing@forsysinc.com?subject=Apprise%20Healthcare%20Webinar%20On-Demand%20Access"' +
+          ' style="display:inline-block;background:#6b48ff;color:#fff;font-weight:600;' +
+          'padding:12px 28px;border-radius:100px;text-decoration:none;font-size:0.95rem;">' +
+          'Request Access via Email</a>';
+        container.appendChild(msg);
+      }, 10000);
+
+      document.addEventListener('keydown', function (e) {
+        var overlay = document.getElementById('vod-overlay');
+        if (!overlay || overlay.style.display === 'none') return;
+        if (e.key === 'Escape') e.preventDefault();
+        var focusable = overlay.querySelectorAll(
+          'input, select, textarea, button, [tabindex]:not([tabindex="-1"])'
+        );
+        if (!focusable.length) return;
+        var first = focusable[0];
+        var last = focusable[focusable.length - 1];
+        if (e.key === 'Tab') {
+          if (e.shiftKey) {
+            if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+          } else {
+            if (document.activeElement === last) { e.preventDefault(); first.focus(); }
+          }
+        }
+      });
+    })();
+  </script>
+</body>
+
+</html>
