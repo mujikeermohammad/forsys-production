@@ -567,17 +567,20 @@
     .evt-past-split {
       display: grid;
       grid-template-columns: 300px 1px 1fr;
-      min-height: 600px;
+      align-items: start;
     }
 
     .evt-past-divider {
       background: #e2e4ef;
+      align-self: stretch;
     }
 
     .evt-past-list {
       overflow-y: auto;
       max-height: 720px;
       padding-bottom: 16px;
+      position: sticky;
+      top: 88px;
     }
 
     .evt-past-list-header {
@@ -649,8 +652,6 @@
 
     .evt-past-detail {
       padding-left: 48px;
-      overflow-y: auto;
-      max-height: 720px;
     }
 
     .evt-past-panel {
@@ -792,6 +793,10 @@
     }
 
     @media (max-width: 768px) {
+      .evt-past-list {
+        position: static;
+      }
+
       .evt-past-split {
         grid-template-columns: 1fr;
       }
@@ -808,7 +813,6 @@
 
       .evt-past-detail {
         padding-left: 0;
-        max-height: none;
       }
     }
 
@@ -1831,15 +1835,15 @@
                   enterprises are moving from complex revenue configurations to <strong>Autonomous Revenue</strong>
                   &#8212; AI-driven, unified, and continuously optimized with <strong>Salesforce Agentforce Revenue
                     Management</strong>.</p>
-                <p><strong>Brion Schweers</strong>, Former SVP of Revenue Cloud Solutions, Salesforce
-                  &nbsp;&middot;&nbsp; <strong>Srinivas Vemuri</strong>, Co-Founder &amp; COO, Forsys
-                  &nbsp;&middot;&nbsp; <strong>Raj Saladi</strong>, Director of Business Architecture, Forsys</p>
-                <p><strong>Brion Schweers</strong>, Former SVP of Revenue Cloud Solutions, Salesforce
-                  &nbsp;&middot;&nbsp; <strong>Srinivas Vemuri</strong>, Co-Founder &amp; COO, Forsys
-                  &nbsp;&middot;&nbsp; <strong>Raj Saladi</strong>, Director of Business Architecture, Forsys</p>
-                <p><strong>Brion Schweers</strong>, Former SVP of Revenue Cloud Solutions, Salesforce
-                  &nbsp;&middot;&nbsp; <strong>Srinivas Vemuri</strong>, Co-Founder &amp; COO, Forsys
-                  &nbsp;&middot;&nbsp; <strong>Raj Saladi</strong>, Director of Business Architecture, Forsys</p>
+                <p><strong>Brion Schweers</strong> Former SVP of Revenue Cloud Solutions, Salesforce, traced the
+                  evolution from the ERP era (Rev 1.0) to CPQ (Rev 2.0) to today's AI-powered Rev 3.0 — making the case
+                  that organizations must modernize their revenue lifecycle now or risk falling behind.</p>
+                <p><strong>Srinivas Vemuri,</strong> Co-Founder & COO, Forsys, shared how Agentforce Revenue Management
+                  simplifies complex configurations with a powerful out-of-the-box engine, enabling sales teams to
+                  leverage AI agents for smarter, more efficient revenue operations.</p>
+                <p><strong>Raj Saladi,</strong> Director of Business Architecture, Forsys, brought the platform's
+                  capabilities to life through a live demo showcasing how Agentforce Revenue Management handles
+                  enterprise-scale configuration complexity.</p>
               </div>
             </div>
 
