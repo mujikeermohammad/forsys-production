@@ -419,7 +419,7 @@
 }
 
 /* Strategic partner cards (3-col, larger) */
-.partner-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: var(--container-max); margin: 0 auto 48px; }
+.partner-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: var(--container-max); margin: 0 auto 48px; }
 .partner-card { background: var(--white); border: 1.5px solid var(--border); border-radius: var(--radius-card-lg); padding: 36px 32px; text-align: center; transition: all 0.2s; }
 .partner-card:hover { border-color: var(--purple); box-shadow: 0 8px 32px rgba(107, 72, 255, 0.09); transform: translateY(-3px); }
 .partner-card-logo {

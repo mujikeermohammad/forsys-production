@@ -35,7 +35,12 @@
       "mcp__Claude_in_Chrome__switch_browser",
       "Bash(git commit -m ' *)",
       "Bash(git pull *)",
-      "Bash(git stash *)"
+      "Bash(git stash *)",
+      "Bash(git remote *)",
+      "Bash(sort -t: -k1,1 -u)",
+      "Bash(xargs perl -i -0pe ' *)",
+      "Bash(grep -v \"^--$\")",
+      "Bash(perl -i -0pe ' *)"
     ]
   }
 }
