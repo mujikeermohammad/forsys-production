@@ -18,6 +18,10 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
+    /* Center the last 2 cards in a 5-card 3-col grid */
+    .par-solutions-grid { grid-template-columns: repeat(6, 1fr); }
+    .par-solutions-grid .par-solution-card { grid-column: span 2; }
+    .par-solutions-grid .par-solution-card:nth-child(4) { grid-column: 2 / span 2; }
   </style>
 
 </head>
