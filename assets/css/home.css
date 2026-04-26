@@ -435,7 +435,7 @@
 .partner-card-link:hover { gap: 10px; }
 
 /* Other partner cards (5-col, compact) */
-.partner-grid--others { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; max-width: var(--container-max); margin: 0 auto; }
+.partner-grid--others { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; width: 100%; }
 .partner-card--sm {
   background: var(--white); border: 1.5px solid var(--border);
   border-radius: var(--radius-card); padding: 24px 18px; text-align: center;
