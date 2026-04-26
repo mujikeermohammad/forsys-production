@@ -40,7 +40,9 @@
       "Bash(sort -t: -k1,1 -u)",
       "Bash(xargs perl -i -0pe ' *)",
       "Bash(grep -v \"^--$\")",
-      "Bash(perl -i -0pe ' *)"
+      "Bash(perl -i -0pe ' *)",
+      "Bash(xargs perl *)",
+      "Bash(perl -i -pe 's|\\(<meta charset=\"UTF-8\" />\\)|$1\\\\n  <link rel=\"icon\" href=\"assets/images/favicon.png\" type=\"image/png\">|' index.html)"
     ]
   }
 }
