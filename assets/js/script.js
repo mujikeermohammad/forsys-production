@@ -435,6 +435,9 @@ if (document.querySelector('.res-filter')) {
             card.style.display = 'none';
           }
         });
+
+        const grid = document.querySelector('.res-grid');
+        if (grid) grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
       });
     });
   })();
