@@ -1,0 +1,413 @@
+<!-- Header Component-->
+
+<!-- /Header Component-->
+<header
+  class="navbar-light border-bottom-0"
+  *ngIf="storefront$ | async as storefront; else spinner"
+>
+  <!-- Top-Header brand -->
+  <div class="top-header bg-white">
+    <a (click)="redirectToHome()" href="javascript:void(0);">
+      <img class="logo" [src]="rightLogo" alt="" />
+    </a>
+
+    <!-- Links -->
+    <ul class="navbar-nav rightNav align-items-center-0">
+      <li class="dropdown lang-nav dropdownright beforenone">
+        <a
+          href="#"
+          data-toggle="dropdown"
+          class="dropdown-toggle btn-0 btn-icon-0"
+        >
+          <i class="icon-global"></i>
+          <span class="mx-2">{{ selectedLanguage }}</span>
+          <!-- <span class="mx-2">{{'Header.English' | translate}}</span> -->
+          <i class="icon-arrow-right"></i>
+        </a>
+        <ul id ="lang-dropdown" class="dropdown-menu position-absolute rounded-0">
+          <!-- <li class="nav-item" *ngIf="storefront.APTS_Announcement">
+              <i
+                class="icon-notification show-alert btn btn-icon"
+                (click)="shownotification(); hideBasicExampleNav()"
+                placement="bottom"
+                tooltip="Notification"
+              >
+                <span class="path1"></span>
+                <span class="path2"></span>
+              </i>
+            </li> -->
+          <li
+            [value]="001"
+            (click)="translateLang($event); hideBasicExampleNav()"
+          >
+            <a>{{ "Header.EnglishUS" | translate }}</a>
+          </li>
+          <!-- <li><a (click)="translateLang($event); hideBasicExampleNav()">{{'Header.French' | translate}}</a></li> -->
+          <li
+            [value]="002"
+            (click)="translateLang($event); hideBasicExampleNav()"
+          >
+            <a>{{ "Header.China" | translate }}</a>
+          </li>
+        </ul>
+      </li>
+      <li *ngIf="storefront.APTS_Announcement_c" class="nav-divider mx-2"></li>
+
+      <li class="nav-item noti-nav" *ngIf="!isGuestUser && storefront.APTS_Announcement_c">
+        <i
+          class="icon-notification show-alert btn btn-icon"
+          (click)="shownotification(); hideBasicExampleNav()"
+          placement="top"
+          tooltip="Notification"
+        >
+          <span class="path1"></span>
+          <span class="path2"></span>
+        </i>
+      </li>
+      <li *ngIf="!isGuestUser" class="nav-divider mx-2"></li>
+      <li class="nav-item fav-nav" *ngIf="!isGuestUser">
+        <i
+          [ngClass]="
+            currentUrl.indexOf('/favorites') > -1
+              ? 'icon-star show-alert btn btn-icon active'
+              : 'icon-star show-alert btn btn-icon'
+          "
+          (click)="openFavorites()"
+          placement="bottom"
+          tooltip="Favorites"
+        >
+          <span class="path1"></span>
+          <span class="path2"></span>
+        </i>
+      </li>
+      <li class="nav-divider mx-2"></li>
+      <ng-template [ngIf]="isGuestUser">
+        <li>
+          <a
+            (click)="handleSignIn(); hideBasicExampleNav()"
+            class="btn btn-outline-primary"
+          >
+            {{ "Header.SignIn" | translate }}
+          </a>
+        </li>
+      </ng-template>
+      <ng-template [ngIf]="!isGuestUser">
+        <li class="dropdown user-dropdown-0 res-none dropdownright">
+          <a
+            href="javascript:void(0);"
+            data-toggle="dropdown"
+            class="dropdown-toggle btn-0 btn-icon-0"
+          >
+            <i class="icon-user--avatar"></i
+            ><span class="mx-2">{{ userName }}</span>
+            <i class="icon-arrow-right"></i>
+          </a>
+          <ul class="dropdown-menu position-absolute user-name">
+            <li>
+              <a
+                [routerLink]="['/user']"
+                title="Account Settings"
+                (click)="routeTo()"
+                ><i class="icon-user-profile mr-2"></i>
+                {{ "Header.AccountSettings" | translate }}</a
+              >
+            </li>
+            <!-- <li>
+                <a [routerLink]="['/leads/contact-us']" title="Contact Us" (click)="routeTo()"><i
+                    class="icon-help-desk mr-2"></i>
+                  {{ "Header.ContactUs" | translate }}</a>
+              </li> -->
+            <li *ngIf="faqUrl">
+              <a
+                href="{{ faqUrl }}"
+                target="_blank"
+                title="{{ 'COMMON.README' | translate }}"
+                ><i class="icon-list mr-2"></i>
+                {{ "COMMON.README" | translate }}</a
+              >
+            </li>
+            <li class="border-top" (click)="doLogout()" title="Logout">
+              <a href="javascript:void(0);"
+                ><i class="icon-logout mr-2"></i>
+                {{ "Header.Logout" | translate }}</a
+              >
+            </li>
+          </ul>
+        </li>
+        <li class="cart-0 res-none">
+          <app-pghv-mini-cart></app-pghv-mini-cart>
+        </li>
+      </ng-template>
+    </ul>
+  </div>
+
+  <!-- Navbar brand -->
+  <div class="navbar navbar-expand-lg">
+    <div class="container-fluid position-left p-0">
+<!--
+      <img class="logo2"
+        [src]="secondLogo" 
+        alt="hitachi_logo"        
+      />
+-->     <div class="d-flex">
+        <h2 class="site-name">{{ "Header.SiteName" | translate }}</h2>
+        <div class="align-self-center d-none">
+        <span class="d-inline-block" style="transform: rotate(90deg)">H</span>
+        <span class="d-inline-block" style="transform: rotate(90deg)">H</span>
+        <span class="d-inline-block" style="transform: rotate(90deg)">H</span>
+            </div>
+        <a class="navbar-brand m-0">
+          <span class="navbar-title">{{ "Header.Heading" | translate }}</span>
+        </a>
+        </div>
+      <div class="menuitemsmain">
+
+        <ng-template [ngIf]="!isGuestUser">
+          <ul class="for-resposnive-0 responsive-cart mb-0">
+            <li class="dropdown user-dropdown">
+              <a
+                href="javascript:void(0);"
+                data-toggle="dropdown"
+                class="dropdown-toggle btn btn-icon"
+              >
+                <i class="icon-user--avatar"></i>
+                <!-- <span class="mx-2">{{userName}}</span> -->
+                <i class="icon-arrow-down"></i>
+              </a>
+              <ul class="dropdown-menu position-absolute user-name">
+                <li>
+                  <a [routerLink]="['/user']" title="Account Settings"
+                    ><i class="icon-user-profile mr-2"></i>
+                    {{ "Header.AccountSettings" | translate }}</a
+                  >
+                </li>
+                <li>
+                  <a [routerLink]="['/leads/contact-us']" title="Contact Us"
+                    ><i class="icon-help-desk mr-2"></i>
+                    {{ "Header.ContactUs" | translate }}</a
+                  >
+                </li>
+                <li class="border-top" (click)="doLogout()" title="Logout">
+                  <a href="javascript:void(0);"
+                    ><i class="icon-logout mr-2"></i>
+                    {{ "Header.Logout" | translate }}</a
+                  >
+                </li>
+              </ul>
+            </li>
+            <li class="cart">
+              <app-pghv-mini-cart></app-pghv-mini-cart>
+            </li>
+          </ul>
+        </ng-template>
+
+        <!-- Collapse button -->
+
+        <button
+          class="navbar-toggler collapsed mr-3"
+          type="button"
+          data-toggle="collapse"
+          data-target="#basicExampleNav"
+          aria-controls="basicExampleNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+          #togglerBtn
+        >
+          <i class="icon-responsive-nav"></i>
+        </button>
+
+        <!-- Collapsible content  start here-->
+        <div
+          class="responsive-nav navbar-collapse collapse"
+          id="basicExampleNav"
+          #basicExampleNav
+        >
+          <!-- Links -->
+          <ul class="navbar-nav header-nav">
+            <li class="nav-item">
+              <a
+                [ngClass]="
+                  currentUrl == '/home' ||
+                  currentUrl == '/dashboard' ||
+                  currentUrl == '/'
+                    ? 'active'
+                    : ''
+                "
+                (click)="redirectToHome(); hideBasicExampleNav()"
+                class="nav-link"
+                >{{ "Header.Home" | translate }}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a
+                [routerLink]="['/products']"
+                routerLinkActive="active"
+                class="nav-link"
+                (click)="routeTo(); hideBasicExampleNav()"
+                >{{ "Header.ProductCatalog" | translate }}</a
+              >
+            </li>
+            <ng-template [ngIf]="isGuestUser">
+              <li class="nav-item">
+                <a
+                  [routerLink]="['/leads/enquiry']"
+                  routerLinkActive="active"
+                  class="nav-link"
+                  (click)="routeTo(); hideBasicExampleNav()"
+                  >{{ "Header.SubmitEnquiry" | translate }}</a
+                >
+              </li>
+            </ng-template>
+            <ng-template [ngIf]="!isGuestUser">
+              <li class="nav-item">
+                <a
+                  class="nav-link"
+                  [routerLink]="['/quotes']"
+                  routerLinkActive="active"
+                  (click)="routeTo(); hideBasicExampleNav()"
+                  >{{ "COMMON.QUOTES" | translate }}</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  [routerLink]="['/orders']"
+                  routerLinkActive="active"
+                  title="Orders"
+                  class="nav-link"
+                  (click)="routeTo(); hideBasicExampleNav()"
+                  >{{ "COMMON.ORDERS" | translate }}</a
+                >
+              </li>
+              <li class="nav-item">
+                <a
+                  [routerLink]="['/frameagreements']"
+                  routerLinkActive="active"
+                  title="Frame Agreement"
+                  class="nav-link"
+                  (click)="routeTo(); hideBasicExampleNav()"
+                  >{{ "COMMON.FRAMEAGREEMENT" | translate }}</a
+                >
+              </li>
+            </ng-template>
+
+            <li
+              class="nav-item dropdown flyout-outer-0 unidac-industries"
+              *ngIf="internaluser?.length > 0 && !showroute"
+            >
+              <a href="javascript:void(0);" class="nav-link no-dropdown">
+                <ng-container>
+                  <i class="icon-unidac-industries"></i
+                  ><span class="dropdown-value">{{
+                    selectedUser | truncateText : 25
+                  }}</span>
+                </ng-container>
+              </a>
+            </li>
+            <li
+              class="nav-item dropdown flyout-outer-0 unidac-industries dropdownright"
+              *ngIf="internaluser?.length > 0 && showroute"
+            >
+              <a
+                (click)="getvalue()"
+                class="nav-link"
+                id="unidac-industries"
+                data-toggle="dropdown"
+                aria-expanded="true"
+                ><i class="icon-unidac-industries"></i>
+                <span class="dropdown-value">{{
+                  selectedUser | truncateText : 25
+                }}</span>
+                <i class="icon-arrow-right mt-1"></i>
+              </a>
+              <div
+                class="dropdown-menu p-0"
+                aria-labelledby="unidac-industries"
+              >
+                <div class="flyout-container">
+                  <!-- Center Content -->
+                  <div class="unidac-content">
+                    <div class="form-group has-search col-12 p-0">
+                      <i class="icon-search"></i>
+                      <input
+                        type="text"
+                        class="form-control searchProduct"
+                        placeholder="Search"
+                        aria-label="searchProduct"
+                        [(ngModel)]="term"
+                      />
+                    </div>
+                    <ul class="accountlist_scroll">
+                      <!-- [ngClass]="(selectedUser == user.accountName)?'selectedcolor':''" -->
+                      <li *ngFor="let user of internaluser | filter : term">
+                        <a
+                          href="javascript:void(0);"
+                          (click)="
+                            getTheSelectedAccountDetails(user.accountId);
+                            hideBasicExampleNav()
+                          "
+                          [ngClass]="
+                            user.accountName.length > 33 ? 'hoverclass' : ''
+                          "
+                          >{{ user.accountName }} || {{user.BillingCountryCode}}  || {{user.BillingCity}} || {{user.GUID_c || user.ICV_ID_c}} </a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                  <!-- /Center Content -->
+                </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!-- Collapsible content  end here-->
+  </div>
+  <!------ search-bar start here ------->
+  <div class="search-wrapper d-none">
+    <div class="form-group has-search col-12 col-lg-6 mx-auto">
+      <i class="icon-search form-control-feedback"></i>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Search Products"
+        aria-label="searchProduct"
+      />
+    </div>
+  </div>
+  <!------ search-bar end here ------->
+</header>
+<!-- Info Message -->
+<div class="notification-wrapper">
+<ng-container *ngIf="storefront$ | async as storefront">
+  <div
+    class="alert alert-info show-notification"
+    *ngIf=" !isGuestUser && showNotificationBanner && storefront.APTS_Announcement_c"
+  >
+    <span class="notification-text">
+      <i class="icon-info"></i>
+      <!-- Notifications provide limited space for content, and therefore the content must be short and concise. Sample long text added to expand the length of this message.<strong> This message expires on May 20, 2022. </strong> -->
+      <span [innerHTML]="storefront.APTS_Announcement_c"></span>
+    </span>
+    <div class="right-arrow">
+      <!-- <i class="icon-arrow-left"></i>
+     <i class="icon-arrow-right"></i> -->
+      <button
+        type="button"
+        class="btn show-alert"
+        name=""
+        value=""
+        (click)="hidenotification()"
+      >
+        {{ "Header.HIDE_MESSAGES" | translate }} <i class="icon-close"></i>
+      </button>
+    </div>
+  </div>
+</ng-container>
+</div>
+<!-- /Info Message -->
+<ng-template #spinner>
+  <div class="d-flex justify-content-center pt-5">
+    <apt-spinner></apt-spinner>
+  </div>
+</ng-template>

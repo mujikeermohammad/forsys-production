@@ -1,0 +1,9556 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&display=swap');
+
+/*
+.modal-open {
+    overflow: visible !important;
+}
+
+.modal.show, .modal-backdrop.show {
+    display: none !important;
+}
+
+.blurred {
+    filter: blur(0px) !important;
+    pointer-events: all !important;
+    user-select: auto !important;
+}
+*/
+
+*:not(i) {
+    font-family: Outfit, sans-serif !important;
+}
+
+#req-demo {
+    background: #fff;
+}
+
+#preloader,
+.navbar-mobile {
+    position: fixed;
+    left: 0;
+    overflow: hidden
+}
+
+.navbar,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: Outfit, sans-serif
+}
+
+p {
+    font-weight: 400;
+    font-size: 16px;
+}
+
+#footer .footer-top .footer-links ul a:hover,
+#timeline .timeline-badge.timeline-future-movement a:hover,
+a,
+a:hover {
+    text-decoration: none
+}
+
+.our-values .container.text-center p,
+h3 {
+    margin-bottom: 60px
+}
+
+body {
+    font-weight: 500;
+    color: #1e1e1e;
+    font-size: 16px
+}
+
+a {
+    color: #1b76ff
+}
+
+a:hover {
+    color: #3b8af2
+}
+
+h3 {
+    font-size: 28px;
+    line-height: 38px;
+    color: #002254;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.bg-gray {
+    background: #f9f9f9
+}
+
+.bg-gray2 {
+    background: #f5f5f5
+}
+
+.border-rt-none,
+.industry-overview ul.industry-list li:last-child {
+    border: none !important
+}
+
+.m-none,
+.m-rt-none {
+    margin: 0 !important
+}
+
+#preloader {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    background: #fff
+}
+
+#preloader:before {
+    content: "";
+    position: fixed;
+    top: calc(50% - 30px);
+    left: calc(50% - 30px);
+    border: 6px solid #1b76ff;
+    border-top-color: #e2eefd;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    -webkit-animation: 1s linear infinite animate-preloader;
+    animation: 1s linear infinite animate-preloader
+}
+
+.p-static {
+    position: static !important;
+}
+
+@-webkit-keyframes animate-preloader {
+    0% {
+        transform: rotate(0)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+@keyframes animate-preloader {
+    0% {
+        transform: rotate(0)
+    }
+
+    100% {
+        transform: rotate(360deg)
+    }
+}
+
+.back-to-top {
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    right: 15px;
+    bottom: 15px;
+    z-index: 996;
+    background: #1b76ff;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
+    transition: .4s
+}
+
+.int-cs-rm,
+.primary-btn {
+    background: #fa9600;
+    color: #000;
+}
+
+.back-to-top i {
+    font-size: 28px;
+    color: #fff;
+    line-height: 0
+}
+
+.back-to-top:hover {
+    background: #3284f1;
+    color: #fff
+}
+
+.back-to-top.active {
+    visibility: visible;
+    opacity: 1
+}
+
+.primary-btn {
+    display: inline-block;
+    padding: 12px 35px;
+    font-size: 16px;
+    border: 1px solid #fa9600;
+    border-radius: 5px;
+    box-shadow: none !important
+}
+
+
+.int-cs-rm,
+.int-cs-rm:hover {
+    padding: 16px 20px;
+    display: inline-block;
+    margin-top: 0;
+    border-radius: 5px;
+}
+
+.primary-btn:focus,
+.primary-btn:hover {
+    border: 1px solid #1b76ff;
+    background: #fff;
+    color: #1b76ff;
+}
+
+.int-cs-rm {
+    border: 1px solid #fa9600
+}
+
+.int-cs-rm:hover {
+    background: #fff;
+    border: 1px solid #1b76ff;
+    color: #1b76ff
+}
+
+.custom-modal .modal-header {
+    border-bottom: none;
+    text-align: center;
+    background: #fa9600;
+    border-radius: 0
+}
+
+.custom-modal .modal-header .modal-title-header {
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #313131;
+    margin-bottom: 5px
+}
+
+.custom-modal .modal-header h4 {
+    border-bottom: none;
+    width: 100%;
+    color: #fff;
+    font-size: 16px !important;
+    text-align: center
+}
+
+.custom-modal .modal-header .close {
+    color: #000;
+    padding: 0;
+    position: absolute;
+    right: 6px;
+    top: -6px;
+    font-size: 34px;
+    text-shadow: none;
+    opacity: 1;
+    background: 0 0;
+    border: none
+}
+
+.primary-btn:hover:after {
+    opacity: 1;
+    width: 20px
+}
+
+.mt-15 {
+    margin-top: 15px
+}
+
+#topbar {
+    background: #000;
+    height: 50px;
+    font-size: 14px;
+    transition: .5s;
+    color: #fff;
+    padding: 0
+}
+
+#topbar .contact-info i {
+    font-style: normal;
+    color: #fff
+}
+
+#topbar .contact-info i a,
+#topbar .contact-info i span {
+    padding-left: 5px;
+    color: #fff
+}
+
+#topbar .contact-info i a {
+    line-height: 0;
+    transition: .3s
+}
+
+#topbar .contact-info i a:hover {
+    color: #fff;
+    text-decoration: underline
+}
+
+#topbar .social-links a {
+    color: rgba(255, 255, 255, .7);
+    line-height: 0;
+    transition: .3s;
+    margin-left: 20px
+}
+
+#topbar .social-links svg:hover {
+    fill: #fff
+}
+
+#topbar .social-links svg {}
+
+#topbar .social-links a:hover,
+.achievements h3,
+.mobile-nav-toggle.bi-x {
+    color: #fff
+}
+
+#header {
+    background: #fff;
+    transition: .5s;
+    z-index: 997;
+    height: 86px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, .1);
+    flex-wrap: wrap
+}
+
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background: #ccc;
+    align-self: end
+}
+
+.progress-bar {
+    height: 5px;
+    background: #fa9600;
+    width: 0%
+}
+
+#header.fixed-top {
+    height: 85px;
+    position: fixed !important;
+}
+
+#header .logo {
+    font-size: 30px;
+    margin: 0;
+    padding: 0;
+    line-height: 1;
+    font-weight: 600;
+    letter-spacing: .8px
+}
+
+#header .logo a {
+    color: #222
+}
+
+#header .header-content .primary-btn:hover:after,
+#header .logo a span,
+.navbar .active,
+.navbar .active:focus,
+.navbar .dropdown ul .active:hover,
+.navbar .dropdown ul a:hover,
+.navbar .dropdown ul li:hover > a,
+.navbar a:hover,
+.navbar li:hover > a,
+.navbar-mobile .active,
+.navbar-mobile .dropdown ul .active:hover,
+.navbar-mobile .dropdown ul a:hover,
+.navbar-mobile .dropdown ul li:hover > a,
+.navbar-mobile a:hover,
+.navbar-mobile li:hover > a,
+.news-events .nav-pills .nav-link.active p i,
+.section-title h3 span,
+.slick-slider-wrapper .slick-next:focus,
+.slick-slider-wrapper .slick-next:hover,
+.slick-slider-wrapper .slick-prev:focus,
+.slick-slider-wrapper .slick-prev:hover {
+    color: #002254;
+}
+
+#header .logo img {
+    max-height: 70px
+}
+
+.scrolled-offset {
+    margin-top: 70px
+}
+
+#header .header-content {
+    width: 100%;
+    z-index: 9999;
+    /*    background: #444;*/
+}
+
+#header .header-content .primary-btn {
+    margin-left: 30px;
+    position: relative;
+    z-index: 99
+}
+
+#header .header-content .primary-btn:focus,
+#header .header-content .primary-btn:hover,
+.news-events .primary-btn:hover,
+.news-eventsz .primary-btn:focus,
+.news-eventsz .primary-btn:visited,
+.overview-content a.primary-btn:focus,
+.overview-content a.primary-btn:hover {
+    border: 1px solid #1b76ff;
+    color: #1b76ff
+}
+
+#header .header-content ul li a {
+    /*    cursor: default*/
+}
+
+#header .header-content ul li ul li a {
+    cursor: pointer
+}
+
+#header .header-content ul li ul li {
+    border-bottom: 1px solid #eee;
+}
+
+#header .header-content ul li ul li:hover {
+    background: #eee;
+}
+
+#header .header-content ul li ul li:last-child {
+    border-bottom: 0px solid #eee;
+}
+
+#header .header-content ul li ul li:hover:last-child {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+#header .header-content ul li ul li:hover:first-child {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.navbar {
+    padding: 0;
+}
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center
+}
+
+#timeline .timeline-movement,
+.hs-form-private .hs-form-field,
+.index-services-technologies p,
+.index-services-technologies ul li,
+.navbar li,
+.team-card .team-pic {
+    position: relative
+}
+
+.navbar > ul > li {
+    white-space: nowrap;
+    padding: 10px 0 10px 28px
+}
+
+.navbar a,
+.navbar a:focus {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #222;
+    white-space: nowrap;
+    transition: .3s;
+    position: relative
+}
+
+.navbar a i,
+.navbar a:focus i {
+    font-size: 15px;
+    line-height: 0;
+    margin-left: 5px;
+    margin-top: 4px
+}
+
+.navbar .active:before,
+.navbar a:hover:before,
+.navbar li:hover > a:before {
+    visibility: visible;
+    width: 100%
+}
+
+.navbar .dropdown ul {
+    min-width: 240px;
+    display: block;
+    position: absolute;
+    left: 28px;
+    top: calc(100% + 30px);
+    margin: 0;
+    padding: 0px;
+    z-index: 99;
+    opacity: 0;
+    display: none;
+    animation: fadeOut .5s;
+    background: #fff;
+    box-shadow: 0 20px 15px rgb(0 0 0 / 10%);
+    transition: .3s all ease;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.navbar .dropdown ul li,
+.navbar-mobile .dropdown ul li {
+    min-width: 200px;
+}
+
+.navbar .dropdown ul a {
+    padding: 10px 20px;
+    font-weight: 400
+}
+
+.navbar .dropdown ul a i,
+.navbar-mobile .dropdown ul a i {
+    font-size: 12px
+}
+
+.navbar .dropdown:hover > ul {
+    opacity: 1;
+    top: 97%;
+    transition: .3s all ease;
+    display: block;
+    animation: fadeIn .5s;
+}
+
+.navbar .dropdown .dropdown ul {
+    top: 0;
+    left: calc(100% - 30px);
+    display: none;
+    border-radius: 8px !important;
+    transition: .3s all ease;
+    animation: fadeOut .5s;
+}
+
+.navbar .dropdown .dropdown:hover > ul {
+    opacity: 1;
+    top: 0;
+    left: 100%;
+    display: block;
+    transition: .3s all ease;
+    animation: fadeIn .5s;
+}
+
+.khbyo {
+    background: #1b76ff;
+    vertical-align: middle;
+    line-height: 18px !important;
+    padding: 3px 8px;
+    opacity: 1 !important;
+    color: #fff !important;
+    font-size: 14px;
+    font-weight: 300;
+    border-radius: 3px;
+}
+
+
+.navbar a.our-solutions {
+    cursor: pointer;
+    background: #fa9600;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: #000;
+    border: 1px solid #fa9600;
+}
+
+.navbar a.our-solutions:hover {
+    background: #fff;
+    padding: 10px 20px;
+    border: 1px solid #1b76ff;
+    border-radius: 5px;
+    color: #1b76ff;
+}
+
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.navbar .dropdown .clients-ul-btn .dropdown:hover > ul {
+    left: -100%;
+}
+
+.mobile-nav-toggle {
+    color: #222;
+    font-size: 28px;
+    cursor: pointer;
+    display: none;
+    line-height: 0;
+    transition: .5s;
+    cursor: pointer;
+}
+
+@media (max-width:991px) {
+    .mobile-nav-toggle {
+        display: block
+    }
+
+    .navbar ul {
+        display: none
+    }
+}
+
+.navbar-mobile {
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(9, 9, 9, .9);
+    transition: .3s;
+    z-index: 999
+}
+
+.navbar-mobile .mobile-nav-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px
+}
+
+.navbar-mobile ul {
+    display: block;
+    position: absolute;
+    top: 55px;
+    right: 15px;
+    bottom: 15px;
+    left: 15px;
+    padding: 10px 0;
+    background-color: #fff;
+    overflow-y: auto;
+    transition: .3s
+}
+
+.navbar-mobile a,
+.navbar-mobile a:focus {
+    padding: 10px 20px;
+    font-size: 15px;
+    color: #222
+}
+
+.index-services-technologies ul.services-list,
+.navbar-mobile > ul > li,
+.overview-expertise {
+    padding: 0
+}
+
+.navbar-mobile .active:before,
+.navbar-mobile a:hover:before,
+.navbar-mobile li:hover > a:before,
+.slick-slider-wrapper .slick-loading .slick-slide,
+.slick-slider-wrapper .slick-loading .slick-track {
+    visibility: hidden
+}
+
+.navbar-mobile .getstarted,
+.navbar-mobile .getstarted:focus {
+    margin: 15px
+}
+
+.navbar-mobile .dropdown ul {
+    position: static;
+    display: none;
+    padding: 10px 0;
+    z-index: 99;
+    opacity: 1;
+    visibility: visible;
+    background: #d5d5d5;
+    box-shadow: 0 0 30px rgba(127, 137, 161, .25)
+}
+
+.navbar-mobile .dropdown ul a {
+    padding: 10px 20px
+}
+
+.navbar-mobile .dropdown > .dropdown-active,
+.slick-slider-wrapper .slick-initialized .slick-slide {
+    display: block
+}
+
+#banner .bg-video-wrap {
+    position: relative;
+    overflow: hidden;
+    width: 100%
+}
+
+#banner {
+    position: relative;
+    width: 100%;
+}
+
+#banner video {
+    width: 100%;
+    /*    min-height: 100vh;*/
+    z-index: 1
+}
+
+.h-slide {
+    /*    position: absolute;*/
+    width: 100%;
+    /*    background-image: linear-gradient(90deg, rgb(25 25 25 / 56%) 0, rgba(41, 114, 129, 0) 100%);*/
+    /*    padding: 70px 30px;*/
+}
+
+.h-slide .ksbk {
+    position: absolute;
+    top: 40%;
+    background-image: linear-gradient(90deg, rgb(25 25 25 / 56%) 0, rgba(41, 114, 129, 0) 100%);
+    padding: 70px 30px;
+}
+
+@media only screen and (width: 768px) {
+    .h-slide .ksbk {
+        position: absolute;
+        top: 0%;
+        background-image: linear-gradient(90deg, rgb(25 25 25 / 56%) 0, rgba(41, 114, 129, 0) 100%);
+        padding: 64px 30px;
+        display: flex;
+        height: 100%;
+        z-index: 99;
+    }
+
+    body {
+        cursor: pointer;
+    }
+
+    .ksbk h1 {
+        margin-bottom: 0px;
+        align-self: center;
+    }
+}
+
+@media only screen and (max-width: 680px) {
+    .h-slide .ksbk {
+        position: absolute;
+        top: 0%;
+        background-image: linear-gradient(90deg, rgb(25 25 25 / 56%) 0, rgba(41, 114, 129, 0) 100%);
+        padding: 64px 30px;
+        display: flex;
+        height: 100%;
+        z-index: 99;
+    }
+
+    .ksbk h1 {
+        margin-bottom: 0px;
+        align-self: center;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .h-slide .ksbk {
+        position: absolute;
+        top: 0%;
+        background-image: linear-gradient(90deg, rgb(25 25 25 / 56%) 0, rgba(41, 114, 129, 0) 100%);
+        padding: 10px 30px;
+        display: flex;
+        height: 100%;
+        z-index: 99;
+    }
+
+    .ksbk h1 {
+        margin-bottom: 0px;
+        align-self: center;
+    }
+}
+
+.h-slide .carousel-item video {
+    width: 100%;
+}
+
+.h-slide .carousel-item {
+    font-size: 45px;
+    color: #fff;
+    font-weight: 300;
+    line-height: 45px;
+    /*    transition-duration: 8s;*/
+}
+
+.h-slide .carousel-item span {
+    display: inherit;
+    width: 100%;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.h-slide .carousel-item:first-child {
+    transition-delay: 0s
+}
+
+.h-slide .carousel-item:nth-child(2) {
+    transition-delay: 0s
+}
+
+.h-slide .carousel-item:nth-child(3) {
+    transition-delay: 0s
+}
+
+.h-slide .carousel-item:nth-child(4) {
+    transition-delay: 0s
+}
+
+section {
+    padding: 80px 0;
+    overflow: hidden
+}
+
+.section-btm-none {
+    padding-bottom: 0 !important
+}
+
+.section-bg {
+    background-color: #f6f9fe
+}
+
+.section-title {
+    text-align: center;
+    padding-bottom: 30px
+}
+
+.section-title h2 {
+    font-size: 13px;
+    letter-spacing: 1px;
+    font-weight: 700;
+    padding: 8px 20px;
+    margin: 0;
+    background: #e7f1fd;
+    color: #1b76ff;
+    display: inline-block;
+    text-transform: uppercase;
+    border-radius: 50px
+}
+
+.section-title h3 {
+    margin: 15px 0 0;
+    font-size: 32px;
+    font-weight: 700
+}
+
+.section-title p {
+    margin: 15px auto 0;
+    font-weight: 600
+}
+
+@media (min-width:1024px) {
+    .section-title p {
+        width: 50%
+    }
+}
+
+.counts {
+    background: #eee;
+}
+
+.counts .count-box {
+    width: 100%;
+    position: relative;
+    text-align: center;
+    background: #fff;
+    padding: 40px;
+    height: 100%;
+    border-radius: 20px;
+}
+
+.counts .count-box p {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.counts .count-box:nth-child(4) {
+    border: none
+}
+
+.counts .count-box i {
+    position: absolute;
+    top: -28px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 24px;
+    background: #1b76ff;
+    color: #fff;
+    width: 56px;
+    height: 56px;
+    line-height: 0;
+    border-radius: 50px;
+    border: 5px solid #fff;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center
+}
+
+.counts .count-box span {
+    font-size: 42px;
+    display: block;
+    color: #002254;
+    font-weight: 600
+}
+
+.counts .count-box small {
+    position: absolute;
+    font-size: 28px;
+    color: #fa9600;
+    font-weight: 400;
+    margin-top: -59px;
+    margin-left: 40px
+}
+
+.contact h3,
+.counts .count-box p,
+.inner-banner-content ul.inner-banner-content-list,
+.what-forsys-can-do_inner p {
+    padding: 0;
+    margin: 0
+}
+
+.testmon {
+    width: 100%;
+    background: url("../img/services.png") top left/cover;
+    position: relative;
+    color: #fff
+}
+
+.testmon::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: transparent linear-gradient(90deg, #002253F0 0, var(--unnamed-color-002253) 100%) 0 0 no-repeat padding-box;
+    background: linear-gradient(90deg, #002253F0 0, #002253 100%) no-repeat padding-box;
+    opacity: .98
+}
+
+
+.index-services-technologies {
+    width: 100%;
+    background: url("../img/services.png") top left/cover;
+    position: relative;
+    color: #fff
+}
+
+.index-services-technologies::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    background: transparent linear-gradient(90deg, #002253F0 0, var(--unnamed-color-002253) 100%) 0 0 no-repeat padding-box;
+    background: linear-gradient(90deg, #002253F0 0, #002253 100%) no-repeat padding-box;
+    opacity: .98
+}
+
+.index-services-technologies p {
+    font-size: 28px;
+    font-weight: 300;
+    padding: 2.5rem 0 0
+}
+
+.index-services-technologies ul.services-list li {
+    list-style: none;
+    width: 50%;
+    float: left;
+    border: 1px solid #1b76ff;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    margin-top: -1px;
+    margin-left: -1px
+}
+
+.index-services-technologies ul.services-list li a {
+    display: inherit;
+    padding: 20px;
+}
+
+.index-services-technologies ul.services-list li span {
+    display: inherit;
+    margin-bottom: 10px;
+    height: 40px
+}
+
+.index-services-technologies ul.services-list li span img {
+    height: 20px;
+    margin-top: 13px
+}
+
+.index-services-technologies ul.services-list li:first-child,
+.index-services-technologies ul.services-list li:nth-child(4) {
+    border-top-right-radius: 16px;
+    border-bottom-left-radius: 16px
+}
+
+.index-services-technologies ul.services-list li:nth-child(2),
+.index-services-technologies ul.services-list li:nth-child(3) {
+    border-top-left-radius: 16px;
+    border-bottom-right-radius: 16px
+}
+
+.slick-slider-wrapper .slick-slide {
+    text-align: center;
+    display: block !important;
+    float: left;
+    min-height: 1px;
+    margin: 5px;
+    margin-bottom: 0px;
+    border-radius: 12px;
+}
+
+.slick-slider-wrapper .slick-slide img {
+    width: 100%;
+    display: initial !important;
+    border: 1px solid #dedede;
+    padding: 30px 5px;
+    margin: 10px;
+    margin-bottom: 0px;
+    border-radius: 20px;
+}
+
+.slick-slider-wrapper .slick-list {
+    margin-top: 0 !important;
+    margin-left: 0 !important;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    margin: 30px 0 0 30px;
+    padding: 0
+}
+
+.slick-slider-wrapper .fa-fw {
+    width: 16px;
+    text-align: center
+}
+
+.slick-slider-wrapper .slick-slider {
+    position: relative;
+    display: block;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -khtml-user-select: none;
+    -ms-touch-action: pan-y;
+    touch-action: pan-y;
+    -webkit-tap-highlight-color: transparent
+}
+
+.slick-slider-wrapper .slick-list:focus {
+    outline: 0
+}
+
+.slick-slider-wrapper .slick-list.dragging {
+    cursor: hand;
+    cursor: pointer;
+}
+
+.slick-slider-wrapper .slick-slider .slick-list,
+.slick-slider-wrapper .slick-slider .slick-track {
+    -webkit-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0)
+}
+
+.slick-slider-wrapper .slick-track {
+    position: relative;
+    top: 0;
+    left: 0;
+    display: block
+}
+
+.slick-slider-wrapper .slick-track:after,
+.slick-slider-wrapper .slick-track:before {
+    display: table;
+    content: ""
+}
+
+#lets_talk div.hs_interested_in::after,
+#lets_talk div.hs_interested_in::before,
+.case-studies .case-studies-card .int-cs-rm,
+.contact div.hs_interested_in::after,
+.cookie-bar,
+.slick-slider-wrapper .slick-arrow.slick-hidden,
+.slick-slider-wrapper .slick-slide.slick-loading img,
+ul.inner-banner-content-list {
+    display: none
+}
+
+.slick-slider-wrapper .slick-track:after {
+    clear: both
+}
+
+.slick-slider-wrapper [dir=rtl] .slick-slide {
+    float: right
+}
+
+.slick-slider-wrapper .slick-slide.dragging img {
+    pointer-events: none
+}
+
+.slick-slider-wrapper .slick-vertical .slick-slide {
+    display: block;
+    height: auto;
+    border: 1px solid transparent
+}
+
+.slick-slider-wrapper .slick-prev {
+    left: -35px;
+    position: relative;
+    font-size: 30px;
+    color: #002254;
+}
+
+.slick-slider-wrapper .slick-next {
+    right: -35px;
+    position: relative;
+    font-size: 30px;
+    color: #002254;
+}
+
+.slick-slider-wrapper .slick-next,
+.slick-slider-wrapper .slick-prev {
+    position: absolute;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    outline: 0;
+    z-index: 1;
+    top: 95px !important;
+    background: 0 0;
+}
+
+
+.case-studies .case-studies-card {
+    padding: 0px;
+    background: #fff;
+    border-radius: 20px;
+    height: 100%;
+    transition: .2s all ease;
+    overflow: hidden;
+    border: 2px solid #1b76ff;
+}
+
+.case-studies .case-studies-card a {
+    padding: 20px;
+    display: block;
+    color: #fff;
+    height: 85%;
+}
+
+.case-studies .case-studies-card:hover {
+    transform: scale(1.09);
+    transition: .5s all ease;
+}
+
+
+.products .product-card:hover {
+    transform: scale(1.09);
+    transition: .5s all ease;
+}
+
+.case-studies .case-studies-card h4 {
+    font-size: 16px;
+    padding: 20px 0;
+    margin: 0 auto;
+    padding-bottom: 0px;
+    font-weight: 500;
+    text-align: center;
+    color: #002254;
+    line-height: 22px;
+    font-family: Outfit, sans-serif
+}
+
+.case-studies-card .rm {
+    color: #fff;
+    background: #1b76ff;
+    font-size: 16px;
+    padding: 20px 0px;
+    display: block;
+    text-align: center;
+}
+
+.case-studies-card .rm i{
+    margin-left: 10px;
+    top: 1px;
+    position: relative;
+}
+
+img[alt="Work With Us"] {
+    border-radius: 12px;
+}
+
+.our-customer-stories .case-studies-card h4 {
+    min-height: 160px
+}
+
+.our-customer-stories2 .case-studies-card h4 {
+    min-height: inherit
+}
+
+.case-studies .case-studies-card p {
+    min-height: 150px;
+    display: none
+}
+
+.case-studies .case-studies-card h4:focus,
+.case-studies .case-studies-card h4:hover {
+    color: #000 !important;
+    outline: 0;
+    box-shadow: none
+}
+
+.case-studies .case-studies-card img {
+    width: 100%;
+    border-radius: 20px
+}
+
+.industry-overview ul.industry-list {
+    margin: 0;
+    width: 100%;
+    display: flex;
+    padding: 0
+}
+
+.industry-overview ul.industry-list li:last-child {
+    margin-right: 10px;
+}
+
+.industry-overview ul.industry-list li {
+    float: left;
+    list-style: none;
+    text-align: center;
+    border-right: 1px solid #dfdfdf;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1 1 100%;
+    margin-right: 10px;
+    justify-content: center;
+}
+
+.industry-overview ul.industry-list li span {
+    display: inherit;
+    margin-bottom: 15px;
+    min-height: 34px;
+    line-height: 34px;
+    flex: 1 1 100%;
+    justify-content: center;
+}
+
+.nxckjn {
+    background: #eee;
+    padding: 50px;
+    border-radius: 20px;
+}
+
+.slick-slider-wrapper .customer-slider .slick-slide img {
+    filter: grayscale(1);
+    object-fit: contain;
+    height: 100px;
+    width: 92%;
+}
+
+.slick-slider-wrapper .customer-slider .slick-slide img:hover {
+    filter: grayscale(0);
+}
+
+.p-relative {
+    position: relative;
+}
+
+.products {
+    width: 100%;
+    /*    background: url("../img/products-banner.png") top left/cover;*/
+    position: relative;
+    background-color: #e3e2dd;
+}
+
+.products .product-card {
+    height: 100%;
+}
+
+.products .product-card {
+    color: #1e1e1e;
+    display: inherit;
+    background: rgba(255, 255, 255, .91);
+    padding: 20px;
+    border-radius: 20px;
+    text-align: center;
+    transition: .3s ease-in-out;
+    min-height: 318px
+}
+
+.desc-content .carousel-inner,
+.products .product-card a:hover {
+    box-shadow: 0 4px 45px rgb(0 0 0 / 15%)
+}
+
+#conga-connect .img-fluid {
+    border-radius: 20px;
+}
+
+.products .product-card a p {
+    padding-top: 30px;
+    min-height: 150px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #002254;
+}
+
+.products .product-card a img {
+    height: 68px
+}
+
+.cookie-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    z-index: 999;
+    background-color: rgba(0, 0, 0, .95)
+}
+
+.cookie-para {
+    color: #fff;
+    font-size: 12px;
+    font-weight: 400;
+    display: inline-block;
+    padding: 0;
+    margin: 0
+}
+
+.cookie-btn {
+    font-size: 14px;
+    color: #fff;
+    background: #fa9600;
+    padding: 2px 15px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-left: 1%
+}
+
+.cookie-btn.secondary {
+    color: #fff;
+    background: #002253
+}
+
+.cookie-btn.secondary:focus,
+.cookie-btn.secondary:hover,
+.cookie-btn:focus,
+.cookie-btn:hover {
+    color: #fff !important;
+    text-decoration: none
+}
+
+button.cookie {
+    color: #fff;
+    opacity: 1;
+    font-weight: 400;
+    position: absolute;
+    right: 15px;
+    top: 2px !important;
+    outline: 0;
+    background: 0 0;
+    border: none;
+    font-size: 22px;
+    cursor: pointer
+}
+
+#timeline .year.de,
+#timeline::after {
+    border-radius: 0%
+}
+
+button.cookie:active,
+button.cookie:focus,
+button.cookie:hover {
+    color: #fff;
+    opacity: 1;
+    outline: 0
+}
+
+.cookie-bar {
+    padding: 10px 15px
+}
+
+.leadinModal-content {
+    display: none !important
+}
+
+#footer {
+    background: #f1f6fe;
+    padding: 0;
+    color: #444;
+    font-size: 14px
+}
+
+.footer-lets-talk {
+    background: #002254;
+    text-align: center;
+    font-size: 15px
+}
+
+.footer-lets-talk p {
+    padding: 0;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 300;
+    color: #fff
+}
+
+#footer .footer-top {
+    padding: 60px 0 15px;
+    background: #2b3a46
+}
+
+#footer .footer-top .footer-column-1 {
+    margin-bottom: 40px
+}
+
+#footer .footer-top .footer-column-1 span {
+    margin-right: 30px
+}
+
+#footer .footer-top .footer-column-1 .footer-logo {
+    border-right: 1px solid #5a5a5a;
+    display: inline-block;
+    padding-right: 30px
+}
+
+#footer .footer-top .footer-column-1 .footer-logo img {
+    height: 87px
+}
+
+#footer .footer-top .footer-column-1 .gptw-logo img {
+    height: 76px
+}
+
+#footer .footer-top .footer-column-1 .iso-certified-logo img {
+    height: 62px
+}
+
+#footer .footer-top .footer-links {
+    margin-top: 0px;
+}
+
+#footer .footer-top .footer-links h5 {
+    font-size: 15px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+#footer .footer-top .footer-links ul,
+#timeline .timeline-movement .timeline-item .timeline-panel .timeline-panel-ul {
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+#footer .footer-top .footer-links ul i {
+    margin-right: 8px
+}
+
+#footer .footer-top .footer-links ul li {
+    padding: 10px 0;
+    display: flex;
+    align-items: center
+}
+
+#footer .footer-top .footer-links ul li:first-child {
+    padding-top: 0
+}
+
+#footer .footer-top .footer-links ul a {
+    color: #bfbfbf;
+    transition: .3s;
+    display: inline-block;
+    line-height: 1
+}
+
+#footer .footer-top .footer-links ul a:hover {
+    color: #1b76ff
+}
+
+.copyright {
+    text-align: center;
+    border-top: 1px solid #9f9f9f;
+    padding-top: 15px;
+    color: #bfbfbf;
+    margin-top: 30px;
+}
+
+.inner-banner,
+.layout-overlay {
+    background-size: cover !important;
+    position: relative;
+    background-position: center;
+}
+
+.inner-banner::after,
+.layout-overlay::after {
+    content: "";
+    background: rgba(0, 34, 84, .9);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%
+}
+
+.solutions .inner-banner::after,
+.solutions .layout-overlay::after {
+    background: rgb(103 9 188 / 88%);
+}
+
+.no-overlay::after {
+    content: none;
+}
+
+.inner-banner-content {
+    position: relative;
+    z-index: 1;
+    padding-top: 0 !important
+}
+
+.inner-banner-content p {
+    font-size: 30px;
+    color: #fff;
+    font-weight: bold;
+    padding-top: 10px;
+    text-align: left;
+}
+
+.bg-team-page .team-p {
+    font-size: 24px;
+    font-weight: 400;
+    font-style: italic;
+}
+
+.inner-banner-content ul.inner-banner-content-list li {
+    display: inline-block;
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+.inner-banner-content ul.inner-banner-content-list span {
+    padding-left: 5px
+}
+
+.inner-banner-content ul.inner-banner-content-list,
+.inner-banner-content ul.inner-banner-content-list li a {
+    color: #fff;
+    font-size: 12px
+}
+
+.overview-content h3 {
+    margin: 0;
+    padding: 0
+}
+
+.our-values h3,
+.what-forsys-can-do_inner h3,
+a.download-pdf img {
+    margin-bottom: 15px
+}
+
+.why-forsys .why-forsys-content {
+    text-align: center;
+    border-right: 1px solid #dfdfdf;
+    padding: 0 30px 0 0;
+    min-height: 217px
+}
+
+.why-forsys .why-forsys-content i {
+    margin-bottom: 10px;
+    display: inherit;
+    min-height: 40px
+}
+
+.why-forsys .why-forsys-content h4 {
+    font-size: 20px;
+    font-weight: 400;
+    padding-bottom: 15px;
+    color: #1b76ff;
+    line-height: 30px
+}
+
+.clm-expertise-content ul {
+    padding: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.clm-expertise-content {
+    background: #fff;
+    border-radius: 8px;
+    height: 100%;
+}
+
+.clm-expertise-content h4 {
+    background: #1b76ff !important;
+    font-size: 18px;
+    margin-bottom: 15px;
+    text-align: center;
+    padding: 15px 30px;
+    border-radius: 8px 8px 0px 0px;
+}
+
+.clm-expertise-content ul li {
+    font-size: 15px;
+    line-height: 18px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #dadada;
+}
+
+.clm-expertise-content ul li:last-child {
+    border-bottom: 1px solid #fff;
+}
+
+.carrers-values .why-forsys-content h4 {
+    min-height: 105px;
+    margin: 0;
+    padding: 0
+}
+
+.why-forsys-block .why-forsys-content h4,
+.why-forsys-cpq .why-forsys-content h4,
+.why-forsys-crm .why-forsys-content h4,
+.why-forsys-data-integration .why-forsys-content h4,
+.why-forsys-dc .why-forsys-content h4,
+.why-forsys-financials .why-forsys-content h4,
+.why-forsys-scm .why-forsys-content h4,
+.why-forys-clm .why-forsys-content h4 {
+    min-height: 75px;
+    margin: 0;
+    padding: 0
+}
+
+.partners-team p:nth-child(3) {
+    margin: 0
+}
+
+.desc-content .partners-team i,
+.partners-team i {
+    display: inherit;
+    margin-bottom: 1rem
+}
+
+.bg-partners {
+    background-image: url(../img/partners/conga.png)
+}
+
+.bg-netsuite {
+    background-image: url(../img/partners/netsuite.png)
+}
+
+.bg-oracle {
+    background-image: url(../img/partners/oracle.png)
+}
+
+.bg-netsuite .inner-banner-content {
+    display: flex;
+}
+
+.bg-oracle .inner-banner-content {
+    display: flex;
+}
+
+.bg-oracle .inner-banner-content div {
+    line-height: 70px;
+}
+
+.bg-oracle .inner-banner-content p {
+    font-weight: 300;
+    padding: 0;
+    margin-top: -10px;
+}
+
+.bg-oracle .inner-banner-content b {
+    font-weight: bold;
+}
+
+.bg-oracle .inner-banner-content span {
+    font-size: 20px;
+    color: #fff;
+    font-weight: 300;
+    border-left: 1px solid #fff;
+    border-right: 1px solid #fff;
+    padding: 0 30px;
+    margin: 0 30px;
+    height: 70px;
+    padding-top: 20px;
+}
+
+.bg-netsuite .inner-banner-content div {
+    padding-top: 15px;
+}
+
+.bg-netsuite .inner-banner-content p {
+    border-left: 1px solid #fff;
+    padding: 0 0 0 30px;
+    margin-left: 30px;
+    font-weight: normal;
+}
+
+.bg-netsuite .inner-banner-content p b {
+    font-weight: bold;
+}
+
+.p-conga {
+    display: inline-block;
+    padding-left: 15px;
+    color: #1e1e1e !important;
+    position: absolute;
+    margin-top: -5px;
+}
+
+.p-conga span {
+    display: inherit;
+    width: 100%;
+    font-weight: 300;
+}
+
+.about .inner-banner-content p {
+    color: #fff !important;
+    margin: 0;
+}
+
+.bg-team {
+    background-image: url(../img/team/team.png)
+}
+
+.bg-team .inner-banner-content p {
+    font-weight: 300;
+    font-style: italic;
+    font-size: 22px;
+}
+
+.team-image:before {
+    position: absolute;
+    content: '';
+    background: #fa9600;
+    width: 100px;
+    height: 60px;
+    border-radius: 0px 50px 50px 0px;
+    transform: rotate(-45deg);
+    top: 14px;
+    z-index: -1;
+    right: -6px;
+}
+
+/*
+
+.team-image {
+    filter: grayscale(1);
+}
+
+.team-image:hover {
+    filter: grayscale(0);
+}
+*/
+
+.IN-widget {
+    margin-left: 20px;
+    top: -1px;
+    position: relative;
+}
+
+.team .team-image {
+    position: relative;
+    width: 220px;
+    margin: 10px auto;
+    margin-bottom: 15px;
+    background: #f5f5f5;
+    transition: 0.5s all ease;
+    transform: scale(1);
+    padding: 15px;
+    border-radius: 50%;
+}
+
+.team-image:hover {
+    transition: 0.5s all ease;
+    transform: scale(1.1);
+    margin-bottom: 15px;
+}
+
+.team-image:hover img {
+    background: #e3e2dd !important;
+    filter: grayscale(0);
+}
+
+.team .team-image img {
+    border: 1px solid #fa9600;
+    border-radius: 100%;
+    padding: 15px;
+    width: 100%;
+    background: #fff;
+    transition: 0.5s all ease;
+}
+
+.team .linkin {
+    width: 15px !important;
+    border: none !important;
+    padding: 0px !important;
+    border-radius: 0px !important;
+    line-height: 10px !important;
+    margin-bottom: 4px !important;
+    filter: grayscale(1) contrast(100);
+    background: none !important;
+    text-align: center;
+}
+
+.team-image:hover img.linkin {
+    background: none !important;
+    filter: grayscale(1) contrast(100);
+}
+
+.no-before::before {
+    display: none;
+}
+
+.team .team-image .linkedin {
+    border-radius: 100%;
+    padding: 5px;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    background: #ffffff;
+    height: 38px;
+    width: 38px;
+    line-height: 32px;
+    font-size: 18px;
+    text-align: center;
+}
+
+.team .name {
+    font-size: 22px;
+    color: #002254;
+    margin-bottom: 0px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.team .designation {
+    font-size: 16px;
+    text-align: center;
+    color: #2b2b2b;
+}
+
+.team-card {
+    cursor: default;
+    padding-bottom: 60px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap
+}
+
+.team-card .hover-zoom:before {
+    content: "";
+    width: 225px;
+    height: 225px;
+    display: inherit;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid #fa9600;
+}
+
+.team-card .hover-zoom:hover:before {
+    /*    background: rgb(0 34 84 / 23%) !important;*/
+
+    border-radius: 50%;
+    z-index: 9;
+}
+
+.team-card .team-pic img {
+    background-size: 110%;
+}
+
+.team-card .team-pic .hover-zoom:hover p {
+    z-index: 9999;
+
+}
+
+.team-card .team-content p {
+    margin: 0;
+    display: block;
+    line-height: 20px;
+    font-size: 15px;
+    cursor: initial;
+    text-align: center;
+    color: #1e1e1e;
+}
+
+.hzxbl {
+    padding: 20px;
+    border: 1px solid rgb(256 256 256 / 75%);
+    border-radius: 12px;
+    background: rgb(256 256 256);
+    height: 100%;
+}
+
+.hzxbl h4 {
+    color: #002254;
+    font-size: 22px;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.team-card .team-content p a {
+    color: #002254;
+}
+
+.team-card .team-content p:first-child {
+    font-size: 18px;
+    color: #002254;
+    font-weight: 700;
+    padding-top: 15px;
+    padding-bottom: 5px
+}
+
+.team-card .hover-zoom {
+    float: left;
+    margin: 0;
+    height: 225px;
+    width: 225px;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    border-radius: 50%;
+}
+
+.team-card .hover-zoom:hover {
+    /*    background-size: 103%;*/
+    background-position: center;
+}
+
+.team-card .hover-zoom:hover p {
+    display: inline-block;
+    width: auto;
+    float: right;
+}
+
+.team-card .hover-zoom:hover a {
+    -webkit-transform: rotateY(1800deg);
+    -moz-transform: rotateY(1800deg);
+    -o-transform: rotateY(1800deg);
+    transform: rotateY(1800deg);
+}
+
+.team-card .hover-zoom p {
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    width: 100%;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .5);
+    padding: .5em;
+    margin: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    display: none
+}
+
+.team-card .hover-zoom:hover p a {
+    background: #fff;
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    line-height: 28px;
+    background: #fa9600;
+    text-align: center;
+    border-radius: 50%;
+    line-height: 40px;
+}
+
+.team-card .hover-zoom:hover p a img {
+    width: 50%;
+    filter: grayscale(1) contrast(100);
+}
+
+.bg-forsys-gives-back {
+    background-image: url(../img/about/banner-forsys-gives-back.png)
+}
+
+#timeline {
+    list-style: none;
+    position: relative
+}
+
+#timeline::after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    display: block;
+    background: #b2b2b2;
+    left: 49.44%;
+    top: -72px;
+    position: absolute
+}
+
+#timeline .year,
+#timeline .year.de {
+    width: 104px;
+    left: -35px;
+    height: 50px;
+    position: relative;
+    justify-content: center;
+    background: #fff;
+    top: -27px;
+    border-radius: 12px;
+    display: flex;
+    box-shadow: 0 3px 5px #d7d5d5;
+}
+
+#timeline .year.collapsed {
+    border: 2px solid #1b76ff
+}
+
+#timeline .year {
+    border: 2px solid #fa9600;
+}
+
+#timeline .timeline-badge,
+#timeline:before {
+    position: absolute;
+    left: 50%;
+    background-color: #e3e3e3
+}
+
+#timeline .timeline-badge span {
+    align-self: center;
+    justify-content: center
+}
+
+#timeline:before {
+    top: -60px;
+    bottom: 0;
+    content: " ";
+    width: 2px;
+    margin-left: -1.5px
+}
+
+#timeline .clearFix {
+    clear: both;
+    height: 0
+}
+
+#timeline .timeline-badge {
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    line-height: 47px;
+    font-size: 1.2em;
+    text-align: center;
+    top: 20px;
+    margin-left: -25px;
+    z-index: 100;
+    border-radius: 50%;
+    padding: 0px;
+}
+
+#timeline .timeline-badge span.timeline-balloon-date-day {
+    font-size: 1.4em
+}
+
+#timeline .timeline-badge span.timeline-balloon-date-month {
+    font-size: 14px;
+    position: relative;
+    align-self: center;
+    color: #080000
+}
+
+#timeline .timeline-badge.timeline-filter-movement {
+    font-size: 1.7em;
+    height: 35px;
+    margin-left: -18px;
+    width: 35px;
+    top: 40px
+}
+
+#timeline .timeline-badge.timeline-filter-movement a span {
+    color: #4997cd;
+    font-size: 1.3em;
+    top: -1px
+}
+
+#timeline .timeline-badge.timeline-future-movement {
+    background-color: transparent;
+    height: 35px;
+    width: 35px;
+    font-size: 1.7em;
+    top: -16px;
+    margin-left: -18px
+}
+
+#timeline .hrud_png::before,
+#timeline .rice_png::before,
+.card-overview img,
+.card-overview:before {
+    height: 100%;
+    position: absolute;
+    left: 0
+}
+
+#timeline .timeline-badge.timeline-future-movement a span {
+    color: #fa9600;
+    font-size: 14px;
+    align-self: center
+}
+
+#timeline .timeline-badge.timeline-future-movement a.collapsed span {
+    color: #1b76ff;
+    font-size: 14px;
+    align-self: center
+}
+
+#timeline .timeline-badge.timeline-future-movement a.collapsed span i {
+    transform: rotate(0deg);
+    display: inline-block;
+}
+
+#timeline .timeline-badge.timeline-future-movement a span i {
+    transform: rotate(90deg);
+    display: inline-block;
+}
+
+#timeline .timeline-movement.timeline-movement-top {
+    margin-top: 85px;
+    margin-bottom: 35px
+}
+
+#timeline .timeline-movement .timeline-item {
+    padding: 20px 0
+}
+
+#timeline .timeline-movement .timeline-item p.para {
+    padding: 20px 30px
+}
+
+#timeline .timeline-movement .timeline-item p.position-absolute.left {
+    position: absolute !important;
+    width: 155px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 18px;
+    align-self: center;
+    margin-bottom: 0;
+    color: #fff;
+    padding: 0 15px
+}
+
+#timeline .timeline-movement .timeline-item p.position-absolute.right {
+    position: absolute !important;
+    width: 155px;
+    font-size: 12px;
+    text-align: center;
+    line-height: 18px;
+    margin-bottom: 0;
+    color: #fff;
+    padding: 0 15px;
+    align-self: center
+}
+
+#timeline .timeline-movement .timeline-item .timeline-panel {
+    border-radius: 3px;
+    background-color: #fff;
+    color: #666;
+    padding: 10px;
+    position: relative
+}
+
+#timeline .timeline-movement .timeline-item .timeline-panel.credits .timeline-panel-ul,
+.rise-digital-commerce-rt-content {
+    text-align: right
+}
+
+#timeline .timeline-movement .timeline-item .timeline-panel.credits .timeline-panel-ul li {
+    color: #666
+}
+
+#timeline .timeline-movement .timeline-item .timeline-panel.credits .timeline-panel-ul li span.importo {
+    color: #468c1f;
+    font-size: 1.3em
+}
+
+#timeline .timeline-movement .timeline-item .timeline-panel.debits .timeline-panel-ul {
+    text-align: left
+}
+
+#timeline .timeline-movement .timeline-item .timeline-panel.debits .timeline-panel-ul span.importo {
+    color: #e2001a;
+    font-size: 1.3em
+}
+
+#timeline .rice_png {
+    background: url(../img/csr/illuminated-yellow-rice-plant-@2x.png) 0 0/cover;
+    width: 100%;
+    position: relative;
+    opacity: .93;
+    display: flex;
+    padding: 30px;
+    flex-wrap: wrap;
+    color: #fff;
+    text-align: left;
+    border-radius: 15px
+}
+
+#timeline .rice_png p {
+    display: block;
+    position: relative;
+    align-self: center;
+    flex: 1 1 100%;
+    margin-bottom: 0;
+    line-height: 25px
+}
+
+#timeline .rice_png::before {
+    background: rgba(0, 34, 84, .9);
+    content: "";
+    top: 0;
+    width: 100%;
+    border-radius: 15px
+}
+
+#timeline .hrud_png {
+    background: url(../img/csr/ID2.png) 0 0/cover;
+    height: 214px;
+    width: 100%;
+    position: relative;
+    opacity: .93;
+    display: flex;
+    padding: 20px;
+    flex-wrap: wrap;
+    color: #fff;
+    text-align: left
+}
+
+#timeline .hrud_png p {
+    display: block;
+    position: relative;
+    line-height: 24px;
+    align-self: center;
+    flex: 1 1 100%
+}
+
+#timeline .hrud_png::before {
+    background: #fa9600D9;
+    content: "";
+    top: 0;
+    width: 100%
+}
+
+#timeline .snippet {
+    display: flex;
+    justify-content: flex-end
+}
+
+#timeline .snippetr {
+    display: flex;
+    justify-content: flex-start
+}
+
+.about-subtext {
+    color: #fff;
+    font-size: 30px;
+    font-weight: 300;
+    padding-top: 0;
+    text-align: left;
+}
+
+.bg-overview {
+    background-image: url(../img/about/bg-overview.png)
+}
+
+.conga-expertise .expertise-list li,
+.overview-expertise .col-md-3 {
+    width: 20%
+}
+
+.card-overview {
+    width: 100%;
+    height: 360px;
+    border-radius: 15px;
+    padding: 1.5rem;
+    position: relative;
+    display: inline-block;
+    align-items: flex-end;
+    transition: .4s ease-out;
+    border: none;
+    margin-right: 15px
+}
+
+.card-overview:hover {
+    transform: translateY(0)
+}
+
+.card-overview:hover:before {
+    opacity: 1;
+    background: rgba(0, 34, 84, .9)
+}
+
+.card-overview:hover .info {
+    opacity: 1;
+    transform: translateY(0)
+}
+
+.card-overview:before {
+    content: "";
+    top: 0;
+    display: block;
+    width: 100%;
+    border-radius: 15px;
+    background-image: linear-gradient(#002253 0, rgba(0, 34, 83, 0) 100%);
+    z-index: 2
+}
+
+.card-overview img {
+    width: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    top: 0;
+    border-radius: 15px
+}
+
+.card-overview .info {
+    position: relative;
+    z-index: 3;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: .5s;
+    padding: 20px 0;
+    text-align: center
+}
+
+.card-overview h6 {
+    margin: 0;
+    position: relative;
+    color: #fff;
+    font-size: 20px;
+    opacity: 1;
+    z-index: 2;
+    text-align: center;
+    font-weight: 300;
+    line-height: 30px
+}
+
+.card-overview .info::before {
+    content: "";
+    position: absolute;
+    width: 70px;
+    height: 1px;
+    background: #fa9600;
+    margin-left: -35px
+}
+
+.card-overview .info p {
+    letter-spacing: 1px;
+    font-size: 15px;
+    margin-top: 30px;
+    text-align: center;
+    padding: 0;
+    font-weight: 400
+}
+
+.achievements {
+    /*    background-image: url(https://shtheme.com/demosd/samuwp/wp-content/themes/samu/assets/images/integration-bg.png);*/
+    background-size: cover;
+    background-color: #091636;
+}
+
+.achievements .container {
+    border: 4px solid rgb(191 210 255 / 40%);
+    padding: 60px;
+    border-radius: 50px;
+    background: rgb(255 255 255 / 4%);
+}
+
+.achievements .achievement-card {
+    padding: 20px;
+    background: #fff;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 20px;
+}
+
+.achievements .achievement-card i {
+    align-self: center;
+    margin-right: 20px;
+}
+
+.achievements .achievement-card p {
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 0;
+    align-self: center;
+}
+
+.achievements .achievement-card p span {
+    font-size: 16px;
+    font-weight: 500;
+    display: inherit;
+    padding-top: 5px
+}
+
+.achievements .achievement-card p small {
+    font-size: 10px;
+    position: relative;
+    top: -5px
+}
+
+.news-events .nav-pills .nav-link.active,
+.news-events .nav-pills .show > .nav-link {
+    color: #000;
+    background-color: transparent
+}
+
+.news-events .nav-pills .nav-link {
+    background: 0 0;
+    border: 0;
+    border-radius: 0;
+    font-size: 20px;
+    font-weight: 400;
+    border-bottom: 1px solid #ebebeb;
+    color: #000;
+    padding: 1rem 0
+}
+
+.news-events .nav-pills .nav-link p {
+    font-size: 16px;
+    padding-top: 10px;
+    color: #1b76ff
+}
+
+.news-events .nav-pills .nav-link p span,
+.news-events .tab-content .news-info span,
+.upcoming-events-content p span {
+    color: #9f9f9f
+}
+
+.news-events .nav-pills .nav-link p i {
+    font-size: 20px;
+    padding-left: 10px;
+    position: relative;
+    top: 0;
+    color: #9f9f9f;
+    float: right
+}
+
+.news-events-left-content {
+    max-height: 650px;
+    overflow: auto
+}
+
+.news-events-left-content h6 {
+    color: #1b76ff;
+    font-size: 20px
+}
+
+.news-events-left-content .mCSB_draggerRail {
+    width: 7px
+}
+
+.news-events-left-content .mCSB_dragger_bar {
+    background-color: rgb(62 62 62) !important;
+    width: 5px !important
+}
+
+.news-events .tab-content i.news-img {
+    display: inherit;
+    width: 100%
+}
+
+.news-events .tab-content i.news-img img {
+    width: 100%;
+    border-radius: 16px
+}
+
+.news-events .tab-content h4 {
+    font-size: 20px;
+    font-weight: 400;
+    padding: 30px 0 15px;
+    margin: 0;
+    color: #1b76ff
+}
+
+.news-events .tab-content .primary-btn {
+    float: left;
+    margin-top: 15px
+}
+
+.news-events .tab-content .primary-btn:focus,
+.news-events .tab-content .primary-btn:hover {
+    color: #1b76ff;
+    border: 1px solid #1b76ff
+}
+
+.bg-events {
+    background-image: url(../img/about/bg-events.png)
+}
+
+.upcoming-events-content h6 {
+    color: #1b76ff;
+    font-size: 20px;
+    font-weight: 400
+}
+
+.news-events-nav {
+    position: relative;
+    box-shadow: 0 2px 15px rgb(0 0 0 / 10%)
+}
+
+.news-events-nav ul {
+    padding: 0;
+    margin: 0;
+    text-align: center
+}
+
+.news-events-nav ul li {
+    list-style: none;
+    display: inline-block
+}
+
+.news-events-nav ul li a {
+    padding: 15px 30px;
+    display: inherit;
+    color: #1e1e1e;
+    position: relative
+}
+
+.news-events-nav ul li a.active::before {
+    content: '';
+    position: absolute;
+    height: 5px;
+    background: #fa9600;
+    width: 100%;
+    bottom: 0;
+    left: 0
+}
+
+.news-events .col-md-7 img {
+    border-radius: 15px
+}
+
+.bg-careers {
+    background-image: url(../img/about/careers-page/banner-img.jpg);
+    height: inherit
+}
+
+.bg-careers .about-subtext {
+    padding-top: 10px
+}
+
+.bg-careers .primary-btn {
+    padding: 5px 35px;
+    font-size: 20px;
+    width: 250px;
+    margin: 15px auto
+}
+
+.why-join-forsys h2 {
+    padding-bottom: 15px !important;
+    margin: 0
+}
+
+.testimonials-clean .item,
+.why-join-forsys-sub-text {
+    margin-bottom: 30px
+}
+
+.why-join-forsys .expertise-list li div {
+    min-height: 155px
+}
+
+.our-values .why-forsys-content {
+    margin-bottom: 0;
+    min-height: 283px
+}
+
+.bg-resources {
+    background-image: url(../img/about/banner-resources.png)
+}
+
+.select-wrapper,
+.select-wrapper:hover {
+    background: url("../img/dropdown.png") right center no-repeat
+}
+
+.resources-form form {
+    display: flex;
+    align-items: center;
+    justify-content: center
+}
+
+.resources-form .form-group {
+    position: relative;
+    padding: 12px 15px
+}
+
+.resources-form .form-group:nth-child(2) {
+    padding-right: 0;
+    margin-left: 15px
+}
+
+.resources-form .form-group span {
+    padding-right: 10px
+}
+
+.select-wrapper {
+    float: left;
+    display: inline-block;
+    cursor: pointer
+}
+
+.select-wrapper,
+.select-wrapper select {
+    width: 400px;
+    height: 50px;
+    line-height: 26px
+}
+
+.select-wrapper .holder {
+    display: block;
+    margin: 0 35px 0 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+    z-index: -1;
+    width: 50px
+}
+
+.select-wrapper select {
+    margin: 0;
+    position: absolute;
+    z-index: 2;
+    cursor: pointer;
+    outline: 0;
+    left: 0;
+    top: 0
+}
+
+.testimonials-clean {
+    padding: 30px 0 !important
+}
+
+.hs-form-private fieldset {
+    margin-bottom: 25px;
+}
+
+.testimonials-clean h3 {
+    margin-bottom: 25px !important
+}
+
+.testimonials-clean p {
+    color: #000
+}
+
+.testimonials-clean h2 {
+    font-weight: 700;
+    color: inherit
+}
+
+@media (max-width:767px) {
+    .testimonials-clean h2 {
+        margin-bottom: 25px;
+        padding-top: 25px;
+        font-size: 24px
+    }
+}
+
+.testimonials-clean .intro {
+    font-size: 16px;
+    max-width: 500px;
+    margin: 0 auto
+}
+
+.footer-area-bottom p,
+.testimonials-clean .intro p {
+    margin-bottom: 0
+}
+
+.testimonials-clean .item .bocx {
+    padding: 30px;
+    background: #fff;
+    border-radius: 20px;
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    box-shadow: rgba(100, 100, 111, .2) 0 7px 29px 0;
+    justify-content: space-between
+}
+
+.testimonials-clean .item:nth-child(3) {
+    margin-bottom: 0 !important
+}
+
+.testimonials-clean .item .bocx:after {
+    content: '';
+    position: absolute;
+    left: 30px;
+    bottom: -24px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-width: 12px 15px;
+    border-top-color: #fff
+}
+
+.testimonials-clean .item .bocx.xo:after {
+    content: '';
+    position: absolute;
+    right: 30px;
+    left: auto;
+    bottom: -24px;
+    width: 0;
+    height: 0;
+    border: 15px solid transparent;
+    border-width: 12px 15px;
+    border-top-color: #fff
+}
+
+.testimonials-clean .item .author {
+    margin-top: 28px;
+    padding-left: 25px
+}
+
+.testimonials-clean .item .author.author-r {
+    text-align: right;
+    padding-right: 25px
+}
+
+.testimonials-clean .item .name span {
+    color: #444;
+    font-weight: 400
+}
+
+.testimonials-clean .item .name {
+    font-weight: 700;
+    margin-bottom: 2px;
+    color: #000;
+    display: inline-block;
+    width: 15%;
+    flex: 1 1 100%;
+    font-size: 14px;
+    align-self: center;
+    text-align: right
+}
+
+.testimonials-clean .item .title {
+    font-size: 13px;
+    color: #181818
+}
+
+.testimonials-clean .item .description {
+    font-size: 16px;
+    margin-bottom: 0;
+    display: inline-block;
+    width: 92%;
+    margin-left: 0;
+    line-height: 24px;
+    align-self: center;
+    color: #000
+}
+
+.testimonials-clean .item img {
+    max-width: 70px;
+    display: inline-block;
+    float: left;
+    margin-right: 12px;
+    height: 70px;
+    align-self: center;
+    border: 1px solid #444;
+    border-radius: 50px
+}
+
+.testimonials-clean .item img.rrr {
+    max-width: 40px;
+    float: right;
+    margin-right: 0;
+    margin-top: -5px
+}
+
+.bg-digital-commerce {
+    background-image: url(../img/services/bg-digital-commerce.png)
+}
+
+.bg-billing-services {
+    background-image: url(../img/services/billing.png)
+}
+
+.bg-clm-services {
+    background-image: url(../img/services/clm.png)
+}
+
+.bg-cpq-services {
+    background-image: url(../img/services/cpq.png)
+}
+
+.bg-crm-services {
+    background-image: url(../img/services/crm.png)
+}
+
+.bg-data-integration {
+    background-image: url(../img/services/data-integration.png)
+}
+
+.digital-commerce-bg {
+    background-image: url(../img/services/digital-commerce.png)
+}
+
+.bg-financial-services {
+    background-image: url(../img/services/financials.png)
+}
+
+.bg-scm-services {
+    background-image: url(../img/services/supply-chain.png)
+}
+
+.bg-team-page {
+    background-image: url(../img/team/team.png)
+}
+
+.bg-solutions-page {
+    background-image: url(https://forsysinc.com/blog/wp-content/uploads/2023/02/sol-bg-2.jpg);
+    height: 350px;
+}
+
+.conga-expertise .expertise-list li div {
+    min-height: 110px;
+    line-height: 24px;
+    margin: 0
+}
+
+.data-integration .expertise-list li div {
+    min-height: 146px
+}
+
+.why-forsys-digital-commerce .why-forsys-content {
+    min-height: 277px
+}
+
+ul.rise-list {
+    list-style: none;
+    padding: 0
+}
+
+ul.rise-list li {
+    padding-bottom: 10px
+}
+
+ul.rise-list li i {
+    margin-right: 10px;
+    color: #1b76ff
+}
+
+.rise-digital-commerce-info {
+    margin-bottom: 30px;
+    display: flex
+}
+
+.rise-digital-commerce-info span {
+    border-right: 1px solid #ccc;
+    display: inline-block;
+    padding-right: 30px;
+    line-height: 60px;
+    width: 260px
+}
+
+.rise-digital-commerce-info label {
+    font-size: 20px;
+    color: #1b76ff;
+    padding: 0 0 0 25px;
+    margin: 0;
+    font-weight: 400
+}
+
+.rise-digital-commerce-rt-content img {
+    border-radius: 8px
+}
+
+.hbspt-form li,
+.hbspt-form ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+.contact-banner {
+    background: url(../img/banner-contact.png)
+}
+
+.campaign-banner .left .page-title,
+.contact-banner .left .page-title {
+    padding: 12rem 10rem;
+    color: #fff;
+    font-size: 42px;
+    font-weight: 200
+}
+
+.campaign-banner {
+    background: url(../img/campaign_landing.jpg) 0 0/cover;
+    height: 372px;
+    position: relative;
+    opacity: .93
+}
+
+.campaign-banner .left .content-part,
+.policy-banner .left .content-part {
+    padding: 10rem 2rem 10rem 8rem
+}
+
+.campaign-banner .left .content-part .parent-page {
+    color: #fff;
+    font-size: 42px;
+    font-weight: 200
+}
+
+.campaign-banner .left .content-part .page-name {
+    font-weight: 400;
+    font-size: 28px;
+    color: #fa9600
+}
+
+.contact .input-group,
+.contact input {
+    height: 50px
+}
+
+.hs-form-private input,
+.hs-form-private select,
+.hs-form-private textarea {
+    border: 0 solid #e3e3e3;
+    border-bottom: 1px solid grey;
+    border-radius: 0;
+    background: #fff;
+    font-size: 12px;
+    padding: 10px 10px 10px 0;
+    width: 100% !important;
+    height: 50px
+}
+
+.hs-form-private textarea {
+    margin-bottom: -5px;
+    margin-right: 50px
+}
+
+.hs-form-private input.error,
+.hs-form-private input.invalid,
+.hs-form-private select.error,
+.hs-form-private select.invalid,
+.hs-form-private textarea.error,
+.hs-form-private textarea.invalid {
+    border: 0 solid #bb3434;
+    border-bottom: 1px solid #bb3434
+}
+
+.hs-form-private input:focus,
+.hs-form-private textarea:focus {
+    border: 0 solid #e3e3e3;
+    border-bottom: 1px solid grey;
+    border-radius: 0;
+    background: #fff;
+    font-size: 12px;
+    padding: 10px 10px 10px 0;
+    width: 100% !important;
+    outline: 0
+}
+
+.hs-form-private .hs-error-msg {
+    font-size: 11px;
+    color: #bb3434;
+    width: 80% !important;
+    margin-left: 0px !important;
+}
+
+.hs-form-private .form-columns-1,
+.hs-form-private .form-columns-2,
+.hs-form-private .form-columns-0 {
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.hs-form-private .hs-main-font-element {
+    font-size: 11px;
+    color: #bb3434;
+    display: block;
+    width: 50%;
+    padding: 10px;
+    background: #ffe7e7;
+    margin: 0 auto 20px;
+    text-align: center
+}
+
+.hs-form-private .actions {
+    display: block;
+    float: right;
+    width: 100%
+}
+
+.hs-form-private .actions .hs-button.primary {
+    float: none !important;
+    display: block;
+    width: auto !important;
+    height: 50px;
+    margin: 0 auto;
+    border: 1px solid #fa9600;
+    background: #fa9600;
+    padding: 10px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: 500;
+    color: #000;
+    transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    position: relative;
+    z-index: 1;
+    border-radius: 5px;
+}
+
+.hs-form-private .actions .hs-button.primary:hover {
+    width: auto !important;
+    margin: 0 auto;
+    color: #1b76ff;
+    background: #fff;
+    border: 1px solid #1b76ff
+}
+
+.cookie-reset-container a {
+    text-decoration: underline !important;
+    cursor: pointer !important;
+}
+
+.cookie-reset-container {
+    cursor: text !important;
+}
+
+span.hs-form-required {
+    color: #bb3434;
+    display: inline-block;
+    margin-left: 3px
+}
+
+.custom-modal .hs-form-private fieldset.form-columns-2 .input {
+    margin-right: 20px
+}
+
+.custom-modal .hs-form-private fieldset.form-columns-2 input::placeholder {
+    color: rgb(0 0 0 / 40%)
+}
+
+.custom-modal .hbspt-form fieldset .hs-form-field:first-child .input {
+    margin-right: 30px !important
+}
+
+.hs-form-private label {
+    font-size: 12px;
+    margin-bottom: 0;
+    color: #212121;
+}
+
+.hs-form-private label.hs-error-msg {
+    display: inherit !important
+}
+
+.hs-form-private .hs-form-field::before {
+    content: '';
+    height: 35px;
+    display: none;
+    width: 35px;
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 16px;
+    left: 10px
+}
+
+.hs-form-private .hs_firstname::before,
+.hs-form-private .hs_lastname::before {
+    background-image: url('../img/icons/user.svg')
+}
+
+.hs-form-private .hs_email::before {
+    background-image: url('../img/icons/mail-outline.svg')
+}
+
+.hs-form-private .hs_message::before {
+    background-image: url('../img/icons/bx-message-square-detail.svg')
+}
+
+.hs-form-private .hs_jobtitle::before {
+    background-image: url('../img/icons/work_outline-24px.svg')
+}
+
+.hs-form-private .hs_company::before {
+    background-image: url('../img/icons/business-24px.svg')
+}
+
+.contact input::placeholder {
+    color: rgb(0 0 0 / 40%)
+}
+
+.btn {
+    font-weight: 500;
+}
+
+.btn.prime {
+    color: #000;
+    padding: 12px 25px;
+    border: 1px solid #1b76ff;
+    border-radius: 0
+}
+
+#lets_talk .hs-form-private .hs-richtext,
+.hs-form-private .hs-richtext {
+    padding: 0;
+    color: #000;
+    font-family: Outfit, sans-serif !important;
+    background: #fff;
+    font-size: 13px
+}
+
+.btn.prime:hover {
+    border: 1px solid #fa9600
+}
+
+.bg-grey {
+    background: #f6f6f6
+}
+
+.contact .map .forsys-icon {
+    width: 35px;
+    height: 35px;
+    border: 2px solid #1b76ff;
+    border-radius: 50%;
+    display: flex;
+    position: absolute;
+    background: #fff;
+    justify-content: center
+}
+
+.contact .map .forsys-icon:focus {
+    border: 2px solid #fa9600
+}
+
+.contact .map .forsys-icon img {
+    align-self: center
+}
+
+.contact .map .forsys-icon.one {
+    left: 325px;
+    bottom: 250px
+}
+
+.contact .map .forsys-icon.two {
+    left: 390px;
+    bottom: 240px
+}
+
+.contact .map .forsys-icon.three {
+    right: 480px;
+    bottom: 200px
+}
+
+.contact .map .forsys-icon.one .one-map {
+    position: absolute;
+    top: -236px;
+    background: #fff;
+    padding: 20px;
+    width: 246px;
+    height: 213px;
+    text-align: left;
+    display: none
+}
+
+.contact .map .forsys-icon.one:focus .one-map {
+    display: inline-block;
+    text-align: left;
+    width: 246px;
+    height: 213px;
+    box-shadow: 0 3px 6px #00000029;
+    border: 1px solid #e3e3e3;
+    border-radius: 8px;
+    padding: 15px
+}
+
+.contact .map .forsys-icon.three:focus .three-map,
+.contact .map .forsys-icon.two:focus .two-map {
+    box-shadow: 0 3px 6px #00000029;
+    border: 1px solid #e3e3e3;
+    padding: 15px;
+    display: inline-block;
+    text-align: left
+}
+
+.contact .map .forsys-icon.one:focus .one-map .state,
+.contact .map .forsys-icon.three:focus .three-map .state,
+.contact .map .forsys-icon.two:focus .two-map .state {
+    color: #1b76ff;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    display: block
+}
+
+.contact .map .forsys-icon.one:focus .one-map .address,
+.contact .map .forsys-icon.three:focus .three-map .address,
+.contact .map .forsys-icon.two:focus .two-map .address {
+    color: #2a2a2a;
+    font-size: 14px !important
+}
+
+.contact .map .forsys-icon.two .two-map {
+    position: absolute;
+    top: -110px;
+    background: #fff;
+    left: 62px;
+    padding: 20px;
+    width: 246px;
+    height: 213px;
+    text-align: left;
+    display: none
+}
+
+.contact .map .forsys-icon.two:focus .two-map {
+    width: 246px;
+    border-radius: 8px
+}
+
+.contact .map .forsys-icon.three .three-map {
+    position: absolute;
+    top: -206px;
+    background: #fff;
+    left: 0;
+    padding: 20px;
+    width: 246px;
+    text-align: left;
+    display: none
+}
+
+.contact .map .forsys-icon.three:focus .three-map {
+    width: 280px;
+    border-radius: 8px
+}
+
+.hs-form-private option[disabled=disabled] {
+    font-size: 12px;
+    color: grey !important;
+    opacity: .5
+}
+
+.contact .hs-form-private .inputs-list.multi-container {
+    border: 1px solid #e3e3e3;
+    padding: 15px
+}
+
+.contact fieldset.form-columns-2 .input {
+    margin-right: 40px !important
+}
+
+#lets_talk .hs-form-private input[type=checkbox],
+.hs-form-private input[type=checkbox] {
+    width: 15px !important;
+    height: 30px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 5px
+}
+
+#lets_talk .hs-form-private .hs-form-checkbox {
+    display: inline-block;
+    width: 46%
+}
+
+#lets_talk .hs-form-private .hs-richtext {
+    width: 100%;
+    text-align: left;
+    font-weight: 300;
+    margin-bottom: 0
+}
+
+#lets_talk .hs-form-private .hs-form-checkbox-display,
+.hs-form-private .hs-form-checkbox-display {
+    display: inline-block !important
+}
+
+#lets_talk .hs-form-private .inputs-list.multi-container {
+    margin-top: 0;
+    border: none !important;
+    padding: 10px 0
+}
+
+.hs-form-private .hs-form-checkbox {
+    display: inline-block;
+    width: 25%
+}
+
+.hs-form-private .hs-richtext {
+    width: 100%;
+    text-align: left;
+    font-weight: 400;
+    margin-bottom: -10px
+}
+
+.hs-form-private .hs-form-checkbox-display span {
+    position: relative;
+    top: 1px
+}
+
+.hs-form-private .inputs-list.multi-container {
+    border: 1px solid #e3e3e3;
+    padding: 45px 10px 5px;
+    background: #fff
+}
+
+.hs-form-private .hs-su bmit {
+    margin-right: 10px
+}
+
+div.hs_ayara_campaign_interests::before,
+div.hs_interested_in::before,
+div.hs_netsuite_campaign_interests::before,
+div.hs_qa_campaign_interests::before {
+    content: 'Interested in' !important;
+    position: absolute !important;
+    font-size: 14px !important;
+    color: #000 !important;
+    height: 30px !important;
+    width: 200px !important;
+    margin-left: 30px
+}
+
+div.hs_ayara_campaign_interests::after,
+div.hs_interested_in::after,
+div.hs_netsuite_campaign_interests::after,
+div.hs_qa_campaign_interests::after {
+    content: '';
+    background-image: url(../img/icons/interest.svg);
+    height: 35px;
+    width: 35px;
+    position: absolute;
+    background-repeat: no-repeat;
+    top: 16px;
+    left: 10px
+}
+
+div.hs_netsuite_campaign_interests .hs-form-checkbox {
+    width: 33%
+}
+
+div.hs_netsuite_campaign_interests .hs-form-checkbox-display {
+    display: inline-block !important;
+    font-size: 12px
+}
+
+div.hs_qa_campaign_interests .hs-form-checkbox {
+    display: inline-block;
+    width: 50%;
+    vertical-align: top;
+    font-size: 12px
+}
+
+.form-title {
+    bottom: 82px;
+    position: relative;
+    z-index: 99;
+    background: #1b76ff;
+    height: 45px;
+    text-align: center;
+    line-height: 45px;
+    font-size: 16px;
+    color: #fff
+}
+
+.expertise-list,
+.layout-overlay-content {
+    z-index: 1;
+    position: relative
+}
+
+.form-bgg {
+    bottom: 82px;
+    position: relative;
+    background: #f7faff;
+    padding: 30px;
+    border: 1px solid
+}
+
+.hs-form-private input[type=file] {
+    padding: 10px;
+    font-size: 14px
+}
+
+.footer-area-bottom {
+    background: #f1f1f1;
+    padding: 15px 0
+}
+
+input[type=file]::file-selector-button {
+    border: 2px solid #fff;
+    padding: .2em .4em;
+    background: #fff;
+    transition: 1s;
+    width: 30px;
+    z-index: 99999999999;
+    color: #fff
+}
+
+.hs-form-private .hs-form-field.hs_upload_your_resume::before {
+    background-image: url(../img/icons/upload.svg)
+}
+
+.bg-qa {
+    background: url(../img/transformation/qa.png)
+}
+
+.bg-qa-expertise {
+    background: url(../img/transformation/qa/banner-qa-engineering-service_2.jpg)
+}
+
+.bg-salesforce {
+    background: url(../img/partners/salesforce.png)
+}
+
+.bg-bpr {
+    background: url(../img/transformation/business-process-reengineering.png)
+}
+
+.bg-salesforce .inner-banner-content {
+    display: flex;
+}
+
+.bg-salesforce .inner-banner-content p {
+    font-weight: 300;
+    padding-top: 15px;
+    padding-left: 30px;
+}
+
+.bg-salesforce .inner-banner-content b {
+    font-weight: bold
+}
+
+.bg-expertise {
+    background: url(../img/transformation/img-expertise.png)
+}
+
+.bg-value-stream-analysis {
+    background: url(../img/transformation/value-stream-analysis.png)
+}
+
+.bg-m-a {
+    background: url(../img/transformation/m-a.png)
+}
+
+.layout-overlay h4 {
+    position: relative;
+    font-weight: 400;
+    color: #fff
+}
+
+.layout-overlay-content h2 {
+    font-size: 28px;
+    color: #fff;
+    font-weight: 300;
+    padding-bottom: 30px;
+    line-height: 40px
+}
+
+.layout-overlay-content p {
+    text-align: left;
+    color: #fff
+}
+
+.expertise-list {
+    padding: 0;
+    margin: 0
+}
+
+.expertise-list li {
+    list-style: none
+}
+
+.expertise-list li div {
+    padding: 30px 20px 20px;
+    background: #fff;
+    border-radius: 8px;
+    margin-bottom: 25px;
+    text-align: center;
+    min-height: 110px
+}
+
+.expertise-list li span {
+    margin-bottom: 10px;
+    display: none
+}
+
+.bg-assessment-advisory {
+    background: url(../img/transformation/advisory-and-assessment.png)
+}
+
+.billing-expertise .expertise-list li {
+    width: 25%;
+    margin-bottom: 25px
+}
+
+.clm-list li div {
+    min-height: 130px !important;
+    padding-top: 42px
+}
+
+.financials-expertise .expertise-list li div {
+    min-height: 110px
+}
+
+.financials-expertise .expertise-list li {
+    width: 25%
+}
+
+.flodata-content ul.rise-list li {
+    display: inline-flex
+}
+
+.code-of-conduct p {
+    line-height: 30px
+}
+
+.code-of-conduct .list-items {
+    padding-bottom: 30px;
+    margin-left: 30px
+}
+
+.code-of-conduct .head-2 {
+    font-weight: 700;
+    color: #1b76ff
+}
+
+.code-of-conduct .list-items-2,
+.code-of-conduct .list-items-3,
+.code-of-conduct .list-items-4 {
+    margin-left: 30px
+}
+
+.code-of-conduct .list-items-2 ul li {
+    list-style: decimal;
+    padding-bottom: 15px;
+    line-height: 25px
+}
+
+.code-of-conduct .list-items-4 ul li {
+    list-style: lower-latin;
+    padding-bottom: 15px;
+    line-height: 25px
+}
+
+.code-of-conduct .list-items-3 ul li {
+    list-style: disc;
+    padding-bottom: 15px;
+    line-height: 25px
+}
+
+.code-of-conduct .list-items.two-lines ul li:before {
+    top: 3px
+}
+
+.code-of-conduct .list-items.two-lines li {
+    padding-bottom: 5px;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    display: -webkit-inline-box
+}
+
+.policy-banner {
+    background: url(../img/privacy-policy2.png) !important
+}
+
+.policy-banner .left .content-part .breadcrumbs li.breadcrumb-item {
+    display: inline-block;
+    font-size: 10px;
+    color: #fff;
+    padding-left: .1rem;
+    text-transform: uppercase
+}
+
+.policy-banner .left .content-part .breadcrumbs li.breadcrumb-item a {
+    display: inline-block;
+    font-size: 10px;
+    color: #fff;
+    text-transform: uppercase
+}
+
+.custom-modal .modal-content {
+    border: none !important;
+    border-radius: 0
+}
+
+.custom-modal .modal-body {
+    border-radius: 0;
+    padding: 2rem
+}
+
+.o-hidden {
+    overflow: hidden !important
+}
+
+#lets_talk .big-project {
+    font-size: 36px;
+    line-height: 42px;
+    font-weight: 300;
+    padding-right: 5rem;
+    padding-bottom: 1rem
+}
+
+#lets_talk .lkfjo {
+    font-size: 20px;
+    color: #757575;
+    font-weight: 400
+}
+
+#lets_talk .modal-body {
+    height: 100vh;
+    overflow: auto;
+}
+
+.btn-close:focus {
+    outline: 0;
+    border: none;
+    box-shadow: none
+}
+
+
+.btn-close {
+    background: 0 0;
+    width: 4em;
+    height: 4em
+}
+
+#lets_talk .modalclose:after,
+#lets_talk .modalclose:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 100%;
+    height: .1rem;
+    background-color: #111
+}
+
+#lets_talk .modalclose:after {
+    transform: rotate(-45deg)
+}
+
+#lets_talk .modalclose:before {
+    transform: rotate(45deg)
+}
+
+#lets_talk .modalclose:hover {
+    opacity: .5
+}
+
+#lets_talk .modalclose {
+    width: 4rem;
+    height: 4rem;
+    position: relative
+}
+
+.how-it-works .card-block img {
+    width: 75px;
+}
+
+.how-it-works .mt50 {
+    margin-top: -50px;
+}
+
+.how-it-works {
+    margin-top: 50px;
+}
+
+.how-it-works .card-block p {
+    line-height: 22px;
+}
+
+.how-it-works .card-block p strong {
+    line-height: 22px;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.how-it-works .card-block {
+    box-shadow: 0 4px 45px rgb(0 0 0 / 15%);
+    padding: 20px;
+    transition: .5s all ease;
+    border: none;
+    height: 100%;
+}
+
+.how-it-works .card-block:hover {
+    background: #7600ea;
+    color: #fff;
+    transform: scale(1.1);
+    transition: .5s all ease;
+}
+
+.how-it-works .card-block:hover img {
+    filter: brightness(0) invert(1);
+}
+
+.use-cases .two p {
+    background: #fff;
+    padding: 40px;
+    color: #444;
+    border-radius: 8px 0px 0px 8px;
+    box-shadow: 0 4px 45px rgb(0 0 0 / 15%);
+}
+
+.use-cases .two p.three {
+    background: #fff;
+    padding: 40px;
+    color: #444;
+    border-radius: 0px 8px 8px 0px;
+}
+
+.crong-before-white {
+    position: relative;
+}
+
+.crong-before-white::after {
+    background-image: url(https://forsysinc.com/blog/wp-content/uploads/2023/02/crong-white.png);
+    position: absolute;
+    left: -44px;
+    top: -35px;
+    content: '';
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.btn-after-white {
+    position: relative;
+}
+
+.btn-after-white::after {
+    background-image: url(https://forsysinc.com/blog/wp-content/uploads/2023/02/crong-white.png);
+    position: absolute;
+    right: -44px;
+    top: -35px;
+    content: '';
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+}
+
+.btn-after-white:hover::after {
+    background-image: url(https://forsysinc.com/blog/wp-content/uploads/2023/02/crong-white.png);
+    position: absolute;
+    right: -44px;
+    top: -35px;
+    content: '';
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+}
+
+.crong-before-black {
+    position: relative;
+}
+
+.crong-before-black::before {
+    background-image: url(https://forsysinc.com/blog/wp-content/uploads/2023/02/crong.png);
+    position: absolute;
+    left: -44px;
+    top: -30px;
+    content: '';
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    -webkit-transform: scaleX(-1);
+    transform: scaleX(-1);
+}
+
+.crong-after-white {
+    position: relative;
+}
+
+.crong-after-white::before {
+    background-image: url(https://forsysinc.com/blog/wp-content/uploads/2023/02/crong-white.png);
+    position: absolute;
+    right: -44px;
+    top: -30px;
+    content: '';
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+}
+
+.crong-after-white-udiy {
+    position: relative;
+}
+
+.crong-after-white-udiy::before {
+    background-image: url(https://forsysinc.com/blog/wp-content/uploads/2023/02/crong-white.png);
+    position: absolute;
+    right: -44px;
+    bottom: -30px;
+    content: '';
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+    transform: rotate(40deg)
+}
+
+.crong-after-black {
+    position: relative;
+}
+
+.crong-after-black::before {
+    background-image: url(https://forsysinc.com/blog/wp-content/uploads/2023/02/crong.png);
+    position: absolute;
+    right: -44px;
+    top: -30px;
+    content: '';
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-size: 40px;
+}
+
+.uoysqww {
+    width: max-content;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.sol-btn-white {
+    background: #fff;
+    color: #7600ea;
+    border: none;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.impact h2 {
+    font-size: 28px;
+    color: #7600ea;
+    font-weight: 300;
+    padding-bottom: 30px;
+    line-height: 40px;
+}
+
+@media only screen and (min-width:240px) and (max-width:767px) {
+    #lets_talk .big-project {
+        font-size: 18px;
+        line-height: 34px;
+        font-weight: 300;
+        padding-right: 5rem;
+        padding-bottom: 0
+    }
+
+    #lets_talk .modalclose {
+        width: 2rem;
+        height: 2rem;
+        position: relative
+    }
+
+    .resources-form .form-group {
+        margin-bottom: 15px
+    }
+
+    .resources-form .form-group:nth-child(2) {
+        padding-right: 0;
+        margin-left: 0
+    }
+
+    .resources-form form {
+        flex-wrap: wrap
+    }
+
+    .select-wrapper,
+    .select-wrapper select {
+        width: 100%
+    }
+
+    .case-studies .case-studies-card h4,
+    .case-studies .case-studies-card p {
+        min-height: inherit
+    }
+
+    .desc-content {
+        padding: 30px 0;
+        text-align: center
+    }
+
+    .desc-content h4 {
+        padding: 0 !important
+    }
+
+    .desc-content #carouselExampleSlidesOnly {
+        margin-top: 30px
+    }
+
+    .desc-content .carousel-indicators {
+        left: 0 !important;
+        margin-left: 0
+    }
+
+    .bg-solutions-page::before {
+        background: none !important;
+    }
+
+    .bg-solutions-page {
+        height: auto !important;
+    }
+
+    .how-it-works {
+        margin-top: 0px;
+    }
+
+    .mt50 {
+        margin-top: 0px !important;
+    }
+}
+
+.xs-show {
+    display: none;
+    color: #1b76ff;
+    font-size: 20px;
+    margin-bottom: 1rem
+}
+
+.desc-content h4 {
+    font-size: 24px;
+    line-height: 40px;
+    font-weight: 300;
+    padding-right: 40px
+}
+
+.desc-content .partners-team {
+    background: #fff;
+    padding: 30px 30px 40px
+}
+
+.desc-content .partners-team h3 {
+    font-size: 22px;
+    font-weight: 400;
+    color: #1b76ff;
+    padding-bottom: 20px
+}
+
+.desc-content .partners-team p {
+    padding-bottom: 0;
+    margin-bottom: 5px;
+    color: #222
+}
+
+.desc-content .partners-team i img {
+    width: 200px;
+    border: 5px solid #f5eded;
+    border-radius: 50%
+}
+
+.desc-content .partners-team .designation {
+    font-size: 13px
+}
+
+.desc-content .partners-team .description {
+    font-size: 13px;
+    height: 0;
+    overflow: hidden;
+    text-align: center;
+    transition: .6s
+}
+
+.desc-content .partners-team:hover .description {
+    height: auto;
+    display: inherit;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 10px
+}
+
+.desc-content .partners-team a:focus,
+.desc-content .partners-team a:hover {
+    border: 1px solid #1b76ff !important;
+    color: #1b76ff !important
+}
+
+.desc-content .carousel-indicators {
+    bottom: -16px;
+    z-index: 99999;
+    width: 100%;
+    left: -53px;
+    height: 40px
+}
+
+.desc-content .carousel-indicators [data-bs-target] {
+    background-color: #1b76ff;
+    margin-top: 8px
+}
+
+.desc-content a.btn-link,
+.desc-content a.btn-link:focus,
+.desc-content a.btn-link:hover {
+    border-radius: 0;
+    border: none !important;
+    color: #1b76ff;
+    outline: 0;
+    display: inherit
+}
+
+.index-testimonials .carousel-control-next,
+.index-testimonials .carousel-control-prev {
+    position: absolute;
+    border: none;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    outline: 0;
+    z-index: 1;
+    top: 44% !important;
+    background: 0 0;
+    color: #1b76ff;
+    opacity: 1;
+    font-size: 30px
+}
+
+.index-testimonials .bocx {
+    padding: 0 60px;
+    min-height: 272px
+}
+
+.index-testimonials .bocx img {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    padding: 15px;
+    width: 150px;
+    float: left;
+    margin-right: 30px
+}
+
+.index-testimonials p.description {
+    display: grid
+}
+
+.index-testimonials h5.name {
+    text-align: right;
+    font-size: 16px;
+    color: #1b76ff;
+    font-style: italic;
+    min-height: 36px
+}
+
+.index-testimonials h5.name span {
+    display: inherit;
+    font-size: 14px !important;
+    color: #666
+}
+
+@media (min-width:1400px) {
+
+    .container,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        max-width: 1140px
+    }
+
+    .container,
+    .container-fluid,
+    .container-lg,
+    .container-md,
+    .container-sm,
+    .container-xl,
+    .container-xxl {
+        width: 80%
+    }
+
+}
+
+@media only screen and (max-width:1169px) {
+    #header .header-content .primary-btn {
+        padding: 18px 25px
+    }
+
+    #footer .footer-top .footer-column-1 .footer-logo {
+        padding-right: 10px
+    }
+
+    #footer .footer-top .footer-column-1 span {
+        margin-right: 10px
+    }
+
+    #footer .footer-top .footer-links ul a {
+        display: inherit
+    }
+
+    .inner-banner {
+        height: inherit
+    }
+
+    .conga-expertise .expertise-list li {
+        width: 25%;
+        margin-bottom: 30px
+    }
+
+    #banner {
+        height: 430px
+    }
+
+    #banner video {
+        width: 100%
+    }
+
+    #banner .bg-video-wrap {
+        z-index: -1
+    }
+
+    .index-services-technologies p {
+        padding-top: 0
+    }
+
+    .achievements .achievement-card p {
+        min-height: 143px
+    }
+
+    .why-forsys.our-values.carrers-values .col-md-2 {
+        width: 33.3%
+    }
+
+    .achievements .achievement-card {
+        margin-bottom: 30px
+    }
+
+    .our-values .why-forsys-content {
+        margin-bottom: 30px;
+        min-height: inherit
+    }
+
+    .expertise-list {
+        margin-top: 0 !important
+    }
+
+    .products .product-card a p {
+        min-height: 300px
+    }
+
+    .financials-expertise .expertise-list li div {
+        min-height: 155px;
+        margin-bottom: 0 !important
+    }
+}
+
+@media screen and (max-width:768px) {
+    [data-aos-delay] {
+        transition-delay: 0s !important
+    }
+
+    #header .header-content .primary-btn,
+    .rise-digital-commerce-rt-content {
+        display: none
+    }
+
+    .conga-expertise .expertise-list li {
+        width: 33.3%;
+        margin-bottom: 25px
+    }
+
+    .achievements .achievement-card,
+    .why-forsys-digital-commerce .why-forsys-content {
+        margin-bottom: 30px
+    }
+
+    .inner-banner {
+        height: inherit
+    }
+
+    #banner {
+        height: 330px
+    }
+
+    #banner video,
+    .index-services-technologies ul.services-list li span img {
+        width: 100%
+    }
+
+    #banner .bg-video-wrap {
+        z-index: -1
+    }
+
+    .index-services-technologies p {
+        padding-top: 0
+    }
+
+    .industry-overview ul.industry-list li,
+    .overview-expertise .col-md-3 {
+        width: 33.3%;
+        margin-bottom: 30px
+    }
+
+    .achievements .achievement-card p {
+        min-height: 143px
+    }
+
+    .achievements .col-md-3,
+    .financials-expertise .expertise-list li {
+        width: 33.3%
+    }
+
+    .why-join-forsys .expertise-list li div {
+        min-height: 122px
+    }
+
+    .expertise-list li {
+        width: 50%
+    }
+
+    .why-forsys.our-values.carrers-values .col-md-2 {
+        flex: 0 0 auto;
+        width: 33.3%;
+        margin-bottom: 30px
+    }
+
+    .expertise-list {
+        margin-top: 0 !important
+    }
+
+    .products .product-card a p {
+        min-height: 300px
+    }
+}
+
+@media only screen and (max-width:767px) {
+
+    .carrers-values .why-forsys-content h4,
+    .why-forsys-block .why-forsys-content h4,
+    .why-forsys-cpq .why-forsys-content h4,
+    .why-forsys-crm .why-forsys-content h4,
+    .why-forsys-data-integration .why-forsys-content h4,
+    .why-forsys-dc .why-forsys-content h4,
+    .why-forsys-financials .why-forsys-content h4,
+    .why-forsys-scm .why-forsys-content h4,
+    .why-forys-clm .why-forsys-content h4 {
+        padding-bottom: 15px;
+        min-height: initial
+    }
+
+    #header .header-content .primary-btn {
+        display: none
+    }
+
+    #banner {
+        height: 195px
+    }
+
+    #banner .bg-video-wrap {
+        z-index: -1
+    }
+
+    #banner video,
+    .achievements .col-md-3,
+    .expertise-list li,
+    .financials-expertise .expertise-list li {
+        width: 100%
+    }
+
+    .inner-banner {
+        height: inherit
+    }
+
+    .industry-overview ul.industry-list li {
+        width: 50%;
+        border-right: none;
+        min-height: 120px
+    }
+
+    .products .product-card a {
+        margin-bottom: 15px
+    }
+
+    .footer-lets-talk p {
+        font-size: 34px
+    }
+
+    #footer .footer-top .footer-column-1 .footer-logo {
+        padding-right: 10px
+    }
+
+    #footer .footer-top .footer-column-1 span {
+        margin-right: 10px
+    }
+
+    .copyright {
+        margin-top: 15px
+    }
+
+    .team-card .team-content {
+        width: 100%;
+        text-align: center
+    }
+
+    .team-card .team-pic {
+        margin: 0 auto
+    }
+
+    #timeline .timeline-movement .timeline-item p.para {
+        line-height: 14px;
+        padding: 10px;
+        font-size: 12px
+    }
+
+    #timeline .rice_png {
+        font-size: 12px;
+        padding: 10px;
+        line-height: 13px;
+        height: auto
+    }
+
+    #timeline .rice_png p,
+    #timeline p {
+        line-height: 13px
+    }
+
+    .offset-md-2.offset-xs-1.col-sm-9,
+    .offset-md-2.offset-xs-1.col-sm-9.text-right {
+        padding-right: 50px
+    }
+
+    #timeline .snippetr,
+    .offset-md-1.col-sm-9 {
+        padding-left: 50px
+    }
+
+    .contact-banner,
+    .csr-banner {
+        height: 140px
+    }
+
+    .contact-banner .left .page-title,
+    .csr-banner .left .page-title {
+        padding: 86px 2rem;
+        font-size: 26px
+    }
+
+    .campaign-banner {
+        height: 200px
+    }
+
+    .campaign-banner .left .page-title {
+        padding: 80px 2rem;
+        font-size: 26px;
+        font-family: Nunito Sans;
+        font-weight: lighter
+    }
+
+    #timeline::after {
+        left: 48.44%
+    }
+
+    .overview-content {
+        padding: 30px 0
+    }
+
+    .overview-content h3 {
+        font-weight: 400;
+        line-height: inherit
+    }
+
+    .rise-digital-commerce-info span {
+        line-height: inherit
+    }
+
+    ul.rise-list li {
+        display: inline-flex;
+        padding-bottom: 20px
+    }
+
+    ul.rise-list li i {
+        margin-top: 2px
+    }
+
+    .rise-digital-commerce-rt-content {
+        text-align: center
+    }
+
+    .conga-expertise .expertise-list li {
+        width: 100%;
+        margin-bottom: 25px
+    }
+
+    .conga-expertise .expertise-list li div {
+        margin-bottom: 0 !important;
+        min-height: inherit;
+        padding-bottom: 30px
+    }
+
+    .financials-expertise .expertise-list li div {
+        margin-bottom: 30px !important;
+        min-height: inherit;
+        padding-bottom: 30px
+    }
+
+    .index-services-technologies p {
+        padding-bottom: 1rem
+    }
+
+    .case-studies .case-studies-card {
+        margin-bottom: 60px
+    }
+
+    .overview-expertise .col-md-3 {
+        width: 100%;
+        margin-bottom: 30px
+    }
+
+    .achievements .achievement-card,
+    .news-events .col-md-7,
+    h3 {
+        margin-bottom: 30px
+    }
+
+    .news-events-rt-content {
+        margin-top: 30px
+    }
+
+    .our-values .why-forsys-content {
+        min-height: inherit;
+        margin-bottom: 50px
+    }
+
+    .why-forsys-digital-commerce .why-forsys-content {
+        min-height: inherit
+    }
+
+    .expertise-list {
+        margin-top: 0 !important
+    }
+
+    .products .product-card a p {
+        min-height: initial
+    }
+
+    .why-forsys.our-values.carrers-values .col-md-2 {
+        width: 50%
+    }
+
+    .case-studies .case-studies-card h4 {
+        min-height: inherit !important
+    }
+
+    .news-events {
+        padding-top: 30px
+    }
+
+    .news-events-left-content {
+        display: none !important
+    }
+
+    .news-events-rt-content .tab-content > .tab-pane {
+        display: block !important;
+        opacity: 1;
+        border-bottom: 1px solid #ccc;
+        margin-bottom: 30px;
+        padding-bottom: 30px;
+        float: left
+    }
+
+    .xs-show {
+        display: block
+    }
+
+    .m-fluid {
+        width: 100% !important
+    }
+}
+
+.mulesoft-banner {
+    background-image: url(../img/services/mulesoft.png);
+}
+
+.client-testimonials .carousel-inner .carousel-indicators {
+    display: none;
+}
+
+.stcky1 {
+    height: 0px;
+    width: 0px;
+    position: fixed;
+    right: 0;
+    top: 45%;
+    z-index: 1000;
+    transform: rotate(90deg) scale(.8);
+    -webkit-transform: rotate(90deg) scale(.8);
+    -moz-transform: rotate(90deg) scale(.8);
+    -o-transform: rotate(90deg) scale(.8);
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+
+.stcky2 {
+    height: 0px;
+    width: 0px;
+    position: fixed;
+    right: 0px;
+    top: 18%;
+    z-index: 1000;
+
+    transform: rotate(90deg) scale(.8);
+    -webkit-transform: rotate(90deg) scale(.8);
+    -moz-transform: rotate(90deg) scale(.8);
+    -o-transform: rotate(90deg) scale(.8);
+
+    filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=1);
+}
+
+.nbgvcj {
+    top: 3% !important;
+    transition: all .3s ease;
+}
+
+#news-letter {
+    background: #1b76ff;
+    border: 1px solid #1b76ff;
+    padding: 7px 14px;
+    padding-right: 40px;
+    color: #fff;
+    font-size: 14px;
+    height: 40px;
+    line-height: 26px;
+    top: 15rem;
+    width: 160px;
+    border-radius: 30px;
+    font-weight: bold;
+    z-index: 2;
+    -webkit-box-shadow: 0 0px 20px rgb(0 0 0 / 30%) !important;
+    box-shadow: 0 0px 20px rgb(0 0 0 / 30%) !important;
+    margin: 0;
+    transition: all .3s ease;
+}
+
+#news-letter:hover,
+#news-letter:focus {
+    background: #004bbc !important;
+    border: 1px solid #004bbc !important;
+}
+
+#letsTalk2 {
+    background: #1b76ff;
+    border: 1px solid #1b76ff;
+    padding: 14px;
+    font-size: 20px;
+    font-weight: bold;
+    height: 60px;
+    width: 200px;
+    z-index: 2;
+    color: #fff;
+    -webkit-box-shadow: 0 0px 20px rgb(0 0 0 / 30%) !important;
+    box-shadow: 0 0px 20px rgb(0 0 0 / 30%) !important;
+    margin: 0;
+    border-radius: 0px 0px 5px 5px;
+}
+
+#letsTalk2:hover,
+#letsTalk2:focus {
+    background: #004bbc !important;
+    border: 1px solid #004bbc !important;
+}
+
+#lets_talk2 .modal-body {
+    height: inherit;
+}
+
+.clients-btn {
+    background: #fa9600;
+    border: 1px solid #fa9600;
+    color: #fff !important;
+    padding: 15px !important;
+    z-index: 99;
+    height: 45px;
+    cursor: pointer;
+    color: #000 !important;
+}
+
+.clients-btn:hover,
+.clients-btn:focus {
+    color: #fff !important;
+    background: #fa9600;
+    border: 1px solid #fa9600;
+}
+
+.nl-btn {
+    background: #eaeaea;
+    border: 1px solid #eaeaea;
+    color: #fff !important;
+    padding: 15px !important;
+    padding-right: 60px !important;
+    z-index: 99;
+    color: #000 !important;
+    cursor: pointer !important;
+    height: 45px;
+    box-shadow: rgb(218 218 218 / 25%) 0px 14px 28px, rgb(107 98 98 / 22%) 0px 10px 10px;
+}
+
+.nl-btn:hover,
+.nl-btn:focus {
+    background: #f3f3f3;
+    border: 1px solid #f3f3f3;
+}
+
+.nlicon {
+    position: absolute;
+    right: -1px;
+    background: #1b76ff;
+    height: 45px;
+    line-height: 45px;
+    width: 50px;
+    color: #fff;
+    text-align: center;
+}
+
+.navbar .clients-btn ul {
+    left: 0;
+}
+
+.navbar .clients-btn ul li a {
+    color: #222 !important;
+}
+
+.navbar .clients-btn ul li a:hover,
+.navbar .clients-btn ul li a:focus {
+    color: #0d6efd !important;
+}
+
+.clients-ul-btn {
+    margin: 0 20px;
+}
+
+.fixed-top .clients-ul-btn {
+    margin: -12px 0px !important;
+}
+
+@media only screen and (max-width:767px) {
+    .inner-banner {
+        height: inherit;
+        padding: 15px;
+        background-position: 100%;
+    }
+
+    .conga-banner .p-conga {
+        color: #fff !important;
+        padding-top: 25px !important;
+    }
+
+    .inner-banner::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .about-subtext {
+        font-size: 18px;
+    }
+
+    .bg-oracle .inner-banner-content {
+        display: inherit;
+    }
+
+    .bg-oracle .inner-banner-content span {
+        margin: 0;
+    }
+
+    .bg-oracle .inner-banner-content div {
+        padding-bottom: 15px;
+    }
+
+    .bg-oracle .inner-banner-content p {
+        margin-top: 0;
+        padding-top: 15px;
+    }
+
+    .bg-oracle,
+    .bg-netsuite {
+        padding: 15px !important;
+    }
+
+    .bg-netsuite .inner-banner-content {
+        display: inherit;
+    }
+
+    .bg-netsuite .inner-banner-content p {
+        margin-left: 0;
+    }
+
+    .bg-netsuite .inner-banner-content div {
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+    .inner-banner-content p {
+        font-size: 20px !important;
+    }
+
+    #letsTalk2 {
+        padding: 10px 20px;
+        font-size: 16px;
+        right: -34px;
+    }
+
+    .clients-btn {
+        width: 164px;
+        height: 50px;
+        margin-top: 5px;
+        padding-left: 20px !important;
+        margin-left: 20px;
+    }
+
+    .navbar .clients-btn ul {
+        margin-left: -5px;
+        margin-top: 0;
+    }
+
+    .client-testimonials {
+        padding: 30px 0 0 !important;
+    }
+
+    .client-testimonials .carousel.pointer-event {
+        height: inherit;
+    }
+
+    .client-testimonials .carousel-inner {
+        position: relative;
+        width: 100%;
+        overflow: auto;
+    }
+
+    .client-testimonials .carousel-item {
+        margin-right: inherit;
+        transition: inherit;
+        height: 100%;
+        display: block;
+        padding-bottom: 30px;
+    }
+
+    .client-testimonials .carousel-indicators {
+        display: none;
+    }
+
+    .client-testimonials p.description {
+        padding: 40px 30px 15px 30px !important;
+        margin-bottom: 10px;
+        font-size: 14px !important;
+    }
+
+    .client-testimonials li.active h5.name {
+        font-size: 14px !important;
+    }
+
+    .client-testimonials li.active h5.name span {
+        font-weight: 500;
+        color: rgba(0, 34, 84, 1);
+        font-size: 12px !important;
+    }
+
+    .client-testimonials p.description span.top-quote {
+        margin-left: -5px !important;
+    }
+
+    .client-testimonials p.description span {
+        padding-left: 0 !important;
+    }
+
+    .client-testimonials p.description:nth-child(4) {
+        border: none !important;
+    }
+
+    .client-testimonials .bocx {
+        min-height: inherit !important;
+        border-bottom: 1px solid #b6b6b6;
+    }
+
+    .client-testimonials .bocx.last {
+        border: none;
+    }
+
+    .client-testimonials .carousel-inner .carousel-indicators {
+        position: initial;
+        margin: 0 auto;
+        text-align: center;
+        display: inline-block;
+        margin-top: 30px;
+        margin-bottom: 30px;
+        width: 100%;
+    }
+
+    .carousel-indicators li.active {
+        display: inline-flex;
+    }
+
+    .client-testimonials .carousel-inner .carousel-indicators.first.carousel-indicators {
+        margin-bottom: 0px;
+    }
+
+    .customers ul li:nth-child(6),
+    .customers ul li:nth-child(12),
+    .customers ul li:nth-child(18),
+    .customers ul li:nth-child(24),
+    .customers ul li:nth-child(30) {
+        margin: 0px 0px 15px !important;
+    }
+
+    .customers {
+        padding: 30px 0px;
+    }
+
+    .customers ul {
+        padding-left: 15px !important;
+    }
+
+    .customers h4 {
+        padding-left: 15px;
+    }
+
+    .customers ul li {
+        width: 46.5% !important;
+        height: 80px;
+    }
+
+    .index-testimonials p.description {
+        width: 100%;
+        padding-top: 30px;
+    }
+
+    .index-testimonials .bocx {
+        padding: 0 30px;
+        min-height: 272px;
+    }
+
+    .index-testimonials .bocx img {
+        float: inherit;
+        margin: 0 auto;
+        display: inherit;
+    }
+
+    .clients-ul-btn {
+        margin: 0px 20px !important;
+    }
+
+    .fixed-top .clients-ul-btn {
+        margin: 0px 20px !important;
+    }
+}
+
+.synergy .col-md-4 div {
+    border-radius: 8px;
+    padding: 30px 30px;
+    background: #fff;
+    text-align: center;
+    height: 100%;
+}
+
+.synergy .col-md-4 div img {
+    margin-bottom: 10px;
+}
+
+.lets-talk-btn {
+    display: inline-block;
+    padding: 18px 35px;
+    font-size: 16px;
+    border: 1px solid #fa9600;
+    background: #fa9600;
+    color: #fff;
+    border-radius: 0;
+    box-shadow: none !important;
+}
+
+.experts-talk {
+    /*    background: url(https://forsysinc.com/blog/wp-content/uploads/2023/05/cubg3.jpg);*/
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.YreBBg {
+    color: #000;
+    font-weight: 400;
+}
+
+.hero {
+    /*    background: url(https://forsysinc.com/blog/wp-content/uploads/2023/05/Banner-1.png) !important;*/
+    background-repeat: no-repeat !important;
+    background-position: center;
+    background-size: cover;
+    padding: 120px 0px;
+}
+
+strong {
+    font-weight: 600;
+}
+
+.uehhdYYkst2 h5 {
+    font-size: 16px;
+}
+
+.uehhdYYks {
+    background: #f6f9fc;
+}
+
+.bg-blue {
+    background: #b1c7e6;
+    background-color: #b1c7e6 !important;
+}
+
+.uehhdYYkst img {
+    border-radius: 12px;
+}
+
+.bg-gray {
+    background: #eee;
+}
+
+.Ytrstt {
+    background: url(https://forsysinc.com/blog/wp-content/uploads/2023/06/Partnership-Synergy-1-3.png);
+    background-size: contain;
+    background-position: 16%;
+    background-repeat: no-repeat;
+    background-color: #b1c7e6;
+}
+
+.t49cefre {
+    padding: 0px;
+    /*    box-shadow: 4px 4px 14px -5px rgba(0, 0, 0, .24);*/
+    transition: background .3s, border .3s, border-radius .3s, box-shadow .3s;
+    border-radius: 12px;
+    height: 100%;
+}
+
+.t49cefree {
+    padding: 15px;
+    box-shadow: 4px 4px 14px -5px rgba(0, 0, 0, .24);
+    transition: background .3s, border .3s, border-radius .3s, box-shadow .3s;
+    border-radius: 12px;
+    height: 100%;
+}
+
+.t49cefre p {
+    font-size: 16px;
+    line-height: 1.2;
+}
+
+@media (min-width: 1024px) {
+    .t49cefre p {
+        font-weight: 400;
+        margin: 0 auto;
+    }
+}
+
+.dotone {
+    position: relative;
+}
+
+.button-rm {
+    border-radius: 5px !important;
+}
+
+.dotone::before {
+    content: '';
+    background: url(https://forsysinc.com/blog/wp-content/uploads/2023/05/dot2.png);
+    background-size: 300px;
+    background-position: right;
+    width: 300px;
+    display: inline-block;
+    height: 300px;
+    background-repeat: no-repeat;
+    right: -28px;
+    position: absolute;
+    top: -22px;
+    opacity: .1;
+}
+
+.dotone::after {
+    content: '';
+    background: url(https://forsysinc.com/blog/wp-content/uploads/2023/05/dot1.png);
+    background-size: 300px;
+    background-position: right;
+    width: 300px;
+    display: inline-block;
+    height: 300px;
+    background-repeat: no-repeat;
+    left: -28px;
+    position: absolute;
+    bottom: -22px;
+    opacity: .1;
+}
+
+.dottwo {
+    position: relative;
+    overflow: visible;
+}
+
+.dottwo::after {
+    content: '';
+    background: url(https://forsysinc.com/blog/wp-content/uploads/2023/05/Untitled-design-3-1.png);
+    background-position: right;
+    width: 241px;
+    display: inline-block;
+    height: 459px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    right: 0px;
+    position: absolute;
+    top: -250px
+}
+
+@media (min-width: 661px) {
+    .hero {
+        background-size: 106% !important;
+    }
+}
+
+
+
+.t49cefre img {
+    filter: brightness(0.4);
+}
+
+.t49cefre h4 {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #fa9600;
+}
+
+
+
+.desc-text {
+    font-size: 16px;
+    font-weight: 400;
+    width: 85%;
+}
+
+
+.km-btn {
+    background: #004aad;
+    border: 1px solid #004aad;
+    color: #fff !important;
+    padding: 10px 18px !important;
+    border-radius: 5px;
+}
+
+.km-btn-2 {
+    background: #fa9600;
+    border: 1px solid #fa9600;
+    color: #000 !important;
+    padding: 10px 18px !important;
+    border-radius: 5px;
+}
+
+.km-btn-2:hover {
+    background: #fff;
+    border: 1px solid #1b76ff;
+    color: #1b76ff !important;
+    padding: 10px 18px !important;
+    border-radius: 5px;
+}
+
+.qQ0jRbv {
+    padding: 40px;
+    background: #002254;
+    /*    box-shadow: 5px 5px 5px rgba(0, 0, 0, .1), -3px -3px 5px rgba(0, 0, 0, .05);*/
+    border-radius: 24px;
+    height: 100%;
+}
+
+.hs-form-private input:focus,
+.hs-form-private select:focus,
+.hs-form-private textarea:focus {
+    background: #f6f6f6;
+}
+
+.seperator {
+    width: 50px;
+    height: 5px;
+    background: #fa9600;
+    display: block;
+}
+
+.Ge5Q {
+    background: url(../img/4s.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+#portfolioAccordion .accordion-button::after {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDQyNi42NjcgNDI2LjY2NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+PGcgdHJhbnNmb3JtPSJtYXRyaXgoMC42MzAwMDAwMDAwMDAwMDAyLDAsMCwwLjYzMDAwMDAwMDAwMDAwMDIsNzguOTMzNTc5ODY0NTAxOSw3OC45MzM1Nzk4NjQ1MDE5KSI+PHBhdGggZD0iTTQxMC42NjggMjI5LjMzMkgxNmMtOC44MzIgMC0xNi03LjE2OC0xNi0xNnM3LjE2OC0xNiAxNi0xNmgzOTQuNjY4YzguODMyIDAgMTYgNy4xNjggMTYgMTZzLTcuMTY4IDE2LTE2IDE2em0wIDAiIGZpbGw9IiMwMDAwMDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCBkPSJNMjEzLjMzMiA0MjYuNjY4Yy04LjgzMiAwLTE2LTcuMTY4LTE2LTE2VjE2YzAtOC44MzIgNy4xNjgtMTYgMTYtMTZzMTYgNy4xNjggMTYgMTZ2Mzk0LjY2OGMwIDguODMyLTcuMTY4IDE2LTE2IDE2em0wIDAiIGZpbGw9IiMwMDAwMDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSIiPjwvcGF0aD48L2c+PC9zdmc+);
+}
+
+.accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIAp4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgCnhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiAKdmVyc2lvbj0iMS4xIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgCnZpZXdCb3g9IjAgMCA0MjYuNjY3IDQyNi42NjciIApzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCA1MTIgNTEyIiAKeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+CjxnIHRyYW5zZm9ybT0ibWF0cml4KDAuNjMwMDAwMDAwMDAwMDAwMiwwLDAsMC42MzAwMDAwMDAwMDAwMDAyLDc4LjkzMzU3OTg2NDUwMTksNzguOTMzNTc5ODY0NTAxOSkiPgo8cGF0aCBkPSJNNDEwLjY2OCAyMjkuMzMySDE2Yy04LjgzMiAwLTE2LTcuMTY4LTE2LTE2czcuMTY4LTE2IDE2LTE2aDM5NC42NjhjOC44MzIgMCAxNiA3LjE2OCAxNiAxNnMtNy4xNjggMTYtMTYgMTZ6bTAgMCIgCmZpbGw9IiMwMDAwMDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSIiLz4KPC9nPjwvc3ZnPg==") !important;
+}
+
+#portfolioAccordion .accordion-body {
+    font-weight: 400;
+    border-radius: 0px;
+    border-bottom: 1px solid #e0dcdc !important;
+}
+
+#portfolioAccordion .accordion-collapse.collapse.show {
+    transition: .2s all ease;
+    /*    border-left: 3px solid #fa9600;*/
+    border-radius: 0px;
+}
+
+#portfolioAccordion .accordion-button.collapsed {
+    border-radius: 0px;
+    border-bottom: 1px solid #e0dcdc !important;
+    /*    border-left: 3px solid #fa9600;*/
+}
+
+#portfolioAccordion .accordion-button svg path {
+    fill: #c8c8c8;
+}
+
+#portfolioAccordion .accordion-button:not(.collapsed) svg path {
+    fill: #fa9600;
+}
+
+#portfolioAccordion .accordion-button svg circle {
+    fill: #c8c8c8;
+}
+
+#portfolioAccordion .accordion-button:not(.collapsed) svg circle {
+    fill: #fa9600;
+}
+
+#portfolioAccordion .accordion-button svg {
+    margin-right: 12px !important;
+    width: 20px !important;
+    height: 20px !important;
+}
+
+#portfolioAccordion .accordion-item {
+    /*    margin-bottom: 10px;*/
+    border-radius: 0px;
+    border: none;
+}
+
+#portfolioAccordion .accordion-button:not(.collapsed) {
+    color: #fa9600;
+    transition: .2s all ease;
+    /*    border-left: 3px solid #fa9600;*/
+}
+
+#portfolioAccordion .accordion-button:focus {
+    border: none;
+    box-shadow: none;
+    border-bottom: 1px solid #eee !important;
+    /*    border-left: 3px solid #fa9600;*/
+}
+
+#portfolioAccordion .accordion-button {
+    background-color: #fff;
+    border-radius: 0px;
+    font-size: 18px;
+    font-weight: 500;
+    border: none !important;
+}
+
+.mTRE {
+    background-color: #e3e2dd;
+}
+
+.YreBBg i {
+    color: #1b76ff;
+}
+
+h2.grad {
+    font-size: 40px;
+}
+
+@media (max-width:660px) {
+    section {
+        padding: 30px 0;
+        overflow: hidden;
+    }
+
+    .einsight h1 {
+        width: 100% !important;
+        font-size: 30px;
+        text-align: center;
+        border-radius: 12px !important;
+    }
+
+    h1.grad {
+        font-size: 30px;
+    }
+
+    .desc-content #carouselExampleSlidesOnly {
+        margin-top: 0px !important;
+    }
+
+    .km-btn-2 {
+        text-align: center;
+    }
+
+    .achievements .achievement-card,
+    .news-events .col-md-7,
+    h3 {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .index-services-technologies p {
+        font-size: 24px;
+    }
+
+    .case-studies .case-studies-card {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .footer-lets-talk p {
+        font-size: 24px;
+    }
+
+    .overview-content h3 {
+        line-height: 32px;
+    }
+}
+
+.HtcvD {
+    position: relative
+}
+
+.HtcvD .top-image {
+    position: absolute;
+    left: 00px;
+    top: -100px;
+}
+
+.HtcvD .bottom-image {
+    position: absolute;
+    left: -6px;
+    bottom: -160px;
+}
+
+.slide_up_down {
+    -webkit-animation: slide_up_down 1.7s ease-in-out infinite alternate both;
+    animation: slide_up_down 1.7s ease-in-out infinite alternate both;
+}
+
+.slide_up_down2 {
+    -webkit-animation: slide_up_down 1s ease-in-out infinite alternate both;
+    animation: slide_up_down 1s ease-in-out infinite alternate both;
+}
+
+@-webkit-keyframes slide_up_down {
+    0% {
+        -webkit-transform: translateY(0);
+        transform: translateY(0);
+    }
+
+    100% {
+        -webkit-transform: translateY(-20px);
+        transform: translateY(-20px);
+    }
+}
+
+h1.Pnxh {
+    font-size: 28px;
+    font-weight: 300;
+    line-height: 40px;
+}
+
+.btr {
+    text-align: center;
+    display: block;
+    width: 200px;
+    background: #fff;
+    margin: 20px auto;
+    padding: 14px 4px;
+    position: fixed;
+    bottom: 0;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.Gyatsf {
+    background: #e3e2dd;
+}
+
+.Gyatsf p {
+    font-size: 22px;
+    margin-bottom: 10px;
+    color: #121362;
+    font-weight: 400;
+}
+
+.Gyatsf p i {
+    color: #fa9600;
+}
+
+.Gyatsf p i:nth-child(6) {
+    background: linear-gradient(to right, #fa9600, #fff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fRmHq {
+    font-size: 22px;
+    font-weight: 400;
+    color: #000;
+    margin-top: 20px;
+}
+
+.Yreahj h3 {
+    color: #002254;
+    font-size: 28px;
+    font-weight: 400;
+}
+
+.cat-name {
+    background: #EBEBEB;
+    padding: 5px 12px;
+    font-size: 14px;
+    color: #707070;
+    display: inline-block;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.cat-name2 {
+    background: #002254;
+    padding: 5px 12px;
+    font-size: 14px;
+    color: #38B6FF;
+    display: inline-block;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.Gertod {
+    font-size: 24px;
+    color: #38B6FF;
+    margin-bottom: 10px;
+}
+
+.font-weight-600 {
+    font-weight: 600;
+}
+
+.font-weight-500 {
+    font-weight: 500;
+}
+
+.grad {
+    font-weight: 500;
+    color: #000;
+    /*
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: -webkit-gradient(linear, left top, right top, from(#004aad), color-stop(30%, #3f99e1), to(#26C6DA));
+    background-image: -o-linear-gradient(left, #004aad 0%, #3f99e1 60%, #26C6DA 100%);
+    background-image: linear-gradient(to right, #004aad 0%, #3f99e1 60%, #26C6DA 100%);
+*/
+
+}
+
+.einsight h1 {
+    width: 80%;
+}
+
+.has-icon {
+    box-shadow: 0 2px 5px 0 rgb(54 170 255 / 15%), 0px -1px 20px 0px rgb(59 188 255 / 8%);
+    padding: 20px;
+    /*
+    display: flex;
+    flex-wrap: wrap;
+*/
+    justify-content: center;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.has-icon:before {
+    background-color: #1b76ff;
+    bottom: 0;
+    content: "";
+    height: 4px;
+    left: 0;
+    position: absolute;
+    right: 100%;
+    transition: right .4s ease-in-out;
+}
+
+.has-icon:hover:before {
+    right: 0%;
+}
+
+.has-icon img {
+    width: 70px;
+    margin-bottom: 15px;
+}
+
+.has-icon:hover img {
+    filter: invert(38%) sepia(95%) saturate(5048%) hue-rotate(205deg) brightness(99%) contrast(103%);
+}
+
+.has-icon:hover h6 {
+    color: #1b76ff;
+}
+
+.has-icon h6 {
+    margin-bottom: 0px;
+    line-height: 22px;
+    font-size: 18px;
+}
+
+.cpqul {}
+
+.cpqul li {
+    margin-bottom: 5px;
+}
+
+.cpqul li span {
+    display: inline-block;
+    width: 93%;
+    font-weight: 400;
+}
+
+.cpqul li:before {
+    content: "\f133";
+    font-family: bootstrap-icons !important;
+    display: inline-block;
+    margin-right: 6px;
+    color: #D2D2D2;
+    vertical-align: top;
+    width: 5%;
+}
+
+
+.widget-visible iframe {
+    bottom: 10% !important;
+}
+
+        #faq .panel-group {
+            margin-bottom: 0;
+        }
+
+        #faq .panel-default {
+            /*            border: 1px solid #ddd;*/
+            margin-bottom: 10px;
+        }
+
+        #faq .panel-title {
+            margin-bottom: 0px;
+        }
+
+        #faq .panel-group .panel {
+            border-radius: 0;
+            box-shadow: none;
+        }
+
+        #faq .panel-group .panel .panel-heading {
+            padding: 0;
+        }
+
+        #faq .panel-group .panel .panel-heading h4 a {
+            background: #f0f6ff;
+            display: block;
+            font-size: 16px;
+            color: #000;
+            padding: 30px 20px;
+            text-decoration: none;
+            transition: 0.15s all ease-in-out;
+            border-radius: 24px 24px 0px 0px
+        }
+        
+        #faq .panel-group .panel .panel-heading h4 a.collapsed {
+            border-radius: 24px;
+        }
+
+        #faq .panel-group .panel .panel-heading h4 a:hover,
+        .panel-group .panel .panel-heading h4 a:not(.collapsed) {
+            /*            background: #fff;*/
+            transition: 0.15s all ease-in-out;
+        }
+
+        #faq .panel-group .panel .panel-heading h4 a:not(.collapsed) i:before {
+            content: "";
+            color: #000;
+        }
+
+        #faq .panel-group .panel .panel-heading h4 a i {
+            color: #999;
+        }
+
+        #faq .panel-group .panel .panel-body {
+            padding-top: 0;
+        }
+
+        #faq .panel-group .panel .panel-body p {
+            padding-top: 0;
+        }
+
+        #faq .fa-plus:before, #faq .panel-group .panel .panel-heading h4 a:not(.collapsed) i:before  {
+            color: #000;
+        }
+
+        #faq .panel-group .panel .panel-heading+.panel-collapse>.list-group,
+        #faq .panel-group .panel .panel-heading+.panel-collapse>.panel-body {
+            border-top: none;
+            padding: 15px;
+        }
+
+        #faq .panel-group .panel+.panel {
+            margin-top: 0;
+            /*            border: 1px solid #eee*/
+        }
+
+        #faq .collapse.show,
+        #faq .collapsing {
+            border: 1px solid #f0f6ff;
+            border-top: none;
+            border-radius: 0px 0px 24px 24px
+        }
+
+        .float-right {
+            float: right;
+        }
+
+@media (max-width: 660px) {
+    .dotone::before {
+        display: none;
+    }
+
+    .dotone::after,
+    .dottwo::after {
+        display: none;
+    }
+
+    .hero {
+        background-image: none !important;
+        background-color: #004aad;
+    }
+
+    .qQ0jRbv fieldset.form-columns-2 .hs-form-field {
+        width: 100% !important;
+        float: left;
+    }
+
+    .hero {
+        background: url(https://forsysinc.com/blog/wp-content/uploads/2023/06/Netsuite-Banner.png);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover !important;
+    }
+
+    .qQ0jRbv .hs-form-private .form-columns-1,
+    .qQ0jRbv .hs-form-private .form-columns-2 {
+        display: block !important;
+    }
+}
+
+ul.breadcrumb {
+    padding: 10px 0px;
+    list-style: none;
+    /*background-color: #eee;*/
+    font-size: 22px;
+    font-weight: 400;
+    color: #000;
+    /*    margin-top: -60px;*/
+}
+
+ul.breadcrumb li + li:before {
+    color: #fff;
+    content: "\f285";
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-size: 13px;
+    vertical-align: bottom;
+    padding: 8px;
+}
+
+ul.breadcrumb li {
+    display: inline;
+    font-size: 14px !important;
+    color: #fff;
+}
+
+ul.breadcrumb li a {
+    color: #fff !important;
+    text-decoration: none;
+    font-size: 14px !important;
+    color: #fff;
+}
+
+ul.breadcrumb li + li:before {
+    color: #fff !important;
+    content: "\f285" !important;
+    font-family: bootstrap-icons !important;
+    font-style: normal;
+    font-size: 13px;
+    vertical-align: bottom;
+}
+
+ul.breadcrumb li a:hover {
+    color: #01447e;
+    text-decoration: underline;
+}
+
+/******** News Letter Page ********/
+
+.news-letter-wrapper {
+    border-radius: 12px 12px 12px 12px;
+    margin-bottom: 30px;
+}
+
+.news-letter-wrapper a {
+    box-shadow: 0 3px 43px 0 rgba(38, 38, 38, .14);
+    display: block;
+    border-radius: 12px 12px 12px 12px;
+}
+
+
+
+.news-letter-box {
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-style: solid;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    border-radius: 12px 12px 12px 12px;
+    border-width: 5px 5px 5px 5px;
+    border-color: #FFF;
+    box-shadow: 0 3px 43px 0 rgba(38, 38, 38, .14);
+    transition: background 6s, border 6s, border-radius 6s, box-shadow 6s;
+}
+
+.newsbox-inner {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.newsbox-inner p {
+    align-self: center;
+    display: none;
+}
+
+.newsbox-inner:hover p {
+    display: block;
+    z-index: 999;
+    color: #fff;
+}
+
+.newsbox-inner:hover:after {
+    height: 100%;
+    position: absolute;
+    width: 100%;
+    content: "";
+    left: 0px;
+    top: 0px;
+    background: rgb(0 0 0 / 64%);
+    border-radius: 12px;
+}
+
+.news-letter-box:hover {
+    background-position: center bottom !important;
+}
+
+.newsbox-inner {
+    min-height: 340px;
+}
+
+.news-letter-wrapper p {
+    padding: 10px 0px;
+    font-size: 20px;
+    text-align: center;
+}
+
+@media (max-width: 660px) {
+    ul.breadcrumb {
+        padding: 0px !important;
+        margin-top: 0px !important;
+        justify-content: center;
+    }
+
+    .col-lg-3::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        border-left: none !important;
+    }
+
+    .desc-content h4 {
+        line-height: 30px;
+    }
+
+    ul.breadcrumb {
+        margin: 0px;
+        padding: 0px !important;
+        margin-top: 0px !important;
+    }
+
+    .Yreahj h3 {
+        line-height: 26px;
+    }
+
+    #footer .footer-top .footer-links ul li {
+        padding-bottom: 5px;
+        justify-content: center;
+    }
+
+    #footer .footer-top .footer-links h5,
+    #footer .footer-top .footer-column-1 {
+        text-align: center;
+    }
+
+    #footer .footer-top .footer-links {
+        margin-bottom: 10px;
+    }
+
+    .hero h1 {
+        text-align: center;
+        margin-top: 0px !important;
+    }
+
+    h2.grad {
+        text-align: center;
+    }
+
+    #topbar {
+        font-size: 12px;
+    }
+
+    .qQ0jRbv fieldset.form-columns-2 .hs-form-field {
+        width: 100% !important;
+        float: left;
+    }
+}
+
+
+
+/* Ramanujam 14-july-2023 sitemap css start */
+
+.sitemap-content h4 {
+    color: #1B6097;
+    font-size: 25px;
+    line-height: 30px;
+}
+
+.sitemap-content a {
+    color: #2a3945;
+}
+
+.sitemap-content ul li {
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.quick-list-items ul {
+    margin: 0;
+}
+
+.resources ul.breadcrumb {
+    margin-top: 0;
+}
+
+.testimonials-breadcrumb {
+    padding: 0px;
+}
+
+.testimonials-breadcrumb ul.breadcrumb {
+    margin-top: 0;
+}
+
+.customers .breadcrumb li {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    height: auto;
+    width: auto;
+    line-height: 2px;
+}
+
+.customers ul.breadcrumb {
+    margin: 0;
+}
+
+.solution-overview-content ul.breadcrumb {
+    margin-top: 0px;
+}
+
+.solution-overview-content {
+    padding: 0px;
+}
+
+/* Ramanujam 14-july-2023 sitemap css end */
+
+/* Ramanujam 17-july-2023 40% Reduction In Testing Task For A Video Delivery Tech Firm With Forsys' Customized QA Automation Framework case study start */
+
+.case-study-content h2,
+.solution-content h2 {
+    color: #fa9600;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.case-study-content .insight-box-content {
+    margin-bottom: 20px;
+}
+
+.case-study-banner {
+    background: url(../img/case-study/40-reduction-in-testing/best-salesforce-consulting-salesforce-integration-forsys-banner.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 150px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.case-study-content ul li {
+    line-height: 30px;
+    list-style-type: none;
+}
+
+.case-study-content ul {
+    margin: 0;
+    padding: 0;
+}
+
+.case-study-content .tech-list-items {
+    margin-bottom: 20px;
+}
+
+.icon-arrow i.fa {
+    font-size: 18px;
+    color: #1b6097;
+    margin-right: 10px;
+}
+
+.hero-banner-impact {
+    background: url(../img/case-study/40-reduction-in-testing/impact-banner.png);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.impact-content h2 {
+    color: #21b1d9;
+    font-size: 20px;
+    margin-bottom: 40px;
+}
+
+.impact-content .impact-card h6 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 0px;
+    margin: 15px 0;
+}
+
+.impact-content .impact-card p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.impact-content .text-content h5 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    line-height: 0px;
+    margin: 15px 0;
+}
+
+.impact-content .text-content p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 25px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.impact-content .text-content {
+    margin-left: 10px;
+}
+
+.impact-content .impact-card .text-content {
+    margin-left: 10px;
+}
+
+.impact-content .impact-row {
+    margin-top: 30px;
+}
+
+.solution-content ul li {
+    line-height: 35px;
+    list-style-type: none;
+}
+
+.solution-content ul {
+    margin: 0;
+    padding: 0;
+}
+
+.case-breadcrumb {
+    padding: 20px 0 10px;
+}
+
+.case-breadcrumb ul.breadcrumb {
+    margin: 0;
+}
+
+/* Ramanujam 17-july-2023 40% Reduction In Testing Task For A Video Delivery Tech Firm With Forsys' Customized QA Automation Framework case study end */
+
+/* Ramanujam 18-july-2023 Forsys Conversion Strategy/Execution, from EBS to Oracle Fusion Cloud, Resulted in Zero Post-go-live Issues Start */
+.forsys-conversion-banner {
+    background: url(../img/case-study/forsys-implemented-e2e/forsys-conversion-strategy-execution-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 152px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ebs-banner {
+    background: url(../img/case-study/forsys-implemented-e2e/ebs-banner.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 100px 0;
+}
+
+.ebs-content .business-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.ebs-banner .business-content img {
+    width: 40px;
+    height: auto;
+}
+
+.ebs-content p {
+    color: #ffffff;
+    line-height: 25px;
+}
+
+.keys-content h5 {
+    margin: 15px 0 0;
+}
+
+.ebs-banner .business-content .icon-img {
+    margin-bottom: 20px;
+}
+
+.erp-cloud p {
+    margin-top: 15px;
+}
+
+.ebs-content .emp-group ul li {
+    list-style-type: none;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 40px;
+    color: #ffffff;
+    border-bottom: 1px dashed #ffffff;
+    width: 45%;
+    text-align: center;
+}
+
+.ebs-content .cloud-content {
+    position: relative;
+}
+
+.ebs-content .emp-group ul {
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    top: -20px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.ebs-content .emp-group img {
+    width: 100%;
+}
+
+.cloud-content .emp-group {
+    width: 60%;
+    margin: 0 auto;
+}
+
+.ebs-content .emp-group ul li:last-child {
+    border: 0px;
+}
+
+.ebs-content .text-content h2 {
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.keys-content h2 {
+    color: #fa9600;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.keys-content .icon-img img {
+    width: 40px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.keys-content .img-icon img {
+    width: 60px;
+    height: auto;
+}
+
+.keys-content .client-box .img-icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.keys-content .client-box p {
+    margin: 0px 15px;
+}
+
+.keys-content {
+    padding: 60px 0 0;
+}
+
+.keys-content .client-box {
+    position: relative;
+}
+
+.keys-content .top-right-border-line p:after {
+    content: '';
+    position: absolute;
+    background-color: #b3b3b3;
+    width: 2px;
+    height: 75%;
+    top: 10%;
+    right: 2%;
+}
+
+.keys-content .bottom-rightborder-line p:after {
+    content: '';
+    position: absolute;
+    background-color: #b3b3b3;
+    width: 2px;
+    height: 75%;
+    top: 10%;
+    right: 2%;
+}
+
+/*.keys-content p {
+    margin: 15px 0;
+}*/
+
+.erp-cloud {
+    padding: 20px 0 40px;
+}
+
+.erp-cloud ul li {
+    list-style-type: none;
+    line-height: 35px;
+}
+
+.erp-cloud .arrow-icon i.fa {
+    margin-right: 10px;
+    font-size: 30px;
+    color: #1b6097;
+}
+
+.erp-cloud ul.cloud-items-list li {
+    list-style-type: disc;
+}
+
+.services-sec .text-content h2 {
+    color: #fa9600;
+    font-size: 20px;
+    margin: 0px 10px;
+}
+
+.services-sec p {
+    margin: 15px 0 20px;
+}
+
+.system-banner {
+    background: url(../img/case-study/forsys-implemented-e2e/conga-clm.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 0px;
+}
+
+.system-sec .text-content h2 {
+    font-size: 20px;
+    color: #ffffff;
+    margin: 0px 15px;
+}
+
+.system-sec .icon-img img {
+    width: 40px;
+}
+
+.system-sec .health-items h5 {
+    font-size: 20px;
+    color: #ffffff;
+    margin: 20px 0 10px;
+}
+
+.system-sec .health-items ul li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #ffffff;
+}
+
+/*.services-sec .icon-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}*/
+
+.services-sec .icon-img img {
+    width: 40px;
+    height: auto;
+}
+
+/* Ramanujam 18-july-2023 Forsys Conversion Strategy/Execution, from EBS to Oracle Fusion Cloud, Resulted in Zero Post-go-live Issues end */
+
+/* home icon - 20-july-2023 */
+.study-icon-all {
+    position: fixed;
+    top: 29.5rem;
+    z-index: 999;
+    right: 7px;
+}
+
+@media only screen and (max-width: 767px) {
+    .study-icon-all {
+        top: 28rem;
+        right: 3px;
+    }
+
+    #banner {
+        height: auto;
+    }
+
+    .carousel.pointer-event {
+        touch-action: none;
+    }
+}
+
+/* Â home icon end - 20-july-2023 */
+
+/* Ramanujam 20-july-2023 conga-clm-upgrade-by-forsys-increases-contracting-accuracy-by-45-for-a-hospitals-healthcare-client start */
+.clm-banner {
+    background: url(../img/case-study/conga-clm/conga-clm-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: cover;
+    padding: 190px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: right;
+}
+
+.clm-section .title-header h2 {
+    color: #fa9600;
+    font-size: 20px;
+    margin: 0 0 15px;
+}
+
+.clm-section .text-content h5 {
+    color: #fa9600;
+    margin: 0;
+}
+
+.clm-section .recycle-content {
+    margin: 15px 0 15px;
+}
+
+.features-section h2 {
+    color: #fa9600;
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+
+.features-section .title-header p {
+    margin: 0;
+}
+
+.features-section h5 {
+    color: #000000;
+    font-size: 18px;
+    margin: 10px 0 10px;
+}
+
+.renew-section .title-header h2 {
+    color: #fa9600;
+    font-size: 20px;
+    margin: 0 0 10px;
+}
+
+.product-section .text-content h2 {
+    color: #ffffff;
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+.clm-section {
+    padding: 60px 0 0;
+}
+
+.features-section {
+    padding: 10px 0 0;
+}
+
+.renew-section {
+    padding: 5px 0 50px;
+}
+
+.renew-section h5 {
+    color: #000000;
+    font-size: 18px;
+    margin: 10px 0 20px;
+}
+
+.renew-section .icon-img {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.renew-section p {
+    margin: 0;
+}
+
+.renew-section .icon-img img {
+    margin-right: 15px;
+    width: 70px;
+    height: auto;
+}
+
+.soft-system-banner {
+    background: url(../img/case-study/conga-clm/sucessfully-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 80px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.software-sec .hero-image img {
+    width: 80%;
+}
+
+.software-sec .hero-image {
+    text-align: right;
+}
+
+.software-sec .title-header h2 {
+    color: #ffffff;
+    font-size: 20px;
+    margin: 0px;
+}
+
+.software-sec .title-header h5 {
+    font-size: 16px;
+    color: #ffffff;
+    margin: 15px 0 20px;
+}
+
+.software-sec .title-header p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+}
+
+.ai-content p {
+    font-size: 16px;
+    line-height: 35px;
+}
+
+.software-sec .img-icon img {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.clm-section .recycle-content .icon-img img {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.software-sec .d-content {
+    margin-bottom: 30px;
+}
+
+.renew-section .mt-bt {
+    margin-bottom: 20px;
+}
+
+.software-sec .ai-content h2 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+}
+
+/* Ramanujam 20-july-2023 conga-clm-upgrade-by-forsys-increases-contracting-accuracy-by-45-for-a-hospitals-healthcare-client end */
+
+
+/* Ramanujam 25-july-2023 Complete Cloud Transformation in 3 Months with Oracle Integration Using Flodata For a Billiondollar Tech Firm start */
+
+.oracle-banner {
+    background: url(../img/case-study/complete-cloud/flodata-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 190px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.app-section ul,
+.aim-section ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.app-section ul li {
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+}
+
+.aim-section ul li {
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    margin-bottom: 10px;
+}
+
+.app-section .arrow-icon i.fa {
+    margin-right: 10px;
+    font-size: 30px;
+    color: #1b6097;
+}
+
+.aim-section h5 {
+    margin: 15px 0 15px;
+}
+
+.product-section {
+    padding: 0px 0px 60px;
+}
+
+.process-section ul li {
+    list-style-type: none;
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.process-section .icon-arrow i.fa {
+    font-size: 18px;
+    color: #fa9600;
+    margin-right: 10px;
+}
+
+.process-section ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.process-section .hub-content h2 {
+    margin: 10px 0 10px;
+}
+
+.process-section p {
+    margin: 10px 0 !important;
+}
+
+.product-section .box-icon {
+    text-align: center;
+}
+
+.product-section p {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 15px 0;
+}
+
+.process-section .title-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.process-section .title-header h2 {
+    color: #fa9600;
+}
+
+.aim-section img {
+    width: 100%;
+}
+
+.process-section .hub-content a {
+    color: #ffffff;
+    padding-bottom: 0px;
+    text-decoration: none;
+    border-bottom: 2px solid #fa9600;
+}
+
+.product-section img {
+    width: 100%;
+}
+
+.aim-section .icon-arrow img {
+    width: 2%;
+    height: auto;
+}
+
+.aim-section .app-items-list .icon-arrow {
+    margin-right: 10px;
+}
+
+.process-section .hero-image img {
+    width: 60%;
+}
+
+/* Ramanujam 26-july-2023 25-july-2023 Complete Cloud Transformation in 3 Months with Oracle Integration Using Flodata For a Billiondollar Tech Firm end */
+
+
+/* Ramanujam 26-july-2023 44% Improvement in Sales Productivity with Lead-to-Quote Automation using Salesforce for a Chemical Manufacturer start */
+.saleforce-hero-banner {
+    background: url(../img/case-study/44-improvement-in-sales/44-improvement-hero-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.saleforce-section .tasks-content .title-header h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+
+.saleforce-section .tasks-content .title-header p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.saleforce-section .indu-content .text-content h5 {
+    color: #fa9600;
+    font-size: 18px;
+    margin: 0;
+}
+
+.saleforce-section .text-content p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 20px;
+    margin: 0;
+}
+
+.saleforce-section .indu-content .icon-img img {
+    width: 60px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.business-section ul.app-items-list li {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    list-style-type: none;
+}
+
+.business-section ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.sale-section ul li {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    list-style-type: none;
+}
+
+.sale-section ul {
+    margin: 0;
+    padding: 0;
+}
+
+.sale-section h5 {
+    margin: 10px 0;
+}
+
+.about-section .title-header h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+
+.about-section .title-header p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    margin: 0;
+}
+
+.about-section .title-header ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.about-section .title-header ul li {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    list-style-type: none;
+}
+
+.commerce-hero-banner {
+    background: url(../img/case-study/forsys-implements-conga/ebs-banner.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 100px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.digital-section h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+
+.digital-section h5 {
+    color: #ffffff;
+    font-size: 18px;
+}
+
+.digital-section ul li {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 300;
+    list-style-type: none;
+    color: #ffffff;
+}
+
+.digital-section ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.digital-section .icon-arrow i.fa {
+    font-size: 18px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+.digital-section .strong-items {
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.saleforce-section {
+    padding: 60px 0px 0px;
+}
+
+.sales-product-banner {
+    background: url(../img/case-study/44-improvement-in-sales/sales-background-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 40px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sales-product-section .sale-box-icon img {
+    width: 80px;
+}
+
+
+.sales-product-section .sales-box .sub-title-improvement {
+    font-size: 50px;
+    color: #ffffff;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.sales-product-section .text-content p {
+    font-size: 20px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 30px;
+    text-align: center;
+}
+
+.sales-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+
+/* Ramanujam 26-july-2023 44% Improvement in Sales Productivity with Lead-to-Quote Automation using Salesforce for a Chemical Manufacturer end */
+
+/* Ramanujam 26-july-2023 37% Jump in Win Rate with E2E Sales Automation Using Salesforce For a Pharma Manufacturer start */
+
+.technology-hero-banner {
+    background: url(../img/case-study/37-jump-in-win/flodata-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: cover;
+    padding: 160px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.sale-section .icon-img img {
+    width: auto;
+}
+
+.building-section h2 {
+    color: #ffffff;
+    font-size: 24px;
+    margin: 0 0 10px;
+    text-align: center;
+}
+
+.building-section h5 {
+    color: #ffffff;
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+.building-section .building-box {
+    text-align: center;
+}
+
+.building-section .text-content p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+}
+
+.building-section .building-box .text-content {
+    margin-top: 30px;
+}
+
+.building-section .building-box .icon-img {
+    margin-top: 20px;
+}
+
+.technology-section .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: end;
+}
+
+.building-section .building-box img {
+    width: 100%;
+}
+
+.about-section img {
+    width: 100%;
+}
+
+.about-section .title-content h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+
+/* Ramanujam 26-july-2023 37% Jump in Win Rate with E2E Sales Automation Using Salesforce For a Pharma Manufacturer end */
+
+/* Ramanujam 27-july-2023 E2E Migration of Salesforce Org in 3 Weeks With 100 Automation of Leadtocash Process start */
+.marketing-hero-banner {
+    background: url(../img/case-study/e2e-migration-of-salesforce/flodata-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: cover;
+    padding: 160px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.marketing-section {
+    padding: 0 0 10px;
+}
+
+.marketing-section .title-content h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+
+.marketing-section .marketing-box img {
+    width: 80px;
+}
+
+.marketing-section .marketing-box {
+    text-align: center;
+}
+
+.sale-section .title-header p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.marketing-section .title-content h5 {
+    color: #000000;
+    font-size: 18px;
+    margin: 10px 0 20px;
+}
+
+.marketing-section .marketing-box p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    margin-top: 15px;
+}
+
+.saleforce-section .title-header a {
+    color: #1e1e1e;
+    padding-bottom: 0px;
+    text-decoration: none;
+    border-bottom: 2px solid #fa9600;
+}
+
+.about-section .title-content a {
+    color: #1e1e1e;
+    padding-bottom: 0px;
+    text-decoration: none;
+    border-bottom: 2px solid #fa9600;
+}
+
+/* Ramanujam 27-july-2023 E2E Migration of Salesforce Org in 3 Weeks With 100 Automation of Leadtocash Process end */
+
+/* Ramanujam 27-july-2023 Conga CLM Implementation by Forsys Expedites Contracting Process by 42% start */
+.workflow-hero-banner {
+    background: url(../img/case-study/conga-clm-implementation-42/conga-clm-hero-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.workflow-section .title-content h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+
+.workflow-section .receive-items-list ul li {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 30px;
+    list-style-type: none;
+    text-align: left;
+}
+
+.workflow-section .receive-items-list ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.workflow-section {
+    padding: 50px 0;
+    background-color: #00477d;
+}
+
+.management-section img {
+    border: 1px solid #fa9600;
+    box-shadow: 0px 2px 5px 0px rgb(197 197 197);
+    margin-bottom: 20px;
+    width: 60px;
+}
+
+.global-section .title-content h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin: 0 0 10px;
+}
+
+.global-section .title-content p {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+}
+
+.global-section img {
+    width: 100%;
+}
+
+.forsys-workflow-section .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.forsys-workflow-section .hero-text h2 {
+    font-size: 30px;
+    color: #333333 !important;
+    margin: 0px;
+}
+
+.workflow-section .receive-items-list {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    color: #ffffff;
+    text-align: left;
+}
+
+.workflow-section .receive-items-list .icon-arrow i.fa {
+    font-size: 18px;
+    color: #ffffff;
+    margin-right: 10px;
+}
+
+/* Ramanujam 27-july-2023 Conga CLM Implementation by Forsys Expedites Contracting Process by 42% end */
+
+/* Ramanujam 27-july-2023 ~50% Reduction in Test Cycle Time with Selenium-Backed Testing as a Subscription Service for Oracle start */
+.environment-hero-banner {
+    background: url(../img/case-study/50-reduction-in-test/test-cycle-hero-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: cover;
+    padding: 160px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.technology-section .hero-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+    text-align: right;
+}
+
+.leverage-section ul.templates-items-list li {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    list-style-type: none;
+}
+
+.leverage-section .title-content ul {
+    margin: 0;
+    padding: 0;
+}
+
+.leverage-section .icon-arrow {
+    margin-right: 10px;
+}
+
+.sales-section h5 {
+    margin: 10px 0;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.global-section .title-content ul li {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    list-style-type: none;
+}
+
+.global-section .title-content ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.leverage-section .icon-arrow img {
+    width: 20px;
+}
+
+.sales-hero-banner {
+    background: url(../img/case-study/50-reduction-in-test/50-reduction-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 60px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.leverage-section {
+    padding: 40px 0;
+}
+
+.sales-section .title-header h2 {
+    color: #ffffff;
+}
+
+.sales-section ul li {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 30px;
+}
+
+.workflow-section h5 {
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 30px;
+    margin: 0;
+}
+
+.workflow-section .receive-icon img {
+    width: 80px;
+}
+
+.workflow-section .receive-content p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+.receive-items-list {
+    text-align: center !important;
+    margin-top: 20px;
+}
+
+.engin-section img {
+    width: 80%;
+}
+
+.engin-section .right-hero-image {
+    text-align: right;
+}
+
+/* Ramanujam 27-july-2023 ~50% Reduction in Test Cycle Time with Selenium-Backed Testing as a Subscription Service for Oracle end */
+
+/* Ramanujam 28-july-2023 Forsys Tests 12,500 Test Cases Under Stricter Timelines, Saves 60% of Man Hours & Improves Insurerâ€™s Business Productivity start */
+.insurer-hero-banner {
+    background: url(../img/case-study/forsys-tests-12500/flodata-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* Ramanujam 28-july-2023 Forsys Tests 12,500 Test Cases Under Stricter Timelines, Saves 60% of Man Hours & Improves Insurerâ€™s Business Productivity end */
+
+/* Ramanujam 28-july-2023 Automation of the E2E Revenue Reconciliation Resulting in 80% Higher Productivity start */
+.automation-hero-banner {
+    background: url(../img/case-study/automation-of-the-e2e/flodata-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.e-business-section .impact-card img,
+.revenue-section .impact-card img,
+.e2e-section .impact-card img,
+.auto-section .impact-card img,
+.lead-section .impact-card img {
+    width: 60px;
+}
+
+.e-business-section .text-content h2,
+.revenue-section .text-content h2,
+.e2e-section .text-content h2,
+.auto-section .text-content h2,
+.lead-section .text-content h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin: 0px;
+}
+
+.e-business-section .e-business-content p,
+.revenue-section .text-content p,
+.e2e-section .text-content p,
+.auto-section .products-box p,
+.lead-section p {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 0 0;
+}
+
+.revenue-section {
+    padding: 0 0 20px;
+}
+
+.revenue-section .text-content h5,
+.e2e-section .text-content h5,
+.auto-section .text-list-items h5 {
+    color: #000000;
+    font-size: 18px;
+    margin: 15px 0;
+}
+
+.revenue-section .text-content ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.revenue-section .text-content ul li {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    list-style-type: none;
+}
+
+.e2e-section .e2e-box {
+    margin-bottom: 30px;
+}
+
+.e2e-section .impact-card {
+    margin-right: 10px;
+}
+
+.auto-section {
+    padding: 0;
+}
+
+.lead-section .lead-content {
+    margin-top: 20px;
+}
+
+.e2e-section {
+    padding: 10px 0 30px;
+}
+
+.lead-section {
+    padding: 0 0 40px;
+}
+
+.e-business-section {
+    padding: 60px 0 30px;
+}
+
+/* Ramanujam 28-july-2023 Automation of the E2E Revenue Reconciliation Resulting in 80% Higher Productivity end */
+
+/* Ramanujam 28-july-2023 Forsys Converts Migrates Millions of Data To Oracle Fusion Cloud Saves 40 Hrs in Migration Efforts start */
+
+.hero-banner-data-science {
+    background: url(../img/case-study/forsys-converts-migrates-millions/salesforce-consulting-banner.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.data-science-section .hero-text h2 {
+    font-size: 25px;
+    color: #ffffff;
+    margin: 0;
+}
+
+.forsys-lead-section .email-items-list ul {
+    margin: 0;
+    padding: 0;
+}
+
+.forsys-lead-section .email-items-list ul li {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    list-style-type: none;
+}
+
+.forsys-lead-section .email-items-list a {
+    color: #1e1e1e;
+    padding-bottom: 0px;
+    text-decoration: none;
+    border-bottom: 2px solid #fa9600;
+}
+
+.database-section h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin: 15px 0;
+}
+
+/* Ramanujam 28-july-2023 Forsys Converts Migrates Millions of Data To Oracle Fusion Cloud Saves 40 Hrs in Migration Efforts end */
+
+/* Ramanujam 31-july-2023 Manufacturing Company Saves Initial $1M within a Year, Forsys Optimizes Demand & Supply Planning Process end */
+.hero-banner-ecosystem {
+    background: url(../img/case-study/manufacturing-company-saves/flodata-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0px;
+}
+
+.hero-banner-ecosystem .hero-text h2 {
+    font-size: 28px;
+    color: #ffffff;
+}
+
+.ecosystem-section .impact-card img,
+.data-info-section .impact-card img,
+.company-section .impact-card img,
+.oracle-plan-section .impact-card img,
+.design-section img,
+.forsys-oracle-order-section .impact-card img,
+.forsys-sap-section .impact-card img {
+    width: 50px;
+}
+
+.ecosystem-section .text-content h2,
+.data-info-section .text-content h2,
+.company-section .text-content h2,
+.oracle-plan-section .text-content h2,
+.design-section .text-content h2,
+.forsys-oracle-order-section .text-content h2,
+.cpq-tools-section .text-content h2,
+.forsys-sap-section .text-content h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.ecosystem-section .text-content p,
+.oracle-plan-section .text-content p,
+.cpq-tools-section .text-content p,
+.forsys-sap-section .text-content p {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.insight-box-content img,
+.plan-section .impact-card img {
+    width: 60px;
+}
+
+.ecosystem-section .text-content h5,
+.design-section .text-content h5,
+.forsys-sap-section .text-content h5 {
+    margin: 15px 0;
+}
+
+.hero-banner-plan {
+    background: url(../img/case-study/manufacturing-company-saves/ebs-banner.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 100px 0px;
+}
+
+.plan-section .text-content h2 {
+    color: #ffffff;
+    font-size: 22px;
+    margin: 0;
+}
+
+.plan-section .text-content p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 10px 0px;
+}
+
+.plan-section ul li {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 30px;
+    list-style-type: none;
+}
+
+.plan-section .text-content ul {
+    margin: 0;
+    padding: 0;
+}
+
+.plan-section .check-icon i.fa {
+    margin-right: 10px;
+}
+
+.data-info-section .text-content h5 {
+    margin: 15px 0;
+}
+
+.data-info-section .planning-items-list ul {
+    margin: 0;
+    padding: 0;
+}
+
+.data-info-section .planning-items-list ul li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    list-style-type: none;
+}
+
+.data-info-section .planning-items-list .check-icon {
+    color: #1b6097;
+    margin-right: 10px;
+}
+
+.ecosystem-section .impact-card,
+.plan-section .impact-card,
+.data-info-section .impact-card,
+.company-section .impact-card {
+    margin-right: 10px;
+}
+
+.company-section .text-content p {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+/* Ramanujam 31-july-2023 Manufacturing Company Saves Initial $1M within a Year, Forsys Optimizes Demand & Supply Planning Process end */
+
+/* Ramanujam 31-july-2023 Forsys Strategized, Built, & Supported Digital Commerce Platform for a Lightweight Vehicle Manufacturing Startup Company end */
+.hero-banner-conga {
+    background: url(../img/case-study/forsys-builds-a-multistore/flodata-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0px;
+}
+
+.conga-system-section .hero-text h2 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 35px;
+}
+
+.oracle-plan-section .text-content ul,
+.design-section .designing-items-list ul {
+    margin: 0;
+    padding: 0;
+}
+
+.oracle-plan-section .text-content ul li,
+.design-section .designing-items-list ul {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    list-style-type: none;
+}
+
+.oracle-plan-section .check-right-icon {
+    margin-right: 5px;
+}
+
+.design-section .designing-items-list .check-right-icon img {
+    width: 30px;
+}
+
+.oracle-plan-section .impact-card,
+.design-section .impact-card {
+    margin-right: 10px;
+}
+
+.oracle-plan-section {
+    padding: 0 0 40px;
+}
+
+.design-section {
+    padding: 0 0 40px;
+}
+
+.ecosystem-section {
+    padding: 60px 0 20px;
+}
+
+/* Ramanujam 31-july-2023 Forsys Strategized, Built, & Supported Digital Commerce Platform for a Lightweight Vehicle Manufacturing Startup Company end */
+
+/* Ramanujam 1-aug-2023 Forsysâ€™ Oracle Order Management Solution Results in 100% Accurate Reconciliation, Provides Real-time Visibility in Revenue end */
+.hero-banner-commerce {
+    background: url(../img/case-study/forsys-builds-a-multistore/flodata-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0px;
+}
+
+.commerce-section .hero-text h2 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 35px;
+}
+
+.mgt-sys-section ul li {
+    font-size: 16px;
+    line-height: 30px;
+    font-weight: 400;
+    list-style-type: none;
+}
+
+.mgt-sys-section .pricing-items-list ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.oracle-plan-section .transformation-items-list ul,
+.forsys-oracle-order-section .designing-items-list ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.oracle-plan-section .transformation-items-list ul li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    list-style-type: none;
+}
+
+.hero-banner-revenue-leakage {
+    background: url(../img/case-study/manufacturing-company-saves/ebs-banner.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 100px 0px;
+}
+
+.forsys-oracle-order-section .text-content h5 {
+    color: #ffffff;
+    margin: 15px 0;
+}
+
+.forsys-oracle-order-section .designing-items-list ul li {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    line-height: 35px;
+    list-style-type: none;
+}
+
+.forsys-oracle-order-section .impact-card,
+.forsys-oracle-order-section .designing-items-list .check-right-icon {
+    margin-right: 10px;
+}
+
+.insight-box-content h5 {
+    color: #fba72a;
+    font-weight: 600;
+}
+
+/* Ramanujam 1-aug-2023 Forsysâ€™ Oracle Order Management Solution Results in 100% Accurate Reconciliation, Provides Real-time Visibility in Revenue end */
+
+/* Ramanujam 1-aug-2023 17-higher-lead-conversion-with-e2e-migration-to-sap-cpq-leading-to-28-shorter-sales-cycle start */
+.hero-banner-forsys-migrated {
+    background: url(../img/case-study/17-higher-lead/hero-banner-sap-cpq.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0px;
+}
+
+.forsys-migrated-section .hero-text h2 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 35px;
+}
+
+.hero-banner-forsys-sales {
+    background: url(../img/case-study/17-higher-lead/rate-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 100px 0px;
+}
+
+.forsys-sales-section .forsys-lead-box {
+    position: relative;
+}
+
+.forsys-sales-section .forsys-lead-box::before {
+    content: '';
+    position: absolute;
+    background-color: #1e98d5;
+    width: 10px;
+    height: 58%;
+    top: 40%;
+    left: -4%;
+    border-radius: 20px;
+}
+
+.cpq-tools-section .impact-card img {
+    width: 50px;
+}
+
+.cpq-tools-section {
+    padding: 60px 0 20px;
+}
+
+.forsys-sap-section .text-content ul li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    list-style-type: none;
+}
+
+.forsys-sap-section {
+    padding: 0 0 40px;
+}
+
+.forsys-sap-section .text-content ul {
+    margin: 0;
+    padding: 0;
+}
+
+.forsys-sales-section .forsys-lead-box h3 {
+    font-size: 40px;
+    font-weight: bold;
+    color: #3dae2b;
+    margin: 20px 0;
+}
+
+.forsys-sales-section .forsys-lead-box img {
+    width: 80px;
+}
+
+.forsys-sales-section .forsys-lead-box p {
+    font-size: 18px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 0;
+}
+
+.forsys-sales-section .text-content h2 {
+    color: #fa9600;
+    font-size: 30px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.cpq-tools-section .impact-card,
+.forsys-sap-section .impact-card {
+    margin-right: 10px;
+}
+
+/* Ramanujam 1-aug-2023 17-higher-lead-conversion-with-e2e-migration-to-sap-cpq-leading-to-28-shorter-sales-cycle end */
+
+/* Ramanujam 2-aug-2023 23%-increase-in-customer-lifecycle-value-with-implementation-of-subscription-management-&-headless-digital-commerce-leading-to-higher-revenue start */
+.hero-banner-forsys-digital-commerce {
+    background: url(../img/case-study/23-increase-in-customer/23-increase-hero-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center left;
+    background-size: cover;
+    padding: 160px 0px;
+}
+
+.digital-commerce-section .hero-text h2 {
+    font-size: 30px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 35px;
+    text-align: right;
+}
+
+.pos-section .text-content h5 {
+    margin: 15px 0px;
+}
+
+.buying-experience-section .text-content h4 {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 20px;
+}
+
+.buying-experience-section {
+    padding: 40px 0;
+    background-color: #f5f5f5;
+}
+
+.pos-section .impact-card {
+    margin-right: 10px;
+}
+
+.forsys-all-section .impact-card {
+    margin-right: 10px;
+}
+
+.buying-experience-section .impact-card img {
+    width: 80px;
+    box-shadow: 0px 2px 5px 0px rgb(223 223 223);
+}
+
+.buying-experience-section .text-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.buying-experience-section .impact-card {
+    margin-right: 10px;
+}
+
+.company-section .left-hero-img img {
+    width: 80%;
+}
+
+.company-section .left-hero-img {
+    text-align: right;
+}
+
+/* Ramanujam 2-aug-2023 23%-increase-in-customer-lifecycle-value-with-implementation-of-subscription-management-&-headless-digital-commerce-leading-to-higher-revenue end */
+
+/* Ramanujam 3-aug-2023 25% Revenue Jump with E2E Automation of Quoting & Proposal Lifecycle with Conga start */
+.hero-banner-25-jump {
+    background: url(../img/case-study/25-revenue-jump/25-revenue-jump-hero-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forsys-25-jump-section .hero-text h2 {
+    color: #ffffff;
+    font-size: 32px;
+    margin: 0;
+}
+
+.team-leader-section .critical-items-list h5 {
+    margin: 15px 0;
+}
+
+.team-leader-section .critical-items-list ul {
+    margin: 0;
+    padding: 0;
+}
+
+.team-leader-section .critical-items-list ul li {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 30px;
+    list-style-type: none;
+}
+
+.forsys-account-section {
+    background-color: #661e29;
+}
+
+.forsys-account-section .forsys-account-box img {
+    width: 80px;
+}
+
+.forsys-account-section .forsys-account-box p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    margin: 15px 0px;
+}
+
+.forsys-account-box .forsys-account-body {
+    background-color: #c61f26;
+    padding: 0px;
+    text-align: center;
+    box-shadow: 0px 3px 5px 0px #000000;
+    min-height: 205px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transition: transform .2s;
+    transform: scale(1);
+    cursor: pointer;
+}
+
+.forsys-account-box .forsys-account-body:hover {
+    transition: transform .2s;
+    transform: scale(1.02);
+    cursor: pointer;
+}
+
+.forsys-account-section .row-grids-items {
+    margin-bottom: 30px;
+}
+
+/* Ramanujam 3-aug-2023 25% Revenue Jump with E2E Automation of Quoting & Proposal Lifecycle with Conga end */
+
+/* Ramanujam 3-aug-2023 Engineer-to-Order Process Automation with Conga CPQ Configuration Optimization & Periodic Upgrades Leading to 20% Reduction in IT Costs start */
+.hero-banner-forsys-it-cost {
+    background: url(../img/case-study/engineer-to-order-process/20-it-costs-banner.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forsys-it-cost-section .hero-text h2 {
+    color: #ffffff;
+    font-size: 32px;
+    margin: 0;
+}
+
+.forsys-user-experience-section .icon-img img {
+    width: 80px;
+}
+
+.forsys-user-experience-section .text-content h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.forsys-user-experience-section h5 {
+    margin: 0px 0 15px;
+}
+
+.forsys-user-experience-section {
+    padding: 0 0 10px;
+}
+
+.zjdjjs .col-md-2 {
+    width: 20%;
+}
+
+.zjdjjs .col-md-2 div:hover {
+    box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+}
+
+.zjdjjs .col-md-2 div {
+
+    background: #fff;
+    padding: 20px;
+    border-radius: 12px;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 50px;
+    align-self: center;
+}
+
+.zjdjjs .col-md-2 div p {
+    font-size: 18px;
+    line-height: 27px;
+}
+
+@media (max-width: 768px) {
+    .zjdjjs .col-md-2 {
+        width: 100%;
+        margin-bottom: 10px !important;
+    }
+}
+
+/* Ramanujam 3-aug-2023 Engineer-to-Order Process Automation with Conga CPQ Configuration Optimization & Periodic Upgrades Leading to 20% Reduction in IT Costs end */
+
+
+/* Ramanujam 4-aug-2023 30% Improvement in Win Rate with Evaluation of Conga CPQ Performance Leading to 25% Revenue Jump start */
+.hero-banner-qtc {
+    background: url(../img/case-study/30-improvement-in-win/hero-banner-sap-cpq.jpg);
+    background-repeat: no-repeat;
+    background-position: center right;
+    background-size: cover;
+    padding: 160px 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.forsys-qtc-section .hero-text h2 {
+    color: #ffffff;
+    font-size: 32px;
+    margin: 0;
+}
+
+.forsys-qtc-content-section .text-content h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+
+.forsys-qtc-content-section .text-content p {
+    margin: 10px 0px;
+}
+
+.forsys-qtc-content-section .insight-content img {
+    width: 60px;
+}
+
+.forsys-qtc-content-section .insight-content h5 {
+    color: #fa9600;
+    font-weight: 600;
+    margin: 0;
+}
+
+.forsys-qtc-content-section .text-content ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.forsys-qtc-content-section .text-content ul li,
+.forsys-feature-section ul li {
+    list-style-type: none;
+    line-height: 30px;
+}
+
+.forsys-qtc-content-section .impact-card img {
+    width: 50px;
+}
+
+.forsys-feature-section ul {
+    margin: 0px;
+    padding: 0px;
+}
+
+.forsys-cpq-ability-section {
+    padding: 0;
+}
+
+/* Ramanujam 4-aug-2023 30% Improvement in Win Rate with Evaluation of Conga CPQ Performance Leading to 25% Revenue Jump end */
+
+
+
+/* media css responsive start */
+@media (max-width: 1600px) {
+    .clm-banner {
+        padding: 154px 0px;
+    }
+}
+
+@media (max-width: 1440px) {
+
+    .Ytrstt {
+        background-position: 6%;
+    }
+
+    .case-study-banner h1 {
+        font-size: 30px;
+        line-height: 40px;
+    }
+
+    .case-study-banner {
+        padding: 110px 0;
+    }
+
+    .forsys-conversion-banner {
+        padding: 110px 0px;
+    }
+
+    .clm-banner {
+        padding: 145px 0px;
+    }
+
+    .clm-banner h2 {
+        font-size: 32px;
+    }
+
+    .oracle-banner {
+        padding: 140px 0;
+    }
+
+    .saleforce-hero-banner {
+        padding: 145px 0;
+    }
+
+    .saleforce-hero-banner h2 {
+        font-size: 30px;
+        margin: 0px;
+    }
+
+    .technology-hero-banner {
+        padding: 150px 0px;
+    }
+
+    .technology-section h2 {
+        font-size: 26px;
+    }
+
+    .marketing-hero-banner {
+        padding: 100px 0px;
+    }
+
+    .environment-hero-banner {
+        padding: 150px 0px;
+    }
+
+    .hero-banner-commerce {
+        padding: 120px 0px;
+    }
+
+    .commerce-section .hero-text h2 {
+        font-size: 23px;
+    }
+
+    .hero-banner-forsys-digital-commerce {
+        padding: 110px 0px;
+    }
+
+    .digital-commerce-section .hero-text h2 {
+        font-size: 26px;
+    }
+
+    .hero-banner-25-jump {
+        padding: 120px 0;
+    }
+
+    .environment-hero-banner {
+        padding: 120px 0px;
+    }
+
+    .hero-banner-forsys-it-cost {
+        padding: 100px 0;
+    }
+
+    .forsys-it-cost-section .hero-text h2 {
+        font-size: 25px;
+        line-height: 30px;
+    }
+}
+
+@media (max-width: 1199px) {
+    .case-study-banner h1 {
+        font-size: 25px;
+        line-height: 35px;
+    }
+
+    .cloud-content .emp-group {
+        width: 70%;
+    }
+
+    .ebs-content .emp-group ul {
+        top: -40px;
+    }
+
+    .ebs-content .emp-group ul li {
+        width: 55%;
+    }
+
+    .clm-section .recycle-content .icon-img img {
+        width: 60px;
+    }
+
+    .clm-banner {
+        padding: 110px 0px;
+    }
+
+    .oracle-banner {
+        padding: 100px 0;
+    }
+
+    .oracle-banner h2 {
+        font-size: 24px;
+    }
+
+    .saleforce-hero-banner {
+        padding: 120px 0;
+    }
+
+    .saleforce-hero-banner h2 {
+        font-size: 28px;
+        margin: 0px;
+    }
+
+    .marketing-hero-banner {
+        padding: 90px 0px;
+    }
+
+    .technology-section h2 {
+        font-size: 24px;
+    }
+
+    .workflow-hero-banner {
+        padding: 110px 0px;
+    }
+
+    .environment-hero-banner {
+        padding: 90px 0px;
+    }
+
+    .technology-section h2 {
+        font-size: 22px;
+    }
+
+    .commerce-section .hero-text h2 {
+        font-size: 20px;
+        line-height: 25px;
+    }
+
+    .hero-banner-25-jump {
+        padding: 100px 0;
+    }
+
+    .forsys-25-jump-section .hero-text h2 {
+        font-size: 26px;
+    }
+
+    .hero-banner-forsys-it-cost {
+        padding: 90px 0;
+    }
+
+    .forsys-it-cost-section .hero-text h2 {
+        font-size: 20px;
+        line-height: 25px;
+    }
+}
+
+@media (max-width: 1024px) {
+    .case-study-banner h1 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .case-study-banner {
+        padding: 100px 0;
+    }
+
+    .ebs-content .emp-group ul li {
+        width: 55%;
+    }
+
+    .forsys-conversion-banner {
+        padding: 100px 0px;
+    }
+
+    .clm-banner {
+        padding: 85px 0px;
+    }
+
+    .software-sec .title-header p {
+        font-size: 13px;
+    }
+
+    .ai-content p {
+        font-size: 16px !important;
+    }
+
+    .clm-banner h2 {
+        font-size: 24px;
+    }
+
+    .oracle-banner {
+        padding: 90px 0;
+    }
+
+    .oracle-banner h2 {
+        font-size: 22px;
+    }
+
+    .saleforce-hero-banner {
+        padding: 110px 0;
+    }
+
+    .saleforce-hero-banner h2 {
+        font-size: 26px;
+        margin: 0px;
+    }
+
+    .marketing-hero-banner {
+        padding: 77px 0px;
+    }
+
+    .workflow-hero-banner {
+        padding: 80px 0px;
+    }
+
+    .forsys-workflow-section .hero-text h2 {
+        font-size: 25px;
+    }
+
+    .hero-banner-commerce {
+        padding: 100px 0px;
+    }
+
+    .hero-banner-forsys-migrated {
+        padding: 75px 0px;
+    }
+
+    .forsys-migrated-section .hero-text h2 {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .hero-banner-forsys-sales {
+        padding: 30px 0px;
+    }
+
+    .hero-banner-forsys-digital-commerce {
+        padding: 80px 0px;
+    }
+
+    .digital-commerce-section .hero-text h2 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .hero-banner-25-jump {
+        padding: 80px 0;
+    }
+
+    .forsys-25-jump-section .hero-text h2 {
+        font-size: 25px;
+    }
+}
+
+@media (max-width: 991px) {
+    .cloud-content .emp-group {
+        width: 100%;
+    }
+
+    .ebs-content .emp-group ul {
+        top: -100px;
+    }
+
+    .ebs-content .cloud-content {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .ebs-content .emp-group ul li {
+        width: 70%;
+    }
+
+    .system-sec .icon-img img {
+        width: 40px;
+    }
+
+    .case-study-banner {
+        padding: 70px 0;
+    }
+
+    .case-study-banner h2,
+    .forsys-section h2 {
+        font-size: 20px;
+    }
+
+    .forsys-conversion-banner {
+        padding: 60px 0;
+    }
+
+    .ebs-banner {
+        padding: 50px 0px;
+    }
+
+    .clm-banner {
+        padding: 95px 0px;
+    }
+
+    .clm-section .recycle-content .text-content p {
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+    .clm-banner h2 {
+        font-size: 18px;
+    }
+
+    .impact-content .box-icon {
+        margin-bottom: 20px;
+    }
+
+    .solution-content ul li {
+        font-size: 14px;
+        line-height: 30px;
+    }
+
+    .impact-content .impact-row {
+        margin-top: 10px;
+    }
+
+    .hero-banner-impact {
+        padding: 40px 0;
+    }
+
+    .software-sec .hero-image {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .features-section p {
+        font-size: 14px;
+    }
+
+    .aim-section .icon-arrow img {
+        width: 3%;
+        height: auto;
+    }
+
+    .oracle-banner h2 {
+        font-size: 20px;
+    }
+
+    .saleforce-hero-banner h2 {
+        font-size: 25px;
+        margin: 0;
+    }
+
+    .saleforce-hero-banner {
+        padding: 100px 0;
+    }
+
+    .saleforce-section .indu-content .icon-box {
+        margin-bottom: 10px;
+    }
+
+    .marketing-hero-banner {
+        padding: 75px 0px;
+    }
+
+    .technology-section h2 {
+        font-size: 22px;
+    }
+
+    .workflow-hero-banner {
+        padding: 70px 0px;
+    }
+
+    .environment-hero-banner {
+        padding: 80px 0px;
+    }
+
+    .hero-banner-commerce {
+        padding: 85px 0px;
+    }
+
+    .hero-banner-commerce {
+        padding: 85px 0px;
+    }
+
+    .hero-banner-forsys-migrated {
+        padding: 60px 0px;
+    }
+
+    .forsys-migrated-section .hero-text h2 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .hero-banner-forsys-sales {
+        padding: 35px 0px;
+    }
+
+    .forsys-sales-section .text-content h2 {
+        font-size: 25px;
+    }
+
+    .forsys-sales-section .forsys-lead-box img {
+        width: 60px;
+    }
+
+    .forsys-sales-section .forsys-lead-box h3 {
+        font-size: 30px;
+        margin: 10px 0;
+    }
+
+    .hero-banner-25-jump {
+        padding: 75px 0;
+    }
+
+    .forsys-25-jump-section .hero-text h2 {
+        font-size: 22px;
+        line-height: 30px;
+    }
+
+    .hero-banner-forsys-it-cost {
+        padding: 75px 0;
+    }
+
+    .forsys-it-cost-section .hero-text h2 {
+        font-size: 16px;
+        line-height: 25px;
+    }
+}
+
+@media (max-width: 768px) {
+    .clm-section .text-content h5 {
+        font-size: 16px;
+    }
+
+    .solution-content ul li {
+        font-size: 16px;
+    }
+
+    .aim-section .icon-arrow img {
+        width: 3%;
+        height: auto;
+    }
+
+    .marketing-hero-banner {
+        padding: 55px 0px;
+    }
+
+    .technology-section h2 {
+        font-size: 20px;
+    }
+
+    .global-section {
+        padding: 20px 0 60px;
+    }
+
+    .environment-hero-banner {
+        padding: 75px 0px;
+    }
+
+    .lead-section .abt-content {
+        margin-top: 25px;
+    }
+
+    .forsys-workflow-section .hero-text h2 {
+        font-size: 20px;
+    }
+
+    .hero-banner-forsys-digital-commerce {
+        padding: 55px 0px;
+    }
+
+    .digital-commerce-section .hero-text h2 {
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .saleforce-hero-banner {
+        padding: 40px 0;
+    }
+
+    .oracle-banner {
+        padding: 80px 0;
+    }
+}
+
+@media (max-width: 767px) {
+    .ebs-content .emp-group ul li {
+        width: 50%;
+        line-height: 50px;
+    }
+
+    .cloud-content .emp-group {
+        width: 65%;
+    }
+
+    .ebs-content .business-content {
+        margin-top: 40px;
+        margin-bottom: 20px;
+    }
+
+    .keys-content .icon-img img {
+        margin-right: 10px;
+    }
+
+    .erp-cloud ul.app-items-list {
+        margin: 10px 0 20px;
+        padding: 0px;
+    }
+
+    .keys-content .top-right-border-line p:after,
+    .keys-content .bottom-rightborder-line p:after {
+        width: 0px;
+    }
+
+    .ebs-banner {
+        padding: 20px 0 60px;
+    }
+
+    .forsys-conversion-banner {
+        padding: 50px 0;
+    }
+
+    .case-study-banner {
+        padding: 40px 0;
+    }
+
+    .impact-content .impact-card {
+        margin-bottom: 20px;
+    }
+
+    .case-study-banner h2,
+    .forsys-section h2 {
+        font-size: 16px;
+    }
+
+    .keys-content h2 {
+        margin: 0px;
+    }
+
+    .ebs-content .emp-group ul {
+        top: -10px;
+    }
+
+    .software-sec .hero-image {
+        text-align: left;
+        margin-top: 30px;
+    }
+
+    .clm-banner {
+        padding: 73px 0px;
+    }
+
+    .clm-banner h2 {
+        font-size: 18px;
+    }
+
+    .clm-section .text-content h5 {
+        font-size: 22px;
+    }
+
+    .solution-content ul li {
+        font-size: 16px;
+    }
+
+    .clm-section .recycle-content .text-content p {
+        font-size: 18px;
+    }
+
+    /*.clm-section .title-header h2, .features-section h2, .renew-section .title-header h2, .software-sec .title-header h2 {
+		font-size: 25px;	
+	}*/
+    .features-section p,
+    .renew-section p {
+        font-size: 16px;
+    }
+
+    .aim-section .icon-arrow img {
+        width: 4%;
+        height: auto;
+    }
+
+    .oracle-banner h2 {
+        font-size: 18px;
+    }
+
+    .global-section {
+        padding: 20px 0 60px;
+    }
+
+    .environment-hero-banner {
+        padding: 75px 0px;
+    }
+
+    .hero-banner-forsys-migrated {
+        padding: 45px 0px;
+    }
+
+    .forsys-migrated-section .hero-text h2 {
+        font-size: 18px;
+        line-height: 25px;
+    }
+
+    .company-section .information-based-content {
+        margin-top: 20px;
+    }
+
+    .hero-banner-forsys-digital-commerce {
+        padding: 50px 0px;
+    }
+
+    .digital-commerce-section .hero-text h2 {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .hero-banner-25-jump {
+        padding: 55px 0;
+    }
+
+    .forsys-25-jump-section .hero-text h2 {
+        font-size: 16px;
+        line-height: 25px;
+    }
+
+    .saleforce-hero-banner {
+        padding: 40px 0;
+    }
+}
+
+@media (max-width: 636px) {
+    .clm-banner {
+        padding: 70px 0px;
+    }
+
+    .clm-banner h2 {
+        font-size: 17px;
+    }
+
+    /*.clm-section .title-header h2, .features-section h2, .renew-section .title-header h2, .software-sec .title-header h2 {
+		font-size: 22px;
+	}*/
+    .aim-section .icon-arrow img {
+        width: 3%;
+        height: auto;
+    }
+
+    .marketing-hero-banner {
+        padding: 40px 0px;
+    }
+
+    .technology-section h2 {
+        font-size: 17px;
+    }
+
+    .sale-section h5 {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+
+    .hero-banner-forsys-digital-commerce {
+        padding: 50px 0px;
+    }
+
+    .digital-commerce-section .hero-text h2 {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .forsys-sales-section .forsys-lead-box::before {
+        width: 0px;
+    }
+}
+
+
+@media (max-width: 475px) {
+    .case-study-banner h1 {
+        font-size: 12px;
+        line-height: 22px;
+    }
+
+    .case-study-content h3 {
+        font-size: 22px;
+    }
+
+    .hero-banner-impact {
+        height: 760px;
+    }
+
+    .case-study-banner h1 {
+        font-size: 13px;
+        line-height: 20px;
+    }
+
+    .cloud-content .emp-group {
+        width: 80%;
+    }
+
+    .ebs-content .emp-group ul {
+        top: 0px;
+    }
+
+    .ebs-content .emp-group ul li {
+        width: 65%;
+        line-height: 50px;
+    }
+
+    .erp-cloud ul.app-items-list {
+        margin: 10px 0 20px;
+        padding: 0px;
+    }
+
+    .services-sec h3 {
+        font-size: 21px;
+        font-weight: bold;
+    }
+
+    .keys-content h3 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .keys-content h3 {
+        font-size: 23px;
+        font-weight: bold;
+    }
+
+    .clm-banner h2 {
+        font-size: 15px;
+    }
+
+    .clm-banner {
+        padding: 50px 0px;
+    }
+
+    .marketing-hero-banner {
+        padding: 30px 0px;
+    }
+
+    .technology-section h2 {
+        font-size: 16px;
+    }
+
+    .hero-banner-commerce {
+        padding: 40px 0px;
+    }
+
+    .commerce-section .hero-text h2 {
+        font-size: 16px;
+        line-height: 18px;
+        margin: 0;
+    }
+
+    .hero-banner-forsys-digital-commerce {
+        padding: 30px 0px;
+    }
+
+    .digital-commerce-section .hero-text h2 {
+        font-size: 11px;
+        line-height: 15px;
+    }
+
+    .hero-banner-25-jump {
+        padding: 30px 0;
+    }
+
+    .forsys-25-jump-section .hero-text h2 {
+        font-size: 16px;
+        line-height: 22px;
+    }
+
+    .environment-hero-banner {
+        padding: 40px 0px;
+    }
+
+    .hero-banner-forsys-it-cost {
+        padding: 45px 0px;
+    }
+
+    .forsys-it-cost-section .hero-text h2 {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .oracle-banner {
+        padding: 40px 0;
+    }
+
+    .oracle-banner h2 {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 375px) {
+    .ebs-content .emp-group ul li {
+        width: 80%;
+    }
+
+    .ebs-banner {
+        height: 800px;
+    }
+
+    .erp-cloud ul.app-items-list {
+        margin: 10px 0 20px;
+        padding: 0px;
+    }
+
+    .forsys-section h1 {
+        font-size: 18px;
+        line-height: 25px;
+        font-weight: bold;
+    }
+
+    .forsys-conversion-banner {
+        padding: 40px 0;
+    }
+
+    .services-sec h3 {
+        font-size: 21px;
+        font-weight: bold;
+    }
+
+    .keys-content h3 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .keys-content h3 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .cloud-content .emp-group {
+        width: 100%;
+    }
+
+    .clm-banner h2 {
+        font-size: 12px;
+    }
+
+    .clm-banner {
+        padding: 15px 0px;
+    }
+
+    .hero-banner-impact {
+        height: 805px;
+    }
+
+    .oracle-banner {
+        padding: 45px 0;
+    }
+
+    .oracle-banner h2 {
+        font-size: 16px;
+    }
+
+    .marketing-hero-banner {
+        padding: 20px 0px;
+    }
+
+    .technology-section h2 {
+        font-size: 14px;
+    }
+
+    .hero-banner-forsys-it-cost {
+        padding: 30px 0px;
+    }
+
+    .forsys-it-cost-section .hero-text h2 {
+        font-size: 11px;
+        line-height: 14px;
+    }
+
+}
+
+/* media css responsive end */
+
+
+.leadinModal {
+    display: none;
+}
+
+.solutions h1 {
+    font-family: "Outfit", sans-serif;
+    margin-bottom: 15px;
+    font-weight: 700;
+    color: #002254;
+    font-size: 32px;
+}
+
+.single-wrapper {
+    height: 80vh;
+    /*            background: #eee;*/
+    /*            border-radius: 24px;*/
+    padding: 30px 80px;
+    margin: 0px 0px;
+    /*            background: url(assets/img/17564656_SL_042620_30310_19.jpg) no-repeat center center;*/
+    background-size: cover;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    position: relative;
+    align-content: flex-start;
+}
+
+.single-wrapper::before {
+    background: rgb(255 255 255 / 70%);
+    content: '';
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    top: 0px;
+    height: 100%;
+    z-index: 0;
+}
+
+.solutions .container-fluid {
+    width: 95% !important;
+}
+
+.solutions .short-desc-ul li::before {
+    content: attr(data-icon);
+    font-size: 1.25em;
+    margin-right: 10px;
+    align-self: flex-start;
+    top: -6px;
+    position: relative;
+    color: #1B76FF
+}
+
+.solutions h5,
+.solutions h6 {
+    color: #000;
+    font-family: "Outfit", sans-serif;
+    font-weight: 500;
+}
+
+.solutions h6 {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.solutions .short-desc-ul li {
+    margin-bottom: 10px;
+    font-size: 15px;
+    margin-left: 0px;
+    color: #000;
+    font-weight: 500;
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.solutions .short-desc-ul li:last-child {
+    margin-bottom: 0px;
+}
+
+.solutions .short-desc-ul {
+    list-style-type: none
+}
+
+.solutions .video {
+    border-radius: 6px;
+    box-shadow: rgb(159 159 159 / 25%) 0px 50px 100px -20px, rgb(0 0 0 / 30%) 0px 30px 60px -30px;
+    border: 2px solid #27275c;
+}
+
+.solutions .icon img {
+    width: 35px;
+    margin-bottom: 5px;
+}
+
+h5.kf {
+    display: inline-block;
+    padding: 3px 10px;
+    background: #1b76ff;
+    border-radius: 3px;
+    font-size: 13px;
+    position: relative;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+h5.kf::after {
+    content: '';
+    width: 140px;
+    position: absolute;
+    background: #1b76ff;
+    height: 1px;
+    top: 10px;
+    display: none;
+}
+
+.title-abh {
+    font-size: 12px;
+    text-transform: uppercase;
+    color: #fff;
+    margin-bottom: 5px;
+    position: relative;
+    display: inline-block;
+    padding: 3px 10px;
+    background: #1b76ff;
+    font-size: 13px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+}
+
+.title-abh::after {
+    content: '';
+    width: 140px;
+    position: absolute;
+    background: #1b76ff;
+    height: 1px;
+    top: 10px;
+    display: none;
+}
+
+h6.see-in-action::after {
+    content: '';
+    width: 140px;
+    position: absolute;
+    background: #1b76ff;
+    height: 1px;
+    top: 10px;
+    display: none;
+}
+
+h6.see-in-action {
+    text-transform: uppercase;
+    position: relative;
+    display: inline-block;
+    padding: 3px 10px;
+    background: #1b76ff;
+    font-size: 13px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.below-part {
+    z-index: 1;
+}
+
+.middle-part {
+    z-index: 1;
+}
+
+.below-part .col-md-2.dd {
+    padding-right: 35px;
+    width: 20%;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+}
+
+.tags .tag {
+    display: inline-block;
+    /*            background: #d0d0d0;*/
+    color: #000;
+    padding: 2px 10px;
+    border-radius: 3px;
+    font-size: 14px;
+    font-weight: 500;
+    margin-right: 2px;
+    border: 1px solid #fa9600;
+}
+
+.kdomain {
+    color: #1b76ff;
+    font-size: 13px;
+    margin-top: 5px;
+}
+
+.keydomain-part {
+    background: rgb(33, 77, 184);
+    background: radial-gradient(circle, rgba(33, 77, 184, 1) 23%, rgba(5, 29, 75, 1) 62%);
+    padding: 20px;
+    border-radius: 20px;
+    height: 86%;
+}
+
+.keydomain-part span {
+    color: #fff;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+#header {
+    position: relative;
+    z-index: 999
+}
+
+.layout--tabs .accordion-flush .accordion-item .accordion-button::after {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuY29tL3N2Z2pzIiB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgeD0iMCIgeT0iMCIgdmlld0JveD0iMCAwIDQyNi42NjcgNDI2LjY2NyIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgY2xhc3M9IiI+PGcgdHJhbnNmb3JtPSJtYXRyaXgoMC42MzAwMDAwMDAwMDAwMDAyLDAsMCwwLjYzMDAwMDAwMDAwMDAwMDIsNzguOTMzNTc5ODY0NTAxOSw3OC45MzM1Nzk4NjQ1MDE5KSI+PHBhdGggZD0iTTQxMC42NjggMjI5LjMzMkgxNmMtOC44MzIgMC0xNi03LjE2OC0xNi0xNnM3LjE2OC0xNiAxNi0xNmgzOTQuNjY4YzguODMyIDAgMTYgNy4xNjggMTYgMTZzLTcuMTY4IDE2LTE2IDE2em0wIDAiIGZpbGw9IiMwMDAwMDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSIiPjwvcGF0aD48cGF0aCBkPSJNMjEzLjMzMiA0MjYuNjY4Yy04LjgzMiAwLTE2LTcuMTY4LTE2LTE2VjE2YzAtOC44MzIgNy4xNjgtMTYgMTYtMTZzMTYgNy4xNjggMTYgMTZ2Mzk0LjY2OGMwIDguODMyLTcuMTY4IDE2LTE2IDE2em0wIDAiIGZpbGw9IiMwMDAwMDAiIGRhdGEtb3JpZ2luYWw9IiMwMDAwMDAiIGNsYXNzPSIiPjwvcGF0aD48L2c+PC9zdmc+);
+    display: none;
+}
+
+.layout--tabs .nav-tabs .nav-item .nav-link {
+    border-radius: 50px !important;
+    font-size: 16px;
+}
+
+.layout--tabs .nav-tabs {
+    margin-top: 40px;
+}
+
+.layout--tabs .nav-tabs .nav-link.active {
+    background: #1b76ff !important;
+    color: #fff !important;
+}
+
+
+.solutions .form-wrapper h6,
+.solutions .form-wrapper .hs-form-private label {
+    color: #fff;
+}
+
+.solutions .form-wrapper .hs-form-private .actions .hs-button.primary {
+    background: #fa9600;
+    color: #000;
+}
+
+.solutions .form-wrapper .hs-form-private .actions .hs-button.primary:hover {
+    background: #fa9600;
+    color: #000;
+    border: 1px solid #fa9600;
+}
+
+body.solutions.modal-open {
+    overflow: hidden;
+}
+
+.solutions .custom-modal .form-wrapper .hs-form-private textarea {
+    padding: 10px
+}
+
+.app-icon.app-icon_xsmall,
+.app-icon__icon,
+.app-icon__icon:after,
+.app-icon__icon {
+    border-radius: 8px;
+}
+
+.form-wrapper {
+    background: #002254;
+    padding: 40px !important;
+    border-radius: 5px;
+    position: relative;
+}
+
+.form-wrapper .form-columns-2 {
+    display: flex;
+    justify-content: space-between;
+}
+
+.custom-modal .form-wrapper .hs-form-private fieldset.form-columns-2 .input {
+    margin-right: 0px;
+}
+
+.custom-modal .form-wrapper .hbspt-form fieldset .hs-form-field:first-child .input {
+    margin-right: 0px !important;
+}
+
+.custom-modal .form-wrapper .form-columns-2 .hs-form-field {
+    width: 48%;
+}
+
+.custom-modal .form-wrapper .hs-form-private input,
+.custom-modal .form-wrapper .hs-form-private select,
+.custom-modal .form-wrapper .hs-form-private textarea {
+    padding: 0px 10px;
+}
+
+.form-wrapper .btn-close {
+    position: absolute;
+    right: 0px;
+    top: 0px
+}
+
+.form-wrapper .modalclose {
+    width: 2rem;
+    height: 2rem;
+    position: relative;
+}
+
+.form-wrapper .modalclose:after,
+.form-wrapper .modalclose:before {
+    background-color: #fff;
+}
+
+.solutions .form-wrapper h6 {
+    font-size: 20px;
+}
+
+.solutions .form-wrapper .submitted-message h4 {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "Outfit", sans-serif;
+}
+
+.layout--tabs .nav-tabs .nav-link.active {
+    cursor: text;
+}
+
+.layout--tabs .nav-tabs .nav-link.active:after {
+    border-top: 10px solid #1b76ff !important;
+    border-left: 10px solid transparent !important;
+    border-right: 10px solid transparent !important;
+    bottom: -10px !important;
+}
+
+.freedemo-btn img {
+    vertical-align: text-bottom;
+    transition: .5s all ease;
+    /*    filter: contrast(0) brightness(0);*/
+}
+
+.freedemo-btn:hover img {
+    vertical-align: text-bottom;
+    filter: contrast(1) brightness(0);
+    transition: .5s all ease;
+}
+
+.freedemo-btn:hover {
+    color: #000;
+    animation: none;
+    --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, transparent, transparent 99%, transparent);
+    background: #fa9600;
+    transform: scale(1.10);
+    transition: .5s all ease;
+}
+
+.freedemo-btn:hover::before,
+.freedemo-btn:hover::after {
+    display: none;
+}
+
+/*
+.freedemo-btn::before {
+    content: "";
+    width: 5px;
+    height: 60%;
+    background-color: #1b76ff;
+    position: absolute;
+    border-radius: 5px;
+    left: -1px;
+    top: 20%;
+    transition: all 0.2s;
+}
+
+.freedemo-btn::after {
+    content: "";
+    width: 5px;
+    height: 60%;
+    background-color: #1b76ff;
+    position: absolute;
+    border-radius: 5px;
+    right: -1px;
+    top: 20%;
+    transition: all 0.2s;
+}
+
+.freedemo-btn:hover::before,
+.freedemo-btn:hover::after {
+    height: 60%;
+}
+*/
+
+/*
+.freedemo-btn::before {
+    content: '';
+    position: absolute;
+    width: 100px;
+    height: 100%;
+    background-image: linear-gradient(120deg, rgba(255, 255, 255, 0) 10%, rgba(255, 255, 255, .8), rgba(255, 255, 255, 0) 70%);
+    top: 0;
+    animation: shine 3.5s infinite linear;
+    left: -100px;
+}
+*/
+
+.freedemo-btn {
+    --border-radius: 1rem;
+    --border-size: 0.5rem;
+    --border-bg: conic-gradient(#fff, #FFC20F);
+    --padding: 10px;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    margin-top: 5px;
+    font-size: 13px;
+    font-weight: 800;
+    padding: calc(var(--padding) + var(--border-size));
+    border-radius: var(--border-radius);
+    display: inline-block;
+    --border-radius: 12px;
+    --border-size: 0.25rem;
+    --gradient-border: conic-gradient(from var(--border-angle), transparent 25%, #FFC20F, #FFC20F 85%, transparent);
+    transition: .5s all ease;
+}
+
+.freedemo-btn::before {
+    content: '';
+    display: block;
+    background: var(--border-bg);
+    width: calc(100% * 1.41421356237);
+    padding-bottom: calc(100% * 1.41421356237);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 100%;
+    z-index: -2;
+    -webkit-animation: spin-r-b 1s linear infinite;
+    animation: spin-r-b 1s linear infinite;
+}
+
+.freedemo-btn::after {
+    content: '';
+    position: absolute;
+    top: var(--border-size);
+    right: var(--border-size);
+    bottom: var(--border-size);
+    left: var(--border-size);
+    background: white;
+    z-index: -1;
+    border-radius: calc(var(--border-radius) - var(--border-size));
+}
+
+/* ---------- Begin rotating-border ---------- */
+@-webkit-keyframes spin-r-b {
+    from {
+        transform: translate(-50%, -50%) rotate(0);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@keyframes spin-r-b {
+    from {
+        transform: translate(-50%, -50%) rotate(0);
+    }
+
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+@media (max-width: 1570px) {
+
+    .data-part {
+        padding-right: 40px;
+    }
+
+    .keydomain-part {
+        height: 72%;
+    }
+
+    .solutions .short-desc-ul {
+        margin-bottom: 30px;
+    }
+}
+
+@media (max-width: 1445px) {
+
+    .single-wrapper {
+        padding: 40px 80px;
+    }
+
+    .top-part {
+        margin-bottom: 40px;
+    }
+
+    .below-part .col-md-2.dd {
+        padding-right: 30px;
+        width: 20%;
+    }
+}
+
+@media (max-width: 1370px) {
+
+    .single-wrapper {
+        padding: 10px 80px;
+        align-content: center;
+    }
+
+    .top-part {
+        margin-bottom: 5px;
+    }
+
+    .solutions .short-desc-ul {
+        margin-bottom: 10px !important;
+    }
+
+    .below-part .col-md-2.dd {
+        padding-right: 30px;
+        width: 20%;
+    }
+
+    .keydomain-part h5 {
+        font-size: 18px;
+    }
+
+    .keydomain-part {
+        height: 68%;
+    }
+
+    .keydomain-part span {
+        color: #fff;
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .data-part {
+        padding-right: 40px;
+    }
+
+    .solutions h1 {
+        font-size: 34px;
+        display: block;
+        width: 100%;
+    }
+
+    .solutions .short-desc-ul li,
+    .tags .tag,
+    h6 {
+        font-size: 14px !important;
+    }
+
+    .tags {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+
+}
+
+@media (max-width: 1290px) {
+
+    .single-wrapper {
+        padding: 10px 80px;
+        height: 75vh;
+    }
+
+    .top-part {
+        margin-bottom: 18px;
+    }
+
+    .below-part .col-md-2 {
+        padding-right: 15px;
+    }
+
+    .keydomain-part h5 {
+        font-size: 15px;
+    }
+
+    .solutions .icon img {
+        width: 25px;
+        margin-bottom: 5px;
+    }
+
+    .keydomain-part span {
+        color: #fff;
+        font-size: 11px;
+        line-height: 16px;
+    }
+
+    .keydomain-part {
+        height: 53%;
+    }
+}
+
+@media (max-width: 1030px) {
+    .single-wrapper {
+        height: auto;
+        background: #eee;
+        border-radius: 24px;
+        padding: 30px 80px;
+        margin: 20px 0px;
+        background: #fff;
+    }
+
+    .kdp,
+    .video-part {
+        width: 100%;
+    }
+
+    .kdp {
+        margin-bottom: 10px;
+    }
+
+    .kdp .see-in-action {
+        display: none;
+    }
+}
+
+@media (min-width: 660px) and (max-width: 770px) {
+    .single-wrapper {
+        height: auto;
+        background: #eee;
+        border-radius: 24px;
+        padding: 30px 30px;
+        margin: 20px 0px;
+        background: #fff;
+    }
+
+    .keydomain-part {
+        height: auto;
+    }
+
+    .kcb {
+        flex-direction: column;
+    }
+
+    .kcb .col-md-6,
+    .kcb .col-md-10 {
+        width: 100%;
+    }
+
+    .offset-md-2 {
+        margin-left: 0px;
+    }
+
+    .top-part,
+    .data-part {
+        margin-bottom: 20px;
+    }
+
+    .below-part .col-md-2 {
+        width: 33.33336%;
+        margin-bottom: 10px;
+    }
+
+}
+
+@media (max-width: 659px) {
+    .single-wrapper {
+        height: auto;
+        background: #eee;
+        border-radius: 24px;
+        padding: 15px;
+        margin: 20px 0px;
+        background: #fff;
+    }
+
+    .top-part,
+    .data-part {
+        margin-bottom: 20px;
+    }
+
+    .keydomain-part {
+        height: auto;
+    }
+
+    .below-part .col-12.dd {
+        margin-bottom: 20px;
+        width: 100%;
+    }
+
+    .form-wrapper .form-columns-2 {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        margin-bottom: 0px;
+    }
+
+    .custom-modal .form-wrapper .form-columns-2 .hs-form-field {
+        margin-bottom: 10px;
+    }
+
+    .form-wrapper .modalclose {
+        width: 1rem;
+        height: 1rem;
+        position: relative;
+        right: -35px;
+        text-align: center;
+        top: -10px;
+    }
+}
+
+#lets_talk .submitted-message {
+    border: 1px solid #bbb;
+    padding: 60px 30px;
+    border-radius: 10px;
+}
+
+#lets_talk .submitted-message span {
+    text-decoration: none !important;
+}
+
+#lets_talk .submitted-message a {
+    text-decoration: underline;
+}
+
+@media (min-width: 1200px) {
+
+    #lets_talk .h4,
+    #lets_talk h4 {
+        font-size: 1.2rem;
+    }
+
+    .case-studies .case-studies-card h4 {
+/*        height: 108px;*/
+    }
+}
+
+@media (max-width: 1370px) {
+
+    #lets_talk .big-project {
+        font-size: 36px !important;
+        line-height: 40px;
+        font-weight: 500;
+        padding-right: 4rem;
+        padding-bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 1290px) {
+
+    #lets_talk .big-project {
+        font-size: 36px !important;
+        line-height: 40px;
+        font-weight: 500;
+        padding-right: 4rem;
+        padding-bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 1024px) {
+
+    #lets_talk .big-project {
+        font-size: 36px !important;
+        line-height: 40px;
+        font-weight: 500;
+        padding-right: 4rem;
+        padding-bottom: 0.8rem;
+    }
+}
+
+@media (max-width: 770px) {
+
+    #lets_talk .big-project {
+        font-size: 28px !important;
+        line-height: 30px;
+        font-weight: 500;
+        padding-right: 0rem;
+        padding-bottom: 0.8rem;
+    }
+}
+
+@media (min-width: 1900px) {
+
+    .single-wrapper {
+        width: 1366px;
+        margin: 0 auto;
+    }
+
+}

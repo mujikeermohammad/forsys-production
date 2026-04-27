@@ -1,0 +1,132 @@
+@import "variables";
+.mini-cart-popup .heading h5 {
+  font-family: "OpenSans Bold";
+  font-size: 18px;
+  color: $brand-dark6;
+  overflow: inherit;
+}
+.mini-cart-popup .flyout-container {
+  padding-top: 10px;;
+}
+.mini-cart-popup .product-name p.font-weight-bold.mb-1 {
+  font-size: 14px;
+  font-weight: normal !important;
+  color: $brand-dark6;
+}
+.mini-cart-popup .product-name .col label {
+  font-family: "OpenSans Bold";
+  font-size: 16px;
+  margin: 0;
+} 
+.mini-cart-popup .flyout-container .center-content .product-name .icon-trash {
+  font-size: 16px;
+  color: $brand-dark6;
+  margin: 13px 0px;
+  display: inherit;
+}
+.mini-cart-popup .align-items-center span {
+  font-size: 16px;
+  color: $brand-dark6;
+}
+.mini-cart-popup .cust-fontSize-0 span {
+  font-family: "OpenSans Regular";
+  font-size: 26px;
+  color: $brand-dark6;
+  font-weight: 400 !important;
+}
+.mini-cart-popup .product-name.total-price strong {
+  font-family: "OpenSans Bold";
+  font-size: 22px;
+}
+.mini-cart-popup {
+  border: none;
+  border-radius: 0px;
+  box-shadow: 0px 4.8px 14.4px rgba(0, 0, 0, 0.18), 0px 25.6px 57.6px rgba(0, 0, 0, 0.22);
+  margin: 0px;
+  width: 420px;
+  background: $brand-gray6;
+}
+.mini-cart-popup .bottom .btn {
+  background: $brand-red1 !important;
+  color: $light !important;
+  font-size: 18px;
+}
+.mini-cart-popup .bottom .btn:hover,
+.mini-cart-popup .bottom .btn:focus {
+  color: $light !important;
+  background-color: $brand-red5 !important;
+  border-color: $brand-red5 !important;
+}
+.flyout-container {
+    .center-content {
+        .btn-icon {
+            background-color: transparent !important;
+            padding-top: 0 !important;
+            padding-bottom: 0 !important;
+            min-height: fit-content !important;
+            height: fit-content !important;
+
+            &.ladda-button[data-loading] .icon-trash:before {
+                content: "";
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.flyout-outer .ladda-button[data-style=expand-right] .ladda-spinner {
+    right: 0px;
+}
+
+.flyout-outer {
+    a {
+      color: #fff !important;
+      background-color: $brand-red1 !important;
+      padding: 9px 24px;
+      display: inline-block;
+      font-size: 16px;
+      display: flex;
+        border-radius: 4px;
+      span.p-1 {
+        font-size: 12px;
+        background: white;
+        color: $brand-red1;
+        border-radius: 15px;
+        min-width: 18px;
+        height: 18px;
+        position: absolute;
+        text-align: center;
+        line-height: 10px;
+        right: 9px;
+        top: 4px;
+      }
+      span.lbl {
+        padding-right: 0px;
+      }
+      i.icon-cart {
+        font-size: 20px;
+      }
+    }
+}
+.tooltip {
+    .tooltip-inner {
+      max-width: none !important; //415px
+    }
+  }
+  .view-cart .ladda-label{
+    width: 100% !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+  }
+
+  .price-loader{
+    padding-right: 0 !important;
+    width: 15px;
+    border: none;
+  }
+
+  .spinner1{
+    color: #ff0026;
+
+  }

@@ -45,7 +45,13 @@
       "Bash(perl -i -pe 's|\\(<meta charset=\"UTF-8\" />\\)|$1\\\\n  <link rel=\"icon\" href=\"assets/images/favicon.png\" type=\"image/png\">|' index.html)",
       "Bash(perl -i -pe ' *)",
       "Bash(git rm *)",
-      "Bash(perl -i -pe 's|webinars-media\\\\.html|webinars-events.html|g' resources/webinars-events.html)"
+      "Bash(perl -i -pe 's|webinars-media\\\\.html|webinars-events.html|g' resources/webinars-events.html)",
+      "Bash(perl -i -pe 's/data-industry=\"hi-tech\"/data-industry=\"hitech\"/g; s/class=\"res-filter-btn\">Hi-Tech</class=\"res-filter-btn\">HiTech</g' resources/customer-stories.html)",
+      "Bash(perl -i -pe 's/80\\\\+ certified \\(Conga \\)?resources/300+ certified $1resources/g' partnerships/conga.html)",
+      "Bash(perl -i -pe 's/with 80\\\\+ certified resources/with 300+ certified resources/g' partnerships/conga.html)",
+      "Bash(curl -s -A \"Mozilla/5.0 \\(Windows NT 10.0; Win64; x64\\) AppleWebKit/537.36 Chrome/120 Safari/537.36\" \"https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap\")",
+      "Bash(node -e \"console.log\\('node ok'\\)\")",
+      "Bash(certutil -hashfile Inter-300.woff2 MD5)"
     ]
   }
 }

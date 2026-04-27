@@ -1,0 +1,760 @@
+<div class="w-100 col-12 row m-0 bg-white">
+  <div class="col-12 col-lg-12 col-xl-12">
+    <app-product-search [typeAheadLimit]="5" (search)="textSearched_details($event)"></app-product-search>
+    </div>
+  <div class="col-12 col-lg-8 col-xl-9">
+    <app-detail
+      [isGuestUser]="isGuestUser"
+      [title]="viewState?.product?.Name"
+      [subtitle]="viewState?.product?.ProductCode"
+      [context]="viewState?.product"
+      *ngIf="viewState$ | async as viewState; else productLoading"
+    >
+      <div class="constraintAlerts" *ngIf="configURL && showConstraintRules">
+        <apt-alert [record]="activeCart" [autoRun]="false"></apt-alert>
+        <apt-constraint-rule-alert></apt-constraint-rule-alert>
+      </div>
+
+      <div class="secondary-actions" *ngIf="!isGuestUser">
+        <!-- simple product -->
+        <ng-template>
+          <div
+            class="d-flex"
+            *ngIf="
+              !viewState?.product?.HasAttributes &&
+                !viewState?.product?.HasOptions;
+              else complex
+            "
+          >
+            <h3 class="product-price">
+              <!-- <span>{{ viewState?.product.PriceLists[0].ContractPrice | pghv_convertCurrency |
+                                async}}</span> -->
+              <app-pghv-price
+                [record]="product ? product : viewState?.product"
+                type="list"
+              ></app-pghv-price>
+            </h3>
+            <div class="form-group mx-3 my-0 d-flex align-items-center">
+              <span class="mr-3"> {{ "COMMON.QUANTITY" | translate }} </span>
+              <input
+                type="number"
+                onpaste="return false;"
+                (keypress)="onQuantity($event)"
+                min="1" [max]="99999"
+                class="w-75 form-control quantity"
+                [(ngModel)]="viewState.quantity"
+                name="quantity" (ngModelChange)="changeProductQuantity(viewState.quantity)" name="quantity" appLimitInput
+                appNumbersOnly
+              />
+            </div>
+            <apt-add-to-cart
+              [showQuantityControls]="false"
+              [configurationEnabled]="false"
+              [quantity]="viewState.quantity"
+              [cartItems]="cartItemList"
+              [product]="product ? product : viewState?.product"
+              [disabled]="configurationPending"
+              [btnClass]="'btn-primary btn-raised px-3 py-2'"
+              [aboEnabled]="false"
+            >
+            </apt-add-to-cart>
+            <br />
+          </div>
+        </ng-template>
+
+        <!-- complex proudct -->
+        <ng-template #complex>
+          <div class="d-flex">
+            <h3 class="product-price my-1">
+              <!-- <span>{{ viewState?.product.PriceLists[0].ContractPrice | pghv_convertCurrency |
+                                async}}</span> -->
+              <app-pghv-price
+                [record]="product ? product : viewState?.product"
+                type="list"
+              ></app-pghv-price>
+            </h3>
+            <ng-container *ngIf="viewState?.relatedTo; else newProduct">
+              <div class="form-group mx-3 my-0 d-flex align-items-center">
+                <span class="mr-3"> {{ "COMMON.QUANTITY" | translate }} </span>
+                <input
+                  type="number"
+                  onpaste="return false;"
+                  (keypress)="onQuantity($event)"
+                  min="1" [max]="99999"
+                  class="w-75 form-control quantity"
+                  [(ngModel)]="viewState.quantity"
+                  (ngModelChange)="changeProductQuantity(viewState.quantity)"
+                  name="quantity" appLimitInput
+                  appNumbersOnly
+                />
+              </div>
+              <apt-add-to-cart
+                [showQuantityControls]="false"
+                [configurationEnabled]="false"
+                [quantity]="viewState.quantity"
+                [cartItems]="cartItemList"
+                [product]="product ? product : viewState?.product"
+                [disabled]="configurationPending"
+                [btnClass]="'btn-primary btn-raised px-3 py-2'"
+                [aboEnabled]="false"
+              >
+              </apt-add-to-cart>
+            </ng-container>
+            <br />
+          </div>
+        </ng-template>
+      </div>
+
+      <!-- <app-detail-section [title]="'PRODUCT_DETAILS.DETAILS' | translate"> -->
+      <!-- Product Image -->
+      <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-5 text-center">
+          <app-pghv-image [product]="viewState?.product"></app-pghv-image>
+        </div>
+        <!-- /Product Image -->
+        <!-- Product Description -->
+        <div class="col-sm-12 col-md-12 col-lg-7">
+          <div class="products-description">
+            <div class="des-heading">
+              <h4>{{ viewState?.product?.ProductCode }}</h4>
+            </div>
+            <p class="product-sku">
+              {{ viewState?.product?.Name }}
+            </p>
+            <p [innerHTML]="viewState?.product?.Description" style="white-space:pre-wrap;"></p>
+            <p class="supplier-info" *ngIf="!isGuestUser" >
+              <b>Supplier: </b>
+              
+          <ng-container *ngIf="viewState?.product?.PriceLists?.[0]?.APTS_Enable_Multiple_Supplier_c; else supplierInfo"> Multiple</ng-container>
+          <ng-template #supplierInfo>
+            <ng-container *ngIf="internalDefaultAccount"> {{viewState?.product?.PriceLists?.[0]?.APTS_Hitachi_Location_Factory_Name_c }}</ng-container>
+            <ng-container *ngIf="!internalDefaultAccount"> {{viewState?.product?.PriceLists?.[0]?.APTS_Factory_Name_c }}</ng-container>
+          </ng-template>  
+            </p>            
+
+            <p *ngIf="viewState?.product?.APTS_Additional_Info_c || (!isGuestUser && viewState?.product?.APTS_Internal_Documents)">
+              {{ "PRODUCT_DETAILS.ADDITIONAL_INFO" | translate }}
+              <u>
+                <span
+                  class="document"
+                  *ngIf="viewState?.product?.APTS_Additional_Info_c"
+                  [innerHTML]="viewState?.product?.APTS_Additional_Info_c"
+                ></span>
+                <span
+                  class="document"
+                  *ngIf="
+                    !isGuestUser && viewState?.product?.APTS_Internal_Documents
+                  "
+                  [innerHTML]="viewState?.product?.APTS_Internal_Documents"
+                ></span>
+              </u>
+            </p>
+
+            <p class="product-price" *ngIf="!isGuestUser">
+              <span *ngIf="ServiceProducts || isRFC || viewState?.product?.PriceLists?.[0]?.APTS_Enable_Multiple_Supplier_c" class="onRequestClass">
+                {{ product?.isExternalConfigurable ? ('COMMON.CONFIGURE_FOR_PRICE' | translate) : ('COMMON.ON_REQUEST' | translate) }}
+              </span>
+               <ng-container *ngIf="!ServiceProducts && !isRFC && !viewState?.product?.PriceLists?.[0]?.APTS_Enable_Multiple_Supplier_c">
+                <ng-container *ngIf="customContractCurrency?.showHidePrice">
+                  <app-pghv-custom-price
+                    [record]="viewState?.product"
+                    [pageName]="'productDetailPage'"
+                    [customPrice]="true"
+                  ></app-pghv-custom-price>
+                </ng-container>
+            
+                <div [ngClass]="customContractCurrency?.showHidePriceCss ? 'diff-curr' : ''">
+                  <ng-container *ngIf=" product?.isExternalConfigurable ">
+                    {{'COMMON.CONFIGURE_FOR_PRICE' | translate}}
+                  </ng-container>
+                  <ng-container *ngIf="!product?.isExternalConfigurable ">
+                    <span *ngIf="customContractCurrency?.showHidePriceCss">(</span>
+                    <app-pghv-custom-price
+                      [record]="viewState?.product"
+                      [pageName]="'productDetailPage'"
+                      type="net"
+                    ></app-pghv-custom-price>
+                    <span *ngIf="customContractCurrency?.showHidePriceCss">)</span>
+                  </ng-container>                 
+                </div>
+              </ng-container>
+            </p>
+            <!-- Estimated lead time -->
+            <div class="row" class="" *ngIf="!isGuestUser">
+              <div class="col-sm-12 col-md-12 col-lg-4 product-more-info-wrapper">
+                <div class="product-more-info mb-2">
+                  <label>
+                    {{ "PRODUCT_DETAILS.ESTIMATED_LEAD_TIME" | translate }}
+                      <i class="icon-info" tooltip="{{'PRODUCT_DETAILS.LEADTIME_TOOLTIP_MSG_DYNAMIC' | translate}}"></i>
+                  </label>
+                  <!-- for default lead-time -->
+                  <ng-container *ngIf="!isStockAvailablityVerified">
+                    <span *ngIf="!viewState?.product?.PriceLists?.[0]?.APTS_Enable_Multiple_Supplier_c">
+                      <ng-container *ngIf="product?.ProductCode === 'Faktura-Satz'">N/A</ng-container>
+                      <ng-container *ngIf="product?.ProductCode !== 'Faktura-Satz'">{{ materialSupplier?.APTS_Lead_Time_c | leadTimeInDays }}</ng-container>
+                      
+                    </span>
+                    <span *ngIf="viewState?.product?.PriceLists?.[0]?.APTS_Enable_Multiple_Supplier_c">
+                      On Request
+                    </span>
+                  </ng-container>
+                  <ng-container *ngIf="isStockAvailablityVerified">
+                    <span>{{getDynamicLeadTimeData()}}</span>
+                    <!-- <span>{{factoryLeadTime ? factoryLeadTime (viewState?.product?.PriceLists?.[0]?.APTS_Enable_Multiple_Supplier_c)}}</span> -->
+                  </ng-container>
+                  <span class="last-column"></span>
+                </div>
+                <div class="product-more-info">
+                  <label>{{
+                    "PRODUCT_DETAILS.AVAILABILITY" | translate
+                  }}</label>
+                  <!-- Stock availability logos & Info -->
+                  <span
+                  *ngIf="productQuantity && productQuantity !== '' && productQuantity !== 'Not Relevant' && productQuantity !== 'N/A'"
+                  [ngClass]="productQuantity > 0 ? 'in-stock' : 'not-in-stock'"
+                  class="d-flex"
+                  >
+                  <!-- tick mark & cross mark logos based on stock -->
+                  <div class="status" [ngClass]="productQuantity > 0 ? 'checkmark' : 'cross_red'">
+                    <i *ngIf="!(productQuantity > 0)" class="fa fa-times"></i>
+                  </div>
+                  <!-- text info based on stock -->
+                  <div>
+                    {{ productQuantity > 0 ? 'In Stock (' + productQuantity + ' available)' : 'Not In Stock' }}
+                  </div>
+                </span>
+                <!-- default status -->
+                <span *ngIf="productQuantity === ''">--</span>
+                <!-- 'N/A status when API failure' -->
+                <span *ngIf="productQuantity === 'Not Relevant' || productQuantity === 'N/A'">{{ productQuantity }}</span>                
+                  <span class="last-column" *ngIf="!viewState?.product?.PriceLists?.[0]?.APTS_Enable_Multiple_Supplier_c">
+                    <button
+                      type="button"
+                      [ladda]="stockLoading"
+                      data-style="zoom-in"
+                      (click)="getStockAvailability()"
+                      class="btn btn-secondary availability-btn"
+                    >
+                      <i class="icon-products-availability"></i>
+                    </button>
+                  </span>                  
+                </div>
+
+              </div>
+                                <div
+                  *ngIf="stockAvailabilityInfo"
+                  class="alert alert-warning warning-button"
+                >
+                  <i class="icon-warning-message"></i
+                  ><span>{{
+                    "PRODUCT_DETAILS.STOCK_AVAIL_INFO" | translate
+                  }}</span>
+                </div>
+            </div>
+            <div
+              class="d-flex qty-add-cart align-items-center"
+              *ngIf="!isGuestUser && !hideAddButton"
+            >
+              <span class="qty-text mr-2">{{ "COMMON.QTY" | translate }}:</span>
+              <input
+                *ngIf="
+                  !viewState?.product?.HasAttributes &&
+                    !viewState?.product?.HasOptions;
+                  else complexQuantity
+                "
+                type="number"
+                [min]="1" [max]="99999"
+                onpaste="return false;"
+                (keypress)="onQuantity($event)"
+                class="form-control qty mr-4"
+                [(ngModel)]="viewState.quantity"
+                (ngModelChange)="changeProductQuantity(viewState.quantity)"
+                  name="quantity" appLimitInput
+                  appNumbersOnly
+              />
+
+              <ng-template #complexQuantity>
+                <input
+                  type="number"
+                  [min]="1" [max]="99999"
+                  onpaste="return false;"
+                  (keypress)="onQuantity($event)"
+                  class="form-control qty mr-4"
+                  [(ngModel)]="viewState.quantity"
+                  (ngModelChange)="changeProductQuantity(viewState.quantity)"
+                  name="quantity" appLimitInput
+                  appNumbersOnly
+                />
+              </ng-template>
+              <!-- {{viewState?.product | json}} -->
+
+               <!-- the below two methods are not required as we have a different logic in adding a product to cart we need to check the supplier and add it to the cart the below method will not satisfy that condition hence removing it  -->
+              <!-- <div
+                *ngIf="
+                  viewState?.product?.PriceLists[0]?.APTS_Ecommerce_Type_c !==
+                    'RFQ' &&
+                  viewState?.product?.PriceLists[0]?.APTS_Ecommerce_Type_c !==
+                    'Unlisted' &&
+                  viewState?.product?.PriceLists[0]?.APTS_Ecommerce_Type_c !==
+                    null
+                "
+              >
+                <apt-add-to-cart
+                  *ngIf="
+                    !viewState?.product?.HasAttributes &&
+                    !viewState?.product?.HasOptions
+                  "
+                  [showQuantityControls]="false"
+                  (onAddToCart)="onAddToCart($event)"
+                  [configurationEnabled]="false"
+                  [quantity]="viewState.quantity"
+                  [aboEnabled]="false"
+                  [disabled]="configurationPending"
+                  [product]="product ? product : viewState?.product"
+                  [btnClass]="'btn btn-primary'"
+                >
+                </apt-add-to-cart>
+              </div> -->
+              <!-- <div
+                *ngIf="
+                  viewState?.product?.PriceLists[0]?.APTS_Ecommerce_Type_c ===
+                    'RFQ' ||
+                  viewState?.product?.PriceLists[0]?.APTS_Ecommerce_Type_c ===
+                    'Unlisted' ||
+                  (viewState?.product?.PriceLists[0]?.APTS_Ecommerce_Type_c ==
+                    null &&
+                    viewState?.product?.ConfigurationType == 'Standalone'))
+                "
+                class="btn btn-primary"
+                (click)="
+                  product
+                    ? addProductToCarts(product, viewState?.quantity)
+                    : addProductToCarts(viewState?.product, viewState?.quantity)
+                "
+                [ladda]="spinner"
+              >
+                Add To Cart
+              </div> -->
+
+            </div>  
+              <button
+                *ngIf="viewState?.product?.ConfigurationType != 'Bundle' && viewState?.product?.ConfigurationType !== 'Option' && !ProductAddedToRFC"
+                class="btn btn-primary"
+                (click)="product ? addProductToCarts(product, viewState?.quantity,multipleSupplierModal) : addProductToCarts(viewState?.product, viewState?.quantity,multipleSupplierModal)"
+                [ladda]="spinner">
+                {{isRFC ? 'Add to RFC' : 'Add To Cart'}}
+              </button>
+              <div
+                *ngIf="ProductAddedToRFC"
+                class="btn btn-rfc-success btn-success">
+                <i class="icon-message-sent"></i>
+              </div>              
+                        <!-- Min - Max QTY Starts -->
+            <div class="row" *ngIf="(materialSupplier?.APTS_Maximum_Order_Quantity_c || materialSupplier?.APTS_Minimum_Order_Quantity_c) && !viewState?.product?.PriceLists?.[0]?.APTS_Enable_Multiple_Supplier_c">
+              <div class="col-sm-12 col-md-12 col-lg-8">
+                <div *ngIf="materialSupplier?.APTS_Minimum_Order_Quantity_c" class="product-more-info">
+                  <label>{{ "PRODUCT_DETAILS.MATERIAL_SUPPLIER_MIN_QTY" | translate }}</label>
+                  <span>{{ materialSupplier.APTS_Minimum_Order_Quantity_c }}</span>
+                </div>
+                <div *ngIf="materialSupplier?.APTS_Maximum_Order_Quantity_c" class="product-more-info">
+                  <label>{{ "PRODUCT_DETAILS.MATERIAL_SUPPLIER_MAX_QTY" | translate }}</label>
+                  <span>{{ materialSupplier.APTS_Maximum_Order_Quantity_c }}</span>
+                </div>
+              </div>
+            </div>
+                        <!-- Min - Max QTY Ends -->
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-12 col-md-12 tab-underline mt-5">
+          <!-- Table Value -->
+          <ul class="nav nav-tabs border-bottom" id="myTab" role="tablist">
+            <li
+              class="nav-item"
+              *ngIf="viewState?.product?.ProductFeatureValues?.length > 0"
+            >
+              <a
+                [ngClass]="viewState?.product?.ProductFeatureValues?.length > 0 && viewState?.product?.['APTS_External_Configurable_c'] !== 'Yes'?'nav-link active':'nav-link'"
+                id="specifications-tab"
+                data-toggle="tab"
+                href="#specifications"
+                role="tab"
+                aria-controls="specifications"
+                aria-selected="true"
+                >{{ "PRODUCT_DETAILS.SPECIFICATIONS" | translate }}</a
+              >
+            </li>
+            <li
+              class="nav-item"
+              *ngIf="
+                viewState?.product?.ConfigurationType != 'Standalone' &&
+                viewState?.product?.HasOptions &&
+                viewState?.product?.PriceLists[0]?.APTS_Ecommerce_Type_c !==
+                  'Unlisted'
+              "
+            >
+              <a
+              [ngClass]="!viewState?.product?.ProductFeatureValues?.length > 0 || viewState?.product?.['APTS_External_Configurable_c'] === 'Yes'?'nav-link active':'nav-link'"
+                id="configurations-tab"
+                data-toggle="tab"
+                href="#configurations"
+                role="tab"
+                aria-controls="configurations"
+                aria-selected="false"
+                >{{ "PRODUCT_DETAILS.CONFIGURATIONS" | translate }}</a
+              >
+            </li>
+            <li class="nav-item" *ngIf="showTerms && !isGuestUser && !viewState?.product?.PriceLists?.[0]?.APTS_Enable_Multiple_Supplier_c">
+              <a
+                class="nav-link"
+                id="terms-tab"
+                data-toggle="tab"
+                href="#terms"
+                role="tab"
+                aria-controls="terms"
+                aria-selected="false"
+                >{{ "PRODUCT_DETAILS.TERMS_AND_CONDITIONS" | translate }}</a
+              >
+            </li>
+          </ul>
+          <!-- /Table Value -->
+          <div class="tab-content" id="myTabContent">
+            <!-- Specifications Tabs -->
+            <div
+              *ngIf="viewState?.product?.ProductFeatureValues?.length > 0"
+              [ngClass]="
+               viewState?.product?.ProductFeatureValues?.length > 0 && viewState?.product?.['APTS_External_Configurable_c'] !== 'Yes'
+                  ? 'tab-pane fade show active'
+                  : 'tab-pane fade'"
+              id="specifications"
+              role="tabpanel"
+              aria-labelledby="specifications-tab"
+            >
+              <div class="row mt-4">
+                <div class="col-sm-6">
+                  <app-tab-features
+                    [product]="viewState?.product"
+                    class="animated fadeIn d-block"
+                  >
+                  </app-tab-features>
+                </div>
+              </div>
+            </div>
+            <!-- /Specifications Tabs -->
+            <!-- Configurations Tabs -->
+            <div
+              *ngIf="viewState?.product?.HasOptions"
+              [ngClass]="
+              !viewState?.product?.ProductFeatureValues?.length > 0 || viewState?.product?.['APTS_External_Configurable_c'] === 'Yes'
+                  ? 'tab-pane fade show active'
+                  : 'tab-pane fade'"
+              id="configurations"
+              role="tabpanel"
+              aria-labelledby="configurations-tab"
+            >
+              <div class="row mt-4">
+                <div class="col-sm-12">
+                  <apt-constraint-rule-alert [showProductConfig]="true">
+                  </apt-constraint-rule-alert>
+                  <p *ngIf="!ProductAddedToRFC && !isGuestUser && viewState?.product?.ConfigurationType == 'Bundle' && viewState?.product?.APTS_External_Configurable_c == 'Yes'">
+                    <button type="button" class="btn btn-link btn-secondary"
+                      (click)="getConfiguratorUrl(viewState?.product,viewState?.quantity)" [ladda]="spinner"
+                      data-style="zoom-in">{{'ProductCard.Configure'| translate}} </button>
+                      
+                  </p>
+                  <div
+                    *ngIf="ProductAddedToRFC && !isGuestUser && viewState?.product?.ConfigurationType == 'Bundle' && viewState?.product?.APTS_External_Configurable_c == 'Yes'"
+                    class="btn btn-rfc-success btn-success">
+                      <i class="icon-message-sent"></i>
+                  </div>
+                  <app-pghv-product-configuration
+                  *ngIf="!viewState?.product?.APTS_External_Configurable_c == 'Yes' || viewState?.product?.APTS_External_Configurable_c == null"
+                    [product]="viewState?.product"
+                    (checkForDisableFlag)="checkForDisableFlag($event)"
+                    [relatedTo]="viewState?.relatedTo"
+                    [accordion]="true"
+                    (click)="configurationChanged = true"
+                    [isGuestUser]="isGuestUser"
+                    [configurationURL]="configURL"
+                  >
+                  </app-pghv-product-configuration>
+                </div>
+              </div>
+            </div>
+            <!-- Configurations Tabs -->
+            <!-- Terms and Conditions Tabs -->
+            <div
+              class="tab-pane fade"
+              id="terms"
+              role="tabpanel"
+              aria-labelledby="terms-tab"
+            >
+              <div class="row mt-4">
+                <div class="col-sm-12">
+                  <table class="table">
+                    <tbody>
+                      <tr class="borderNone">
+                        <td class="border-bottom-0">
+                          <div class="configuration-items">
+                            <label>{{
+                              "COMMON.DELIVERY_TERMS" | translate
+                            }}</label>
+                            <p>
+                              {{
+                                termsAndConditions?.APTS_Delivery_Terms_Description_c
+                              }}
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                      <tr class="borderNone">
+                        <td class="border-bottom-0">
+                          <div class="configuration-items">
+                            <label>{{
+                              "COMMON.PAYMENT_TERMS" | translate
+                            }}</label>
+                            <p>
+                              {{
+                                termsAndConditions?.APTS_Payment_Terms_Description_c
+                              }}
+                            </p>
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- Terms and Conditions Tabs -->
+          </div>
+        </div>
+      </div>
+      <ng-container
+        *ngIf="recommendProducts$ | async as recommendedProducts; else loading"
+      >
+        <app-detail-section
+          *ngIf="recommendedProducts.length"
+          [title]="'PRODUCT_DETAILS.RECOMMENDED_PRODUCTS' | translate"
+        >
+          <div class="feature-products mt-3">
+            <h3>{{ "PRODUCT_DETAILS.RECOMMENDED_PRODUCTS" | translate }}</h3>
+            <div class="bg-white expand-collapse">
+              <div
+                id="home-slide"
+                class="carousel d-flex align-items-center slide p-0"
+                data-ride="carousel"
+                data-interval="false"
+              >
+                <div class="carousel-inner">
+                  <ng-container
+                    *ngFor="let productArray of slides; let i = index"
+                  >
+                    <div
+                      [ngClass]="
+                        i == 0 ? 'carousel-item active' : 'carousel-item'
+                      "
+                    >
+                      <div class="row no-gutters tab-lists related-post">
+                        <div
+                          *ngFor="let product of productArray"
+                          class="product-box product-value"
+                        >
+                          <app-pghv-product-card
+                            [product]="product"
+                          ></app-pghv-product-card>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                </div>
+                <div class="row" *ngIf="slides.length > 4">
+                  <a
+                    class="carousel-control-prev"
+                    href="#home-slide"
+                    role="button"
+                    data-slide="prev"
+                  >
+                    <i class="icon-arrow-left" aria-hidden="true"></i>
+                    <span class="sr-only">{{
+                      "JUMBORTON.PREVIOUS" | translate
+                    }}</span>
+                  </a>
+                  <a
+                    class="carousel-control-next"
+                    href="#home-slide"
+                    role="button"
+                    data-slide="next"
+                  >
+                    <i class="icon-arrow-right" aria-hidden="true"></i>
+                    <span class="sr-only">{{
+                      "JUMBORTON.NEXT" | translate
+                    }}</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </app-detail-section>
+      </ng-container>
+
+      <!-- Product Description -->
+
+      <!-- /Tab Container -->
+
+      <app-detail-section
+        [title]="'PRODUCT_DETAILS.ATTACHMENTS' | translate"
+        *ngIf="(attachments$ | async)?.length > 0"
+      >
+        <div class="row mt-4">
+          <h4 class="text-muted col-12">
+            {{ "PRODUCT_DETAILS.ATTACHMENTS" | translate }}
+          </h4>
+          <div class="col-12">
+            <div class="card">
+              <div class="card-body">
+                <app-tab-attachments
+                  [product]="viewState?.product"
+                ></app-tab-attachments>
+              </div>
+            </div>
+          </div>
+        </div>
+      </app-detail-section>
+    </app-detail>
+  </div>
+
+  <div
+    class="col-12 col-lg-4 col-xl-3 Sign-in-sso bg-light"
+    *ngIf="isGuestUser"
+  >
+    <div class="sign-in-right">
+      <span>{{ "Header.SignIn" | translate }}</span>
+      <a href="javascript:void(0);"><i class="icon-close"></i></a>
+    </div>
+    <div class="registration-account px-4">
+      <h5>{{ "HomePage.HitachiHeader" | translate }}</h5>
+      <a
+        href="{{ ssoCommunityURL }}"
+        class="btn btn-outline-primary btn-block text-left"
+        >{{ "HomePage.SignInSSO" | translate }}</a
+      >      
+    </div>
+  </div>
+  <div
+    class="col-sm-12 col-md-4 col-xl-3 products-net-price bg-light section-outer-spacing-py"
+    *ngIf="
+      !isGuestUser &&
+      (viewState$ | async)?.product?.HasOptions &&
+      (viewState$ | async)?.product?.PriceLists[0]?.APTS_Ecommerce_Type_c !==
+        'Unlisted' &&
+      (viewState$ | async)?.product?.ConfigurationType != 'Standalone'
+    "
+  >
+    <app-pghv-product-configuration-summary
+      *ngIf="
+        (viewState$ | async)?.product?.HasOptions && cartItemList?.length > 0 && (viewState$ | async)?.product?.ConfigurationType !== 'Standalone'
+      "
+      [product]="(viewState$ | async)?.product"
+      [cart]="cart"
+      [configurationPending]="configurationPending"
+      [relatedTo]="(viewState$ | async)?.relatedTo"
+      [changes]="cartItemList"
+      [preload]="true"
+      [maxEstimatedLeadTime]="cartLeadTime"
+      [quantity]="(viewState$ | async)?.quantity"
+      [configurationURL]="configURL"
+      [disabled]="configurationPending"
+      position="right"
+      (externalBundle)="handleExternalBundle($event)"
+      #configSummary
+    >
+    </app-pghv-product-configuration-summary>
+  </div>
+
+  <ng-template #productLoading>
+    <div class="d-flex justify-content-center pt-5">
+      <apt-dots></apt-dots>
+    </div>
+  </ng-template>
+</div>
+<ng-template #addToCartConfirmationTemplate>
+  <div class="alert alert-success alertBottom single-supl-alert">
+    <i class="icon-warning-message"></i>
+    <span class="item-text">
+      <strong>{{ "ProductCard.DiffSupplierAddedtoCart" | translate }}</strong>
+      <i class="icon-close" (click)="confirmationModal.hide()"></i>
+      <p>{{productName}} {{'ProductCard.DiffSupplierAddedtoCart2' | translate}}
+        {{different_supplier}}. {{'ProductCard.DIFF_SUPPLIER_REST_MESSAGE' | translate}} {{same_supplier}}</p>
+    </span>
+  </div>
+</ng-template>
+<ng-template #configProductAccessIssue>
+  <div class="alert alert-success alertBottom single-supl-alert">
+    
+    <span class="item-text">
+      <i class="icon-close" (click)="configProductAccess.hide()"></i>
+      <p>
+        <i class="icon-info"></i> {{'COMMON.PRODUCT_CONFIG_ACCESS_MESSAGE'|translate}}
+      </p>
+    </span>
+  </div>
+</ng-template>
+<ng-template #multipleSupplierModal>
+  <!-- Heading -->
+  <form [formGroup]="multipleSupplierPopupForm" (ngSubmit)="addProductWithInitialSupplier()">
+    <div class="modal-header">
+      <h5 class="modal-title"> {{ "COMMON.SUPPLIER_DETAILS" | translate }} </h5>
+      <button type="button" class="close btn btn-icon" aria-label="Close" (click)="closeMultipleSupplierModal()">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <!-- /Heading -->
+
+    <!-- Content -->
+    <div class="modal-body">
+      <div class="form-group" *ngIf="suppliersList?.length > 0">
+        <label for="supplierSelect">
+          {{ "COMMON.ASSIGN_SUPPLIER" | translate }}
+          <span class="mandatory-star">*</span>
+        </label>
+        <div class="select-group">
+          <select
+            id="supplierSelect"
+            class="form-control form-select"
+            [formControlName]="'factoryDetails'"
+            [(ngModel)]="selectedMultipleFactory"
+          >
+            <option value="" disabled>Select Supplier</option>
+            <option *ngFor="let supplier of suppliersList" [ngValue]="supplier">
+              {{ supplier.Name }}
+            </option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="modal-footer">
+      <button
+        type="button"
+        class="btn btn-secondary"
+        (click)="resetMultipleSupplierForm()"
+        [disabled]="multipleSupplierPopupForm?.invalid || spinner"
+      >
+        {{ "ProductSearch.UnavailableProduct.Reset" | translate }}
+      </button>
+      <button
+        type="submit"
+        class="btn btn-primary border-left"
+        [disabled]="multipleSupplierPopupForm?.invalid"
+        [ladda]="spinner"
+      >
+      {{ "COMMON.ADD_TO_CART" | translate }}
+      </button>
+    </div>
+    <!-- /Footer -->
+  </form>
+</ng-template>
+

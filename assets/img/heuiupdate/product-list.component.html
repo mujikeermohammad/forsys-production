@@ -1,0 +1,253 @@
+<section class="container-fluid bg-light">
+  <div
+    class="alert alert-warning warning-button m-0"
+    *ngIf="isRFC && rfcFactoryName"
+  >
+    <i class="icon-warning-message"></i>This catalog has been prefiltered for
+    supplier {{ rfcFactoryName }}.
+  </div>
+  <div class="row mx-0">
+    <div
+      class="col-12 col-md-4 col-lg-3 px-3 section-outer-spacing-py bg-white bd-sidebar"
+    >
+      <app-pghv-category-filter
+        [priceListId]="priceListId"
+        (productCategorySelected)="filterCategorySelected($event)" [isRFC]="isRFC"
+      ></app-pghv-category-filter>
+      <div class="expand-collapse refine-search" *ngIf="facet?.length > 0">
+        <a class="heading-value" data-toggle="collapse" href="#categories1">
+          {{ "ProductList.RefinteTxt" | translate }}
+          <i class="icon-arrow-down"></i>
+        </a>
+
+        <div class="collapse show" id="categories1">
+          <div *ngFor="let field of facet;let i = index;">
+            <div class="card-body pb-0"
+              *ngIf="field?.FacetValues?.length > 0 || initialFacetFieldName.indexOf(field.Name)>-1">
+              <div class="form-group mb-0">
+                <label for="execution">{{facetsFieldsResult[i].DisplayName}}</label>
+                <div class="select-group items-dropdown">
+                  <ng-select [searchable]="false" [clearable]="true" placeholder="Select" [items]="field.FacetValues"
+                    (change)="updateFacetSelection(field.Name,$event)" [(ngModel)]="selectedValues[field.Name]"
+                    [bindValue]="'Name'" [bindLabel]="'Name'">
+                  </ng-select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col section-outer-spacing bg-light product-listing">
+      <app-product-search
+        [typeAheadLimit]="5"
+        (search)="textsearched($event)"
+        [isRFC]="isRFC"
+        (selectedProductId)="getSelectedProductId($event)"
+      ></app-product-search>
+      <!-- Breadcrumb -->
+      <div class="col-sm-12 col-md-12 col-xl-12 p-0" *ngIf="!isRFC">
+        <apt-breadcrumb
+          [sobject]="category"
+          [label]="
+            !category ? ('HEADER.PRODUCT_CATALOG' | translate) : category?.Label
+          "
+        ></apt-breadcrumb>
+      </div>
+      <ng-container *ngIf="slides?.length > 0">
+        <div class="feature-products">
+          <h3 class="mb-3">
+            {{ "PRODUCT_LIST.FEATURED_PRODUCTS" | translate }}
+          </h3>
+          <!-- Carousel Start -->
+          <div class="expand-collapse">
+            <div
+              id="home-slide"
+              class="carousel d-flex align-items-center slide p-0"
+              data-ride="carousel"
+              data-interval="false"
+            >
+              <div class="carousel-inner">
+                <ng-container
+                  *ngFor="let productArray of slides; let i = index"
+                >
+                  <div
+                    [ngClass]="
+                      i == 0 ? 'carousel-item active' : 'carousel-item'
+                    "
+                  >
+                    <div class="row no-gutters tab-lists">
+                      <div
+                        *ngFor="let product of productArray"
+                        class="product-box product-value"
+                      >
+                        <app-pghv-product-card
+                          [product]="product"
+                          [isInternalUser]="isInternalUser"
+                          (loadingEvent)="AddToCartEventHandler($event)"
+                          [thumbnail]="showThumbnail"
+                        ></app-pghv-product-card>
+                      </div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+              <div class="row" *ngIf="slides?.length > 1">
+                <a
+                  class="carousel-control-prev"
+                  href="#home-slide"
+                  role="button"
+                  data-slide="prev"
+                >
+                  <i class="icon-arrow-left" aria-hidden="true"></i>
+                  <span class="sr-only">{{
+                    "JUMBORTON.PREVIOUS" | translate
+                  }}</span>
+                </a>
+                <a
+                  class="carousel-control-next"
+                  href="#home-slide"
+                  role="button"
+                  data-slide="next"
+                >
+                  <i class="icon-arrow-right" aria-hidden="true"></i>
+                  <span class="sr-only">{{
+                    "JUMBORTON.NEXT" | translate
+                  }}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <!-- Carousel End -->
+        </div>
+      </ng-container>
+      <div
+        class="feature-products"
+        [ngClass]="slides?.length > 0 ? 'separator-border' : ''"
+      >
+        <div class="row align-items-center section-outer-spacing-pb">
+          <h3 class="col-12 col-lg-5 mb-0 title">{{ selectedCategory }}</h3>
+          <div class="col-12 col-lg-auto d-flex ml-auto">
+            <div class="form-group p m-0">
+              <div class="select-group">
+                <select
+                  class="form-control bg-white sortby-dropdown"
+                  id="dropdownField"
+                  (change)="onSortChange($event)"
+                >
+                  <option value="Relevance">
+                    {{ "ProductList.SortByRelevance" | translate }}
+                  </option>
+                  <option value="Name">
+                    {{ "ProductList.SortByname" | translate }}
+                  </option>
+                  <!-- <option value="ProductCode">{{'ProductList.SortBycode' |
+                    translate}}</option> -->
+                </select>
+              </div>
+            </div>
+            <!-- Table Value -->
+            <div class="tablist row m-0 border-left border-dark pl-2 ml-2">
+              <a
+                (click)="onGridView()"
+                class="nav-link thumbnail-tile btn btn-icon d-flex align-items-center"
+                [ngClass]="{ active: view === 'grid' }"
+                tooltip="{{ 'ProductList.Grid' | translate }}"
+              >
+                <i class="icon-thumbnail"></i>
+              </a>
+              <a
+                (click)="onListView()"
+                class="nav-link list-tile btn btn-icon d-flex align-items-center"
+                [ngClass]="{ active: view === 'list' }"
+                tooltip="{{ 'ProductList.List' | translate }}"
+              >
+                <i class="icon-list"></i>
+              </a>
+            </div>
+            <!-- /Table Value -->
+          </div>
+        </div>
+        <div *ngIf="!noProducts">
+          <!-- <div *ngIf="view == 'grid'" class="grid-view" > -->
+          <div
+            class="product-card"
+            [ngClass]="view !== 'list' ? 'grid-view' : 'list-view'"
+          >
+            <div
+              class="row no-gutters tab-lists change-tile"
+              *ngIf="data$ | async as data; else loading"
+            >
+              <div
+                *ngFor="let product of data?.Products"
+                class="product-box product-value"
+              >
+                <app-pghv-product-card
+                  [product]="product"
+                  [isInternalUser]="isInternalUser"
+                  (loadingEvent)="AddToCartEventHandler($event)"
+                  [configurationId]="configurationId"
+                  [thumbnail]="showThumbnail"
+                  [ProductPriceListArray]="priceListResult"
+                  [isRFC]="isRFC"
+                  (detailPageSelected)="isDetailPageSeleceted($event)"
+                ></app-pghv-product-card>
+              </div>
+              <div class="pagination">
+                <div class="row w-100">
+                  <div class="col-auto">
+                    <div class="pagination-left">
+                      <span class="item-page"
+                        >{{ "ProductList.ItemsPerPage" | translate }}: 50</span
+                      >
+
+                      <span class="light-color"
+                        >{{ productFrom }} - {{ productTo }}
+                        {{ "ProductList.Of" | translate }}
+                        {{ collectionCount }}
+                        {{ "ProductList.Items" | translate }}</span
+                      >
+                    </div>
+                  </div>
+                  <div class="col-auto ml-auto pr-0">
+                    <div class="pagination-right">
+                      <span class="light-color"
+                        >{{ page }} {{ "ProductList.Of" | translate
+                        }}{{ pageCount }} {{ "ProductList.Pages" | translate }}
+                      </span>
+                      <a (click)="onPreviousPage(true)" class="arrow"
+                        ><i class="icon-arrow-left"></i
+                        ><span class="d-none">Left Arrow</span></a
+                      >
+                      <a (click)="onNextPage(true)" class="arrow"
+                        ><i class="icon-arrow-right"></i
+                        ><span class="d-none">Right Arrow</span></a
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="noProducts">
+          <div class="no-items">
+            <div class="items-img">
+              <i class="icon-img"></i>
+              <p>{{ "ProductList.NO_Record_Found" | translate }}</p>
+            </div>
+          </div>
+        </div>
+        <!-- /Featured Products -->
+      </div>
+    </div>
+  </div>
+</section>
+<ng-template #loading>
+  <div class="d-flex justify-content-center">
+    <apt-dots></apt-dots>
+  </div>
+</ng-template>
+
+<!-- <button type="button" *ngIf="isRFCDetailPage" class="btn btn-primary" (click)="isRFCDetailPage = !isRFCDetailPage">Back to catalog</button>
+<app-product-detail *ngIf="isRFCDetailPage" [isRFC]="true" [productId]="productId" [configurationId]="configurationId"></app-product-detail> -->

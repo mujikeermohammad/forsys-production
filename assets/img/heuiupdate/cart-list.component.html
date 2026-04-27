@@ -1,0 +1,1088 @@
+<ng-container *ngTemplateOutlet="cartList; context: { view: view$ | async }"></ng-container>
+
+<ng-template #cartList let-view="view">
+  <!-- Total Carts and Add new Cart action button -->
+  <h4 class="page-heading">{{'COMMON.CARTS' | translate}}</h4>
+  <div class="tabs-container" [ngClass]="loading || assignContactLoader  ?'disable-link':''">
+    <div class="custom-tabs">
+      <!-- Table Value -->
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="activeCart-tab" data-toggle="tab" href="#activeCart" role="tab"
+            aria-controls="activeCart" aria-selected="true" (click)="term = ''">{{'CART.ACTIVE_CART' | translate}}</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="AllCarts-tab" data-toggle="tab" href="#AllCarts" role="tab" aria-controls="AllCarts"
+            aria-selected="false" (click)="getAllCarts();term = ''">
+            {{'CART.ALL_CARTS' | translate}} <span *ngIf="collectionCount">({{collectionCount}})</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- /Table Value -->
+      <div class="tab-content" id="myTabContent">
+        <!-- Active Cart Tabs -->
+        <div class="tab-pane fade show active" id="activeCart" role="tabpanel" aria-labelledby="activeCart-tab">
+          <div [ngClass]=" quickOrderFlag ? 'tableSize ' : ''">
+             <div class="row">
+                <!-- Account Information  -->
+                <div class="col-12"
+                   [ngClass]="(quickOrderFlag) ? 'tableSize col-lg-8 col-xl-9 pb-3 pr-lg-4' : 'col-lg-8 col-xl-9 pb-3 pr-lg-4'">
+                      <div class="col-12 col-md-9 col-lg-12  pl-0">
+                          <div class="cart-left-section">
+                <div class="col-md-12 p-0" *ngIf="priceMessage">
+                  <div class="alert alert-success">
+                    {{priceMessage}}<a href="javascript:void(0);" class="close" data-dismiss="alert" aria-label="close"
+                      title="close">×</a>
+                  </div>
+                </div>
+                <div class="col-md-12 p-0" *ngIf="showLeadTimeAlert">
+                  <div class="alert alert-warning">
+                    {{'ERROR.CART.LEAD_TIME' | translate}}<a href="javascript:void(0);" class="close"
+                      data-dismiss="alert" aria-label="close" title="close">×</a>
+                  </div>
+                </div>
+                <div class="col-md-12 p-0" *ngIf="approvalsRequired && !copyInProgress && !revalidationInProgress">
+                  <div class="alert alert-warning">
+                    Approval is required for Configured product on Lineitem {{approvalItemNumbers}}, Please
+                    create an Request for Quotation to proceed.
+                    <a href="javascript:void(0);" class="close" data-dismiss="alert" aria-label="close"
+                      title="close">×</a>
+                  </div>
+                </div>
+                <div class="col-md-12 p-0" *ngIf="copyInProgress || revalidationInProgress">
+                  <div class="alert alert-warning copyrevalidate" *ngIf="closecopyrevalidateflag">
+                    {{(copyInProgress) ? 'Copy is in progress.' : 'Revalidation is in progress.'}}<a
+                      href="javascript:void(0);" class="close" (click)="closecopyrevalidate()">×</a>
+                  </div>
+                </div>
+
+                <div class="col-md-12 p-0" *ngIf="showMessageForPricingSource.length > 0">
+                  <div class="alert alert-warning warning-button m-0" *ngFor="let msg of showMessageForPricingSource"><i
+                      class="icon-warning-message"></i>
+                    <span>{{ msg.val }}</span>
+                  </div>
+                </div>
+                <div *ngIf="showSupplierMsg" class="alert alert-warning warning-button m-0">
+                  <i class="icon-warning-message"></i><span> {{ "CART.SUPPLIER_INFO" | translate }}</span>
+                </div>
+                <div *ngIf="hasToConfigureFully && !copyInProgress && !revalidationInProgress" class="alert alert-warning warning-button m-0">
+                  <i class="icon-warning-message"></i><span> {{ "CART.CONFIGURE_INFO" | translate }}</span>
+                </div>
+                <!-- <div *ngIf="pricingFailed && rePrice.length > 0" class="alert alert-warning warning-button m-0">
+                  <i class="icon-warning-message"></i><span> {{ "COMMON.PRICE_ERROR" | translate }}</span>
+
+                </div> -->
+
+                <ul class="cart-details">
+                  <li class="outer-dropdown d-none">
+                    <!-- Dropdown -->
+                    <div class="dropdown custom-dropdown">
+                      <a href="javascript:void(0);" class="click-view" data-toggle="dropdown"><i
+                          class="icon-menu"></i></a>
+                      <div class="dropdown-menu p-0" aria-labelledby="renameClone">
+                        <button type="button" [disabled]="disableBtns || disableBtnsInvalidQuantity"
+                          class="btn btn-link btn-block" (click)="exportexcel()">{{'CART.EXPORT_CART' |
+                          translate}}
+                          <!-- <i class="icon-export ml-2"></i> -->
+                        </button>
+                        <button type="button" class="btn btn-link btn-block" [routerLink]="['/products']"><i
+                            class="icon-add mr-2"></i> {{'CART.ADD_PRODUCTS' | translate}}</button>
+                      </div>
+                    </div>
+                    <!-- /Dropdown -->
+                  </li>
+                  <li [tooltip]="disableRemoveAllBtn ? delete_message: ''"><button type="button" [ladda]="removeLoader"
+                      [disabled]="disableRemoveAllBtn || disableBtns || copyInProgress || revalidationInProgress"
+                      class="btn btn-link btn-block" (click)="onClickRemove()"> <i class="icon-trash"></i></button></li>
+                  <li [tooltip]="disableCloneLineItems ? clone_message: ''"><button type="button"
+                      [ladda]="cloneLineItemLoader"
+                      [disabled]="disableCloneLineItems || disableBtns || copyInProgress || revalidationInProgress || cloneLineItemLoader"
+                      class="btn btn-link btn-block" (click)="clonelineitem()">{{'CART.CLONE' | translate}} <i
+                        class="icon-copy"></i></button></li>
+                  <li><button type="button" [disabled]="disableCloneLineItems || disableBtns || copyInProgress || revalidationInProgress || cloneLineItemLoader"
+                      class="btn btn-link btn-block" [ladda]="cloneLineItemLoader" (click)="copytoFavorites()">Add to Favorites<i
+                        class="icon-star"></i></button></li>
+                  <li>
+                    <div class="dropdown dropdownright">
+                      <a href="javascript:void(0);" data-toggle="dropdown" title="{{ 'CART.EXPORT_CART' | translate }}"
+                        [ngClass]="(disableBtns || disableBtnsInvalidQuantity) ? 'btn disabled':'dropdown-toggle doc-link-btn btn'"
+                        data-style="zoom-in">
+                        {{ "CART.EXPORT_CART" | translate }}
+                        <i class="icon-arrow-right ml-2"></i>
+                      </a>
+                      <ul class="dropdown-menu position-absolute export-type">
+                        <li>
+                          <a href="javascript:void(0)" (click)="exportPDF()">
+                            {{ "OrderDetails.GeneratePDFOrderDoc" | translate }}
+                          </a>
+                        </li>
+                        <li class="csv-item">
+                          <a href="javascript:void(0)" (click)="exportexcel()">
+                            {{ "OrderDetails.GenerateCSVOrderDoc" | translate }}
+                            <!-- <i class="icon-xls"></i> -->
+                          </a>
+                        </li>
+
+                        <li *ngIf="camosLineItems?.length > 0" class="product-summary-item">
+                          <a href="javascript:void(0)" (click)="openCamosPopupModal()">
+                            {{"OrderDetails.PRODUCT_SUMMARY" | translate}}
+                            <!-- <i class="icon-xls"></i> -->
+                          </a>
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                  <li><button type="button" [disabled]="disableBtns || disableBtnsInvalidQuantity || stockLoader"
+                      class="btn btn-link btn-block" [ladda]="stockLoader"
+                      (click)="displayAvalibility(checkAvailability)">{{'CART.CHECK_AVAILABILITY' | translate}}</button>
+                  </li>
+                  <li *ngIf="internalUser">
+                    <button type="button" class="btn btn-link" [disabled]="disableBtns || disableBtnsInvalidQuantity"
+                      (click)="changeOwner(assigneeContact)" [ladda]="assignContactLoader">{{'CART.ASSIGN_CART' |
+                      translate}} <i class="icon-assign-contact ml-2"></i></button>
+                  </li>
+                  <ng-container *ngIf="storefront$ | async as storefront;">
+                    <li>
+                      <button type="button" [ladda]="cart?.IsPricePending || pricePending ||cloneLineItemLoader"
+                        [disabled]="toggleRequestForQuoteButton || disableBtns || disableBtnsInvalidQuantity || cart?.IsPricePending || pricePending || copyInProgress || revalidationInProgress || cloneLineItemLoader || removeLoader"
+                        [routerLink]="['/carts/request-quote']"
+                        [ngClass]="!disabelCheckout ? ((hasManualPricing && !showRepriceandDisableCheckout) ?'btn btn-primary' : 'btn btn-link') : 'btn btn-primary'">{{'CART.CREATE_QUOTATION'
+                        | translate}}</button>
+                    </li>
+                  </ng-container>
+                  <ng-container>
+                    <li>
+                      <button
+                        *ngIf="((rePrice.length == 0 && IsPriceProcessingPending == false) || !isCartLineItems) && !showRepriceandDisableCheckout"
+                        type="button" class="btn btn-primary"
+                        [disabled]="disableBtns || disabelCheckout || hasErrors || revalidationLines.length > 0 || disableProccedToCheckout || cart?.IsPricePending || pricePending || cart?.SummaryGroups === undefined || cart?.SummaryGroups?.length === 0 || approvalsRequired ||checkOnlyUnlistedProduct || disableBtnsInvalidQuantity || isReplacementProduct || disableCheckoutForTransportLines || differentSuppliers || copyInProgress || revalidationInProgress || externalConfigDisabled || cloneLineItemLoader"
+                        [ladda]="checkoutLoader || cart?.IsPricePending || pricePending || cloneLineItemLoader"
+                        (click)="proceedToCheckout()">{{'CART.PROCEED_TO_CHECKOUT' |
+                        translate}}</button>
+                      <button *ngIf="rePrice.length > 0 || showRepriceandDisableCheckout" type="button"
+                        [disabled]="disableBtns" [ladda]="cart?.IsPricePending || pricePending" class="btn btn-primary"
+                        (click)="getPrice()">
+                        {{ "CART.REPRICE_CART" | translate }}
+                      </button>
+                    </li>
+                    <li class="constraint-icons-main">
+                      <app-constraint-icon class="constraint-icons" *ngIf="hasErrors"></app-constraint-icon>
+                    </li>
+                  </ng-container>
+                </ul>
+                <!-- /Search Section -->
+                <div class="search-wrapper">
+                  <div class="form-group has-search col-12 p-0">
+                    <i class="icon-search form-control-feedback"></i>
+                    <input type="text" class="form-control bg-white" placeholder="{{'CART.SEARCH_PRODUCT_PLACEHOLDER' |
+                    translate}}" aria-label="searchProduct" [(ngModel)]="term" />
+                  </div>
+                </div>
+                <ng-container *ngIf="spinner">
+                  <div class="d-flex justify-content-center pt-5">
+                    <apt-spinner></apt-spinner>
+                  </div>
+                </ng-container>
+                <div class="table-responsive" *ngIf="cartLists$  | async as cartLists; else loader">
+                  <div [ngClass]="{'validate-error': priceError$ | async}" class="validate-error">
+                    <apt-alert message="ERROR.CART.VALIDATE" [record]="cart" #validationAlert></apt-alert>
+                  </div>
+                  <table class="table table-striped mb-3" id="csv-table">
+                    <thead>
+                      <tr>
+                        <th style="width: 2%;">
+                          <input type="checkbox"
+                            [disabled]="disableRemoveCheckboxes || copyInProgress || revalidationInProgress" name=""
+                            id="select-all" (change)="onClickSelectAll($event)" />
+                        </th>
+                        <th style="width: 2%;">
+                         #
+                        </th>
+                        <!-- <th style="width: 2%;"></th> -->
+                        <th style="width: 14%" class="sort-value" *ngIf="displayConfigId">
+                          {{'CART.TABLE.CODE' | translate}} / {{'COMMON.CONFIGURATION_ID' | translate}}
+                          <i class="icon-sorting" (click)="sort('ConfigProductCode','ProductCode')"></i>
+                        </th>
+                        <th *ngIf="!displayConfigId " class="sort-value">
+                          {{'CART.TABLE.CODE' | translate}}
+                          <i class="icon-sorting" (click)="sort('ProductCode','ProductCode')"></i>
+                        </th>
+                        <th style="width: 24%;" class="sort-value" (click)="sort('ProductName', 'Name')">
+                          {{'CART.TABLE.PRODUCT_NAME' | translate}} <i class="icon-sorting"></i></th>
+                        <th style="width: 14%" class="sort-value">
+                          {{ "CART.TABLE.SUPPLIER_CODE" | translate }}
+                        </th>
+                        <th style="width: 10%;" class="text-center">{{'COMMON.AVAILABILITY' | translate}}
+                          <i class="icon-info ml-2" placement="bottom"
+                            tooltip="{{'PRODUCT_DETAILS.STOCK_AVAILBILIY_MSG' | translate}}"></i>
+                        </th>
+                        <th style="width: 14%;" class="sort-value" (click)="sort('LeadTime', 'LeadTime')">
+                          {{'CART.TABLE.LEAD_TIME' | translate}}
+                          <i class="icon-sorting"></i>
+                          <i class="icon-info ml-2" placement="bottom"
+                            tooltip="{{'PRODUCT_DETAILS.LEADTIME_TOOLTIP_MSG_DYNAMIC' | translate}}"></i>
+                        </th>
+                        <th style="width: 10%;" class="text-center">{{'CART.TABLE.TERMS_AND_CONDITION' | translate}}
+                        </th>
+                        <th style="width: 8%;" class="text-center">{{'CART.TABLE.QTY' | translate}}</th>
+                        <th style="width: 8%" class="text-right sort-value" *ngIf="!internalDefaultAccount">
+                          {{ "CART.TABLE.LIST_PRICE" | translate }}
+                          <i class="icon-sorting" (click)="sort('StandardPrice','StandardPrice')"></i>
+                        </th>
+                        <th style="width: 8%" class="text-right sort-value" *ngIf="internalDefaultAccount">
+                          {{ "CART.TABLE.HUB_LIST_PRICE" | translate }}
+                          <i class="icon-sorting" (click)="sort('HubListPrice','HubListPrice')"></i>
+                        </th>
+                        <th style="width: 10%" class="text-right sort-value" *ngIf="!internalDefaultAccount">
+                          {{ "CART.TABLE.TOTAL" | translate }}
+                          <i class="icon-sorting" (click)="sort('InvoicePrice','InvoicePrice')"></i>
+                        </th>
+                        <th style="width: 10%" class="text-right sort-value" *ngIf="internalDefaultAccount">
+                          {{ "CART.TABLE.TRANSFER_PRICE" | translate }}
+                          <i class="icon-sorting" (click)="sort('TransferPrice','TransferPrice')"></i>
+                        </th>
+                        <th style="width: 2%;"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container *ngFor="let cartList of cartLists?.lineItems | cartFilter:term ; let i = index">
+                        <ng-container *ngIf="cartList?.PrimaryLines?.[0] != undefined">
+                          <tr *ngIf="cartList?.MainLine?.NetUnitPrice|pghv_convertCurrency | async ; else loader"
+                            [ngClass]="cartList?.MainLine?.Product?.IsActive == false ? 'disabled' : ''">
+                            <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''">
+                              <input type="checkbox" *ngIf="!cartList?.MainLine?.IsReadOnly"
+                                [disabled]="disableRemoveCheckboxes || (cartList?.MainLine?.IsReadOnly) || copyInProgress || revalidationInProgress"
+                                [checked]="selectedItemsToRemove[cartList?.MainLine?.Id] == true"
+                                (change)="onClickCartItem($event, cartList)" />
+                              <span
+                                *ngIf="cartList?.Options?.length > 0 || cartList?.MainLine?.Product?.Name?.indexOf('Unlisted') > -1 || externalHyperLinkRecords?.[cartList?.MainLine?.Id]?.length > 0 || (SubItemCount?.[cartList?.MainLine?.Id])"
+                                href="javascript:void(0);"
+                                [ngClass]="showhide[i] == true  ? 'table-toggle' : 'table-toggle active'"
+                                style="position:relative;">
+                                <i class="icon-arrow-right arrow-position"
+                                  [ngClass]="cartList?.MainLine?.Product?.IsActive == false ? 'disablePointer' : ''"
+                                  (click)="showhideTableChildren(i, showhide[i],cartList?.MainLine?.Id, SubItemCount?.[cartList?.MainLine?.Id])"></i>
+                              </span>
+                            </td>
+                            <td>
+                              {{cartList?.MainLine?.LineNumber}}
+                            </td>
+                            <td class="pr-0"
+                              [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''">
+                              <span>
+                                <!-- {{cartList?.MainLine?.Product.ProductCode}} -->
+                                {{cartList?.MainLine?.APTS_Material_Code_c &&
+                                cartList?.MainLine?.APTS_External_Configurator_LineItem_ID_c?
+                                cartList?.MainLine?.APTS_Material_Code_c + ' / ' +
+                                cartList?.MainLine?.APTS_External_Configurator_LineItem_ID_c :
+                                cartList?.MainLine?.Product?.ProductCode &&
+                                cartList?.MainLine?.APTS_External_Configurator_LineItem_ID_c ?
+                                cartList?.MainLine?.Product?.ProductCode + ' / ' +
+                                cartList?.MainLine?.APTS_External_Configurator_LineItem_ID_c :
+                                cartList?.MainLine?.APTS_External_Configurator_LineItem_ID_c ?
+                                cartList?.MainLine?.APTS_External_Configurator_LineItem_ID_c :
+                                cartList?.MainLine?.Product?.ProductCode}}
+                              </span>
+                            </td>
+                            <td [ngClass]="{'notValid': !cartList?.MainLine?.APTS_Is_Valid_Quantity}">
+                              <a class="underline" [class.disabled]="!cartList?.MainLine?.Product?.IsActive"
+                                (click)="redirectToProductPage(cartList?.MainLine)">
+                                <ng-container
+                                  *ngIf="cartList?.MainLine?.Product?.Name === 'Unlisted Product'; else unlistedProductName">
+                                  {{ cartList?.MainLine?.APTS_ItemizedRequestDisp_c ??
+                                  cartList?.MainLine?.APTS_ItemizedRequest_c }}
+                                </ng-container>
+                                <ng-template #unlistedProductName>
+                                  {{ cartList?.MainLine?.Product?.Name }}
+                                </ng-template>
+                              </a>
+
+                              <div appendTo="body" class="dropdown short-desc-group"
+                                *ngIf="cartList?.MainLine?.APTS_External_Configurator_Product_Desc_c">
+                                <a class="dropdown-toggle" href="#" data-toggle="dropdown">
+                                  {{cartList?.MainLine?.APTS_External_Configurator_Product_Desc_c}} <i
+                                    class="icon-arrow-right"></i>
+                                </a>
+                                <!-- {{cartList?.MainLine?.APTS_External_Configurator_Product_Desc_c}} -->
+                                <div appendTo="container" class="dropdown-menu prod-short-desc">
+                                  <i class="icon-close"></i>
+                                  {{cartList?.MainLine?.APTS_External_Configurator_Product_Desc_c}}
+                                </div>
+                              </div>
+                            </td>
+                            <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''">
+                              {{cartList?.MainLine?.APTS_Factory_c?.Name}}</td>
+                            
+                            <!-- Availabilty column, default value will be "--" -->
+                            <td class="text-center"> 
+                              <ng-container *ngIf="stockAvailabilityForLogos?.[cartList?.MainLine?.Id] as stockInfo;else noStock">
+                                  <!-- when in-stock - green tick-->
+                                  <ng-container *ngIf="stockInfo?.qty >= cartList?.MainLine?.Quantity">
+                                    <span class="checkmark_green" [tooltip]="tooltipContent"></span>
+                                  </ng-container>
+
+                                  <!-- when not-in-stock - yellow bordered question mark -->
+                                  <ng-container *ngIf="stockInfo?.qty < cartList?.MainLine?.Quantity ">
+                                    <span class="crossmark_grey" [tooltip]="tooltipContent"><i class="fa fa-times"></i></span>
+                                  </ng-container>
+                                  
+                                    <!-- when API is filed - yellow filled question mark -->
+                                  <ng-container *ngIf="stockInfo?.qty === 'N / A'">
+                                    <span class="questionmark_yellow" tooltip="{{'PRODUCT_DETAILS.STOCK_AVAILBILIY_WARNING_MSG' | translate}}">?</span>
+                                  </ng-container>
+
+                                  <!-- stock details tooltip -->
+                                  <ng-template #tooltipContent>
+                                    {{'Available Quantity:  ' + stockInfo?.qty}}  <br> {{'  Requested Quantity:  ' + cartList?.MainLine?.Quantity}}
+                                  </ng-template>
+                              </ng-container>
+                              <ng-template #noStock>--</ng-template>
+                            </td>
+                            <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''"
+                              *ngIf="cartList?.MainLine?.Product?.IsActive != false">
+                              <ng-container *ngIf="stockAvailabilityForLogos?.[cartList?.MainLine?.Id]; else dynamicLeadTimeValue">
+                                {{ dynamicLeadTimeValidation(cartList?.MainLine) }}                               
+                              </ng-container>
+                              <ng-template #dynamicLeadTimeValue>
+                                <span *ngIf="cartList?.MainLine?.APTS_Lead_Time_c != undefined">
+                                  {{cartList?.MainLine?.APTS_Lead_Time_c | leadTimeInDays}}
+                                </span>
+                                <span *ngIf="cartList?.MainLine?.APTS_Lead_Time_c == undefined">
+                                  <ng-container *ngIf="cartList?.MainLine?.Product?.ProductCode !== 'Faktura-Satz'">On
+                                    Request</ng-container>
+                                  <ng-container
+                                    *ngIf="cartList?.MainLine?.Product?.ProductCode === 'Faktura-Satz'">N/A</ng-container>
+                                </span>
+                              </ng-template>
+                            </td>
+                            <!-- <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''"
+                              colspan="2" *ngIf="cartList?.MainLine?.Product.IsActive == false"><i
+                                class="icon-warning-message"></i> Product No Longer Available</td> -->
+                            <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''"
+                              class="text-center" *ngIf="cartList?.MainLine?.Product?.IsActive != false">
+                              <button *ngIf="cartList?.MainLine?.Product?.ProductCode !== 'Faktura-Satz'"
+                                href="javascript:void(0);" class="btn btn-link-secondary"
+                                (click)="getDeliveryAndPaymentTerm(termsAndConditions,cartList?.MainLine)">
+                                {{'CART.VIEW' | translate}}
+                              </button>
+                              <ng-container
+                                *ngIf="cartList?.MainLine?.Product?.ProductCode === 'Faktura-Satz'">N/A</ng-container>
+                            </td>
+                            <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''"
+                              class="text-right grey-column">
+                              <table>
+                                <tr>
+                                  <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''"
+                                    class="showQuantityTooltip"
+                                    [tooltip]="cartList?.MainLine?.APTS_External_Configurator_LineItem_ID_c && cartList?.MainLine?.APTS_QuantityUpdated_c ? 'Quantity cannot be edited when externally configured.' : ''">
+                                    <input type="number" [min]="1" [max]="99999"
+                                      [(ngModel)]="cartList.MainLine.Quantity" field="Quantity"
+                                      (change)="changeItemQuantity(cartList?.MainLine)" [entity]="cartList?.MainLine"
+                                      [readonly]="cartList?.MainLine?.LineStatus?.toLowerCase() ==='cancelled' || cart?.IsPricePending"
+                                      [disabled]="cartList?.MainLine?.Product?.IsActive == false || (cartList?.MainLine?.APTS_External_Configurator_LineItem_ID_c && cartList?.MainLine?.APTS_QuantityUpdated_c)"
+                                      class="form-control qty-column remove" (keypress)="onQuantity($event, cartItem)"
+                                      *ngIf="!readonly" appLimitInput appNumbersOnly />
+                                  </td>
+                                  <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''"
+                                    class="showQuantityTooltip"><i
+                                      *ngIf="cartList?.MainLine?.APTS_Is_Valid_Quantity == false"
+                                      class="icon-warning-message ml-2" placement="bottom"
+                                      tooltip="{{cartList?.MainLine?.APTS_Quantity_Error_Message}}"></i></td>
+                                </tr>
+                              </table>
+                            </td>
+                            <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''"
+                              class="text-right" [id]="'NetUnitPrice' + i">
+                              <span
+                                *ngIf="cartList?.MainLine?.Product?.Name === 'Unlisted Product' && cartList?.MainLine?.PricingStatus !== 'Pending'">
+                                {{'COMMON.ON_REQUEST'| translate}}
+                              </span>
+                              <span
+                                *ngIf="cartList?.MainLine?.Product?.Name !== 'Unlisted Product' && cartList?.MainLine?.PricingStatus !== 'Pending'">
+                                <span *ngIf="sapError[cartList?.MainLine?.Id] === true">
+                                  {{'COMMON.ON_REQUEST'| translate}}
+                                </span>
+                                <span *ngIf="(sapError[cartList?.MainLine?.Id] === false)">
+                                  <strong *ngIf="!internalDefaultAccount">
+                                    {{cartList?.MainLine?.Currency}}
+                                    {{cartList?.MainLine?.APTS_Standard_Price_c | customCurrencyFormat}}
+                                  </strong>
+                                  <strong *ngIf="internalDefaultAccount">
+                                    {{cartList?.MainLine?.Currency}}
+                                    {{cartList?.MainLine?.APTS_RegionalHubListPrice_c | customCurrencyFormat}}
+                                  </strong>
+                                </span>
+                                <br
+                                  *ngIf="customContractedCurrency[cartList?.MainLine?.Id]?.showHidePrice && sapError[cartList?.MainLine?.Id] === false">
+                                <!-- <span class="text-nowrap"
+                                  *ngIf="(customContractedCurrency[cartList?.MainLine?.Id]?.showHidePrice && contractPrice[cartList?.MainLine?.Id]?.netUnitPrice && sapError[cartList?.MainLine?.Id] === false)">
+                                  ({{contractPrice[cartList?.MainLine?.Id]?.Currency}}
+                                  {{contractPrice[cartList?.MainLine?.Id]?.netUnitPrice | number: '1.2-2'}})
+                                </span> -->
+                              </span>
+                              <span *ngIf="cartList?.MainLine?.PricingStatus === 'Pending'"><i
+                                  class="icon-spinner fa-spin d-inline-block spinner1"
+                                  [attr.data-style]="'zoom-in'"></i></span>
+                            </td>
+                            <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''"
+                              class="text-right" [id]="'NetPrice' + i">
+                              <span
+                                *ngIf="cartList?.MainLine?.Product?.Name === 'Unlisted Product' && cartList?.MainLine?.PricingStatus !== 'Pending'">
+                                {{'COMMON.ON_REQUEST'| translate}}
+                              </span>
+                              <span
+                                *ngIf="cartList?.MainLine?.Product?.Name !== 'Unlisted Product' && cartList?.MainLine?.PricingStatus !== 'Pending'">
+                                <span *ngIf="sapError[cartList?.MainLine?.Id] === true">
+                                  {{'COMMON.ON_REQUEST'| translate}}
+                                </span>
+                                <span *ngIf="(sapError[cartList?.MainLine?.Id] === false)">
+                                  <strong *ngIf="!internalDefaultAccount">
+                                    {{cartList?.MainLine?.Currency}}
+                                    {{cartList?.MainLine?.APTS_Invoice_Price_c | customCurrencyFormat}}
+                                  </strong>
+                                  <strong *ngIf="internalDefaultAccount">
+                                    {{cartList?.MainLine?.Currency}}
+                                    {{cartList?.MainLine?.APTS_Transfer_Price_c | customCurrencyFormat}}
+                                  </strong>
+                                </span>
+                                <br
+                                  *ngIf="customContractedCurrency[cartList?.MainLine?.Id]?.showHidePrice && sapError[cartList?.MainLine?.Id] === false">
+                                <!-- <span class="text-nowrap"
+                                  *ngIf="(customContractedCurrency[cartList?.MainLine?.Id]?.showHidePrice && contractPrice[cartList?.MainLine?.Id]?.netPrice && sapError[cartList?.MainLine?.Id] === false)">
+                                  ({{contractPrice[cartList?.MainLine?.Id]?.Currency}}
+                                  {{contractPrice[cartList?.MainLine?.Id]?.netPrice | number: '1.2-2'}})
+                                </span> -->
+
+                              </span>
+                              <span *ngIf="cartList?.MainLine?.PricingStatus === 'Pending'"><i
+                                  class="icon-spinner fa-spin d-inline-block spinner1"
+                                  [attr.data-style]="'zoom-in'"></i></span>
+                            </td>
+                            <td [ngClass]="cartList?.MainLine?.APTS_Is_Valid_Quantity == false ? 'notValid' : ''"
+                              class="text-center">
+                              <a class="position-relative"
+                                *ngIf="cartList?.MainLine?.Product?.ConfigurationType != 'Standalone' && cartList?.MainLine?.PriceLists?.APTS_Ecommerce_Type_c !== 'RFQ' && cartList?.MainLine?.PriceLists?.APTS_Ecommerce_Type_c !== 'Unlisted'"
+                                (click)="getConfiguratorUrl(cartList?.MainLine?.Product, cartList?.MainLine, i)"
+                                [class.disabled]="cartList?.MainLine?.Product?.IsActive == false ? true : null">
+                                <!-- <i class="icon-configure" data-toggle="tooltip" data-placement="top"
+                                  title="Configure"></i> -->
+                                <i [ngClass]="confSpinner[i] || (copyInProgress || revalidationInProgress)? 'icon-spinner fa-spin spinner1' : 'icon-configure'"
+                                  data-toggle="tooltip" data-placement="top"
+                                  [ladda]="confSpinner[i] || copyInProgress || revalidationInProgress"
+                                  [attr.data-style]="'zoom-in'"
+                                  [title]="copyInProgress ? 'Copy is in progress': revalidationInProgress ?'Revalidation is in progress' :'Configure'">
+                                </i>
+                                <i *ngIf="cartList?.MainLine?.['Config2_LineItem_Status_c'] === 'Complete' && !approvalsRequired && !copyInProgress && !revalidationInProgress && !exteralDisableButton[cartList?.MainLine?.Id]"
+                                  class="icon-message-sent approval-req-icon" data-toggle="tooltip" data-placement="top"
+                                  title="Configuration is completed">
+                                </i>
+                                <i *ngIf="!approvalsRequired && !copyInProgress && !revalidationInProgress && exteralDisableButton[cartList?.MainLine?.Id]"
+                                  class="fa fa-exclamation-circle approval-req-icon" data-toggle="tooltip"
+                                  data-placement="top" title="Configuration is in progress">
+                                </i>
+                                <i *ngIf="approvalsRequired && !copyInProgress && !revalidationInProgress && approvalItemNumbers.includes(i+1)"
+                                  class="icon-warning-message approval-req-icon" data-toggle="tooltip"
+                                  data-placement="top" title="Approval is pending">
+                                </i>
+                              </a>
+                            </td>
+                          </tr>
+                          <ng-container
+                            *ngIf="!showhide[i] && cartList?.MainLine?.Product?.Name?.indexOf('Unlisted') > -1">
+                            <tr class="sub-inner-row border1-left border1-right">
+                              <td colspan="10">
+                                <div class="update-details pl-4"
+                                  *ngIf="cartList?.MainLine?.Product?.Name?.indexOf('Unlisted') > -1">
+                                  <div class="table-right-section">
+                                    <div class="form-row mt-4 collectiveForm">
+                                      <div class="form-group col-md-5">
+                                        <label for="configurationHelp">{{"RequestQuote.Configuration"|
+                                          translate}}</label>
+                                        <textarea rows="3" readonly class="form-control" placeholder=""
+                                          spellcheck="false" aria-label="textarea"
+                                          maxlength="700">{{cartList?.MainLine?.APTS_ItemizedRequestDisp_c ?? cartList?.MainLine?.APTS_ItemizedRequest_c}}</textarea>
+                                      </div>
+                                      <div class="form-group col-md-3"><label for="other">{{ "COMMON.ASSIGN_SUPPLIER" |
+                                          translate }}
+                                        </label>
+                                        <div class="form-group">
+                                          {{cartList?.MainLine?.APTS_Factory_c?.Name}}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </td>
+                            </tr>
+                          </ng-container>
+                          <ng-container
+                            *ngIf="showhide[i] && cartList?.MainLine?.Product?.Name.indexOf('Unlisted') === -1">
+                            <tr [ngClass]="option?.Option.IsActive == false ? 'inner-row disabled' : 'inner-row'"
+                              *ngFor="let option of cartList?.Options let j = index">
+                              <td></td>
+                              <td>{{option?.Option.Name}}</td>
+                              <td>{{option?.Option?.ProductCode}}</td>
+                              <td class="text-center" *ngIf="option?.Option.IsActive != false"></td>
+                              <!-- <td colspan="2" *ngIf="option?.Option.IsActive == false"><i
+                                  class="icon-warning-message"></i> Product No Longer Available</td> -->
+                              <td class="text-center" *ngIf="option?.Option.IsActive != false"></td>
+                              <td class="text-center"></td>
+                              <!-- added additional empty td for css to hide qty and price option -->
+                              <td class="text-center"></td>
+                              <td class="text-center"></td>
+                              <td class="text-center"></td>
+                              <!-- added additional td for css to hide qty and price option -->
+                            </tr>
+                            <tr
+                              *ngIf="sBoMData[cartList?.MainLine?.Id]?.length > 0 || externalHyperLinkRecords[cartList?.MainLine?.Id]?.length > 0">
+
+                              <td colspan="11">
+                                <!-- BOM / Document Links-->
+                                <bom-view-component [bomdata]="sBoMData[cartList?.MainLine?.Id]"
+                                  [externalDocumentLinks]="externalHyperLinkRecords[cartList?.MainLine?.Id]"
+                                  [className]="'table-fill-cart'"></bom-view-component>
+                              </td>
+                            </tr>
+                          </ng-container>
+
+                        </ng-container>
+                      </ng-container>
+
+                      <tr>
+                        <td></td>
+                        <td></td>
+                        <td class="text-right total-amount" colspan="10" >
+                          <span class="pr-5">
+                            <strong>
+                              {{ "CART.TOTAL_AMOUNT" | translate }}
+                            </strong>
+                          </span>
+                          <span class="px-0" *ngIf="!cart.IsPricePending && !pricePending && !cloneLineItemLoader">
+                            <span *ngIf="showMessageForPricingSource.length > 0 || disableProccedToCheckout"
+                              class="active-cart-price">
+                              {{'COMMON.ON_REQUEST'| translate}}
+                            </span>
+                            <span *ngIf="showMessageForPricingSource.length === 0 && !disableProccedToCheckout">
+                              <span *ngIf="checkOnlyUnlistedProduct" class="active-cart-price">
+                                {{'COMMON.ON_REQUEST'| translate}}
+                              </span>
+                              <span *ngIf="showOnRequestMsg.length === 0 && !checkOnlyUnlistedProduct"
+                                class="active-cart-price">
+                                {{cart.Currency}} {{ totalCartPriceValue | customCurrencyFormat}}
+                              </span>
+                            </span>
+                          </span>
+                          <span class="px-0" *ngIf="cart.IsPricePending || pricePending || cloneLineItemLoader"><i
+                              class="icon-spinner fa-spin d-inline-block spinner1"
+                              [attr.data-style]="'zoom-in'"></i></span>
+                        </td>
+                       
+                      </tr>
+                    </tbody>
+                  </table>
+                  <ng-template #totalLoader>
+                    <div class="spinner-style">
+                      <button class="btn btn-icon ml-auto active-cart" [ladda]="cart.IsPricePending"></button>
+                    </div>
+                  </ng-template>
+                </div>
+                          </div>
+                      </div>
+                </div>
+                <div class="col-12 col-md-3 col-xl-3 pl-lg-0">
+                      <div class="bg-white quick-order" *ngIf="!quickOrderFlag">
+                <div class="heading-value">
+                  <span>{{'MY_ACCOUNT.QuickOrder.QUICK_ORDER' | translate}}
+                    <i style="margin-left: 3px; padding: 5px;" class="icon-info"
+                      tooltip="{{'MY_ACCOUNT.QuickOrder.QUICK_ORDER_TOOL_TIP' | translate}}"></i>
+                      <i class="icon-close" (click)="closeQuickOrderFilter('QuickOrder')"></i>
+                  </span>
+                </div>
+                <!-- BOM Start-->
+                <div class="col-12 border-bottom pb-3 mb-3  account-setting pb-0">
+                  <h6><strong>{{'CART.ADD_PRODUCT_PRODUCTLIST' | translate}}</strong></h6>
+                  <p class="product-format">{{'CART.PRODUCT_LIST_UPLOAD' | translate}} <a href="javascript:void(0);"
+                      (click)="downloadCSV()">{{'CART.PRODUCT_LIST_FORMAT' | translate}}</a>.</p>
+                  <div class="custom-file-upload" fileDragDrop (filesChangeEmiter)="handleFileSelect($event)">
+                    <label for="file-upload" class="upload-text">{{'CART.DRAG_DROP' | translate}}</label>
+                    <input #bomFileInput id="file-upload" type="file" (change)="handleFileSelect($event)" multiple />
+                  </div>
+                </div>
+                <div *ngIf="displayBomProducts.length > 0">
+                  <div class="alert alert-warning warning-button m-0" *ngIf="bundleProductsCheck.length > 0">
+                    BOM contains configurable products, customer can select options by clicking on the wrench icon in
+                    the cart.
+                  </div>
+                  <div class="table-responsive">
+                    <table class="table table-striped mb-3">
+                      <thead>
+                        <tr>
+                          <th style="width: 40%;" class="sort-value">Product Code</th>
+                          <th style="width: 40%;" class="sort-value">Quantity</th>
+                          <th style="width: 40%;" class="sort-value">Valid</th>
+                        </tr>
+                      </thead>
+                      <tbody *ngFor="let displayBomProduct of displayBomProducts let k = index;">
+                        <tr *ngIf="displayBomProduct?.valid">
+                          <td class="ws-nw">{{displayBomProduct?.productCode}}</td>
+                          <td class="text-center">{{displayBomProduct?.qty}}</td>
+                          <td class="text-center"><i [ngClass]="(displayBomProduct?.diffSupplier)?'icon-warning-message':'icon-message-sent'"></i></td>
+                        </tr>
+                        <tr *ngIf="!displayBomProduct?.valid">
+                          <td>{{displayBomProduct?.productCode}}</td>
+                          <td class="text-center">{{displayBomProduct?.qty}}</td>
+                          <td style="color: red;" class="text-center">x</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <button type="button" class="btn btn-primary col-md-6  enquiry-submit float-right"
+                      [ladda]="bomLoader"
+                      [disabled]="listOfValidProducts.length == 0 || bomArray.length == diffSuppCount"
+                      (click)="addBomToCart()">Add
+                      items to cart</button>
+                  </div>
+                </div>
+                <div class="alert alert-warning unfound-products" *ngIf="showBomDiffSupplierMessage">
+                  <i class="icon-warning-message"></i><span><strong>
+                      The Products are from different suppliers, and will not be added to the cart.</strong></span>
+                </div>
+                <div class="alert alert-warning warning-button m-0" *ngIf="invalidFileFormat">
+                  Invalid file format only XLSX is allowed
+                </div>
+                <div class="alert alert-warning warning-button m-0" *ngIf="bomValidation">
+                  Please check the file is empty.
+                </div>
+                <div *ngIf="showBomTable">
+                  <div class="d-flex justify-content-center pt-5">
+                    <apt-spinner></apt-spinner>
+                  </div>
+                </div>
+                <!-- BOM End-->
+                <div class="col-12 py-3">
+                  <h6 class="order-number"><strong>{{'MY_ACCOUNT.QuickOrder.ADD_PRODUCTS_BY_PRODUCT_CODE' |
+                      translate}} </strong></h6>
+                  <div class="row mt-4">
+                    <div class="col-8">
+                      <h6 class="product-number"><strong>{{'MY_ACCOUNT.QuickOrder.PRODUCT_CODE' | translate}}</strong>
+                      </h6>
+                    </div>
+                    <div class="col-4">
+                      <h6 class="quantity-p"><strong>{{'MY_ACCOUNT.QuickOrder.QUANTITY' | translate}}</strong></h6>
+                    </div>
+                  </div>
+                  <div *ngFor="let item of divs; let i = index">
+                    <div class="row form-group mb-1">
+                      <div class="col-8 pr-0" (keyup)="checkCondition(i)">
+                        <div [ngClass]="showerroMessage[i]?'is-invalid':(showDiffSupplierMessage[i])?'is-info':''">
+                          <input type="text" class="form-control" id="productNumber"
+                            placeholder="{{'MY_ACCOUNT.QuickOrder.PRODUCT_CODE' | translate}}"
+                            [(ngModel)]="productName[i]" />
+                        </div>
+                      </div>
+
+                      <ng-template #quickOrder>
+                        <div class="d-flex justify-content-center pt-5">
+                          <apt-spinner></apt-spinner>
+                        </div>
+                      </ng-template>
+
+                      <div class="col-4 pl-1">
+                        <div [ngClass]="showerroMessage[i]?'is-invalid':(showDiffSupplierMessage[i])?'is-info':''">
+                          <input type="text" class="form-control text-right" id="quantity" placeholder="##"
+                            [(ngModel)]="productQty[i]" (change)="updateProductQuantity(i)" [min]="1" [max]="99999"
+                            appNumbersOnly />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row form-group mb-1">
+                    <div class="col-12 text-right">
+                      <button class="btn btn-link-secondary btn-block d-flex align-items-center w-auto" (click)="addRow()"
+                        [disabled]="divs.length>= 10">{{'MY_ACCOUNT.QuickOrder.ADD_ROW' | translate}} <i
+                          class="icon-add ml-auto"></i></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="alert alert-warning" *ngIf="showInfoMessage">
+                  <i class="icon-warning-message"></i><span>
+                    {{'ProductCard.PRODUCT_CODE' | translate}} {{'ProductCard.DiffSupplierAddedtoCart3' | translate}}
+                    {{'ProductCard.DIFFERENT_SUPPLIER' | translate}}. {{'ProductCard.DIFF_SUPPLIER_REST_MESSAGE_1' |
+                    translate}}</span>
+                </div>
+                <div class="alert alert-danger unfound-products" *ngIf="showerrorFlag">
+                  <i class="icon-danger-message"></i><span><strong>{{'MY_ACCOUNT.QuickOrder.PRODUCT_NOT_FOUND' |
+                      translate}}</strong></span>
+                </div>
+                <div class="d-flex justify-content-between pt-3" *ngIf="!showerrorFlag">
+                  <button type="reset" class="btn btn-secondary col-md-6 d-flex align-items-center text-center"
+                    (click)="resetproduct()">{{'COMMON.CANCEL' | translate}} <!--<i
+                      class="icon-reset ml-auto"></i>--></button>
+                  <button type="button" class="btn btn-primary col-md-6 enquiry-submit" [ladda]="cartLoader"
+                    (click)="addProductsToCart()"
+                    [disabled]="enableAddQuickOrderButton">{{'MY_ACCOUNT.QuickOrder.ADD_ITEMS_TO_CART' |
+                    translate}}</button>
+                </div>
+                      </div>
+                      <div class="floatingbuttons">
+                          <button class="floating-btn" (click)="closeQuickOrderFilter('QuickOrder')"
+                          *ngIf="quickOrderFlag">{{'MY_ACCOUNT.QuickOrder.QUICK_ORDER' | translate}}</button>
+                      </div> 
+                </div>
+                 <!-- Spinner dots while data is loading -->
+                <ng-template #showLoader>
+                 <div class="d-flex justify-content-center pt-5">
+                     <apt-spinner></apt-spinner>
+                 </div>
+                </ng-template>
+                 <!-- Template for creating new cart -->
+            </div>
+          </div>
+        </div>
+        <!-- All Cart Tabs -->
+        <div class="tab-pane fade" id="AllCarts" role="tabpanel" aria-labelledby="AllCarts-tab">
+          <div class="row">
+            <!-- Account Information  -->
+            <div class="col-sm-12">
+              <div class="cart-left-section new-cart-search">
+                <!-- Search Section -->
+                <div class="search-wrapper create-cart">
+                  <div class="form-group has-search">
+                    <i class="icon-search form-control-feedback"></i>
+                    <input type="text" class="form-control bg-white"
+                      placeholder="{{'CART.SEARCH_CART_PLACEHOLDER' | translate}}" aria-label="searchProduct"
+                      [(ngModel)]="term" />
+                  </div>
+                  <a href="javascript:void(0);" class="new-cart-link btn" (click)="newCart(template)"
+                    [ladda]="loading">{{'CART.CREATE_NEW_CART' | translate}}</a>
+                </div>
+                <!-- /Search Section -->
+                <div class="table-responsive" *ngIf="allCarts$ | async as allCarts; else loader">
+                  <table class="table table-striped mb-3">
+                    <thead>
+                      <tr>
+                        <th style="width: 40%;" class="sort-value" (click)="sortCart('Name')">{{'CART.TABLE.CART_NAME' |
+                          translate}}<i class="icon-sorting"></i></th>
+                        <th style="width: 15%;" class="sort-value">{{'CART.TABLE.STATUS' | translate}} </th>
+                        <th style="width: 20%;" class="text-right">{{'CART.TABLE.NUMBER_OF_PRODUCTS' | translate}}</th>
+                        <th style="width: 20%" class="text-right sort-value" *ngIf="!internalDefaultAccount">
+                          Total Invoice Price
+                          <i class="icon-sorting" (click)="sortCart('APTS_Total_Invoice_Price_c')"></i>
+                        </th>
+                        <th style="width: 20%" class="text-right sort-value" *ngIf="internalDefaultAccount">
+                          Total Transfer Price
+                          <i class="icon-sorting" (click)="sortCart('APTS_Total_Invoice_Price_c')"></i>
+                        </th>
+                        <th style="width: 5%;"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <ng-container
+                        *ngFor="let allCart of displayAllCarts.CartList | filter: (term.length >= 3 ? term : ''); let j = index;">
+                        <tr>
+                          <td><a>{{allCart.Name}}</a></td>
+                          <td><button
+                              [ngClass]="currentCartId == allCart.Id ? 'btn btn-green ml-0' : 'btn btn-light ml-0'"
+                              [ladda]="setActiveCartLoader[j]" [attr.data-style]="'zoom-in'"
+                              (click)="setCartActive(allCart, j)">{{currentCartId == allCart.Id ? ('CART.ACTIVE' |
+                              translate) : ('CART.SET_ACTIVE' | translate)}}</button></td>
+                          <td class="text-right">{{allCart.APTS_Primary_Line_Count_c ? allCart.APTS_Primary_Line_Count_c
+                            : 0}}</td>
+                          <td class="text-right" *ngIf="currentCartId != allCart.Id">
+                            <div>
+                              {{ allCart.Currency }} {{ (allCart.APTS_Total_Net_Price_c || 0) | customCurrencyFormat }}
+                            </div>
+                          </td>
+                          <td class="text-right" *ngIf="currentCartId == allCart.Id">
+                            <span class="px-0" *ngIf="!cart.IsPricePending">
+                              <span *ngIf="showMessageForPricingSource.length > 0 || disableProccedToCheckout"
+                                class="active-cart-price">
+                                {{'COMMON.ON_REQUEST'| translate}}
+                              </span>
+                              <span *ngIf="showMessageForPricingSource.length === 0 && !disableProccedToCheckout">
+                                <span *ngIf="checkOnlyUnlistedProduct" class="active-cart-price">
+                                  {{'COMMON.ON_REQUEST'| translate}}
+                                </span>
+                                <span *ngIf="showOnRequestMsg.length === 0 && !checkOnlyUnlistedProduct"
+                                  class="active-cart-price">
+                                  {{ allCart.Currency }} {{ (allCart.APTS_Total_Net_Price_c || 0) | customCurrencyFormat
+                                  }}
+                                </span>
+                              </span>
+                            </span>
+                          </td>
+                          <td class="text-center">
+                            <!-- Dropdown -->
+                            <div class="dropdown custom-dropdown" *ngIf="cloneLoader[j] == false">
+                              <a href="javascript:void(0);" id="renameClone" data-toggle="dropdown"><i
+                                  class="icon-menu"></i></a>
+                              <div class="dropdown-menu dropdown-menu-right" aria-labelledby="renameClone">
+                                <a class="dropdown-item" href="javascript:void(0)"
+                                  (click)="displayCart(renameTemplate, allCart)">{{'CART.RENAME_CART' | translate}}</a>
+                                <a class="dropdown-item" href="javascript:void(0);"
+                                  (click)="cloneCart(allCart, j)">{{'CART.CLONE_CART' | translate}}</a>
+                                <a class="dropdown-item" href="javascript:void(0);"
+                                  (click)="deleteCart(allCart.Id, j)">{{'CART.DELETE_CART' | translate}}</a>
+                              </div>
+                            </div>
+                            <div *ngIf="cloneLoader[j] == true">
+                              <div class="d-flex justify-content-center pt-3">
+                                <apt-spinner></apt-spinner>
+                              </div>
+                            </div>
+                            <!-- /Dropdown -->
+                          </td>
+                        </tr>
+                      </ng-container>
+
+                    </tbody>
+                  </table>
+                </div>
+                <div class="pagination table-pagination">
+                  <div class="row">
+                    <div class="col-auto">
+                      <div class="pagination-left">
+                        <span class="item-page">{{'OrdersList.ItemsPerPage'
+                          | translate}}</span>
+                        <span class="light-color">{{productFrom}} -
+                          {{productTo}} {{'ProductList.Of' |
+                          translate}} {{collectionCount}}
+                          {{'ProductList.Items' |
+                          translate}}</span>
+                      </div>
+                    </div>
+                    <div class="col-auto ml-auto">
+                      <div class="pagination-right">
+                        <span class="light-color">{{page}} {{'ProductList.Of' |
+                          translate}}
+                          {{pageCount}} {{'ProductList.Pages' |
+                          translate}} </span>
+                        <a (click)="onPreviousPage(true)" class="arrow"><i class="icon-arrow-left"></i><span
+                            class="d-none">{{'OrdersList.LeftArrow'
+                            | translate}}</span></a>
+                        <a (click)="onNextPage(true)" class="arrow"><i class="icon-arrow-right"></i><span
+                            class="d-none">{{'OrdersList.RightArrow'
+                            | translate}}</span></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- /Account Information  -->
+          </div>
+        </div>
+        <!-- /All Cart Tabs -->
+      </div>
+    </div>
+  </div>
+  <ng-template #loader>
+    <div class="tr-loader">
+      <apt-dots></apt-dots>
+    </div>
+  </ng-template>
+  <ng-template #template>
+    <form (ngSubmit)="createCart()">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{'MY_ACCOUNT.CART_LIST.CREATE_NEW' | translate}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <!-- <span aria-hidden="true">&times;</span> -->
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3 form-group">
+          <input type="text" class="form-control" placeholder="{{'COMMON.NAME' | translate}}" name="cartName"
+            [(ngModel)]="cart.Name" maxlength="50">
+        </div>
+        <small class="text-danger animated fadeIn" *ngIf="message">{{message}}</small>
+      </div>
+      <div class="d-flex justify-content-end modal-footer">
+        <button class="btn btn-secondary" type="button" (click)="modalRef.hide()">{{'COMMON.CANCEL' |
+          translate}}</button>
+        <button class="btn btn-primary btn-raised" type="submit" [ladda]="loading"
+          [disabled]="((cart.Name == null) || cart.Name.length == 0)">{{'COMMON.SAVE' |
+          translate}}</button>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template #renameTemplate>
+    <form (ngSubmit)="renameCart()">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">{{'MY_ACCOUNT.CART_LIST.RENAME_CART' | translate}}</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="close()">
+          <!-- <span aria-hidden="true">&times;</span> -->
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3 form-group">
+          <input type="text" class="form-control" placeholder="{{'COMMON.NAME' | translate}}" name="cartRename"
+            maxlength="50" [(ngModel)]="renameCartName">
+        </div>
+      </div>
+      <div class="d-flex justify-content-end modal-footer">
+        <button class="btn btn-secondary" type="button" (click)="close()">{{'COMMON.CANCEL' |
+          translate}}</button>
+        <button class="btn btn-primary btn-raised" type="submit" [ladda]="loading"
+          [disabled]="((renameCartName == null) || renameCartName.trim().length == 0)">{{'COMMON.SAVE' |
+          translate}}</button>
+      </div>
+    </form>
+  </ng-template>
+</ng-template>
+<!-- Spinner dots while data is loading -->
+
+<ng-template #termsAndConditions>
+  <!-- Heading -->
+  <div class="modal-header">
+    <h5 class="modal-title">{{'COMMON.TERMS_AND_CONDITIONS' | translate}}</h5>
+    <button type="button" class="close btn btn-icon" data-dismiss="modal" aria-label="Close"
+      (click)="modalRef.hide()"></button>
+  </div>
+  <!-- /Heading -->
+  <!-- Content -->
+  <div class="modal-body">
+    <div>
+      <div class="form-group mb-4">
+        <label class="d-block font-weight-bold">{{'COMMON.DELIVERY_TERMS' | translate}}</label>
+        <span>{{deliveryTerms}}</span>
+      </div>
+      <div class="form-group mb-4">
+        <label class="d-block font-weight-bold">{{'COMMON.PAYMENT_TERMS' | translate}}</label>
+        <span>{{paymentTerms}}</span>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #quoteConfirmationTemplate>
+  <div class="modal-header">
+    <h5 class="modal-title pull-left">{{'QUOTE_CONFIRMATION_MODAL.QUOTE_REQUEST' | translate}}</h5>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="confirmationModal.hide()"
+      [routerLink]="['/quotes', quoteConfirmation.Id]">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body d-flex flex-column justify-content-center py-4">
+    <p class="text-center">
+      <strong>{{ 'QUOTE_CONFIRMATION_MODAL.THANK_YOU' | translate }}
+        {{quoteConfirmation?.CreatedBy?.FirstName}}!</strong>
+    </p>
+    <small class="text-center" *ngIf="!cart?.Proposald?.Id"
+      [translate]="'QUOTE_CONFIRMATION_MODAL.QUOTE_CONFIRMATION_MSG'"
+      [translateParams]="{Sellername: quoteConfirmation?.CreatedBy?.Name, RFP_value: quoteConfirmation.RFP_Response_Due_Date}"></small>
+    <small class="text-center" *ngIf="cart?.Proposald?.Id"
+      [translate]="'QUOTE_CONFIRMATION_MODAL.QUOTE_CONFIRMATION_Update_MSG'"
+      [translateParams]="{Sellername: quoteConfirmation?.CreatedBy?.Name, RFP_value: quoteConfirmation.RFP_Response_Due_Date}"></small>
+    <h5 class="text-center my-3">{{ 'QUOTE_CONFIRMATION_MODAL.QUOTE_CONFIRMATION_NO' | translate }}
+      {{quoteConfirmation.Name}}</h5>
+    <button class="btn btn-outline-primary w-35 mx-auto" (click)="confirmationModal.hide()"
+      [routerLink]="['/quotes', quoteConfirmation.Id]">{{ 'QUOTE_CONFIRMATION_MODAL.REVIEW_YOUR_QUOTE' | translate
+      }}</button>
+  </div>
+</ng-template>
+
+<ng-template #confirmationTemplate>
+  <div class="modal-header">
+    <h6 class="modal-title">
+      {{'MANAGE_CART.GENERATE_DOCUMENT.GENERATE_DOCUMENT_TITLE' | translate }}
+    </h6>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="confirmationModal.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body d-flex flex-column justify-content-center py-4">
+    <h5 class="text-center">{{'MANAGE_CART.GENERATE_DOCUMENT.GENERATE_DOCUMENT_BODY' | translate }}</h5>
+    <br />
+    <button class="btn btn-outline-primary w-10 mx-auto" (click)="closeModal()">View Quote</button>
+  </div>
+</ng-template>
+
+<ng-template #confirmationTemplateSync>
+  <div class="modal-header">
+    <!-- <h6 class="modal-title"> -->
+    <h6 class="modal-title">{{'CART.QUOTE_DOCUMENT' | translate}}</h6>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="confirmationModal.hide()">
+      <!-- <span aria-hidden="true">&times;</span> -->
+    </button>
+  </div>
+
+  <div class="modal-body d-flex flex-column justify-content-center py-4">
+    <small class="text-center">{{'CART.QUOTE_GEN_MESSAGE' | translate}} </small>
+    <h5 class="text-center my-3">{{'CART.QUOTATION_NUMBER' | translate}} {{quoteNumber}}</h5>
+    <br />
+    <button class="btn btn-outline-primary w-10 mx-auto" (click)="closeModal()">{{'CART.View_Quote' |
+      translate}}</button>
+  </div>
+</ng-template>
+
+<ng-template #pendingTemplateSync>
+  <div class="modal-header">
+    <!-- <h6 class="modal-title"> -->
+    <h6 class="modal-title">{{'CART.QUOTE_DOCUMENT' | translate}}</h6>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="confirmationModal.hide()">
+      <!-- <span aria-hidden="true">&times;</span> -->
+    </button>
+  </div>
+
+  <div class="modal-body d-flex flex-column justify-content-center py-4">
+    <small class="text-center">{{'CART.QUOTE_GEN_MESSAGE_PENDING' | translate}} </small>
+    <h5 class="text-center my-3">{{'CART.QUOTATION_NUMBER' | translate}} {{quoteNumber}}</h5>
+    <br />
+    <button class="btn btn-outline-primary w-10 mx-auto" (click)="closeModal()">{{'CART.View_Quote' |
+      translate}}</button>
+  </div>
+</ng-template>
+<ng-template #configProductAccessIssue>
+  <div class="alert alert-success alertBottom single-supl-alert">
+
+    <span class="item-text">
+      <i class="icon-close" (click)="configProductAccess.hide()"></i>
+      <p>
+        <i class="icon-info"></i> {{'COMMON.PRODUCT_CONFIG_ACCESS_MESSAGE'|translate}}
+      </p>
+    </span>
+  </div>
+</ng-template>
+
+
+
+<ng-container class="changeOwner" *ngIf="showForm">
+  <div class="modal fade show d-block">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{ 'CART.ASSIGNEE' | translate}}</h5>
+          <button type="button" class="close btn btn-icon" (click)="closeAssignPopup()"></button>
+        </div>
+        <div class="modal-body overflow-visible">
+          <div class="form-group">
+            <label for="inputState">{{ 'CART.SET_ASSIGNEE' | translate}}</label>
+            <div class="dropdown select-dropdown">
+              <a class="nav-link d-flex align-items-center" data-toggle="dropdown" aria-expanded="true">
+                {{selectedContactName}} <i class="icon-arrow-down float-right"></i>
+              </a>
+              <div class="dropdown-menu mb-5 w-100" aria-labelledby="">
+                <div class="dropdownheight">
+                  <ul>
+                    <li (click)="changecontact(user.Id, user.Name)" *ngFor="let user of internalUsers">
+                      <a href="javascript:void(0);">{{user.Name}}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-primary" [ladda]="assignContactLoader"
+            (click)="updateOwner(selectedContact)">{{'CART.APPLY' | translate}}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="showCamosModalPopup">
+  <app-camos-cart-popup (closeModal)="closeCamsoPopupModal($event)" [camosLineItems]="camosLineItems"
+    [currentPage]="'Cart'" [camosLineDocumentLinks]="externalHyperLinkRecords"
+    (lineIdForGeneratedDocument)="fetchDocumentLinks($event)"></app-camos-cart-popup>
+</ng-container>

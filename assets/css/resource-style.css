@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+.forsys-upgrade-section {
+    background-image: url(../img/resource-img/forsys-upgrades-banner.jpg);
+}
+.forsys-upgrade-content-section .insight-content img {
+    width: 50px;
+}
+.forsys-upgrade-content-section .business-content img {
+    width: 30px !important;
+}
+.forsys-upgrade-trans-section img {
+    width: 50px;
+}
+.forsys-upgrade-trans-section .d-flex {
+    align-items: center;
+    margin-bottom: 30px;
+}
+.forsys-upgrade-trans-section .flex-grow-1 {
+    margin-top: 15px;
+}
+.forsys-upgrade-trans-section {
+    background-image: url(../img/resource-img/transsion-section-img.jpg);
+    background-repeat: no-repeat;
+}
+.forsys-upgrade-content-section h2, .business-content h2 , .transformation-section h2 {
+    color: #fa9600;
+    font-size: 22px;
+    margin-bottom: 15px;
+}
+.forsys-upgrade-trans-section {
+    color: #fff;
+}
+.about-the-client-section .dot-img {
+    width: 25%;
+    float: right;
+    margin-top: 30px;
+}
+.about-the-client-section h4 {
+    color: #fa9600;
+    font-size: 20px;
+}
+.business-content .d-flex{
+    margin-bottom: 10px;
+}
+.business-content .flex-grow-1{
+    margin-top: 3px;
+}
+@media (max-width: 660px) {
+    .forsys-upgrade-trans-section {
+        padding: 30px;
+    }
+    .forsys-upgrade-trans-section .d-flex {
+        margin-bottom: 15px;
+    }
+    .index-services-technologies {
+        background: url(../img/services-mb.png) top left/cover;
+    }
+    .products {
+        background: url(../img/products-banner-mb.png) top left/cover;
+    }
+}
+
+@media only screen and (min-width: 1279px) and (max-width: 2300px) {
+    .bg-team-page.forsys-upgrade-section {
+        padding: 170px 0px;
+    }
+    .forsys-upgrade-trans-section {
+        padding: 100px 0;
+    }
+}
+
+
+.forsys-rolls-section {
+    background-image: url(../img/case-study/forsys-rolls-banner.jpg);
+    color:#fff;
+}
+
+.rolls-transformation-section {
+    background-image: url(../img/case-study/forsys-rolls-sectionbg.jpg);
+    padding: 100px 0;
+}
+.rolls-forsys-upgrade {
+    background: #a63120;
+    padding: 30px 0;
+}
+.rolls-forsys-upgrade img {
+    width: auto;
+}
+.rolls-forsys-upgrade li {
+    margin-bottom: 12px;
+}
+@media (max-width: 660px) {
+    .rolls-forsys-upgrade .right-part {
+        padding: 25px;
+    }
+    .rolls-transformation-section {
+        background-position: 86%;
+    background-repeat: no-repeat;
+    }
+}
+
+
+
+
+
+
+ /* thilaga */
+ /* decline-support-team-page */
+ p.sub-title {
+    font-weight: 500;
+    color: #1e1e1e;
+    font-size: 20px;
+}
+p{line-height: 25px;}
+.insight-content h5{color:#fa9600;}
+.insight-content p{line-height:20px; font-weight: 500;color: #1e1e1e;}
+ 
+ .decline-support-banner {
+    background-image: url(../img/decline-img/banner.jpg) ;
+    color: white;
+    height: 300px;
+    display: flex;
+    align-items: center;
+}
+.forsys-upgrade-content-section.decline-support-insight .list-img{
+    width: 20px !important;
+}
+.decline-support-trans{background-color: #1b76ff;background-image: none;}
+
+/* cpq-clm-software-solutions-company-page */
+.implements-CPQ-CLM-banner{
+    background-image: url(../img/Implements-CPQ-CLM/banner.jpg);
+    height: 300px;
+    display: flex;
+    align-items: center;
+}
+.insight-content.business-icon img{width:50px !important;}
+.implements-CPQ-CLM-trans{background-image: none;color: black;padding-top: 0px;}
+.implements-CPQ-CLM-trans h2{color:#fa9600;}
+.implements-CPQ-CLM-client{padding-top: 0px;}
+
+/* demand-supply-planning-page */
+.demand-supply-banner{
+    background-image: url(../img/demand-supply/banner.jpg);
+    height: 250px;
+    display: flex;
+    align-items: center;
+}
+.demand-supply-insight .business-content .business-process{width:50px !important;} 
+.demand-supply-impact{background-color: #1b76ff ;background-image: none;}
+.trans-img{width:50px;}
+.impact-sec{display:flex;align-items: baseline !important;}
+.impact-img {width:30px !important;}
+
+/* forsys-implements-salesforce-crm-esteemed-university-page */
+.Salesforce-esteemed-banner{
+    background-image: url(../img/crm-esteemed-uni/banner.jpg);
+    height:300px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    margin: 0 auto;
+}
+.title-img{margin-right: 10px; width:50px !important;}
+.solve-sec{border:1px solid #fa9600;
+    border-radius: 32px;
+    height: 18vw;
+   position: relative;
+    text-align: center;
+    display:flex;
+    align-items: center;
+    padding: 40px;
+}
+.solve-img{width:50px;
+    width: 50px;
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.salesforce-esteemed-impact{
+    background-image: url(../img/crm-esteemed-uni/impact-banner.jpg); 
+   }
+
+   /* customer-lifecycle-revenue-omnichannel */
+.lifecycle-revenue-banner{
+    background-image: url(../img/customer-lifecycle-revenue-omnichannel/banner.jpg);
+    height: 250px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+   }
+.lifecycle-revenue-impact h2{color:#fa9600;}
+.lifecycle-revenue-impact{
+    background-image: none;
+    color: black;
+    padding-top: 0;
+}
+.lifecycle-revenue-client{
+    background-image:url(../img/customer-lifecycle-revenue-omnichannel/section-bg.jpg) ;
+    background-repeat: no-repeat;
+    color: #fff;
+    background-size: cover;
+    margin-bottom: 30px;
+}
+.section-img{
+    max-width:100%;
+    vertical-align: top;
+}
+/* e2e-automation-quote-to-cash-process-powered-conga */
+.e2e-automation-banner{
+    background-image: url(../img/e2e-automation-quote-to-cash-process-powered-conga/banner.jpg);
+    height: 250px;
+    display: flex;
+    align-items: center;
+}
+.e2e-automation-impact{
+    background-image: none;
+    color: black;
+    padding: 0;
+}
+.e2e-automation-impact h2{color: #fa9600;}
+
+/* sales-cycle-process-leading-to-higher-efficiencies with-automation */
+.sales-efficiencies-automation-banner{
+    background-image: url(../img/sales-cycle-process-leading-to-higher-efficiencies-with-automation/banner.jpg);
+    height: 250px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+/* 30k-reduction-in-product-proliferation-with-Order-to-Cash */
+.product-proliferation-banner{
+    background-image: url(../img/30k-reduction-in-product-proliferation-with-Order-to-Cash/banner.jpg);
+    height: 250px;
+    display: flex;
+    align-items: center;
+    color: #fff;
+}
+.product-proliferation-impact{
+    background-image:url(../img/30k-reduction-in-product-proliferation-with-Order-to-Cash/section-img.jpg) ;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 330px;
+    padding-top: 20px;
+}
+/* .product-proliferation-impact ul{list-style-type: none !important;} */
+
+@media (max-width: 639px) {
+    /* demand-supply-planning-page */
+    .demand-supply-banner h2{color: #fff;}
+    .demand-supply-trans h2{font-size: 19px;}
+
+    /* forsys-implements-salesforce-crm-esteemed--page */
+    .solve-sec{height:40vw;
+        margin-top:30px ;
+    }
+    .salesforce-esteemed-impact{background-color: #0079BE;background-image: none;}
+    /* customer-lifecycle-revenue-omnichannel */
+    .section-img{
+        padding-top: 20px;
+    }
+    /* 30k-reduction-in-product-proliferation-with-Order-to-Cash */
+    .product-proliferation-impact{height: auto;}
+}
+@media (min-width:640px) and (max-width:1023px){
+    /* cpq-clm-software-solutions-company-page */
+    .implements-CPQ-CLM-banner {
+        height:310px;
+    }
+    
+    /* forsys-implements-salesforce-crm-esteemed-university -page*/
+    .solve-sec{ height: 35vw;
+        padding: 0;
+        padding-top: 40px;
+        padding-left: 16px;
+        padding-right: 10px;
+
+    }
+    .salesforce-esteemed-client h4{font-size: 19px;}
+    .salesforce-esteemed-impact{background-color: #0079BE;background-image: none;}
+    /* customer-lifecycle-revenue-omnichannel */
+    .lifecycle-revenue-client{
+        background-image:url(../img/customer-lifecycle-revenue-omnichannel/section-bg-mob.jpg) ;
+        background-repeat: no-repeat;
+    }
+      /* 30k-reduction-in-product-proliferation-with-Order-to-Cash */
+      .product-proliferation-impact{height: auto;}
+}
+@media (min-width:1024px) and (max-width:1400px){
+    /* forsys-implements-salesforce-crm-esteemed-university-page */
+    .solve-sec{ height: 24vw;}
+}
