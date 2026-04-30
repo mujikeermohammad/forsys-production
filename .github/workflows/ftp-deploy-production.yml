@@ -14,6 +14,10 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Flush Sucuri Cache
+        run: |
+          curl -s "https://waf.sucuri.net/api?k=${{ secrets.SUCURI_API_KEY }}&s=${{ secrets.SUCURI_API_SECRET }}&a=clearcache&cache=all"
+
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
