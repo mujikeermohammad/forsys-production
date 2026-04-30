@@ -308,6 +308,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           portalId: '3988816',
           formId: 'f0f4653d-83d9-43af-bc33-1826e02f1d3c',
           target: '#hs-form-container',
+          onFormSubmitted: function() {
+            overlay.classList.remove('active');
+            if (obj) obj.classList.remove('blurred');
+            document.body.style.overflow = '';
+          },
           onFormReady: function($form) {
             var sk = document.getElementById('vod-skeleton');
             if (sk) sk.style.display = 'none';
