@@ -267,13 +267,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
               <div class="vod-sk-btn"></div>
             </div>
           </div>
-          <a href="../resources/customer-stories.html" class="vod-back-link" aria-label="Back to Customer Stories">
-            <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="19" y1="12" x2="5" y2="12"/>
-              <polyline points="12 19 5 12 12 5"/>
-            </svg>
-            Back to Customer Stories
-          </a>
         </div>
       </div>
     </div>
@@ -313,11 +306,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         hbspt.forms.create({
           region: 'na1',
           portalId: '3988816',
-          formId: '2e8240f4-f59e-46f8-a322-d78f01bd8253',
+          formId: 'f0f4653d-83d9-43af-bc33-1826e02f1d3c',
           target: '#hs-form-container',
-          onFormReady: function() {
+          onFormReady: function($form) {
             var sk = document.getElementById('vod-skeleton');
             if (sk) sk.style.display = 'none';
+            var submitWrap = document.querySelector('#hs-form-container .hs-submit');
+            if (submitWrap) {
+              var backLink = document.createElement('a');
+              backLink.href = '../resources/customer-stories.html';
+              backLink.className = 'vod-back-link';
+              backLink.setAttribute('aria-label', 'Back to Customer Stories');
+              backLink.innerHTML = '<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg> Back to Customer Stories';
+              submitWrap.insertAdjacentElement('afterend', backLink);
+            }
           }
         });
       })();
