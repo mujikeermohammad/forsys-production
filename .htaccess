@@ -1,0 +1,11 @@
+# ── Security: suppress server identity ──────────────────────────────────────
+ServerSignature Off
+Header unset Server
+Header always unset Server
+Header always set Server "."
+
+# ── Security: additional hardening headers ───────────────────────────────────
+Header always unset X-Powered-By
+Header always set X-Content-Type-Options "nosniff"
+Header always set X-Frame-Options "SAMEORIGIN"
+Header always set Referrer-Policy "strict-origin-when-cross-origin"
