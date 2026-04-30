@@ -9,3 +9,135 @@ Header always unset X-Powered-By
 Header always set X-Content-Type-Options "nosniff"
 Header always set X-Frame-Options "SAMEORIGIN"
 Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+Options +FollowSymLinks -MultiViews
+# Turn mod_rewrite on
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.php [NC]
+RewriteRule ^ %1 [R=301,L,NE]
+
+RewriteCond %{REQUEST_FILENAME}.php -f [NC]
+RewriteRule ^ %{REQUEST_URI}.php [L]
+
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.html [NC]
+RewriteRule ^ %1 [R=301,L,NE]
+
+RewriteCond %{REQUEST_FILENAME}.html -f [NC]
+RewriteRule ^ %{REQUEST_URI}.html [L]
+
+RewriteCond %{REQUEST_METHOD} !POST
+RewriteCond %{THE_REQUEST} ^[A-Z]{3,}\s([^.]+)\.svg [NC]
+RewriteRule ^ %1 [R=301,L,NE]
+
+RewriteCond %{REQUEST_FILENAME}.svg -f [NC]
+RewriteRule ^ %{REQUEST_URI}.svg [L]
+
+RewriteCond %{HTTP_HOST} !^www\. [NC]
+RewriteRule (.*) https://www.%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# CORS for PDFs
+<IfModule mod_headers.c>
+<Files ~ ".*\.pdf$">
+Header add Access-Control-Allow-Origin "*"
+Header add Access-Control-Allow-Methods "GET,POST,OPTIONS,DELETE,PUT"
+Header add Access-Control-Allow-Headers: "Range"
+Header add Access-Control-Expose-Headers: "Accept-Ranges, Content-Encoding, Content-Length, Content-Range"
+</Files>
+</IfModule>
+
+ErrorDocument 404 https://forsysinc.com/
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+</IfModule>
+
+
+#Redirect 301 /embed/40-reduction-in-testing-tasks-for-a-top-video-delivery-tech-firm-with-forsys-customized-qa-automation-framework	https://www.forsysinc.com/40-reduction-in-testing-tasks-for-a-top-video-delivery-tech-firm-with-forsys-customized-qa-automation-framework
+#Redirect 301 /embed/forsys-implemented-e2e-migration-to-oracle-fusion-cloud-erp-resulted-in-zero-post-go-live-issues https://www.forsysinc.com/forsys-implemented-e2e-migration-to-oracle-fusion-cloud-erp-resulted-in-zero-post-go-live-issues
+#Redirect 301 /embed/forsys-upgrades-conga-clm-streamlines-workflows-for-a-healthcare--life-sciences-client	https://www.forsysinc.com/forsys-upgrades-conga-clm-streamlines-workflows-for-a-healthcare--life-sciences-client
+#Redirect 301 /embed/thomson-reuters-conga-digital-commerce-implementation	https://www.forsysinc.com/23-increase-in-customer-lifecycle-value-with-implementation-of-subscription-management-&-headless-digital-commerce-leading-to-higher-revenue
+#Redirect 301 /embed/conga-clm-upgrade-by-forsys-increases-contracting-accuracy-by-45-for-a-hospitals--healthcare-client	https://www.forsysinc.com/conga-clm-upgrade-by-forsys-increases-contracting-accuracy-by-45-for-a-hospitals-healthcare-client
+#Redirect 301 /embed/27-decline-in-support-cost-with-customer-portal-implementation--service-management-automation-using-salesforce-service-cloud-for-a-research-services-company	https://www.forsysinc.com/decline-support-team
+#Redirect 301 /embed/44-improvement-in-sales-productivity-with-leadtoquote-automation-using-salesforce-for-a-chemical-manufacturer	https://www.forsysinc.com/44-improvement-in-sales-productivity-with-leadtoquote-automation-using-salesforce-for-a-chemical-manufacturer
+#Redirect 301 /embed/forsys-implements-conga-cpq--clm-for-a-software-solutions-company-expedites-quote-generation-by-38-contract-processing-by-42	https://www.forsysinc.com/cpq-clm-software-solutions-company
+#Redirect 301 /embed/conga-clm-implementation-by-forsys-expedites-contracting-process-by-42-percent	https://www.forsysinc.com/conga-clm-implementation-by-forsys-expedites-contracting-process-by-42-percent
+#Redirect 301 /embed/forsys-optimizes-demand--supply-planning-process-client-achieves-initial-1m-saving-within-a-year	https://www.forsysinc.com/demand-supply-planning
+#Redirect 301 /embed/25-increase-in-sales-productivity-forsys-implements-salesforce-crm-for-a-esteemed-university	https://www.forsysinc.com/forsys-implements-salesforce-crm-esteemed-university
+#Redirect 301 /embed/17-higher-lead-conversion-with-e2e-migration-to-sap-cpq-leading-to-28-shorter-sales-cycle	https://www.forsysinc.com/17-higher-lead-conversion-with-e2e-migration-to-sap-cpq-leading-to-28-shorter-sales-cycle
+Redirect 301 /digital-commerce   https://www.forsysinc.com/digital-commerce-services
+Redirect 301 /financials    https://www.forsysinc.com/financial-management-services
+Redirect 301 /mulesoft   https://www.forsysinc.com/mulesoft-salesforce-integration
+Redirect 301 /ui-ux   https://www.forsysinc.com/ui-ux-design-services
+Redirect 301 /ui-ux   https://www.forsysinc.com/ui-ux-design-services
+#Redirect 301 /23-increase-in-customer-lifecycle-value-with-implementation-of-subscription-management-&-headless-digital-commerce-leading-to-higher-revenue   https://www.forsysinc.com/case-study/increase-in-customer-lifecycle-value-with-headless-digital-commerce
+Redirect 301 /conga-clm-upgrade-by-forsys-increases-contracting-accuracy-by-45-for-a-hospitals-healthcare-client   https://www.forsysinc.com/case-study/upgraded-conga-contract-lifecycle-management-for-healthcare
+Redirect 301 /complete-cloud-transformation-in-3-months-with-oracle-integration-using-flodata-for-a-billiondollar-tech-firm   https://www.forsysinc.com/case-study/cloud-transformation-with-oracle-integration-for-tech-firm
+Redirect 301 /conga-clm-implementation-by-forsys-expedites-contracting-process-by-42-percent   https://www.forsysinc.com/case-study/conga-contract-management-solution-by-forsys-improved-contracting-process
+Redirect 301 /forsys-implements-salesforce-crm-esteemed-university    https://www.forsysinc.com/case-study/forsys-implements-salesforce-crm-to-increase-sales-productivity
+Redirect 301 /44-improvement-in-sales-productivity-with-leadtoquote-automation-using-salesforce-for-a-chemical-manufacturer   https://www.forsysinc.com/case-study/salesforce-sales-cloud-implementation-to-improve-sales-productivity
+Redirect 301 /cpq-clm-software-solutions-company    https://www.forsysinc.com/case-study/conga-cpq-clm-for-quote-to-cash-process-by-forsys
+Redirect 301 /17-higher-lead-conversion-with-e2e-migration-to-sap-cpq-leading-to-28-shorter-sales-cycle  https://www.forsysinc.com/case-study/migration-to-sap-for-mdm-service-provider
+Redirect 301 /case-study/17-higher-lead-conversion-with-e2e-migration-to-sap-cpq-leading-to-28-shorter-sales-cycle  https://www.forsysinc.com/case-study/migration-to-sap-for-mdm-service-provider
+
+Redirect 301 /resources_wp  https://www.forsysinc.com/resources
+Redirect 301 /resources-blogs  https://www.forsysinc.com/resources
+Redirect 301 /resources_ds  https://www.forsysinc.com/resources
+
+Redirect 301 /40-reduction-in-testing-tasks-for-a-top-video-delivery-tech-firm-with-forsys-customized-qa-automation-framework  https://www.forsysinc.com/embed/40-reduction-in-testing-tasks-for-a-top-video-delivery-tech-firm-with-forsys-customized-qa-automation-framework
+Redirect 301 /forsys-implemented-e2e-migration-to-oracle-fusion-cloud-erp-resulted-in-zero-post-go-live-issues  https://www.forsysinc.com/embed/forsys-implemented-e2e-migration-to-oracle-fusion-cloud-erp-resulted-in-zero-post-go-live-issues
+Redirect 301 /forsys-upgrades-conga-clm-streamlines-workflows-for-a-healthcare--life-sciences-client  https://www.forsysinc.com/embed/forsys-upgrades-conga-clm-streamlines-workflows-for-a-healthcare--life-sciences-client
+Redirect 301 /case-study/increase-in-customer-lifecycle-value-with-headless-digital-commerce  https://www.forsysinc.com/embed/thomson-reuters-conga-digital-commerce-implementation
+Redirect 301 /case-study/upgraded-conga-contract-lifecycle-management-for-healthcare  https://www.forsysinc.com/embed/conga-clm-upgrade-by-forsys-increases-contracting-accuracy-by-45-for-a-hospitals--healthcare-client
+Redirect 301 /decline-support-team  https://www.forsysinc.com/embed/27-decline-in-support-cost-with-customer-portal-implementation--service-management-automation-using-salesforce-service-cloud-for-a-research-services-company
+Redirect 301 /case-study/salesforce-sales-cloud-implementation-to-improve-sales-productivity   https://www.forsysinc.com/embed/44-improvement-in-sales-productivity-with-leadtoquote-automation-using-salesforce-for-a-chemical-manufacturer
+Redirect 301 /case-study/conga-cpq-clm-for-quote-to-cash-process-by-forsys  https://www.forsysinc.com/embed/forsys-implements-conga-cpq--clm-for-a-software-solutions-company-expedites-quote-generation-by-38-contract-processing-by-42
+Redirect 301 /case-study/conga-contract-management-solution-by-forsys-improved-contracting-process  https://www.forsysinc.com/embed/conga-clm-implementation-by-forsys-expedites-contracting-process-by-42-percent
+Redirect 301 /demand-supply-planning  https://www.forsysinc.com/embed/forsys-optimizes-demand--supply-planning-process-client-achieves-initial-1m-saving-within-a-year
+Redirect 301 /case-study/forsys-implements-salesforce-crm-to-increase-sales-productivity  https://www.forsysinc.com/embed/25-increase-in-sales-productivity-forsys-implements-salesforce-crm-for-a-esteemed-university
+Redirect 301 /case-study/migration-to-sap-for-mdm-service-provider  https://www.forsysinc.com/embed/17-higher-lead-conversion-with-e2e-migration-to-sap-cpq-leading-to-28-shorter-sales-cycle
+Redirect 301 /case-study/cloud-transformation-with-oracle-integration-for-tech-firm  https://www.forsysinc.com/embed/complete-cloud-transformation-in-3-months-with-oracle-integration-using-flodata-for-a-billiondollar-tech-firm
+
+Redirect 301 /solutions-integrasync https://www.forsysinc.com/solutions-netsuite-salesforce-integrator.php
+Redirect 301 /data-integrations https://www.forsysinc.com/mulesoft-salesforce-integration.php
+Redirect 301 /white-papers/integrate- https://www.forsysinc.com/resources.php
+Redirect 301 /our-team.php https://www.forsysinc.com/team.php
+Redirect 301 /cloud-migration.php https://www.forsysinc.com/mulesoft-salesforce-integration
+Redirect 301 /dreamforce-rsvp-sep-13 https://www.forsysinc.com/salesforce.php
+Redirect 301 /news-letters/success-stories.php https://www.forsysinc.com/success-stories.php
+Redirect 301 /https://www.forsysinc.com/embed/forsys-implements-oracle-order-management-saves-50-time-on-tpi-validation https://www.forsysinc.com/embed/forsys-implements-oracle-order-management-saves-50-time-on-tpi-validation
+Redirect 301 /news-letter-sep-i.php https://www.forsysinc.com/news-letters/news-letter-sep-i.php
+Redirect 301 /news-letter-oct-i.php https://www.forsysinc.com/news-letters/news-letter-oct-i.php
+Redirect 301 /news-letter-april-i https://www.forsysinc.com/news-letters/news-letter-april-i.php
+Redirect 301 /current-openings https://www.forsysinc.com/current-openings-usa
+Redirect 301 /solutions-lp https://www.forsysinc.com/solutions
+Redirect 301 /tel:(408)-409-2567 https://www.forsysinc.com
+Redirect 301 /solutions-salesforce-netsuite-integrator.php https://forsysinc.com/solutions/salesforce-netsuite-integration-with-mulesoft.php
+Redirect 301 /solutions-qa-data-reconciliation-testing.php https://forsysinc.com/solutions/data-reconciliation-testing.php
+Redirect 301 /pricesync.php https://forsysinc.com/solutions/oracle-pricelist-manager.php
+Redirect 301 /master-data-migration-accelerator.php https://forsysinc.com/solutions/master-data-migration-for-salesforce.php
+Redirect 301 /solutions-netsuite-salesforce-integrator.php https://forsysinc.com/solutions/realtime-netsuite-salesforce-integrator-by-mulesoft-composer.php
+Redirect 301 /solutions-flodata-accelerator.php https://forsysinc.com/solutions/cloud-ready-data-converter-reconciler-solution.php
+Redirect 301 /solutions-saas-catalog.php https://forsysinc.com/solutions/saas-catalog.php
+Redirect 301 /solutions/oracle-pricelist-manager.php https://www.forsysinc.com/solutions/oracle-price-sync.php
+Redirect 301 /supply-chain-management.php https://www.forsysinc.com/scm-services.php
+Redirect 301 /quality-automation.php https://www.forsysinc.com/quality-assurance-engineering.php
+Redirect 301 /current-openings-usa https://forsysinc.zohorecruit.in/jobs/Non-India-Careers
+Redirect 301 /current-openings-india https://forsysinc.zohorecruit.in/jobs/Careers
+Redirect 301 /current-openings-row https://forsysinc.zohorecruit.in/jobs/Non-India-Careers
+Redirect 301 /assessment-advisory https://www.forsysinc.com/strategic-consulting/assessment-advisory.php
+Redirect 301 /solutions/rca-adoption https://www.forsysinc.com/solutions/revramp.php
+Redirect 301 /netsuite https://www.forsysinc.com/
+Redirect 301 /dreamforce https://www.forsysinc.com/dreamforce-2025
+Redirect 301 /enterprise-resource-planning https://www.forsysinc.com/oracle
+Redirect 301 /overview https://www.forsysinc.com/
+Redirect 301 /contact https://www.forsysinc.com/company/contact.html
+Redirect 301 /careers https://www.forsysinc.com/company/careers.html
+Redirect 301 /team https://www.forsysinc.com/company/leadership.html
+Redirect 301 /customers https://www.forsysinc.com/
+Redirect 301 /clm-services https://www.forsysinc.com/solutions/conga/contract-lifecycle-management.html
+Redirect 301 /success-stories.php https://www.forsysinc.com/resources/customer-stories.html
+Redirect 301 /blog/all-you-need-to-know-about-salesforce-revenue-management-platform-rlm/ https://www.forsysinc.com/blog/all-you-need-to-know-about-salesforce-revenue-lifecycle-management-platform-rlm/
