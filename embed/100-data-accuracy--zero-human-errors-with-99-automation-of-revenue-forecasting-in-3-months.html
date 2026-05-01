@@ -279,9 +279,20 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         var overlay = document.getElementById('vod-overlay');
         var obj = document.getElementById('obj');
         var shown = false;
+        var COOKIE_NAME = 'forsys_cs_unlocked';
+
+        function setCookie(name, value, hours) {
+          var expires = new Date(Date.now() + hours * 3600 * 1000).toUTCString();
+          document.cookie = name + '=' + value + '; expires=' + expires + '; path=/';
+        }
+
+        function getCookie(name) {
+          var match = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+          return match ? match[1] : null;
+        }
 
         function showOverlay() {
-          if (!shown) {
+          if (!shown && !getCookie(COOKIE_NAME)) {
             shown = true;
             overlay.classList.add('active');
             if (obj) obj.classList.add('blurred');
@@ -309,6 +320,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           formId: 'f0f4653d-83d9-43af-bc33-1826e02f1d3c',
           target: '#hs-form-container',
           onFormSubmitted: function() {
+            setCookie(COOKIE_NAME, '1', 24);
             overlay.classList.remove('active');
             if (obj) obj.classList.remove('blurred');
             document.body.style.overflow = '';
