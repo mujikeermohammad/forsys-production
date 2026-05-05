@@ -295,6 +295,21 @@
         margin-bottom: 16px;
       }
 
+      .field-error {
+        display: none;
+        font-size: 0.78rem;
+        color: #dc2626;
+        margin-top: 5px;
+      }
+
+      .form-input.has-error {
+        border-color: #dc2626;
+      }
+
+      .radio-group.has-error .radio-card label {
+        border-color: #dc2626;
+      }
+
       /* ── Footer ── */
       .card-footer {
         background: #f9fafb;
@@ -364,21 +379,30 @@
           <div class="form-group">
             <label class="form-label" for="full_name">Full Name<span class="req">*</span></label>
             <input class="form-input" type="text" id="full_name" name="full_name" placeholder="Enter your full name" required>
+            <span class="field-error" id="err-full_name">Please enter your full name.</span>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="email">Work Email<span class="req">*</span></label>
             <input class="form-input" type="email" id="email" name="email" placeholder="Enter your work email" required>
+            <span class="field-error" id="err-email">Please enter a valid work email.</span>
           </div>
 
           <div class="form-group">
             <label class="form-label" for="company">Organization<span class="req">*</span></label>
             <input class="form-input" type="text" id="company" name="company" placeholder="Enter your organization" required>
+            <span class="field-error" id="err-company">Please enter your organization.</span>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="designation">Job Title<span class="req">*</span></label>
+            <input class="form-input" type="text" id="designation" name="designation" placeholder="Enter your job title" required>
+            <span class="field-error" id="err-designation">Please enter your job title.</span>
           </div>
 
           <div class="form-group">
             <label class="form-label">Attending Propel26?<span class="req">*</span></label>
-            <div class="radio-group">
+            <div class="radio-group" id="rg-attending">
               <div class="radio-card">
                 <input type="radio" name="attending_propel26" id="att-yes" value="Yes" required>
                 <label for="att-yes">
@@ -407,11 +431,12 @@
                 </label>
               </div>
             </div>
+            <span class="field-error" id="err-attending">Please select an option.</span>
           </div>
 
           <div class="form-group">
             <label class="form-label">Open to connecting with the Forsys team at the event?<span class="req">*</span></label>
-            <div class="radio-group">
+            <div class="radio-group" id="rg-connecting">
               <div class="radio-card">
                 <input type="radio" name="open_to_connecting" id="conn-yes" value="Yes" required>
                 <label for="conn-yes">
@@ -431,6 +456,7 @@
                 </label>
               </div>
             </div>
+            <span class="field-error" id="err-connecting">Please select an option.</span>
           </div>
 
           <hr class="form-divider">
@@ -479,21 +505,52 @@
         var successEl = document.getElementById('success-msg');
         var errorEl   = document.getElementById('error-banner');
 
+        function setFieldError(inputId, errorId, show) {
+          var input = document.getElementById(inputId);
+          var err   = document.getElementById(errorId);
+          if (!input || !err) return;
+          if (show) {
+            input.classList.add('has-error');
+            err.style.display = 'block';
+          } else {
+            input.classList.remove('has-error');
+            err.style.display = 'none';
+          }
+        }
+
+        function setRadioError(groupId, errorId, show) {
+          var group = document.getElementById(groupId);
+          var err   = document.getElementById(errorId);
+          if (!group || !err) return;
+          if (show) {
+            group.classList.add('has-error');
+            err.style.display = 'block';
+          } else {
+            group.classList.remove('has-error');
+            err.style.display = 'none';
+          }
+        }
+
         form.addEventListener('submit', function (e) {
           e.preventDefault();
           errorEl.style.display = 'none';
 
-          var fullName  = form.full_name.value.trim();
-          var email     = form.email.value.trim();
-          var company   = form.company.value.trim();
-          var attending = form.attending_propel26 ? (form.attending_propel26.value || '') : '';
-          var connecting = form.open_to_connecting ? (form.open_to_connecting.value || '') : '';
+          var fullName    = form.full_name.value.trim();
+          var email       = form.email.value.trim();
+          var company     = form.company.value.trim();
+          var designation = form.designation.value.trim();
+          var attending   = form.attending_propel26 ? (form.attending_propel26.value || '') : '';
+          var connecting  = form.open_to_connecting ? (form.open_to_connecting.value || '') : '';
 
-          if (!fullName || !email || !company || !attending || !connecting) {
-            errorEl.textContent = 'Please fill in all required fields.';
-            errorEl.style.display = 'block';
-            return;
-          }
+          var valid = true;
+          setFieldError('full_name',   'err-full_name',   !fullName);
+          setFieldError('email',       'err-email',       !email);
+          setFieldError('company',     'err-company',     !company);
+          setFieldError('designation', 'err-designation', !designation);
+          setRadioError('rg-attending',  'err-attending',  !attending);
+          setRadioError('rg-connecting', 'err-connecting', !connecting);
+
+          if (!fullName || !email || !company || !designation || !attending || !connecting) return;
 
           btn.disabled = true;
           btn.textContent = 'Submitting…';
@@ -502,14 +559,16 @@
           var firstName = nameParts[0];
           var lastName  = nameParts.slice(1).join(' ') || '';
 
+          var notes = 'Attending Propel26: ' + attending + ' | Open to connecting: ' + connecting;
+
           var payload = {
             fields: [
-              { name: 'firstname',          value: firstName },
-              { name: 'lastname',           value: lastName },
-              { name: 'email',              value: email },
-              { name: 'company',            value: company },
-              { name: 'attending_propel26', value: attending },
-              { name: 'open_to_connecting', value: connecting }
+              { name: 'firstname',   value: firstName },
+              { name: 'lastname',    value: lastName },
+              { name: 'email',       value: email },
+              { name: 'company',     value: company },
+              { name: 'designation', value: designation },
+              { name: 'message',     value: notes }
             ],
             context: {
               pageUri:  window.location.href,
@@ -533,8 +592,8 @@
               return res.text().then(function (t) { throw new Error(t); });
             }
           })
-          .catch(function () {
-            errorEl.textContent = 'Something went wrong. Please try again.';
+          .catch(function (err) {
+            errorEl.textContent = 'Error: ' + (err.message || 'Unknown error');
             errorEl.style.display = 'block';
             btn.disabled = false;
             btn.textContent = 'Request a Meeting →';
