@@ -376,8 +376,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </ul>
           </div>
 
-          <!-- Right: before/after visual -->
-          <div class="fs-problem-visual" aria-label="Without RevRamp vs With RevRamp comparison">
+          <!-- Right column: video thumb + before/after visual -->
+          <div class="fs-problem-right">
+
+            <!-- Video thumbnail -->
+            <div class="fs-video-thumb" id="fs-video-thumb" role="button" tabindex="0" aria-label="Play RevRamp explainer video">
+              <img src="../assets/images/play.png" alt="Play RevRamp explainer video" class="fs-video-play-img">
+              <span class="fs-video-rec-dot" aria-hidden="true"></span>
+            </div>
+
+            <!-- Before/after visual -->
+            <div class="fs-problem-visual" aria-label="Without RevRamp vs With RevRamp comparison">
             <div class="fs-problem-visual-title">Without RevRamp vs With RevRamp</div>
             <div class="fs-before-after">
 
@@ -408,9 +417,26 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
           </div>
 
+          </div><!-- /.fs-problem-right -->
+
         </div>
       </div>
     </section>
+
+    <!-- Video modal -->
+    <div class="fs-video-modal" id="fs-video-modal" role="dialog" aria-modal="true" aria-label="RevRamp explainer video" hidden>
+      <div class="fs-video-modal-backdrop" id="fs-video-backdrop"></div>
+      <div class="fs-video-modal-wrap">
+        <button class="fs-video-close" id="fs-video-close" aria-label="Close video">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <div class="fs-video-modal-box">
+          <video id="fs-explainer-video" controls playsinline>
+            <source src="http://localhost/forsys_4.0_2/revramp-campaign-2025/RevrampExplainer.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
 
     <!-- ============================================================
          SECTION 3 — HOW IT WORKS
@@ -761,6 +787,43 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 <!-- HubSpot Tracking Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3988816.js"></script>
+
+<script>
+(function () {
+  var thumb   = document.getElementById('fs-video-thumb');
+  var modal   = document.getElementById('fs-video-modal');
+  var video   = document.getElementById('fs-explainer-video');
+  var closeBtn = document.getElementById('fs-video-close');
+  var backdrop = document.getElementById('fs-video-backdrop');
+
+  function openModal() {
+    modal.hidden = false;
+    document.body.style.overflow = 'hidden';
+    video.play();
+    closeBtn.focus();
+  }
+
+  function closeModal() {
+    modal.hidden = true;
+    document.body.style.overflow = '';
+    video.pause();
+    video.currentTime = 0;
+    thumb.focus();
+  }
+
+  thumb.addEventListener('click', openModal);
+  thumb.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openModal(); }
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  backdrop.addEventListener('click', closeModal);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+})();
+</script>
 </body>
 
 </html>
