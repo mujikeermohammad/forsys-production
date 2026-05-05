@@ -1,4 +1,4 @@
-name: Muji Repo — Skip Deploy
+name: Deploy to Muji FTP
 
 on:
   push:
@@ -7,9 +7,25 @@ on:
   workflow_dispatch:
 
 jobs:
-  skip:
+  deploy:
     runs-on: ubuntu-latest
     if: github.repository == 'mujikeermohammad/forsys-new'
     steps:
-      - name: No deployment
-        run: echo "This is the muji (development) repo. FTP deploy is production-only."
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.MUJI_FTP_SERVER }}
+          username: ${{ secrets.MUJI_FTP_USERNAME }}
+          password: ${{ secrets.MUJI_FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /demos/forsysten/
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.github/**
+            **/.claude/**

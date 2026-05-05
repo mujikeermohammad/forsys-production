@@ -9,6 +9,7 @@ on:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.repository == 'mujikeermohammad/forsys-production'
     steps:
       - uses: actions/checkout@v4
         with:
