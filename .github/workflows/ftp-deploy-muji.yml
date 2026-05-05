@@ -1,0 +1,15 @@
+name: Muji Repo — Skip Deploy
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  skip:
+    runs-on: ubuntu-latest
+    if: github.repository == 'mujikeermohammad/forsys-new'
+    steps:
+      - name: No deployment
+        run: echo "This is the muji (development) repo. FTP deploy is production-only."
