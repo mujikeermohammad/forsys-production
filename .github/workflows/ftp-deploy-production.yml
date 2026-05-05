@@ -1,4 +1,4 @@
-name: Deploy to Muji FTP
+name: Deploy to Production FTP
 
 on:
   push:
@@ -12,21 +12,24 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    if: github.repository == 'mujikeermohammad/forsys-new'
+    if: github.repository == 'mujikeermohammad/forsys-production'
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 2
 
+      - name: Flush Sucuri Cache
+        run: |
+          curl -s "https://waf.sucuri.net/api?k=${{ secrets.SUCURI_API_KEY }}&s=${{ secrets.SUCURI_API_SECRET }}&a=clearcache&cache=all"
+
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
+          server: ${{ secrets.PROD_FTP_SERVER }}
+          username: ${{ secrets.PROD_FTP_USERNAME }}
+          password: ${{ secrets.PROD_FTP_PASSWORD }}
           local-dir: ./
-          server-dir: /demos/forsysten/
-          log-level: verbose
+          server-dir: /public_html/
           exclude: |
             **/.git*
             **/.git*/**
