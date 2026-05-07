@@ -373,32 +373,17 @@ if (document.querySelector('.page-industries')) {
 /* ── FORSYS AI SOLUTIONS PAGES ───────────────────────────── */
 if (document.querySelector('.page-fs')) {
   (function () {
-    // RevRamp Vimeo lightbox
-    const thumb    = document.getElementById('fs-video-thumb');
-    const modal    = document.getElementById('fs-vimeo-modal');
-    const backdrop = document.getElementById('fs-vimeo-backdrop');
-    const closeBtn = document.getElementById('fs-vimeo-close');
-    const iframe   = document.getElementById('fs-vimeo-iframe');
-    if (thumb && modal && iframe) {
-      const VIMEO_SRC = 'https://player.vimeo.com/video/1116707009?autoplay=1&title=0&byline=0&portrait=0';
-      const openModal = e => {
+    // RevRamp inline Vimeo player
+    const thumb     = document.getElementById('fs-video-thumb');
+    const thumbWrap = document.getElementById('fs-video-thumb-wrap');
+    const inline    = document.getElementById('fs-vimeo-inline');
+    const iframe    = document.getElementById('fs-vimeo-iframe');
+    if (thumb && thumbWrap && inline && iframe) {
+      thumb.addEventListener('click', e => {
         e.preventDefault();
-        iframe.src = VIMEO_SRC;
-        modal.hidden = false;
-        document.body.style.overflow = 'hidden';
-        closeBtn.focus();
-      };
-      const closeModal = () => {
-        modal.hidden = true;
-        iframe.src = 'about:blank';
-        document.body.style.overflow = '';
-        thumb.focus();
-      };
-      thumb.addEventListener('click', openModal);
-      closeBtn.addEventListener('click', closeModal);
-      backdrop.addEventListener('click', closeModal);
-      document.addEventListener('keydown', e => {
-        if (e.key === 'Escape' && !modal.hidden) closeModal();
+        thumbWrap.hidden = true;
+        inline.hidden = false;
+        iframe.src = 'https://player.vimeo.com/video/1116707009?autoplay=1&title=0&byline=0&portrait=0';
       });
     }
 

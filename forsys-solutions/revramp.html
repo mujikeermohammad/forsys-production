@@ -380,23 +380,17 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           <div style="display:flex; flex-direction:column; gap:24px;">
 
             <p class="fs-video-label">See it in action</p>
-            <div class="fs-video-thumb-wrap">
-              <a href="https://vimeo.com/1116707009?fl=ip&amp;fe=ec" target="_blank" rel="noopener noreferrer" class="fs-video-thumb" id="fs-video-thumb" aria-label="Play RevRamp explainer video" aria-haspopup="dialog">
+            <div class="fs-video-thumb-wrap" id="fs-video-thumb-wrap">
+              <a href="https://vimeo.com/1116707009?fl=ip&amp;fe=ec" target="_blank" rel="noopener noreferrer" class="fs-video-thumb" id="fs-video-thumb" aria-label="Play RevRamp explainer video">
                 <img src="../assets/images/play.png" alt="Play RevRamp explainer video" class="fs-video-play-img">
                 <span class="fs-video-rec-dot" aria-hidden="true"></span>
               </a>
             </div>
 
-            <!-- Vimeo lightbox modal -->
-            <div class="fs-vimeo-modal" id="fs-vimeo-modal" role="dialog" aria-modal="true" aria-label="RevRamp video" hidden>
-              <div class="fs-vimeo-backdrop" id="fs-vimeo-backdrop"></div>
-              <div class="fs-vimeo-box">
-                <button class="fs-vimeo-close" id="fs-vimeo-close" aria-label="Close video">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
-                <div class="fs-vimeo-ratio">
-                  <iframe id="fs-vimeo-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="RevRamp explainer video"></iframe>
-                </div>
+            <!-- Inline Vimeo player (shown after thumbnail click) -->
+            <div class="fs-vimeo-inline" id="fs-vimeo-inline" hidden>
+              <div class="fs-vimeo-ratio">
+                <iframe id="fs-vimeo-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="RevRamp explainer video"></iframe>
               </div>
             </div>
 
