@@ -22,10 +22,21 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: ./
           server-dir: /demos/forsysten/
-          state-name: .ftp-deploy-sync-state-v2.json
+          state-name: .ftp-deploy-sync-state-v3.json
           exclude: |
             **/.git*
             **/.git*/**
             **/node_modules/**
             **/.github/**
             **/.claude/**
+            assets/**
+            services/**
+            solutions/**
+            forsys-solutions/**
+            industries/**
+            partnerships/**
+            resources/**
+            company/**
+            lead-gen/**
+            *.md
+            *.xlsx
