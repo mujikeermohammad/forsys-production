@@ -176,6 +176,12 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
         .hero-content:has(.slide-title--image.active) .hero-badge {
             display: none;
         }
+        .hero-badge--image {
+            display: none;
+        }
+        .hero-content:has(.slide-title--image.active) .hero-badge--image {
+            display: inline-flex;
+        }
         .hero:has(.slide-title--image.active) {
             padding-top: 104px;
             justify-content: flex-start;
@@ -669,6 +675,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <div class="hero-badge">
           <span class="badge-dot" aria-hidden="true"></span>
           AI Native, AI Fast — Lead-to-Revenue Specialists
+        </div>
+
+        <div class="hero-badge hero-badge--image">
+          <span class="badge-dot" aria-hidden="true"></span>
+          Upcoming Events
         </div>
 
         <div class="hero-headline" aria-live="polite">
