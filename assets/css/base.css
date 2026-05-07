@@ -815,4 +815,6 @@ footer { background: var(--gradient-dark); padding: 64px 48px 36px; }
   .cta-inner { padding: 48px 24px; }
   .stats-bar { grid-template-columns: repeat(2, 1fr); }
   .footer-grid { grid-template-columns: 1fr; }
+  .trusted-logos { flex-wrap: wrap; overflow-x: visible; justify-content: center; }
+  .trusted-strip { padding: 44px 24px; }
 }

@@ -18,10 +18,389 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
   <meta name="keywords" content="Lead-to-Revenue Consulting, AI-Native L2R, Enterprise AI strategy, Revenue Lifecycle transformation, Autonomous business consulting" />
   <link rel="stylesheet" href="assets/css/base.css" />
   <link rel="stylesheet" href="assets/css/home.css" />
+<style>
+          @media (max-width: 650px) {
+            .float {
+                background-image: none !important;
+                background: rgb(255, 194, 15);
+                background-image: linear-gradient(90deg, rgb(255, 194, 15) 60%, rgb(250, 150, 0) 80%);
+                position: fixed;
+                width: 100%;
+                bottom: 0px;
+                padding: 10px 15px;
+                padding-left: 45px;
+                height: 45px;
+                z-index: 9999999999999;
+                margin: 0 auto;
+            }
+        }
 
+        .box {
+            position: absolute;
+            max-width: 350px;
+            width: 90%;
+            height: 350px;
+            z-index: 99;
+            /*            background: #fff;*/
+            box-shadow: 0 0 15px rgba(0, 0, 0, .1);
+        }
+
+        /* common */
+        .ribbon {
+            width: 350px;
+            height: 350px;
+            overflow: hidden;
+            position: absolute;
+        }
+
+        .ribbon span {
+            position: absolute;
+            display: block;
+            width: 500px;
+            padding: 15px 0;
+            background-image: linear-gradient(90deg, rgb(255, 194, 15) 60%, rgb(250, 150, 0) 80%);
+            color: #fff;
+            text-align: center;
+        }
+
+        /* top left*/
+        .ribbon-top-left {
+            /*            top: -10px;*/
+            /*            left: -10px;*/
+        }
+
+        .ribbon-top-left span {
+            right: -45px;
+            top: 120px;
+            transform: rotate(-45deg);
+            padding: 10px 40px;
+            color: #000;
+        }
+
+        /* top right*/
+        .ribbon-top-right {
+            top: -10px;
+            right: -10px;
+        }
+
+        .ribbon-top-right::before,
+        .ribbon-top-right::after {
+            border-top-color: transparent;
+            border-right-color: transparent;
+        }
+
+        .ribbon-top-right::before {
+            top: 0;
+            left: 0;
+        }
+
+        .ribbon-top-right::after {
+            bottom: 0;
+            right: 0;
+        }
+
+        .ribbon-top-right span {
+            left: -25px;
+            top: 30px;
+            transform: rotate(45deg);
+        }
+
+        /* bottom left*/
+        .ribbon-bottom-left {
+            bottom: -10px;
+            left: -10px;
+        }
+
+        .ribbon-bottom-left::before,
+        .ribbon-bottom-left::after {
+            border-bottom-color: transparent;
+            border-left-color: transparent;
+        }
+
+        .ribbon-bottom-left::before {
+            bottom: 0;
+            right: 0;
+        }
+
+        .ribbon-bottom-left::after {
+            top: 0;
+            left: 0;
+        }
+
+        .ribbon-bottom-left span {
+            right: -25px;
+            bottom: 30px;
+            transform: rotate(225deg);
+        }
+
+        /* bottom right*/
+        .ribbon-bottom-right {
+            bottom: -10px;
+            right: -10px;
+        }
+
+        .ribbon-bottom-right::before,
+        .ribbon-bottom-right::after {
+            border-bottom-color: transparent;
+            border-right-color: transparent;
+        }
+
+        .ribbon-bottom-right::before {
+            bottom: 0;
+            left: 0;
+        }
+
+        .ribbon-bottom-right::after {
+            top: 0;
+            right: 0;
+        }
+
+        .ribbon-bottom-right span {
+            left: -25px;
+            bottom: 30px;
+            transform: rotate(-225deg);
+        }
+
+
+        /* Image slide override */
+        .hero-headline:has(.slide-title--image.active) {
+            min-height: 0;
+            margin-bottom: 0;
+            height: 0;
+            overflow: hidden;
+        }
+        .hero-content:has(.slide-title--image.active) .hero-actions {
+            display: none;
+        }
+        .hero-content:has(.slide-title--image.active) .hero-badge {
+            display: none;
+        }
+        .hero:has(.slide-title--image.active) {
+            padding-top: 68px;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+        .hero-sub:has(.slide-sub--image.active) {
+            max-width: 1024px;
+            min-height: 0;
+        }
+        .hero-content:has(.slide-title--image.active) {
+            width: 100%;
+            max-width: 1024px;
+        }
+        .slide-sub--image img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 12px;
+        }
+
+        /* Cube Slider */
+
+        .cube-slider {
+            margin: 0;
+            /*            display: none;*/
+            place-content: center;
+            position: fixed;
+            bottom: 55px;
+            right: 55px;
+            -webkit-box-shadow: -4px -1px 50px -4px rgba(0, 0, 0, 0.63);
+            -moz-box-shadow: -4px -1px 50px -4px rgba(0, 0, 0, 0.63);
+            box-shadow: -4px -1px 50px -4px rgba(0, 0, 0, 0.63);
+            z-index: 999;
+        }
+
+        .info {
+            --s: 160px;
+            display: grid;
+            transform-style: preserve-3d;
+            --_p: perspective(calc(2.5*var(--s)));
+            animation: r 25s infinite;
+            background-color: #2b61c5;
+        }
+
+        .info img {
+            grid-area: 1/1;
+            width: var(--s);
+            aspect-ratio: 1;
+            object-fit: cover;
+            transform: var(--_t, ) translateZ(calc(var(--s)/2));
+        }
+
+        .info:hover {
+            transform: var(--_p) rotateX(90deg)
+        }
+
+        .info img:nth-child(2) {
+            --_t: rotateX(-90deg)
+        }
+
+        .info img:nth-child(3) {
+            --_t: rotateY(90deg) rotate(-90deg)
+        }
+
+        .info img:nth-child(4) {
+            --_t: rotateX(180deg) rotate(90deg)
+        }
+
+        .info img:nth-child(5) {
+            --_t: rotateX(90deg) rotate(90deg)
+        }
+
+        .info img:nth-child(6) {
+            --_t: rotateY(-90deg)
+        }
+
+        @keyframes r {
+
+            0%,
+            3% {
+                transform: var(--_p)
+            }
+
+            14%,
+            19% {
+                transform: var(--_p) rotateX(90deg)
+            }
+
+            31%,
+            36% {
+                transform: var(--_p) rotateX(90deg) rotateZ(90deg)
+            }
+
+            47%,
+            52% {
+                transform: var(--_p) rotateX(90deg) rotateZ(90deg) rotateY(-90deg)
+            }
+
+            64%,
+            69% {
+                transform: var(--_p) rotateX(90deg) rotateZ(90deg) rotateY(-90deg) rotateX(90deg)
+            }
+
+            81%,
+            86% {
+                transform: var(--_p) rotateX(90deg) rotateZ(90deg) rotateY(-90deg) rotateX(90deg) rotateZ(90deg)
+            }
+
+            97%,
+            100% {
+                transform: var(--_p) rotateX(90deg) rotateZ(90deg) rotateY(-90deg) rotateX(90deg) rotateZ(90deg) rotateY(-90deg)
+            }
+        }
+
+        .shadow {
+            display: block;
+            width: 170px;
+            height: 100px;
+            background: rgba(0, 0, 0, 0.75);
+            position: absolute;
+            top: 80%;
+            -webkit-transform: rotateX(90deg);
+            transform: rotateX(90deg);
+            z-index: -1;
+            -webkit-filter: blur(20px);
+            filter: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="filter"><feGaussianBlur stdDeviation="20" /></filter></svg>#filter');
+            -webkit-filter: blur(20px);
+            filter: blur(20px);
+            left: -5px;
+            right: 0;
+            margin: auto;
+            -webkit-animation: rotateShadow 15s infinite cubic-bezier(1, -0.75, 0.5, 1.2);
+            animation: rotateShadow 15s infinite cubic-bezier(1, -0.75, 0.5, 1.2);
+        }
+
+        @keyframes rotateShadow {
+
+            0%,
+            3% {
+                transform: var(--_p)
+            }
+
+            14%,
+            19% {
+                transform: var(--_p) rotateX(90deg)
+            }
+
+            31%,
+            36% {
+                transform: var(--_p) rotateX(90deg) rotateZ(90deg)
+            }
+
+            47%,
+            52% {
+                transform: var(--_p) rotateX(90deg) rotateZ(90deg) rotateY(-90deg)
+            }
+
+            64%,
+            69% {
+                transform: var(--_p) rotateX(90deg) rotateZ(90deg) rotateY(-90deg) rotateX(90deg)
+            }
+
+            81%,
+            86% {
+                transform: var(--_p) rotateX(90deg) rotateZ(90deg) rotateY(-90deg) rotateX(90deg) rotateZ(90deg)
+            }
+
+            97%,
+            100% {
+                transform: var(--_p) rotateX(90deg) rotateZ(90deg) rotateY(-90deg) rotateX(90deg) rotateZ(90deg) rotateY(-90deg)
+            }
+        }
+
+        a.cubeclose {
+            position: absolute;
+            z-index: 99;
+            right: -30%;
+            top: -30%;
+            height: 30px;
+            width: 30px;
+            border-radius: 20px;
+            background: #ffffff;
+            text-align: center;
+            line-height: 30px;
+            font-size: 10px;
+            font-weight: bold;
+            color: #000;
+          display: flex;
+          justify-content: center;
+    align-items: center;
+            /*display: none;*/
+        }
+
+        @media (max-width: 760px) {
+            .cube-slider {
+                transform: scale(.6);
+                transform-origin: bottom left;
+                left: 40px !important;
+                bottom: 40px !important;
+                right: auto !important;
+            }
+
+            a.cubeclose {
+                display: block;
+            }
+        }
+  </style>
 </head>
 
 <body class="page-home">
+    <div class="cube-slider" id="cubesliderbanner">
+        <a href="javascript:void(0)" onclick="HideCubeBanner();" class="cubeclose"><svg data-v-6a943414="" width="24" height="24" xmlns="http://www.w3.org/2000/svg" class="close-icon">
+                <path d="M6.414 5A1 1 0 1 0 5 6.414L10.586 12 5 17.586A1 1 0 1 0 6.414 19L12 13.414 17.586 19A1 1 0 1 0 19 17.586L13.414 12 19 6.414A1 1 0 1 0 17.586 5L12 10.586 6.414 5Z"></path>
+            </svg></a>
+        <a href="https://www.forsysinc.com/lead-gen/apprise-us-rsvp" target="_blank">
+            <div class="info">
+                <img class="image1" src="https://www.forsysinc.com/blog/wp-content/uploads/2026/05/1.png" alt="1">
+                <img class="image2" src="https://www.forsysinc.com/blog/wp-content/uploads/2026/05/2.png" alt="2">
+                <img class="image3" src="https://www.forsysinc.com/blog/wp-content/uploads/2026/05/3.png" alt="3">
+                <img class="image4" src="https://www.forsysinc.com/blog/wp-content/uploads/2026/05/1.png" alt="4">
+                <img class="image5" src="https://www.forsysinc.com/blog/wp-content/uploads/2026/05/2.png" alt="5">
+                <img class="image6" src="https://www.forsysinc.com/blog/wp-content/uploads/2026/05/3.png" alt="6">
+            </div>
+            <div class="shadow"></div>
+        </a>
+    </div>
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MLCLLPPL"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -293,14 +672,18 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         </div>
 
         <div class="hero-headline" aria-live="polite">
-          <h1 class="slide-title active">Revenue Lifecycle<br><span class="gradient-text">Transformation</span></h1>
+          <h1 class="slide-title slide-title--image active">&nbsp;</h1>
+          <h1 class="slide-title">Revenue Lifecycle<br><span class="gradient-text">Transformation</span></h1>
           <h1 class="slide-title">Enterprise AI<br><span class="gradient-text">Strategy &amp; Execution</span></h1>
           <h1 class="slide-title">Platform<br><span class="gradient-text">Modernization</span></h1>
           <h1 class="slide-title">AI-Enabled<br><span class="gradient-text">Managed Services</span></h1>
         </div>
 
         <div class="hero-sub" aria-live="polite">
-          <div class="slide-sub active">End-to-end Lead-to-Revenue consulting&mdash;CRM, CPQ, CLM, Order Management,
+          <div class="slide-sub slide-sub--image active">
+            <img src="https://www.forsysinc.com/blog/wp-content/uploads/2026/05/We-are-taking-the-stage.png" alt="" loading="lazy">
+          </div>
+          <div class="slide-sub">End-to-end Lead-to-Revenue consulting&mdash;CRM, CPQ, CLM, Order Management,
             Assets, Subscriptions, Billing, Revenue Recognition, Amendments &amp; Renewals&mdash;powered by AI.</div>
           <div class="slide-sub">Enterprise AI strategy &amp; execution&mdash;AI advisory, Claude, MCPs, agent
             architecture, governance, LLMOps, and integration&mdash;enabling Autonomous Revenue &amp; Commerce.</div>
@@ -312,13 +695,15 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
         <div class="slide-dots" role="tablist" aria-label="Hero slides">
           <button class="slide-dot active" data-idx="0" role="tab" aria-selected="true"
-            aria-label="Slide 1: Revenue Lifecycle Transformation"></button>
+            aria-label="Slide 1"></button>
           <button class="slide-dot" data-idx="1" role="tab" aria-selected="false"
-            aria-label="Slide 2: Enterprise AI Strategy"></button>
+            aria-label="Slide 2: Revenue Lifecycle Transformation"></button>
           <button class="slide-dot" data-idx="2" role="tab" aria-selected="false"
-            aria-label="Slide 3: Platform Modernization"></button>
+            aria-label="Slide 3: Enterprise AI Strategy"></button>
           <button class="slide-dot" data-idx="3" role="tab" aria-selected="false"
-            aria-label="Slide 4: AI-Enabled Managed Services"></button>
+            aria-label="Slide 4: Platform Modernization"></button>
+          <button class="slide-dot" data-idx="4" role="tab" aria-selected="false"
+            aria-label="Slide 5: AI-Enabled Managed Services"></button>
         </div>
 
         <div class="hero-actions">
@@ -1127,6 +1512,22 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <script src="assets/js/script.js"></script>
 <!-- HubSpot Tracking Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/3988816.js"></script>
+       <script src="https://owlcarousel2.github.io/OwlCarousel2/assets/vendors/jquery.min.js">
+    </script>
+    <script>
+        function HideCubeBanner() {
+            $('#cubesliderbanner').hide();
+        }
+
+        //        $(window).on('load', function() {
+        //            $('#conga-connect').modal('show');
+        //        });
+
+        setTimeout(function() {
+            $('#conga-connect').modal('hide')
+        }, 25000);
+
+    </script>
 </body>
 
 </html>

@@ -199,7 +199,7 @@ if (document.querySelector('.page-home')) {
     }
 
     dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
-    setInterval(() => goTo((cur + 1) % titles.length), 4000);
+    setInterval(() => goTo((cur + 1) % titles.length), 7000);
 
     // Platform tabs + sliding indicator
     const ptabs = document.querySelectorAll('.ptab');
@@ -373,6 +373,24 @@ if (document.querySelector('.page-industries')) {
 /* ── FORSYS AI SOLUTIONS PAGES ───────────────────────────── */
 if (document.querySelector('.page-fs')) {
   (function () {
+    // Video explainer play button
+    const player  = document.getElementById('lexishift-player');
+    const video   = document.getElementById('lexishift-video');
+    const playBtn = document.getElementById('lexishift-play');
+    if (player && video && playBtn) {
+      const activate = () => {
+        player.classList.add('playing');
+        video.play();
+      };
+      playBtn.addEventListener('click', activate);
+      player.addEventListener('click', e => {
+        if (player.classList.contains('playing')) {
+          video.paused ? video.play() : video.pause();
+        }
+      });
+      video.addEventListener('ended', () => player.classList.remove('playing'));
+    }
+
     // Card scroll-fade entrance
     const fadeEls = document.querySelectorAll('.fs-feature-card, .fs-usecase-card, .fs-step');
     const obs = new IntersectionObserver(entries => {
