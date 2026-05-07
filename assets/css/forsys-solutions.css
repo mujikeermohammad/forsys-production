@@ -555,17 +555,52 @@
 }
 
 /* ── VIDEO THUMB ─────────────────────────────────────────────── */
+@property --thumb-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+@keyframes thumbBorderSpin {
+  to { --thumb-angle: 360deg; }
+}
+
+.fs-video-label {
+  font-family: var(--font-ui);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purple);
+  margin: 0 0 10px;
+}
+
+.fs-video-thumb-wrap {
+  position: relative;
+  border-radius: 18px;
+  padding: 3px;
+  background: conic-gradient(from var(--thumb-angle), #6B48FF 0%, #00B4D8 25%, #6B48FF 50%, #00B4D8 75%, #6B48FF 100%);
+  animation: thumbBorderSpin 3s linear infinite;
+}
+
 .fs-video-thumb {
+  display: block;
   width: 100%;
   cursor: pointer;
   border-radius: 16px;
   overflow: hidden;
   line-height: 0;
+  text-decoration: none;
 }
 .fs-video-play-img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 16px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.fs-video-thumb:hover .fs-video-play-img {
+  transform: scale(1.02);
+  opacity: 0.9;
 }
 
 /* ── VIDEO EXPLAINER ────────────────────────────────────────── */
