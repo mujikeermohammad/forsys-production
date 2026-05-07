@@ -14,17 +14,18 @@ jobs:
         with:
           fetch-depth: 2
 
-      - name: FTP Deploy
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: /public_html/demos/forsysten/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/.github/**
-            **/.claude/**
+      - name: Install lftp
+        run: sudo apt-get install -y lftp
+
+      - name: FTP Deploy (upload only, never delete)
+        run: |
+          lftp -u "${{ secrets.FTP_USERNAME }}","${{ secrets.FTP_PASSWORD }}" "${{ secrets.FTP_SERVER }}" <<EOF
+          set ftp:ssl-allow no
+          mirror --reverse --parallel=10 --ignore-time \
+            --exclude-glob .git \
+            --exclude-glob .github \
+            --exclude-glob .claude \
+            --exclude-glob node_modules \
+            ./ /public_html/demos/forsysten/
+          quit
+          EOF

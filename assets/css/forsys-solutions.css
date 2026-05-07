@@ -554,6 +554,20 @@
   .fs-usecase-card { transition: none; }
 }
 
+/* ── VIDEO THUMB ─────────────────────────────────────────────── */
+.fs-video-thumb {
+  width: 100%;
+  cursor: pointer;
+  border-radius: 16px;
+  overflow: hidden;
+  line-height: 0;
+}
+.fs-video-play-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* ── VIDEO EXPLAINER ────────────────────────────────────────── */
 
 .fs-video {
