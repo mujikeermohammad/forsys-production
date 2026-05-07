@@ -14,29 +14,16 @@ jobs:
         with:
           fetch-depth: 2
 
+      - name: Prepare deploy folder
+        run: |
+          mkdir -p /tmp/deploy
+          cp index.html /tmp/deploy/index.html
+
       - name: FTP Deploy
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
+          local-dir: /tmp/deploy/
           server-dir: /demos/forsysten/
-          state-name: .ftp-deploy-sync-state-v3.json
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            **/.github/**
-            **/.claude/**
-            assets/**
-            services/**
-            solutions/**
-            forsys-solutions/**
-            industries/**
-            partnerships/**
-            resources/**
-            company/**
-            lead-gen/**
-            *.md
-            *.xlsx
