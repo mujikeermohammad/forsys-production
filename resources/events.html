@@ -557,6 +557,51 @@ j=d.createElement(s),dl=l!="dataLayer"?"&l="+l:"";j.async=true;j.src=
     }
 
     /* ── Past Events Split Layout ─────────────────────────────────────── */
+    .evt-upcoming-banners {
+      padding: 56px 0;
+    }
+    .evt-banner-carousel {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+    }
+    .evt-banner-track {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+    .evt-banner-item {
+      flex: 0 0 100%;
+      display: block;
+      line-height: 0;
+      text-decoration: none;
+    }
+    .evt-banner-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+    .evt-banner-dots {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 16px;
+    }
+    .evt-banner-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 100px;
+      background: var(--purple);
+      opacity: 0.25;
+      border: none;
+      cursor: pointer;
+      padding: 0;
+      transition: opacity 0.2s, width 0.2s;
+    }
+    .evt-banner-dot.active {
+      opacity: 1;
+      width: 24px;
+    }
+
     .evt-past-section {
       background: var(--white);
       padding: 96px 0;
@@ -1517,6 +1562,27 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="res-event-badge res-event-badge--summit">Summit</span>
           </div>
 
+        </div>
+      </div>
+    </section>
+
+    <!-- Upcoming Events – Banner Carousel -->
+    <section class="evt-upcoming-banners" aria-label="Upcoming event banners">
+      <div class="container">
+        <div class="section-label" style="margin-bottom:24px;">Upcoming Events</div>
+        <div class="evt-banner-carousel" id="evt-banner-carousel">
+          <div class="evt-banner-track" id="evt-banner-track">
+            <div class="evt-banner-item">
+              <img src="https://www.forsysinc.com/blog/wp-content/uploads/2026/05/We-are-taking-the-stage-1-1.png" alt="Upcoming Forsys event" loading="lazy">
+            </div>
+            <div class="evt-banner-item">
+              <img src="https://www.forsysinc.com/blog/wp-content/uploads/2026/05/awt-singapore-website-banner.jpg" alt="AWT Singapore event" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div class="evt-banner-dots" id="evt-banner-dots" role="tablist" aria-label="Event banner slides">
+          <button class="evt-banner-dot active" data-idx="0" role="tab" aria-selected="true" aria-label="Banner 1"></button>
+          <button class="evt-banner-dot" data-idx="1" role="tab" aria-selected="false" aria-label="Banner 2"></button>
         </div>
       </div>
     </section>
@@ -2686,6 +2752,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       video.addEventListener('play', function () { wrap.classList.add('playing'); });
       video.addEventListener('pause', function () { wrap.classList.remove('playing'); });
       video.addEventListener('ended', function () { wrap.classList.remove('playing'); });
+    })();
+  </script>
+  <script>
+    (function () {
+      const track = document.getElementById('evt-banner-track');
+      const dots = document.querySelectorAll('#evt-banner-dots .evt-banner-dot');
+      if (!track || !dots.length) return;
+      let cur = 0;
+      function goTo(i) {
+        cur = (i + dots.length) % dots.length;
+        track.style.transform = 'translateX(-' + (cur * 100) + '%)';
+        dots.forEach((d, idx) => {
+          d.classList.toggle('active', idx === cur);
+          d.setAttribute('aria-selected', idx === cur);
+        });
+      }
+      dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.idx)));
+      setInterval(() => goTo(cur + 1), 5000);
     })();
   </script>
 <!-- HubSpot Tracking Code -->
