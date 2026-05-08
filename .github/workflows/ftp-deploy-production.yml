@@ -1,14 +1,15 @@
 name: Deploy to Production FTP
 
 on:
-  push:
-    branches:
-      - main
   workflow_dispatch:
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    if: github.repository == 'mujikeermohammad/forsys-production'
     steps:
       - uses: actions/checkout@v4
         with:
