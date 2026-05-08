@@ -387,6 +387,19 @@ if (document.querySelector('.page-fs')) {
       });
     }
 
+    // LexiShift inline Vimeo player
+    const lsThumb     = document.getElementById('ls-video-thumb');
+    const lsThumbWrap = document.getElementById('ls-video-thumb-wrap');
+    const lsInline    = document.getElementById('ls-vimeo-inline');
+    const lsIframe    = document.getElementById('ls-vimeo-iframe');
+    if (lsThumb && lsThumbWrap && lsInline && lsIframe) {
+      lsThumb.addEventListener('click', () => {
+        lsThumbWrap.hidden = true;
+        lsInline.hidden = false;
+        lsIframe.src = 'https://player.vimeo.com/video/1190435940?autoplay=1&title=0&byline=0&portrait=0';
+      });
+    }
+
     // Video explainer play button
     const player  = document.getElementById('lexishift-player');
     const video   = document.getElementById('lexishift-video');

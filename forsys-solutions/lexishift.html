@@ -307,31 +307,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- ==============================
          2. VIDEO EXPLAINER
     ============================== -->
-    <section class="fs-video" aria-labelledby="video-title">
-      <div class="fs-video-inner">
-        <div class="text-center section-header" style="margin-bottom:32px;">
-          <div class="section-label">See LexiShift in Action</div>
-          <h2 class="section-title" id="video-title">Watch how LexiShift turns <span class="gradient-text">contracts into structured data</span></h2>
-        </div>
-        <div class="fs-video-player" id="lexishift-player">
-          <video
-            id="lexishift-video"
-            poster="../assets/images/lexishift-thumbnail.jpg"
-            preload="none"
-            aria-label="LexiShift explainer video">
-            <source src="../assets/videos/lexishift-explainer.mp4" type="video/mp4">
-          </video>
-          <div class="fs-video-overlay" id="lexishift-overlay">
-            <button class="fs-video-play-btn" id="lexishift-play" aria-label="Play LexiShift explainer video">
-              <svg width="28" height="28" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true">
-                <polygon points="5 3 19 12 5 21 5 3"/>
-              </svg>
-            </button>
-          </div>
-        </div>
-        <p class="fs-video-caption">LexiShift — AI-powered contract data extraction &middot; 2 min overview</p>
-      </div>
-    </section>
 
     <!-- ==============================
          3. PROBLEM STATEMENT
@@ -399,14 +374,30 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </ul>
           </div>
 
+          <!-- Right: thumbnail + before/after visual stacked -->
+          <div style="display:flex; flex-direction:column; gap:24px;">
+
+            <p class="fs-video-label">See it in action</p>
+            <div class="fs-video-thumb-wrap" id="ls-video-thumb-wrap">
+              <button class="fs-video-thumb" id="ls-video-thumb" aria-label="Play LexiShift explainer video">
+                <img src="../assets/images/lexishift-thumbnail.jpg" alt="Play LexiShift explainer video" class="fs-video-play-img">
+              </button>
+            </div>
+            <div class="fs-vimeo-inline" id="ls-vimeo-inline" hidden>
+              <div class="fs-vimeo-ratio">
+                <iframe id="ls-vimeo-iframe" src="" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen title="LexiShift explainer video"></iframe>
+              </div>
+            </div>
+
+          <!-- before/after visual -->
           <div class="fs-problem-visual" aria-label="Without LexiShift vs With LexiShift comparison">
             <div class="fs-problem-visual-title">Without LexiShift vs With LexiShift</div>
             <div class="fs-before-after">
 
               <div class="fs-ba-col">
-                <div class="fs-ba-label fs-ba-label--before">Without</div>
+                <div class="fs-ba-label fs-ba-label--before">Without LexiShift</div>
                 <ul class="fs-ba-items fs-ba-items--before" role="list">
-                  <li>Thousands of unstructured PDFs</li>
+                  <li>1000s of unstructured PDFs</li>
                   <li>Manual review (60s per doc)</li>
                   <li>No searchable data</li>
                   <li>Migration backlog</li>
@@ -429,6 +420,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
             </div>
           </div>
+
+          </div><!-- end right column wrapper -->
 
         </div>
       </div>
