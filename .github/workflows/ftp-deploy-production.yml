@@ -43,7 +43,7 @@ jobs:
           retention-days: 7
 
   deploy:
-    # needs: test
+    needs: test
     runs-on: ubuntu-latest
     if: github.repository == 'mujikeermohammad/forsys-production'
     steps:

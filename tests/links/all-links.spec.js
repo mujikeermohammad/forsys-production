@@ -1,40 +1,46 @@
 import { test, expect } from '@playwright/test';
-import fs from 'fs';
-import path from 'path';
+import { PAGES } from '../pages.js';
 
-// ─── ALL PAGES — HTTP 200 CHECK ───────────────────────────────────────────────
-// Auto-discovers every HTML file in the production site and verifies it loads
-// with HTTP 200. Catches deleted, renamed, or misconfigured pages.
-// Excludes: embed/ (has its own smoke test), forsys-website-new-main/ (not live),
-// node_modules/, playwright-report/, test-results/, assets/.
-// Runs on all 3 viewports — confirms pages serve correctly on Desktop, Tablet, Mobile.
+// ─── ALL TESTED PAGES — INTERNAL LINKS RESOLVE ───────────────────────────────
+// Visits every page in the PAGES list, collects all internal <a href> links,
+// deduplicates, and verifies each unique URL returns HTTP 200.
+// Catches broken CTAs, card links, and navigation links across the whole site.
+// Runs Desktop only — link hrefs are viewport-independent.
 
-const EXCLUDE = new Set(['embed', 'forsys-website-new-main', 'node_modules', 'playwright-report', 'test-results', 'assets']);
-const ROOT = process.cwd();
+test.describe('All Tested Pages — Internal Links Resolve', () => {
+  test('all internal links on tested pages return HTTP 200', async ({ page }, testInfo) => {
+    test.skip(testInfo.project.name !== 'Desktop', 'Desktop-only — link hrefs are viewport-independent');
 
-function collectPages(dir, base = '') {
-  const results = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    if (entry.isDirectory()) {
-      if (!EXCLUDE.has(entry.name)) {
-        results.push(...collectPages(path.join(dir, entry.name), `${base}${entry.name}/`));
-      }
-    } else if (entry.name.endsWith('.html')) {
-      results.push(`/${base}${entry.name}`);
+    const uniqueLinks = new Set();
+
+    for (const { url } of PAGES) {
+      await page.goto(url, { waitUntil: 'domcontentloaded' });
+      // Use a.href (fully resolved by the browser) so relative links like "about.html"
+      // on /company/about.html correctly resolve to /company/about.html, not /about.html
+      const pathnames = await page.evaluate(() =>
+        [...document.querySelectorAll('a[href]')]
+          .map(a => {
+            const attr = a.getAttribute('href');
+            if (!attr || attr.startsWith('#') || attr.startsWith('mailto:') ||
+                attr.startsWith('tel:') || attr.startsWith('javascript:')) return null;
+            try {
+              const resolved = new URL(a.href);
+              if (resolved.origin !== window.location.origin) return null;
+              return resolved.pathname;
+            } catch {
+              return null;
+            }
+          })
+          .filter(Boolean)
+      );
+      pathnames.forEach(p => uniqueLinks.add(p));
     }
-  }
-  return results.sort();
-}
 
-const PAGES = collectPages(ROOT);
-
-test.describe('All Pages — HTTP 200', () => {
-  for (const url of PAGES) {
-    test(url, async ({ page }) => {
+    for (const url of [...uniqueLinks].sort()) {
       const response = await page.goto(url, { waitUntil: 'domcontentloaded' });
       expect(response.status(), `${url} returned ${response.status()}`).toBe(200);
-    });
-  }
+    }
+  });
 });
 
 // ─── HOMEPAGE NAV LINKS — ALL RESOLVE ────────────────────────────────────────
@@ -66,7 +72,7 @@ test.describe('Homepage Nav Links — All Resolve', () => {
 // ─── HOMEPAGE FOOTER LINKS — ALL RESOLVE ─────────────────────────────────────
 // Visits the homepage, collects every internal <a href> in the footer, and
 // checks each one returns HTTP 200. Catches footer links pointing to renamed
-// or deleted pages (footer is updated less frequently than the nav).
+// or deleted pages.
 
 test.describe('Homepage Footer Links — All Resolve', () => {
   test('all footer links return HTTP 200', async ({ page }) => {

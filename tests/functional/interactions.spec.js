@@ -54,4 +54,20 @@ test.describe('Interactions', () => {
     await page.locator('#evt-modal-close').click();
     await expect(page.locator('#evt-video-modal')).toBeHidden();
   });
+
+  // RevRamp inline video player
+  test('revramp video thumbnail click reveals inline Vimeo player', async ({ page }) => {
+    await page.goto('/forsys-solutions/revramp.html');
+    await page.locator('#fs-video-thumb').click();
+    await expect(page.locator('#fs-vimeo-inline')).toBeVisible();
+    await expect(page.locator('#fs-vimeo-iframe')).toHaveAttribute('src', /vimeo/);
+  });
+
+  // LexiShift inline video player
+  test('lexishift video thumbnail click reveals inline Vimeo player', async ({ page }) => {
+    await page.goto('/forsys-solutions/lexishift.html');
+    await page.locator('#ls-video-thumb').click();
+    await expect(page.locator('#ls-vimeo-inline')).toBeVisible();
+    await expect(page.locator('#ls-vimeo-iframe')).toHaveAttribute('src', /vimeo/);
+  });
 });

@@ -8,6 +8,10 @@ Redesigning the Forsys company static website (pure HTML/CSS/JS). All new pages 
 
 The canonical design system is in [CONCEPT-MASTER.md](CONCEPT-MASTER.md). It is also registered as the `forsys-new-2-styleguide` skill in [.claude/skills/forsys-new-2-styleguide/SKILL.md](.claude/skills/forsys-new-2-styleguide/SKILL.md). Always invoke the `forsys-new-2-styleguide` skill (or read CONCEPT-MASTER.md) before creating or modifying any HTML/CSS.
 
+## Test Coverage Audit
+
+For any question about whether tests are up to date — such as "are my tests complete?", "did I miss anything in testing?", "check if all tests are included", or any similar request — use the `forsys-test-audit` skill at [.claude/skills/forsys-test-audit/SKILL.md](.claude/skills/forsys-test-audit/SKILL.md). This skill scans the repo, compares against all test files, and reports exactly what is covered and what is missing.
+
 Key design tokens at a glance:
 - **Colors:** Primary `#6B48FF` (purple), Teal `#00B4D8`, Dark `#0D0D2B`, Surface `#F5F6FF`, Text `#0D0D2B`
 - **Fonts:** Space Grotesk (display/headlines), Inter (body/UI/labels) — no serif font
